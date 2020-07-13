@@ -6,4 +6,11 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="ProyectoFinalServicioClienteTest\**" />
+    <EmbeddedResource Remove="ProyectoFinalServicioClienteTest\**" />
+    <None Remove="ProyectoFinalServicioClienteTest\**" />
+    <Page Remove="ProyectoFinalServicioClienteTest\**" />
+  </ItemGroup>
+
 </Project>
