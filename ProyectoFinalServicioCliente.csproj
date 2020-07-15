@@ -30,7 +30,7 @@
 
   <ItemGroup>
     <Folder Include="DAL\" />
-    <Folder Include="DATA\" />
+    <Folder Include="Data\" />
     <Folder Include="UI\" />
   </ItemGroup>
 

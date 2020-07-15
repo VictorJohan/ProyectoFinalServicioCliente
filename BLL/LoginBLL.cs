@@ -8,7 +8,7 @@ namespace ProyectoFinalServicioCliente.BLL
 {
     public class LoginBLL
     {
-        public static bool Validar(string nombreusuario, string contrasena)
+       public static bool Validar(string nombreusuario, string contrasena)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -31,7 +31,7 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                object p = contexto.Dispose();
+              contexto.Dispose();
             }
 
             return paso;

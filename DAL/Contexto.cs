@@ -1,4 +1,5 @@
-﻿using ProyectoFinalServicioCliente.Entidades;
+﻿using Microsoft.EntityFrameworkCore;
+using ProyectoFinalServicioCliente.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +14,7 @@ namespace ProyectoFinalServicioCliente.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.EnableSensitiveDataLogging().UseSqlite(@"Data Source= DATA\TeacherControl.db");
+            optionsBuilder.UseSqlite(@"Data Source= DATA\TeacherControl.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
