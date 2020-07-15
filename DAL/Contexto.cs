@@ -14,7 +14,7 @@ namespace ProyectoFinalServicioCliente.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source= DATA\TeacherControl.db");
+            optionsBuilder.UseSqlite(@"Data Source= DATA\FotoEstudioNuñez.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
