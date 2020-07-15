@@ -15,6 +15,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\agregar.png" />
+    <None Remove="Resources\atras.png" />
+    <None Remove="Resources\delete.png" />
+    <None Remove="Resources\login.png" />
+    <None Remove="Resources\logout.png" />
+    <None Remove="Resources\persona.png" />
+    <None Remove="Resources\registro.png" />
+    <None Remove="Resources\remover.png" />
+    <None Remove="Resources\save.png" />
+    <None Remove="Resources\search.png" />
+    <None Remove="Resources\suplidor.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="DAL\" />
     <Folder Include="DATA\" />
     <Folder Include="UI\" />
