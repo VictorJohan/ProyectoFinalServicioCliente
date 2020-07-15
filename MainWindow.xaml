@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-
+        <Menu Height="20" VerticalAlignment="Top">
+            <MenuItem Header="Login" Click="MenuItem_Click"/><!--Para ver como quedo el WPF del login se creo este objeto-->
+        </Menu>
     </Grid>
 </Window>

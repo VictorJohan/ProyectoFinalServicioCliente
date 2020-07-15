@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoFinalServicioCliente.UI.Login;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace ProyectoFinalServicioCliente
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
         }
     }
 }
