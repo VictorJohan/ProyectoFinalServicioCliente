@@ -35,19 +35,20 @@ namespace ProyectoFinalServicioCliente.UI.Login
 
         private void IngresarButton_Click1(object sender, RoutedEventArgs e)
         {
-          /*  bool paso = LoginBLL.Validar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
+            bool paso = LoginBLL.Validar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
 
             if (paso)
             {
                 this.Close();
-                Principal.Show();
+                //Hay que hacer la ventana principal
+          //       Principal.Show();
             }
             else
             {
                 MessageBox.Show("Error Nombre Usuario o Contraseña incorrecta!", "Error!");
                 ContrasenaPasswordBox.Clear();
                 NombreUsuarioTextBox.Focus();
-            }*/
+            }
         }
     }
 }
