@@ -10,7 +10,6 @@ namespace ProyectoFinalServicioCliente.DAL
     {
 
         public DbSet<Usuarios> Usuarios { get; set; }
-        public DbSet<Combinaciones> Combinaciones { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

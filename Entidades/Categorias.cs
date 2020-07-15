@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace ProyectoFinalServicioCliente.Entidades
 {
     public class Categorias
     {
-        //todo: Para Johan: Crear las propiedades de la clase Categoria e investigar si tiene que haber una foreign key de Usuarios en cada clase
+        [Key]
+        public int CategoriaId { get; set; }
+        public int UsuarioId { get; set; }
+        [ForeignKey("UsuarioId")]
+        public virtual Usuarios Usuario { get; set; }
+        public string Nombre { get; set; }
     }
 }
