@@ -6,25 +6,18 @@ using System.Text;
 
 namespace ProyectoFinalServicioCliente.Entidades
 {
-    public class Articulos
+    public class Eventos
     {
         [Key]
-        public int ArticuloId { get; set; }
+        public int EnventoId { get; set; }
         public int UsuarioId { get; set; }
         [ForeignKey("UsuarioId")]
         public virtual Usuarios Usuario { get; set; } = new Usuarios();
         public string Descripcion { get; set; }
-        public int CategoriaId { get; set; }
-        [ForeignKey("CategoriaId")]
-        public virtual Categorias Categoria { get; set; } = new Categorias();
-        public int Stock { get; set; }
+        public string Lugar { get; set; }
+        public DateTime FechaInicio { get; set; } = DateTime.Now;
+        public DateTime FechaFin { get; set; } = DateTime.Now;
         public double Precio { get; set; }
-        public double Costo { get; set; }
-        [ForeignKey("ArticuloId")]
-        public virtual List<ComprasDetalle> ComprasDetalles { get; set; } = new List<ComprasDetalle>();
-
-        [ForeignKey("ArticuloId")]
         public virtual List<VentasDetalle> VentasDetalles { get; set; } = new List<VentasDetalle>();
-
     }
 }

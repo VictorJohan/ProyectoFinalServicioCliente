@@ -12,7 +12,7 @@ namespace ProyectoFinalServicioCliente.Entidades
         public int CompraId { get; set; }
         public int UsuarioId { get; set; }
         [ForeignKey("UsuarioId")]
-        public virtual Usuarios Usuario { get; set; }
+        public virtual Usuarios Usuario { get; set; } = new Usuarios();
         public double Monto { get; set; }
         public DateTime Fecha { get; set; } = DateTime.Now;
         [ForeignKey("CompraId")]

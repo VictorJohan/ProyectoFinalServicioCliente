@@ -6,10 +6,10 @@ using System.Text;
 
 namespace ProyectoFinalServicioCliente.Entidades
 {
-    public class Clientes
+    public class Fotografos
     {
         [Key]
-        public int ClienteId { get; set; }
+        public int FotografoId { get; set; }
         public int UsuarioId { get; set; }
         [ForeignKey("UsuarioId")]
         public virtual Usuarios Usuario { get; set; } = new Usuarios();
@@ -19,6 +19,7 @@ namespace ProyectoFinalServicioCliente.Entidades
         public string Telefono { get; set; }
         public string Celular { get; set; }
         public string Sexo { get; set; }
-        public DateTime FechaNacimiento { get; set; } = DateTime.Now;
+        public DateTime FechaNacimiento { get; set; }
+        public double Sueldo { get; set; }
     }
 }

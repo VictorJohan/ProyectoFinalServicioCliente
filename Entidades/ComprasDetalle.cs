@@ -13,7 +13,7 @@ namespace ProyectoFinalServicioCliente.Entidades
         public int CompraId { get; set; }
         public int ArticuloId { get; set; }
         [ForeignKey("ArticuloId")]
-        public virtual Articulos Articulo { get; set; }//Conecta con la entidad Articulos para evitar la redundancia
+        public virtual Articulos Articulo { get; set; } = new Articulos();
         public int CantidadArticulos { get; set; }
         public double Costo { get; set; }
 
@@ -22,7 +22,6 @@ namespace ProyectoFinalServicioCliente.Entidades
             CompraDetalleId = 0;
             CompraId = compraId;
             ArticuloId = articuloId;
-            Articulo = new Articulos();
             CantidadArticulos = cantidadArticulos;
             Costo = costo;
         }

@@ -12,7 +12,7 @@ namespace ProyectoFinalServicioCliente.Entidades
         public int CategoriaId { get; set; }
         public int UsuarioId { get; set; }
         [ForeignKey("UsuarioId")]
-        public virtual Usuarios Usuario { get; set; }
+        public virtual Usuarios Usuario { get; set; } = new Usuarios();
         public string Nombre { get; set; }
     }
 }
