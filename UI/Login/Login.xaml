@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Login"
-         xmlns:PasswordHelper="clr-namespace:ProyectoFinalServicioCliente"
+        xmlns:PasswordHelper="clr-namespace:ProyectoFinalServicioCliente.Resources.PasswordHelper"
         mc:Ignorable="d"
         Title="Login" Height="210" Width="300">
     <Grid>
@@ -15,8 +15,7 @@
                 <TextBox x:Name="NombreUsuarioTextBox" Text="{Binding NombreUsuario}" />
 
                 <Label Content="Contraseña"/>
-                    
-                
+                <PasswordBox x:Name="ContrasenaPasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Button x:Name="IngresarButton" Content="Ingresar" Margin="30" Width="60" Height="24" Click="IngresarButton_Click1"/>
             </StackPanel>

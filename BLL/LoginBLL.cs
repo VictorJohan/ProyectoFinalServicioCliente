@@ -1,5 +1,6 @@
 ﻿using ProyectoFinalServicioCliente.DAL;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
