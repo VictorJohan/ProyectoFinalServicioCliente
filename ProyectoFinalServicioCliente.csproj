@@ -14,10 +14,38 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\agregar.png" />
+    <None Remove="Resources\atras.png" />
+    <None Remove="Resources\delete.png" />
+    <None Remove="Resources\login.png" />
+    <None Remove="Resources\logout.png" />
+    <None Remove="Resources\persona.png" />
+    <None Remove="Resources\registro.png" />
+    <None Remove="Resources\remover.png" />
+    <None Remove="Resources\save.png" />
+    <None Remove="Resources\search.png" />
+    <None Remove="Resources\suplidor.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="DAL\" />
     <Folder Include="DATA\" />
     <Folder Include="Entidades\" />
     <Folder Include="UI\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\agregar.png" />
+    <Resource Include="Resources\atras.png" />
+    <Resource Include="Resources\delete.png" />
+    <Resource Include="Resources\login.png" />
+    <Resource Include="Resources\logout.png" />
+    <Resource Include="Resources\persona.png" />
+    <Resource Include="Resources\registro.png" />
+    <Resource Include="Resources\remover.png" />
+    <Resource Include="Resources\save.png" />
+    <Resource Include="Resources\search.png" />
+    <Resource Include="Resources\suplidor.png" />
   </ItemGroup>
 
   <ItemGroup>
