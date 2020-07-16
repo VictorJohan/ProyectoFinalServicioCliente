@@ -1,4 +1,5 @@
 ﻿using ProyectoFinalServicioCliente.UI.Login;
+using ProyectoFinalServicioCliente.UI.rUsuarios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,12 @@ namespace ProyectoFinalServicioCliente
         {
             Login login = new Login();
             login.Show();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            rUsuarios rUsuarios = new rUsuarios();
+            rUsuarios.Show();
         }
     }
 }

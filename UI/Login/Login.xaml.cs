@@ -24,7 +24,7 @@ namespace ProyectoFinalServicioCliente.UI.Login
             InitializeComponent();
         }
 
-        //Metodo que ayuda a cerrar el programa si pone una contraseña mal o NombreUsuario
+        //Este metodo cierra el programa en caso de cerrar la ventana de Login
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -41,11 +41,11 @@ namespace ProyectoFinalServicioCliente.UI.Login
             {
                 this.Close();
                 //Hay que hacer la ventana principal
-          //       Principal.Show();
+                //Principal.Show();
             }
             else
             {
-                MessageBox.Show("Error Nombre Usuario o Contraseña incorrecta!", "Error!");
+                MessageBox.Show("El Usuario o Contraseña incorrecta.", "Las credenciales no son correctas.", MessageBoxButton.OK, MessageBoxImage.Error);
                 ContrasenaPasswordBox.Clear();
                 NombreUsuarioTextBox.Focus();
             }

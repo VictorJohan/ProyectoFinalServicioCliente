@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Login"
         xmlns:PasswordHelper="clr-namespace:ProyectoFinalServicioCliente.Resources.PasswordHelper"
         mc:Ignorable="d"
-        Title="Login" Height="210" Width="300">
+        Title="Login" Height="210" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10">
             <StackPanel Orientation="Vertical">

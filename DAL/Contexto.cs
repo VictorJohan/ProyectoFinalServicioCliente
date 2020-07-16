@@ -30,8 +30,8 @@ namespace ProyectoFinalServicioCliente.DAL
             modelBuilder.Entity<Usuarios>().HasData(new Usuarios
             {
                 UsuarioId = 1,
-                Nombres = "Elvis J.",
-                Apellidos = "Duarte V.",
+                Nombres = "Usuario Nombre",
+                Apellidos = "Usuario Apellidos",
                 NombreUsuario = "admin",
                 Contrasena = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
             });
