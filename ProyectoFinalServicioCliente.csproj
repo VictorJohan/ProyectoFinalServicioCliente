@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <StartWorkingDirectory>$(MSBuildProjecDirectory)</StartWorkingDirectory>
+    <StartworkinDirectory>$(MSBuildProjectDirectory)</StartworkinDirectory>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
@@ -30,7 +30,6 @@
 
   <ItemGroup>
     <Folder Include="DAL\" />
-    <Folder Include="DATA\" />
     <Folder Include="UI\" />
   </ItemGroup>
 
@@ -69,6 +68,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DATA\FotoEstudioNuñez.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -12,7 +12,6 @@ namespace ProyectoFinalServicioCliente.Entidades
         public int CompraDetalleId { get; set; }
         public int CompraId { get; set; }
         public int ArticuloId { get; set; }
-        [ForeignKey("ArticuloId")]
         public virtual Articulos Articulo { get; set; } = new Articulos();
         public int CantidadArticulos { get; set; }
         public double Costo { get; set; }
