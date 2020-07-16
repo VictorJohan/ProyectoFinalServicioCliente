@@ -20,7 +20,7 @@ namespace ProyectoFinalServicioCliente.UI.rUsuarios
     public partial class rUsuarios : Window
     {
         Usuarios Usuario = new Usuarios();
-        private string confirmacion, contra;
+        private string confirmacion, contra;//Variables donde se encriptara la contraseña y la contraseña de confirmacion
         public rUsuarios()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace ProyectoFinalServicioCliente.UI.rUsuarios
             if (encontrado != null)
             {
                 Usuario = encontrado;
-                Usuario.Contrasena = Seguridad.DesEncriptar(encontrado.Contrasena);
+                Usuario.Contrasena = Seguridad.DesEncriptar(encontrado.Contrasena);//Desencripta la contraseña para presentarla en el PassworBox
                 this.DataContext = Usuario;
             }
             else
@@ -54,7 +54,7 @@ namespace ProyectoFinalServicioCliente.UI.rUsuarios
             if (!ValidarGuardar())
                 return;
 
-            Usuario.Contrasena = contra;
+            Usuario.Contrasena = contra;//Se le asigna la contraseña encriptada a la propiedad
 
             if (UsuariosBLL.Guardar(Usuario))
             {
@@ -107,7 +107,7 @@ namespace ProyectoFinalServicioCliente.UI.rUsuarios
                 return false;
             }
 
-
+            //todo: Para Johan: Programar el metodo validar
             return true;
         }
     }
