@@ -35,11 +35,12 @@ namespace ProyectoFinalServicioCliente.UI.Login
 
         private void IngresarButton_Click1(object sender, RoutedEventArgs e)
         {
-            bool paso = LoginBLL.Validar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
+            bool paso = UsuariosBLL.Validar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
 
             if (paso)
             {
                 this.Close();
+                MessageBox.Show("Entraste");
                 //Hay que hacer la ventana principal
                 //Principal.Show();
             }

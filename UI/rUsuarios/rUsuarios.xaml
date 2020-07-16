@@ -42,14 +42,14 @@
             <Label Content="Contraseña" FontSize="11"/>
             <PasswordBox Name="ContraseñaPasswordBox" Height="20" Width="230" HorizontalAlignment="Left" Margin="5,0" 
              PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, 
-                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PasswordChanged="ContraseñaPasswordBox_PasswordChanged"/>
             
             <!--Confirmar Contraseña-->
             <Label Content="Confirmar Contraseña" FontSize="11"/>
-            <PasswordBox Name="ConfirmarContraseñaPasswordBox" Height="20" Width="230" HorizontalAlignment="Left" Margin="5,0"/>
+            <PasswordBox Name="ConfirmarContraseñaPasswordBox" Height="20" Width="230" HorizontalAlignment="Left" Margin="5,0" PasswordChanged="ConfirmarContraseñaPasswordBox_PasswordChanged"/>
 
             <!--Panel de Botones-->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="12,25,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="16,25,0,0">
 
                 <Button Name="NuevoButton" Width="60" Height="20"  HorizontalContentAlignment="Left" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">

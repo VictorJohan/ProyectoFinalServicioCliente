@@ -251,10 +251,10 @@ namespace ProyectoFinalServicioCliente.Migrations
                         new
                         {
                             UsuarioId = 1,
-                            Apellidos = "Duarte V.",
-                            Contrasena = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+                            Apellidos = "Usuario Apellidos",
+                            Contrasena = "MQAyADMA",
                             NombreUsuario = "admin",
-                            Nombres = "Elvis J."
+                            Nombres = "Usuario Nombre"
                         });
                 });
 

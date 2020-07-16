@@ -6,18 +6,23 @@
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Login"
         xmlns:PasswordHelper="clr-namespace:ProyectoFinalServicioCliente.Resources.PasswordHelper"
         mc:Ignorable="d"
-        Title="Login" Height="210" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Login" Height="210" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/camara.png">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10">
             <StackPanel Orientation="Vertical">
                 <Label Content="Nombre Usuario"/>
 
-                <TextBox x:Name="NombreUsuarioTextBox" Text="{Binding NombreUsuario}" />
+                <TextBox x:Name="NombreUsuarioTextBox" Height="20" Text="{Binding NombreUsuario}" />
 
                 <Label Content="Contraseña"/>
-                <PasswordBox x:Name="ContrasenaPasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <PasswordBox x:Name="ContrasenaPasswordBox" Height="20" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <Button x:Name="IngresarButton" Content="Ingresar" Margin="30" Width="60" Height="24" Click="IngresarButton_Click1"/>
+                <Button Name="IngresarButton" Margin="30" Width="68" Height="24" Click="IngresarButton_Click1">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/login.png" />
+                        <Label Content="Ingresar" FontSize="11" Margin="3,0" Padding="0,0,1,3"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
         </StackPanel>
     </Grid>

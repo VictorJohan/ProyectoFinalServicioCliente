@@ -7,8 +7,7 @@ using System.Text;
 /// usar las funciones Encriptar y DesEncriptar
 public static class Seguridad
 {
-    //SE USARA ESTE ENCRIPTADO PORUQE ES MAS SEGURO YA QUE A DIFERENCIA DEL OTRO NO DESENCRIPTA LA CONTRASEÑA
-    public static string GetEncriptado(string str)
+    /*public static string GetEncriptado(string str)
     {
         SHA256 sha256 = SHA256Managed.Create();
         ASCIIEncoding encoding = new ASCIIEncoding();
@@ -17,12 +16,10 @@ public static class Seguridad
         stream = sha256.ComputeHash(encoding.GetBytes(str));
         for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
         return sb.ToString();
-    }
+    }*/
 
-
-    //*************ESTE ES OTRO ALGORITMO DE ENCRIPTADO****************
     /// Encripta una cadena
-    /*public static string Encriptar(this string encriptarCadena)
+    public static string Encriptar(this string encriptarCadena)
     {
         string result = string.Empty;
         byte[] encryted = System.Text.Encoding.Unicode.GetBytes(encriptarCadena);
@@ -38,5 +35,5 @@ public static class Seguridad
         //result = System.Text.Encoding.Unicode.GetString(decryted, 0, decryted.ToArray().Length);
         result = System.Text.Encoding.Unicode.GetString(decryted);
         return result;
-    }*/
+    }
 }

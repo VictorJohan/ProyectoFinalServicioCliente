@@ -9,7 +9,7 @@ using ProyectoFinalServicioCliente.DAL;
 namespace ProyectoFinalServicioCliente.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200716030947_Migracion_Inicial")]
+    [Migration("20200716070424_Migracion_Inicial")]
     partial class Migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -253,10 +253,10 @@ namespace ProyectoFinalServicioCliente.Migrations
                         new
                         {
                             UsuarioId = 1,
-                            Apellidos = "Duarte V.",
-                            Contrasena = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+                            Apellidos = "Usuario Apellidos",
+                            Contrasena = "MQAyADMA",
                             NombreUsuario = "admin",
-                            Nombres = "Elvis J."
+                            Nombres = "Usuario Nombre"
                         });
                 });
 

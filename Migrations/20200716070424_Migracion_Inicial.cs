@@ -272,7 +272,7 @@ namespace ProyectoFinalServicioCliente.Migrations
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "NombreUsuario", "Nombres" },
-                values: new object[] { 1, "Duarte V.", "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", "admin", "Elvis J." });
+                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", "admin", "Usuario Nombre" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articulos_CategoriaId",

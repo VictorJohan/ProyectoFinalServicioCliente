@@ -8,7 +8,6 @@ namespace ProyectoFinalServicioCliente.DAL
 {
     public class Contexto : DbContext
     {
-
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Articulos> Articulos { get; set; }
         public DbSet<Categorias> Categorias { get; set; }
@@ -26,14 +25,13 @@ namespace ProyectoFinalServicioCliente.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-
             modelBuilder.Entity<Usuarios>().HasData(new Usuarios
             {
                 UsuarioId = 1,
                 Nombres = "Usuario Nombre",
                 Apellidos = "Usuario Apellidos",
                 NombreUsuario = "admin",
-                Contrasena = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
+                Contrasena = Seguridad.Encriptar("123")//Encritando la contraseña predeterminada
             });
         }
     }
