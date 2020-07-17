@@ -10,6 +10,7 @@
         <Menu Height="20" VerticalAlignment="Top">
             <MenuItem Header="Login" Click="MenuItem_Click"/><!--Para ver como quedo el WPF del login se creo este objeto-->
             <MenuItem Header="Registro Usuario" Click="MenuItem_Click_1"/>
+            <MenuItem Header="Registro Articulo" Click="MenuItem_Click_2"/>
             <!--Para ver como quedo el WPF del Registro Usuario se creo este objeto-->
         </Menu>
     </Grid>

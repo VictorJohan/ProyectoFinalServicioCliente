@@ -17,7 +17,8 @@ namespace ProyectoFinalServicioCliente
 
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            MessageBox.Show($"Ocurrio un error no controlado:\n{e.Exception.Message}");
+            MessageBox.Show($"Ocurrio un error no controlado:\n{e.Exception.Message}", 
+                "Excepcion no controlada.", MessageBoxButton.OK, MessageBoxImage.Error);
 
             e.Handled = true;
         }

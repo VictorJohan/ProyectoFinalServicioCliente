@@ -367,7 +367,7 @@ namespace ProyectoFinalServicioCliente.Migrations
             modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.ComprasDetalle", b =>
                 {
                     b.HasOne("ProyectoFinalServicioCliente.Entidades.Articulos", "Articulo")
-                        .WithMany("ComprasDetalles")
+                        .WithMany()
                         .HasForeignKey("ArticuloId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -421,7 +421,7 @@ namespace ProyectoFinalServicioCliente.Migrations
             modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.VentasDetalle", b =>
                 {
                     b.HasOne("ProyectoFinalServicioCliente.Entidades.Articulos", "Articulo")
-                        .WithMany("VentasDetalles")
+                        .WithMany()
                         .HasForeignKey("ArticuloId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

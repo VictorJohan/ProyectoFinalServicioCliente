@@ -20,11 +20,6 @@ namespace ProyectoFinalServicioCliente.Entidades
         public int Stock { get; set; }
         public double Precio { get; set; }
         public double Costo { get; set; }
-        [ForeignKey("ArticuloId")]
-        public virtual List<ComprasDetalle> ComprasDetalles { get; set; } = new List<ComprasDetalle>();
-
-        [ForeignKey("ArticuloId")]
-        public virtual List<VentasDetalle> VentasDetalles { get; set; } = new List<VentasDetalle>();
-
+ 
     }
 }

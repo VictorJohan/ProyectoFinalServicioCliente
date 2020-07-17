@@ -16,12 +16,16 @@
 
   <ItemGroup>
     <None Remove="Resources\agregar.png" />
+    <None Remove="Resources\articulo.png" />
     <None Remove="Resources\atras.png" />
     <None Remove="Resources\camara.png" />
+    <None Remove="Resources\compra.png" />
     <None Remove="Resources\delete.png" />
+    <None Remove="Resources\inventario.png" />
     <None Remove="Resources\login.png" />
     <None Remove="Resources\logout.png" />
     <None Remove="Resources\persona.png" />
+    <None Remove="Resources\producto.png" />
     <None Remove="Resources\registro.png" />
     <None Remove="Resources\remover.png" />
     <None Remove="Resources\save.png" />
@@ -44,12 +48,16 @@
 
   <ItemGroup>
     <Resource Include="Resources\agregar.png" />
+    <Resource Include="Resources\articulo.png" />
     <Resource Include="Resources\atras.png" />
     <Resource Include="Resources\camara.png" />
+    <Resource Include="Resources\compra.png" />
     <Resource Include="Resources\delete.png" />
+    <Resource Include="Resources\inventario.png" />
     <Resource Include="Resources\login.png" />
     <Resource Include="Resources\logout.png" />
     <Resource Include="Resources\persona.png" />
+    <Resource Include="Resources\producto.png" />
     <Resource Include="Resources\registro.png" />
     <Resource Include="Resources\remover.png" />
     <Resource Include="Resources\save.png" />
@@ -70,12 +78,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="DATA\FotoEstudioNuñez.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

@@ -69,7 +69,6 @@ namespace ProyectoFinalServicioCliente.UI.rUsuarios
 
             if (UsuariosBLL.Guardar(Usuario))
             {
-                MessageBox.Show(contra);
                 Limpiar();
                 MessageBox.Show("El usuario fue guardado de forma exitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
             }

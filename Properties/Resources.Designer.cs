@@ -73,6 +73,16 @@ namespace ProyectoFinalServicioCliente.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] articulo {
+            get {
+                object obj = ResourceManager.GetObject("articulo", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] atras {
             get {
                 object obj = ResourceManager.GetObject("atras", resourceCulture);
@@ -83,9 +93,29 @@ namespace ProyectoFinalServicioCliente.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] compra {
+            get {
+                object obj = ResourceManager.GetObject("compra", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] delete {
             get {
                 object obj = ResourceManager.GetObject("delete", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] inventario {
+            get {
+                object obj = ResourceManager.GetObject("inventario", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -116,6 +146,16 @@ namespace ProyectoFinalServicioCliente.Properties {
         internal static byte[] persona {
             get {
                 object obj = ResourceManager.GetObject("persona", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] producto {
+            get {
+                object obj = ResourceManager.GetObject("producto", resourceCulture);
                 return ((byte[])(obj));
             }
         }
