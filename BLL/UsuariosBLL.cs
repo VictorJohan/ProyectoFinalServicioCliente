@@ -26,7 +26,7 @@ namespace ProyectoFinalServicioCliente.BLL
 
             try
             {
-               ok = contexto.Usuarios.Any(u => u.UsuarioId == id);
+                ok = contexto.Usuarios.Any(u => u.UsuarioId == id);
             }
             catch (Exception)
             {
@@ -148,6 +148,33 @@ namespace ProyectoFinalServicioCliente.BLL
                               && usuario.Contrasena == Seguridad.Encriptar(contrasena)
                               select usuario;
                 if (validar.Count() > 0)
+                    ok = true;
+                else
+                    ok = false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
+
+        public static bool ExisteUsuario(string user)
+        {
+            Contexto contexto = new Contexto();
+            bool ok;
+
+            try
+            {
+                var existe = from usuario in contexto.Usuarios
+                     where usuario.NombreUsuario == user select usuario;
+                if (existe.Count() > 0)
                     ok = true;
                 else
                     ok = false;
