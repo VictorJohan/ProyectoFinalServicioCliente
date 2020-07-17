@@ -10,15 +10,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ProyectoFinalServicioCliente.UI.rArticulo
+namespace ProyectoFinalServicioCliente.UI.rCategoria
 {
     /// <summary>
-    /// Interaction logic for rArticulos.xaml
+    /// Interaction logic for rCategoria.xaml
     /// </summary>
-    public partial class rArticulos : Window
+    public partial class rCategoria : Window
     {
-
-        public rArticulos()
+        public rCategoria()
         {
             InitializeComponent();
         }

@@ -127,6 +127,9 @@
   <data name="atras" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\atras.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="categoria" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\categoria.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="compra" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\compra.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -141,6 +144,9 @@
   </data>
   <data name="logout" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logout.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="newFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newFile.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="persona" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\persona.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

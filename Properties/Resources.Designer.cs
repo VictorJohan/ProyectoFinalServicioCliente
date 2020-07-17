@@ -93,6 +93,16 @@ namespace ProyectoFinalServicioCliente.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] categoria {
+            get {
+                object obj = ResourceManager.GetObject("categoria", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] compra {
             get {
                 object obj = ResourceManager.GetObject("compra", resourceCulture);
@@ -136,6 +146,16 @@ namespace ProyectoFinalServicioCliente.Properties {
         internal static byte[] logout {
             get {
                 object obj = ResourceManager.GetObject("logout", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] newFile {
+            get {
+                object obj = ResourceManager.GetObject("newFile", resourceCulture);
                 return ((byte[])(obj));
             }
         }

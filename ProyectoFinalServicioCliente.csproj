@@ -19,11 +19,13 @@
     <None Remove="Resources\articulo.png" />
     <None Remove="Resources\atras.png" />
     <None Remove="Resources\camara.png" />
+    <None Remove="Resources\categoria.png" />
     <None Remove="Resources\compra.png" />
     <None Remove="Resources\delete.png" />
     <None Remove="Resources\inventario.png" />
     <None Remove="Resources\login.png" />
     <None Remove="Resources\logout.png" />
+    <None Remove="Resources\newFile.png" />
     <None Remove="Resources\persona.png" />
     <None Remove="Resources\producto.png" />
     <None Remove="Resources\registro.png" />
@@ -51,11 +53,13 @@
     <Resource Include="Resources\articulo.png" />
     <Resource Include="Resources\atras.png" />
     <Resource Include="Resources\camara.png" />
+    <Resource Include="Resources\categoria.png" />
     <Resource Include="Resources\compra.png" />
     <Resource Include="Resources\delete.png" />
     <Resource Include="Resources\inventario.png" />
     <Resource Include="Resources\login.png" />
     <Resource Include="Resources\logout.png" />
+    <Resource Include="Resources\newFile.png" />
     <Resource Include="Resources\persona.png" />
     <Resource Include="Resources\producto.png" />
     <Resource Include="Resources\registro.png" />
