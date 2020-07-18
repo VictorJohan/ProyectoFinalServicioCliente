@@ -9,7 +9,7 @@ using ProyectoFinalServicioCliente.DAL;
 namespace ProyectoFinalServicioCliente.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200718003935_Migracion_Inicial")]
+    [Migration("20200718023849_Migracion_Inicial")]
     partial class Migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,8 +43,6 @@ namespace ProyectoFinalServicioCliente.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ArticuloId");
-
-                    b.HasIndex("CategoriaId");
 
                     b.HasIndex("UsuarioId");
 
@@ -326,12 +324,6 @@ namespace ProyectoFinalServicioCliente.Migrations
 
             modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.Articulos", b =>
                 {
-                    b.HasOne("ProyectoFinalServicioCliente.Entidades.Categorias", "Categoria")
-                        .WithMany()
-                        .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ProyectoFinalServicioCliente.Entidades.Usuarios", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId")

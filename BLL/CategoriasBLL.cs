@@ -10,12 +10,12 @@ namespace ProyectoFinalServicioCliente.BLL
 {
     public class CategoriasBLL
     {
-        public static bool Guardar(Categorias categoria)
+        public static bool Guardar(Categorias Categoria)
         {
-            if (!Existe(categoria.CategoriaId))
-                return Insertar(categoria);
+            if (!Existe(Categoria.CategoriaId))
+                return Insertar(Categoria);
             else
-                return Modificar(categoria);
+                return Modificar(Categoria);
         }
 
         public static bool Existe(int id)
@@ -25,7 +25,7 @@ namespace ProyectoFinalServicioCliente.BLL
 
             try
             {
-                ok = contexto.Categorias.Any(a => a.CategoriaId == id);
+                ok = contexto.Categorias.Any(c => c.CategoriaId == id);
             }
             catch (Exception)
             {
@@ -40,14 +40,14 @@ namespace ProyectoFinalServicioCliente.BLL
             return ok;
         }
 
-        private static bool Insertar(Categorias categoria)
+        private static bool Insertar(Categorias Categoria)
         {
             Contexto contexto = new Contexto();
             bool ok = false;
 
             try
             {
-                contexto.Categorias.Add(categoria);
+                contexto.Categorias.Add(Categoria);
                 ok = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -63,14 +63,14 @@ namespace ProyectoFinalServicioCliente.BLL
             return ok;
         }
 
-        private static bool Modificar(Categorias categoria)
+        private static bool Modificar(Categorias Categoria)
         {
             Contexto contexto = new Contexto();
             bool ok = false;
 
             try
             {
-                contexto.Entry(categoria).State = EntityState.Modified;
+                contexto.Entry(Categoria).State = EntityState.Modified;
                 ok = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -89,11 +89,11 @@ namespace ProyectoFinalServicioCliente.BLL
         public static Categorias Buscar(int id)
         {
             Contexto contexto = new Contexto();
-            Categorias Categorias;
+            Categorias Categoria;
 
             try
             {
-                Categorias = contexto.Categorias.Find(id);
+                Categoria = contexto.Categorias.Find(id);
             }
             catch (Exception)
             {
@@ -105,7 +105,7 @@ namespace ProyectoFinalServicioCliente.BLL
                 contexto.Dispose();
             }
 
-            return Categorias;
+            return Categoria;
         }
 
         public static bool Eliminar(int id)

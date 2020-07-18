@@ -42,8 +42,6 @@ namespace ProyectoFinalServicioCliente.Migrations
 
                     b.HasKey("ArticuloId");
 
-                    b.HasIndex("CategoriaId");
-
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("Articulos");
@@ -324,12 +322,6 @@ namespace ProyectoFinalServicioCliente.Migrations
 
             modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.Articulos", b =>
                 {
-                    b.HasOne("ProyectoFinalServicioCliente.Entidades.Categorias", "Categoria")
-                        .WithMany()
-                        .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ProyectoFinalServicioCliente.Entidades.Usuarios", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId")

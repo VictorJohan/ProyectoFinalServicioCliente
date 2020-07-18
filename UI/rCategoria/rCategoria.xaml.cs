@@ -82,7 +82,7 @@ namespace ProyectoFinalServicioCliente.UI.rCategoria
                 return;
             }
 
-            if (UsuariosBLL.Eliminar(int.Parse(CategoriaIdTextBox.Text)))
+            if (CategoriasBLL.Eliminar(int.Parse(CategoriaIdTextBox.Text)))
             {
                 Limpiar();
                 MessageBox.Show("Categoria eliminada.", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
