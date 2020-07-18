@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProyectoFinalServicioCliente.BLL;
+using ProyectoFinalServicioCliente.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,10 +19,14 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
     /// </summary>
     public partial class rArticulos : Window
     {
-
+        private Articulos Articulo = new Articulos();
         public rArticulos()
         {
             InitializeComponent();
+            this.DataContext = Articulo;
+            CategoriaComboBox.ItemsSource = CategoriasBLL.GetListCategorias();
+            CategoriaComboBox.SelectedValuePath = "Categorias";
+            CategoriaComboBox.DisplayMemberPath = "Nombre";
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
