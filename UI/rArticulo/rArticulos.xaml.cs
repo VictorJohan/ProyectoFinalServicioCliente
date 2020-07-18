@@ -117,7 +117,8 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
             }
 
             //Valida que todos los campos esten llenos
-            if (ArticuloIdTextBox.Text.Length == 0 || DescripcionTextBox.Text.Length == 0 || StockTextBox.Text.Length == 0 || PrecioTextBox.Text.Length == 0 || CostoTextBox.Text.Length == 0)
+            if (ArticuloIdTextBox.Text.Length == 0 || DescripcionTextBox.Text.Length == 0 || 
+                StockTextBox.Text.Length == 0 || PrecioTextBox.Text.Length == 0 || CostoTextBox.Text.Length == 0)
             {
                 MessageBox.Show("No pueden haber campos vacios.", "Campos vacios.", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
@@ -157,6 +158,7 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
             return true;
         }
 
+        //Almacena el Id de la categoria en la propiedad correspondiente
         private void CategoriaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CategoriaComboBox.SelectedItem == null)
