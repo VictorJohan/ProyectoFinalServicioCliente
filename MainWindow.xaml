@@ -12,6 +12,7 @@
             <MenuItem Header="Registro Usuario" Click="MenuItem_Click_1"/>
             <MenuItem Header="Registro Articulo" Click="MenuItem_Click_2"/>
             <MenuItem Header="Registro Categoria" Click="MenuItem_Click_3"/>
+            <MenuItem Header="Registro Compras" Click="MenuItem_Click_4"/>
             <!--Para ver como quedo el WPF del Registro Usuario se creo este objeto-->
         </Menu>
     </Grid>

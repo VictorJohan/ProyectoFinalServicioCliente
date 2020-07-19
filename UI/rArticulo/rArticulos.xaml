@@ -31,7 +31,7 @@
 
             <!--Categoria-->
             <Label Content="Categoria" FontSize="11"/>
-            <ComboBox Name="CategoriaComboBox" Width="230" HorizontalAlignment="Left" Margin="5,0" SelectionChanged="CategoriaComboBox_SelectionChanged"/>
+            <ComboBox Name="CategoriaComboBox" Width="230" Text="{Binding Categoria.Nombre}" HorizontalAlignment="Left" Margin="5,0" SelectedValuePath="{Binding CategoriaId}" SelectionChanged="CategoriaComboBox_SelectionChanged"/>
 
             <!--Stock-->
             <Label Content="Stock" FontSize="11"/>

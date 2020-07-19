@@ -165,7 +165,7 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
                 return;
 
             Categoria = (Categorias)CategoriaComboBox.SelectedItem;
-            Articulo.CategoriaId = Categoria.CategoriaId;
+            Articulo.Categoria = Categoria;
         }
     }
 }

@@ -21,5 +21,10 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
         {
             InitializeComponent();
         }
+
+        private void BuscarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

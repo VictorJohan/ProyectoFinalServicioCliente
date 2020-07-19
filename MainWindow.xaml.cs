@@ -1,6 +1,7 @@
 ﻿using ProyectoFinalServicioCliente.UI.Login;
 using ProyectoFinalServicioCliente.UI.rArticulo;
 using ProyectoFinalServicioCliente.UI.rCategoria;
+using ProyectoFinalServicioCliente.UI.rCompras;
 using ProyectoFinalServicioCliente.UI.rUsuarios;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,12 @@ namespace ProyectoFinalServicioCliente
         {
             rCategoria rCategoria = new rCategoria();
             rCategoria.Show();
+        }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            rCompras rCompras = new rCompras();
+            rCompras.Show();
         }
     }
 }

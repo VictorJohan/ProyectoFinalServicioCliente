@@ -5,10 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rCompras"
         mc:Ignorable="d"
-        Title="rCompras" Height="450" Width="800">
+        Title="Compras" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/producto.png">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
-            <!--tod: Para Johan: Diseñar el registro de comparas-->
+            <Label Content="CompraId" FontSize="11"/>
+            <!--CompraTextBox y Boton Buscar en StackPanel-->
+
+            <StackPanel Orientation="Horizontal">
+                <!--TextBox-->
+                <TextBox Name="CompraIdTextBox" Width="100" Height="20" Text="{Binding CompraId}" Margin="5,0" HorizontalAlignment="Left"/>
+                <!--Boton-->
+                <Button Name="BuscarButton" Width="60" Height="20" Click="BuscarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/search.png"/>
+                        <Label Content="Buscar" FontSize="11" Padding="-1" Margin="4,0"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            
+            <!--Monto-->
+            <Label Content="Monto" FontSize="11"/>
+            <TextBox Name="MontoTextBox" Width="100" Height="20" Text="{Binding Monto}" Margin="5,0" HorizontalAlignment="Left"/>
+            
+            <!--Fecha-->
+            <Label Content="Fecha" FontSize="11"/>
+            <DatePicker Name="FechaDatePicker" Width="150" SelectedDate="{Binding Fecha}" HorizontalAlignment="Left" Margin="5,0"/>
+        
+            <!--GroupBox donde esta el DataGrid-->
+            <GroupBox Header="Compras Detalle" BorderBrush="Black">
+                <StackPanel Orientation="Vertical">
+                    <!--Barra de Labels-->
+                    <StackPanel Orientation="Horizontal">
+                        
+                    </StackPanel>
+                    
+                    <!--Barra de TextBox-->
+                    <StackPanel Orientation="Horizontal">
+                        <!--TextBox ArticuloId-->
+                        <TextBox Name="ArticuloIdDetalle" Width="80" Height="20" Margin="5,0"/>
+                        
+                        <!--TextBox Descripcion-->
+                        <TextBox Name="DescripcionDetalle" Width="242" Height="20" Margin="5,0"/>
+
+
+
+                    </StackPanel>
+                    
+                </StackPanel>
+            </GroupBox>
+        
         </StackPanel>
     </Grid>
 </Window>

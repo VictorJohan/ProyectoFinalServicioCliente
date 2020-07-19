@@ -12,13 +12,13 @@ namespace ProyectoFinalServicioCliente.Entidades
         public int VentaId { get; set; }
         public int UsuarioId { get; set; }
         [ForeignKey("UsuarioId")]
-        public virtual Usuarios Usuario { get; set; } = new Usuarios();
+        public Usuarios Usuario { get; set; } = new Usuarios();
         public int ClienteId { get; set; }
         [ForeignKey("ClienteId")]
         public Clientes Cliente { get; set; } = new Clientes();
         public int FotografoId { get; set; }
         [ForeignKey("FotografoId")]
-        public virtual Fotografos Fotografo { get; set; } = new Fotografos();
+        public Fotografos Fotografo { get; set; } = new Fotografos();
         public DateTime Fecha { get; set; } = DateTime.Now;
         public double MontoTotal { get; set; }
         [ForeignKey("VentaId")]
