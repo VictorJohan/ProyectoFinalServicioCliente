@@ -17,7 +17,8 @@ namespace ProyectoFinalServicioCliente.Entidades
         public string Lugar { get; set; }
         public DateTime FechaInicio { get; set; } = DateTime.Now;
         public DateTime FechaFin { get; set; } = DateTime.Now;
-        public double Precio { get; set; }
+        public decimal Precio { get; set; }
         public virtual List<VentasDetalle> VentasDetalles { get; set; } = new List<VentasDetalle>();
+        public bool Disponible { get; internal set; }
     }
 }
