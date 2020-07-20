@@ -20,5 +20,6 @@ namespace ProyectoFinalServicioCliente.Entidades
         public string Celular { get; set; }
         public string Sexo { get; set; }
         public DateTime FechaNacimiento { get; set; } = DateTime.Now;
+        public string Apellidos { get; internal set; }
     }
 }
