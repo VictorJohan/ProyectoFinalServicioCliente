@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rCompras"
         mc:Ignorable="d"
-        Title="Compras" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/producto.png">
+        Title="Compras" Height="450" Width="714" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/producto.png">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
             <Label Content="CompraId" FontSize="11"/>
@@ -13,7 +13,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
-                <TextBox Name="CompraIdTextBox" Width="100" Height="20" Text="{Binding CompraId}" Margin="5,0" HorizontalAlignment="Left"/>
+                <TextBox Name="CompraIdTextBox" Width="594" Height="20" Text="{Binding CompraId}" Margin="5,0" HorizontalAlignment="Left"/>
                 <!--Boton-->
                 <Button Name="BuscarButton" Width="60" Height="20" Click="BuscarButton_Click">
                     <StackPanel Orientation="Horizontal">
@@ -25,35 +25,101 @@
             
             <!--Monto-->
             <Label Content="Monto" FontSize="11"/>
-            <TextBox Name="MontoTextBox" Width="100" Height="20" Text="{Binding Monto}" Margin="5,0" HorizontalAlignment="Left"/>
+            <TextBox Name="MontoTextBox" Width="658" Height="20" Text="{Binding Monto}" Margin="5,0" HorizontalAlignment="Left"/>
             
             <!--Fecha-->
             <Label Content="Fecha" FontSize="11"/>
-            <DatePicker Name="FechaDatePicker" Width="150" SelectedDate="{Binding Fecha}" HorizontalAlignment="Left" Margin="5,0"/>
+            <DatePicker Name="FechaDatePicker" Width="658" SelectedDate="{Binding Fecha}" HorizontalAlignment="Left" Margin="5,0"/>
         
             <!--GroupBox donde esta el DataGrid-->
-            <GroupBox Header="Compras Detalle" BorderBrush="Black">
+            <GroupBox Header="Compras Detalle" Width="658" HorizontalAlignment="Left" BorderBrush="Black" Margin="5,8,0,0">
                 <StackPanel Orientation="Vertical">
                     <!--Barra de Labels-->
                     <StackPanel Orientation="Horizontal">
-                        
+                        <Label Content="Descripción" FontSize="11"/>
+                        <Label Content="Stock" FontSize="11" Margin="185,0,0,0"/>
+                        <Label Content="Precio" FontSize="11" Margin="23,0,0,0"/>
+                        <Label Content="Cantidad" FontSize="11" Margin="41,0,0,0"/>
+                        <Label Content="Costo" FontSize="11" Margin="41,0,0,0"/>
+
                     </StackPanel>
                     
                     <!--Barra de TextBox-->
                     <StackPanel Orientation="Horizontal">
-                        <!--TextBox ArticuloId-->
-                        <TextBox Name="ArticuloIdDetalle" Width="80" Height="20" Margin="5,0"/>
                         
                         <!--TextBox Descripcion-->
-                        <TextBox Name="DescripcionDetalle" Width="242" Height="20" Margin="5,0"/>
+                        <TextBox Name="DescripcionDetalleTextBox" Width="242" Height="20" Margin="5,0"/>
 
+                        <!--TextBox Stock-->
+                        <TextBox Name="StockDetalleTextBox" Width="50" Height="20" Margin="5,0"/>
 
+                        <!--TextBox Precio-->
+                        <TextBox Name="PrecioDetalleTextBox" Width="70" Height="20" Margin="5,0" TextChanged="PrecioDetalleTextBox_TextChanged"/>
 
+                        <!--TextBox Costo-->
+                        <TextBox Name="CantidadArticulosDetalleTextBox"  Width="70" Height="20" Margin="5,0" TextChanged="CantidadArticulosDetalleTextBox_TextChanged"/>
+
+                        <!--TextBox Cantidad de articulos-->
+                        <TextBox Name="CostoDetalleTextBox" Width="70" Height="20" Margin="5,0" IsReadOnly="True" TextChanged="CostoDetalleTextBox_TextChanged"/>
+
+                        <Button Name="AgregarButton"  Width="70" Height="20" Margin="10,0" Click="AgregarButton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Resources/agregar.png" />
+                                <Label Content="Agregar" FontSize="11" Margin="4,0" Padding="-1"/>
+                            </StackPanel>
+                        </Button>
+                        
                     </StackPanel>
+
+                    <!--DataGrid-->
+                    <DataGrid Name="DetalleDataGrid" Width="627" Height="100" AutoGenerateColumns="False" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left" ItemsSource="{Binding ComprasDetalles}" Margin="5,5,0,0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Descripción" Binding="{Binding Articulo.Descripcion}"/>
+                            <DataGridTextColumn Header="Stock" Binding="{Binding Articulo.Stock}"/>
+                            <DataGridTextColumn Header="Precio" Binding="{Binding Articulo.Precio}"/>
+                            <DataGridTextColumn Header="Cantidad" Binding="{Binding CantidadArticulos}"/>
+                            <DataGridTextColumn Header="Costo" Binding="{Binding Costo}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    
+                    <!--Boton Remover-->
+                    <Button Name="RemoverButton"  Width="70" Height="20" Margin="5,5" HorizontalAlignment="Left" Click="RemoverButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/remover.png" />
+                            <Label Content="Remover" FontSize="11" Margin="4,0" Padding="-1"/>
+                        </StackPanel>
+                    </Button>
+                    
                     
                 </StackPanel>
             </GroupBox>
-        
+            
+            <!--Panel de Botones-->
+            <StackPanel Orientation="Horizontal" Margin="36,16,0,0" Width="212">
+                <!--Nuevo-->
+                <Button Name="NuevoButton"  Width="60" Height="20" Click="NuevoButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/articulo.png" />
+                        <Label Content="Nuevo" FontSize="11" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+                <!--Guardar-->
+                <Button Name="GuardarButton" Width="65" Height="20" Margin="5,0" HorizontalAlignment="Left" Click="GuardarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/save.png" />
+                        <Label Content="Guardar" FontSize="11" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+                <!--Eliminar-->
+                <Button Name="EliminarButton"  Width="65" Height="20" Margin="5,0" HorizontalAlignment="Left" Click="EliminarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/delete.png" />
+                        <Label Content="Eliminar" FontSize="11" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+            
         </StackPanel>
     </Grid>
 </Window>

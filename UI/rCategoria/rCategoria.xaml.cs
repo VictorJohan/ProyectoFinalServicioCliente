@@ -109,6 +109,12 @@ namespace ProyectoFinalServicioCliente.UI.rCategoria
                 return false;
             }
 
+            if(NombreTextBox.Text.Length == 0)
+            {
+                MessageBox.Show("El campo categoria no puede estar vacio.", "Escriba una categoria.", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
             return true;
         }
     }

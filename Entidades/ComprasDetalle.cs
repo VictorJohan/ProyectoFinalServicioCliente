@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,18 +12,12 @@ namespace ProyectoFinalServicioCliente.Entidades
         [Key]
         public int CompraDetalleId { get; set; }
         public int CompraId { get; set; }
-        public int ArticuloId { get; set; }
-        public Articulos Articulo { get; set; } = new Articulos();
         public int CantidadArticulos { get; set; }
         public double Costo { get; set; }
+        public int ArticuloId { get; set; }
 
-        public ComprasDetalle(int compraId, int articuloId, int cantidadArticulos, double costo)
-        {
-            CompraDetalleId = 0;
-            CompraId = compraId;
-            ArticuloId = articuloId;
-            CantidadArticulos = cantidadArticulos;
-            Costo = costo;
-        }
+        [ForeignKey("ArticuloId")]
+        public virtual Articulos Articulo { get; set; }
+
     }
 }

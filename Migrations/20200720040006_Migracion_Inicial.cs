@@ -213,9 +213,9 @@ namespace ProyectoFinalServicioCliente.Migrations
                     CompraDetalleId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     CompraId = table.Column<int>(nullable: false),
-                    ArticuloId = table.Column<int>(nullable: false),
                     CantidadArticulos = table.Column<int>(nullable: false),
-                    Costo = table.Column<double>(nullable: false)
+                    Costo = table.Column<double>(nullable: false),
+                    ArticuloId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
