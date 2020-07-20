@@ -2,6 +2,7 @@
 using ProyectoFinalServicioCliente.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -21,13 +22,13 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
     public partial class rArticulos : Window
     {
         private Articulos Articulo = new Articulos();
-        private Categorias Categoria;
+        
         public rArticulos()
         {
             InitializeComponent();
             this.DataContext = Articulo;
             CategoriaComboBox.ItemsSource = CategoriasBLL.GetListCategorias();
-            CategoriaComboBox.SelectedValuePath = "Categorias";
+            CategoriaComboBox.SelectedValuePath = "CategoriaId";
             CategoriaComboBox.DisplayMemberPath = "Nombre";
         }
 
@@ -40,7 +41,7 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
+            
             var encontrado = ArticulosBLL.Buscar(int.Parse(ArticuloIdTextBox.Text));
 
             if (encontrado != null)
@@ -67,8 +68,10 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
             if (!ValidarGuardar())
                 return;
 
+            //MessageBox.Show(Articulo.Categoria.Nombre);
             if (ArticulosBLL.Guardar(Articulo))
             {
+                
                 Limpiar();
                 MessageBox.Show("El Articulo fue guardado de forma exitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -117,7 +120,7 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
             }
 
             //Valida que todos los campos esten llenos
-            if (ArticuloIdTextBox.Text.Length == 0 || DescripcionTextBox.Text.Length == 0 || 
+            if (ArticuloIdTextBox.Text.Length == 0 || DescripcionTextBox.Text.Length == 0 ||
                 StockTextBox.Text.Length == 0 || PrecioTextBox.Text.Length == 0 || CostoTextBox.Text.Length == 0)
             {
                 MessageBox.Show("No pueden haber campos vacios.", "Campos vacios.", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -158,14 +161,6 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
             return true;
         }
 
-        //Almacena el Id de la categoria en la propiedad correspondiente
-        private void CategoriaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (CategoriaComboBox.SelectedItem == null)
-                return;
-
-            Categoria = (Categorias)CategoriaComboBox.SelectedItem;
-            Articulo.Categoria = Categoria;
-        }
+        
     }
 }
