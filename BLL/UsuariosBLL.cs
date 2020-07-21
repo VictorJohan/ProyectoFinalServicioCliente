@@ -144,7 +144,7 @@ namespace ProyectoFinalServicioCliente.BLL
             try
             {
                 var validar = from usuario in contexto.Usuarios
-                              where usuario.NombreUsuario == nombreusuario
+                              where usuario.Usuario == nombreusuario
                               && usuario.Contrasena == Seguridad.Encriptar(contrasena)
                               select usuario;
                 if (validar.Count() > 0)
@@ -173,7 +173,7 @@ namespace ProyectoFinalServicioCliente.BLL
             try
             {
                 var existe = from usuario in contexto.Usuarios
-                     where usuario.NombreUsuario == user select usuario;
+                     where usuario.Usuario == user select usuario;
                 if (existe.Count() > 0)
                     ok = true;
                 else

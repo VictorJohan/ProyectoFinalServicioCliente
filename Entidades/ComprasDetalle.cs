@@ -12,7 +12,7 @@ namespace ProyectoFinalServicioCliente.Entidades
         [Key]
         public int CompraDetalleId { get; set; }
         public int CompraId { get; set; }
-        public int CantidadArticulos { get; set; }
+        public int Cantidad { get; set; }
         public double Costo { get; set; }
         public int ArticuloId { get; set; }
 

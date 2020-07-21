@@ -74,6 +74,9 @@ namespace ProyectoFinalServicioCliente.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Apellidos")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Cedula")
                         .HasColumnType("TEXT");
 
@@ -136,7 +139,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<int>("ArticuloId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CantidadArticulos")
+                    b.Property<int>("Cantidad")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("CompraId")
@@ -163,17 +166,20 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("FechaFin")
+                    b.Property<bool>("Disponible")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("FechaInicio")
+                    b.Property<DateTime>("FechaVencimiento")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Lugar")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("Precio")
-                        .HasColumnType("REAL");
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
@@ -237,10 +243,10 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<string>("Contrasena")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NombreUsuario")
+                    b.Property<string>("Nombres")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Nombres")
+                    b.Property<string>("Usuario")
                         .HasColumnType("TEXT");
 
                     b.HasKey("UsuarioId");
@@ -253,8 +259,8 @@ namespace ProyectoFinalServicioCliente.Migrations
                             UsuarioId = 1,
                             Apellidos = "Usuario Apellidos",
                             Contrasena = "MQAyADMA",
-                            NombreUsuario = "admin",
-                            Nombres = "Usuario Nombre"
+                            Nombres = "Usuario Nombre",
+                            Usuario = "admin"
                         });
                 });
 
@@ -273,7 +279,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<int>("FotografoId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<double>("MontoTotal")
+                    b.Property<double>("Total")
                         .HasColumnType("REAL");
 
                     b.Property<int>("UsuarioId")
@@ -299,7 +305,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<int>("ArticuloId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CantidadArticulos")
+                    b.Property<int>("Cantidad")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("EventoId")

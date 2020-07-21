@@ -11,7 +11,7 @@ namespace ProyectoFinalServicioCliente.Entidades
         public int UsuarioId { get; set; }
         public String Nombres { get; set; }
         public String Apellidos { get; set; }
-        public String NombreUsuario { get; set; }
+        public String Usuario { get; set; }
         public String Contrasena { get; set; }
 
         public Usuarios()
@@ -19,7 +19,7 @@ namespace ProyectoFinalServicioCliente.Entidades
             UsuarioId = 0;
             Nombres = string.Empty;
             Apellidos = string.Empty;
-            NombreUsuario = string.Empty;
+            Usuario = string.Empty;
             Contrasena = string.Empty;
         }
     }

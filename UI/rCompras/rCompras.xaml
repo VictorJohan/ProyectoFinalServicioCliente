@@ -77,7 +77,7 @@
                             <DataGridTextColumn Header="Descripción" Binding="{Binding Articulo.Descripcion}"/>
                             <DataGridTextColumn Header="Stock" Binding="{Binding Articulo.Stock}"/>
                             <DataGridTextColumn Header="Precio" Binding="{Binding Articulo.Precio}"/>
-                            <DataGridTextColumn Header="Cantidad" Binding="{Binding CantidadArticulos}"/>
+                            <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"/>
                             <DataGridTextColumn Header="Costo" Binding="{Binding Costo}"/>
                         </DataGrid.Columns>
                     </DataGrid>

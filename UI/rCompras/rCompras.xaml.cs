@@ -60,7 +60,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             var detalle = new ComprasDetalle
             {
                 Articulo = articulo,
-                CantidadArticulos = int.Parse(CantidadArticulosDetalleTextBox.Text),
+                Cantidad = int.Parse(CantidadArticulosDetalleTextBox.Text),
                 Costo = costo
             };
 

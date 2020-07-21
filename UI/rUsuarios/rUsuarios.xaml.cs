@@ -149,7 +149,7 @@ namespace ProyectoFinalServicioCliente.UI.rUsuarios
             //Valida si el Nombre de Usuario se repite en la base de datos
             if(user != null)
             {
-                if (UsuariosBLL.ExisteUsuario(NombreUsuarioTextBox.Text) && user.NombreUsuario != NombreUsuarioTextBox.Text)
+                if (UsuariosBLL.ExisteUsuario(NombreUsuarioTextBox.Text) && user.Usuario != NombreUsuarioTextBox.Text)
                 {
                     MessageBox.Show($"El Usuario \"{NombreUsuarioTextBox.Text}\" ya existe.", "Intente con otro Nombre de Usuario.",
                         MessageBoxButton.OK, MessageBoxImage.Information);

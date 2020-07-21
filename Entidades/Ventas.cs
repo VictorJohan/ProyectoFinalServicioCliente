@@ -20,7 +20,7 @@ namespace ProyectoFinalServicioCliente.Entidades
         [ForeignKey("FotografoId")]
         public Fotografos Fotografo { get; set; } = new Fotografos();
         public DateTime Fecha { get; set; } = DateTime.Now;
-        public double MontoTotal { get; set; }
+        public double Total { get; set; }
         [ForeignKey("VentaId")]
         public virtual List<VentasDetalle> VentasDetalles { get; set; } = new List<VentasDetalle>();
 

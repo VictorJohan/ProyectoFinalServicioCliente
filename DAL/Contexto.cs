@@ -30,7 +30,7 @@ namespace ProyectoFinalServicioCliente.DAL
                 UsuarioId = 1,
                 Nombres = "Usuario Nombre",
                 Apellidos = "Usuario Apellidos",
-                NombreUsuario = "admin",
+                Usuario = "admin",
                 Contrasena = Seguridad.Encriptar("123")//Encritando la contraseña predeterminada
             });
         }

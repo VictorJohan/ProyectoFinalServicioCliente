@@ -13,7 +13,7 @@ namespace ProyectoFinalServicioCliente.Entidades
         public int VentaId { get; set; }
         public int ArticuloId { get; set; }
         public Articulos Articulo { get; set; } = new Articulos();
-        public int CantidadArticulos { get; set; }
+        public int Cantidad { get; set; }
         public double Monto { get; set; }
         public int EventoId { get; set; }
         [ForeignKey("EventoId")]

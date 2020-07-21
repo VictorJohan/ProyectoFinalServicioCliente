@@ -15,7 +15,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombres = table.Column<string>(nullable: true),
                     Apellidos = table.Column<string>(nullable: true),
-                    NombreUsuario = table.Column<string>(nullable: true),
+                    Usuario = table.Column<string>(nullable: true),
                     Contrasena = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -56,7 +56,8 @@ namespace ProyectoFinalServicioCliente.Migrations
                     Telefono = table.Column<string>(nullable: true),
                     Celular = table.Column<string>(nullable: true),
                     Sexo = table.Column<string>(nullable: true),
-                    FechaNacimiento = table.Column<DateTime>(nullable: false)
+                    FechaNacimiento = table.Column<DateTime>(nullable: false),
+                    Apellidos = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -99,9 +100,10 @@ namespace ProyectoFinalServicioCliente.Migrations
                     UsuarioId = table.Column<int>(nullable: false),
                     Descripcion = table.Column<string>(nullable: true),
                     Lugar = table.Column<string>(nullable: true),
-                    FechaInicio = table.Column<DateTime>(nullable: false),
-                    FechaFin = table.Column<DateTime>(nullable: false),
-                    Precio = table.Column<double>(nullable: false)
+                    Fecha = table.Column<DateTime>(nullable: false),
+                    FechaVencimiento = table.Column<DateTime>(nullable: false),
+                    Precio = table.Column<decimal>(nullable: false),
+                    Disponible = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -181,7 +183,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                     ClienteId = table.Column<int>(nullable: false),
                     FotografoId = table.Column<int>(nullable: false),
                     Fecha = table.Column<DateTime>(nullable: false),
-                    MontoTotal = table.Column<double>(nullable: false)
+                    Total = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -213,7 +215,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                     CompraDetalleId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     CompraId = table.Column<int>(nullable: false),
-                    CantidadArticulos = table.Column<int>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
                     Costo = table.Column<double>(nullable: false),
                     ArticuloId = table.Column<int>(nullable: false)
                 },
@@ -242,7 +244,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     VentaId = table.Column<int>(nullable: false),
                     ArticuloId = table.Column<int>(nullable: false),
-                    CantidadArticulos = table.Column<int>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
                     Monto = table.Column<double>(nullable: false),
                     EventoId = table.Column<int>(nullable: false)
                 },
@@ -271,8 +273,8 @@ namespace ProyectoFinalServicioCliente.Migrations
 
             migrationBuilder.InsertData(
                 table: "Usuarios",
-                columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "NombreUsuario", "Nombres" },
-                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", "admin", "Usuario Nombre" });
+                columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "Nombres", "Usuario" },
+                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", "Usuario Nombre", "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articulos_CategoriaId",
