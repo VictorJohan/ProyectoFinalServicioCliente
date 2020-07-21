@@ -145,7 +145,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<int>("CompraId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<double>("Costo")
+                    b.Property<double>("Total")
                         .HasColumnType("REAL");
 
                     b.HasKey("CompraDetalleId");
@@ -243,6 +243,9 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<string>("Contrasena")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Nombres")
                         .HasColumnType("TEXT");
 
@@ -259,6 +262,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                             UsuarioId = 1,
                             Apellidos = "Usuario Apellidos",
                             Contrasena = "MQAyADMA",
+                            Fecha = new DateTime(2020, 7, 21, 3, 1, 9, 433, DateTimeKind.Local).AddTicks(1952),
                             Nombres = "Usuario Nombre",
                             Usuario = "admin"
                         });

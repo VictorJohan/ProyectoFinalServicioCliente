@@ -16,7 +16,8 @@ namespace ProyectoFinalServicioCliente.Migrations
                     Nombres = table.Column<string>(nullable: true),
                     Apellidos = table.Column<string>(nullable: true),
                     Usuario = table.Column<string>(nullable: true),
-                    Contrasena = table.Column<string>(nullable: true)
+                    Contrasena = table.Column<string>(nullable: true),
+                    Fecha = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -216,7 +217,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     CompraId = table.Column<int>(nullable: false),
                     Cantidad = table.Column<int>(nullable: false),
-                    Costo = table.Column<double>(nullable: false),
+                    Total = table.Column<double>(nullable: false),
                     ArticuloId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -273,8 +274,8 @@ namespace ProyectoFinalServicioCliente.Migrations
 
             migrationBuilder.InsertData(
                 table: "Usuarios",
-                columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "Nombres", "Usuario" },
-                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", "Usuario Nombre", "admin" });
+                columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "Fecha", "Nombres", "Usuario" },
+                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 21, 3, 1, 9, 433, DateTimeKind.Local).AddTicks(1952), "Usuario Nombre", "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articulos_CategoriaId",

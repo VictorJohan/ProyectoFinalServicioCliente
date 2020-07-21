@@ -30,6 +30,7 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
             CategoriaComboBox.ItemsSource = CategoriasBLL.GetListCategorias();
             CategoriaComboBox.SelectedValuePath = "CategoriaId";
             CategoriaComboBox.DisplayMemberPath = "Nombre";
+            
         }
 
         //Boton que desencadenara el evento buscar para obtener un registro de la base de datos.
@@ -68,7 +69,7 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
             if (!ValidarGuardar())
                 return;
 
-            //MessageBox.Show(Articulo.Categoria.Nombre);
+            
             if (ArticulosBLL.Guardar(Articulo))
             {
                 
@@ -143,7 +144,7 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
             }
 
             //Valida que se ingrese un precio valido
-            if (!Regex.IsMatch(PrecioTextBox.Text, @"(\d+(\.)?\d*)"))
+            if (!Regex.IsMatch(PrecioTextBox.Text, @"^[0-9]{1,3}$|^[0-9]{1,3}\.[0-9]{1,3}$"))
             {
                 MessageBox.Show("En el campo precio solo pueden haber caracteres numericos.", "Campo Precio.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -151,7 +152,7 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
             }
 
             //Valida que se ingrese un costo valido
-            if (!Regex.IsMatch(CostoTextBox.Text, @"(\d+(\.)?\d*)"))
+            if (!Regex.IsMatch(CostoTextBox.Text, @"^[0-9]{1,3}$|^[0-9]{1,3}\.[0-9]{1,3}$"))
             {
                 MessageBox.Show("En el campo costo solo pueden haber caracteres numericos.", "Campo Costo.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);

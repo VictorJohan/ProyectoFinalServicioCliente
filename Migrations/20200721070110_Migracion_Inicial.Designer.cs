@@ -9,7 +9,7 @@ using ProyectoFinalServicioCliente.DAL;
 namespace ProyectoFinalServicioCliente.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200721001339_Migracion_Inicial")]
+    [Migration("20200721070110_Migracion_Inicial")]
     partial class Migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -147,7 +147,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<int>("CompraId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<double>("Costo")
+                    b.Property<double>("Total")
                         .HasColumnType("REAL");
 
                     b.HasKey("CompraDetalleId");
@@ -245,6 +245,9 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<string>("Contrasena")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Nombres")
                         .HasColumnType("TEXT");
 
@@ -261,6 +264,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                             UsuarioId = 1,
                             Apellidos = "Usuario Apellidos",
                             Contrasena = "MQAyADMA",
+                            Fecha = new DateTime(2020, 7, 21, 3, 1, 9, 433, DateTimeKind.Local).AddTicks(1952),
                             Nombres = "Usuario Nombre",
                             Usuario = "admin"
                         });

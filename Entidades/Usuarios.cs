@@ -13,6 +13,7 @@ namespace ProyectoFinalServicioCliente.Entidades
         public String Apellidos { get; set; }
         public String Usuario { get; set; }
         public String Contrasena { get; set; }
+        public DateTime Fecha { get; set; } = DateTime.Now;
 
         public Usuarios()
         {

@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\actualizar.png" />
     <None Remove="Resources\agregar.png" />
     <None Remove="Resources\articulo.png" />
     <None Remove="Resources\atras.png" />
@@ -26,6 +27,7 @@
     <None Remove="Resources\login.png" />
     <None Remove="Resources\logout.png" />
     <None Remove="Resources\newFile.png" />
+    <None Remove="Resources\pedido.png" />
     <None Remove="Resources\persona.png" />
     <None Remove="Resources\producto.png" />
     <None Remove="Resources\registro.png" />
@@ -49,6 +51,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\actualizar.png" />
     <Resource Include="Resources\agregar.png" />
     <Resource Include="Resources\articulo.png" />
     <Resource Include="Resources\atras.png" />
@@ -60,6 +63,9 @@
     <Resource Include="Resources\login.png" />
     <Resource Include="Resources\logout.png" />
     <Resource Include="Resources\newFile.png" />
+    <Resource Include="Resources\pedido.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\persona.png" />
     <Resource Include="Resources\producto.png" />
     <Resource Include="Resources\registro.png" />
