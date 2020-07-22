@@ -10,14 +10,15 @@ namespace ProyectoFinalServicioCliente.Entidades
     public class ComprasDetalle
     {
         [Key]
-        public int CompraDetalleId { get; set; }
+        public int Id { get; set; }
         public int CompraId { get; set; }
         public int Cantidad { get; set; }
         public double Total { get; set; }
         public int ArticuloId { get; set; }
 
         [ForeignKey("ArticuloId")]
-        public virtual Articulos Articulo { get; set; }
+        public virtual Articulos Articulo { get; set; } = new Articulos();
+
 
     }
 }

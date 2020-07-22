@@ -21,6 +21,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
     /// </summary>
     public partial class rCompras : Window
     {
+        //todo: Resolver el problema con la Foreign key y hacer las validaciones
         private Compras Compra = new Compras();
         private Articulos articulo;
         private double precio, total;
@@ -30,12 +31,8 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             InitializeComponent();
             this.DataContext = Compra;
             ArticuloIdComboBox.ItemsSource = ArticulosBLL.GetListArticulos();
-            ArticuloIdComboBox.SelectedValuePath = "Articulo";
+            ArticuloIdComboBox.SelectedValuePath = "ArticuloId";
             ArticuloIdComboBox.DisplayMemberPath = "ArticuloId";
-
-            CategoriaDetalleComboBox.ItemsSource = CategoriasBLL.GetListCategorias();
-            CategoriaDetalleComboBox.SelectedValuePath = "CategoriaId";
-            CategoriaDetalleComboBox.DisplayMemberPath = "Nombre";
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
@@ -49,27 +46,33 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             }
             else
             {
-                MessageBox.Show("Puede ser que la compra no este registrada en la base de datos.", "No se encontro Compra.", MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                MessageBox.Show("Puede ser que la compra no este registrada en la base de datos.",
+                    "No se encontro Compra.", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
-            //todo: Programar el cambio de categoria, precio de venta y precio de compra en caso de que lo haya.
-            //todo: Programar el incremento del Stock
             double costo = double.Parse(PrecioDetalleTextBox.Text) * int.Parse(CantidadDetalleTextBox.Text);
-
+            Articulos Aux;
+            Aux = ArticulosBLL.Buscar(int.Parse(ArticuloIdComboBox.SelectedValue.ToString()));
             var detalle = new ComprasDetalle
             {
-                Articulo = articulo,
+                CompraId = int.Parse(CompraIdTextBox.Text),
                 Cantidad = int.Parse(CantidadDetalleTextBox.Text),
-                Total = costo
+                Total = total,
+                ArticuloId = int.Parse(ArticuloIdComboBox.SelectedValue.ToString()),
+                Articulo = articulo
             };
 
+            Compra.ComprasDetalles.Add(detalle);
+
+            Aux.Stock += int.Parse(CantidadDetalleTextBox.Text);
+            Aux.Costo = double.Parse(PrecioDetalleTextBox.Text);
+            Aux.Precio = double.Parse(PrecioVentaTextBox.Text);
             Compra.Monto += costo;
 
-            Compra.ComprasDetalles.Add(detalle);
+            ArticulosBLL.Guardar(Aux);
 
             Cargar();
 
@@ -78,22 +81,57 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
         {
-            //todo: Programar
+            Articulos articulos = new Articulos();
+            var aux = (ComprasDetalle)DetalleDataGrid.SelectedItem;
+            articulos = ArticulosBLL.Buscar(aux.Articulo.ArticuloId);
+            articulos.Stock -= aux.Cantidad;
+
+            Compra.Monto -= aux.Total;
+
+            ArticulosBLL.Guardar(articulos);
+
+            Compra.ComprasDetalles.RemoveAt(DetalleDataGrid.SelectedIndex);
+
+            Cargar();
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
-            //todo: Programar
+            Limpiar();
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            //todo: Programar
+            if (ComprasBLL.Guardar(Compra))
+            {
+
+                Limpiar();
+                MessageBox.Show("La Compra fue registrada de forma exitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Algo salio mal, no se logro guardar el registro de compra.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            //todo: Programar
+            if (!Regex.IsMatch(CompraIdTextBox.Text, "^[1-9]+$"))
+            {
+                MessageBox.Show("El Articulo Id solo puede ser de caracter numerico.", "Campo Articulo Id.",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (ComprasBLL.Eliminar(int.Parse(CompraIdTextBox.Text)))
+            {
+                Limpiar();
+                MessageBox.Show("Compra eliminada.", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Algo salio mal, no se logro eliminar la compra.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void ActualizarButton_Click(object sender, RoutedEventArgs e)
@@ -146,27 +184,32 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
         {
             if (ArticuloIdComboBox.SelectedIndex == -1)
                 return;
+
             articulo = (Articulos)ArticuloIdComboBox.SelectedItem;
             DescripcionDetalleTextBox.Text = articulo.Descripcion;
             StockDetalleTextBox.Text = articulo.Stock.ToString();
-            CategoriaDetalleComboBox.SelectedValue = articulo.CategoriaId;
+            CategoriaDetalleTextBox.Text = articulo.CategoriaId.ToString();
             PrecioVentaTextBox.Text = articulo.Precio.ToString();
             PrecioDetalleTextBox.Text = articulo.Costo.ToString();
         }
-
-       
 
         public void LimpiarDetalle()
         {
             ArticuloIdComboBox.SelectedIndex = -1;
             DescripcionDetalleTextBox.Clear();
             StockDetalleTextBox.Clear();
+            CategoriaDetalleTextBox.Clear();
             PrecioVentaTextBox.Clear();
-            CategoriaDetalleComboBox.SelectedIndex = -1;
             PrecioDetalleTextBox.Clear();
             CantidadDetalleTextBox.Clear();
             TotalDetalleTextBox.Clear();
             ArticuloIdComboBox.Focus();
+        }
+
+        public void Limpiar()
+        {
+            Compra = new Compras();
+            this.DataContext = Compra;
         }
     }
 }

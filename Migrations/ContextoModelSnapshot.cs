@@ -132,7 +132,7 @@ namespace ProyectoFinalServicioCliente.Migrations
 
             modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.ComprasDetalle", b =>
                 {
-                    b.Property<int>("CompraDetalleId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -148,7 +148,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<double>("Total")
                         .HasColumnType("REAL");
 
-                    b.HasKey("CompraDetalleId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ArticuloId");
 
@@ -262,7 +262,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                             UsuarioId = 1,
                             Apellidos = "Usuario Apellidos",
                             Contrasena = "MQAyADMA",
-                            Fecha = new DateTime(2020, 7, 21, 3, 1, 9, 433, DateTimeKind.Local).AddTicks(1952),
+                            Fecha = new DateTime(2020, 7, 22, 5, 59, 45, 317, DateTimeKind.Local).AddTicks(8392),
                             Nombres = "Usuario Nombre",
                             Usuario = "admin"
                         });
