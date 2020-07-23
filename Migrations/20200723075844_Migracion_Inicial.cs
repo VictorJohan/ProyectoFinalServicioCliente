@@ -72,27 +72,6 @@ namespace ProyectoFinalServicioCliente.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Compras",
-                columns: table => new
-                {
-                    CompraId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UsuarioId = table.Column<int>(nullable: false),
-                    Monto = table.Column<double>(nullable: false),
-                    Fecha = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Compras", x => x.CompraId);
-                    table.ForeignKey(
-                        name: "FK_Compras_Usuarios_UsuarioId",
-                        column: x => x.UsuarioId,
-                        principalTable: "Usuarios",
-                        principalColumn: "UsuarioId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Eventos",
                 columns: table => new
                 {
@@ -148,15 +127,16 @@ namespace ProyectoFinalServicioCliente.Migrations
                 name: "Suplidores",
                 columns: table => new
                 {
-                    SiplidorI = table.Column<int>(nullable: false)
+                    SuplidorId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombres = table.Column<string>(nullable: true),
                     Telefono = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
                     UsuarioId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Suplidores", x => x.SiplidorI);
+                    table.PrimaryKey("PK_Suplidores", x => x.SuplidorId);
                     table.ForeignKey(
                         name: "FK_Suplidores_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
@@ -231,30 +211,30 @@ namespace ProyectoFinalServicioCliente.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ComprasDetalle",
+                name: "Compras",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    CompraId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CompraId = table.Column<int>(nullable: false),
-                    Cantidad = table.Column<int>(nullable: false),
-                    Total = table.Column<double>(nullable: false),
-                    ArticuloId = table.Column<int>(nullable: false)
+                    UsuarioId = table.Column<int>(nullable: false),
+                    Monto = table.Column<double>(nullable: false),
+                    Fecha = table.Column<DateTime>(nullable: false),
+                    SuplidorId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ComprasDetalle", x => x.Id);
+                    table.PrimaryKey("PK_Compras", x => x.CompraId);
                     table.ForeignKey(
-                        name: "FK_ComprasDetalle_Articulos_ArticuloId",
-                        column: x => x.ArticuloId,
-                        principalTable: "Articulos",
-                        principalColumn: "ArticuloId",
+                        name: "FK_Compras_Suplidores_SuplidorId",
+                        column: x => x.SuplidorId,
+                        principalTable: "Suplidores",
+                        principalColumn: "SuplidorId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ComprasDetalle_Compras_CompraId",
-                        column: x => x.CompraId,
-                        principalTable: "Compras",
-                        principalColumn: "CompraId",
+                        name: "FK_Compras_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "UsuarioId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -293,10 +273,38 @@ namespace ProyectoFinalServicioCliente.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ComprasDetalle",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    CompraId = table.Column<int>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
+                    Total = table.Column<double>(nullable: false),
+                    ArticuloId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ComprasDetalle", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ComprasDetalle_Articulos_ArticuloId",
+                        column: x => x.ArticuloId,
+                        principalTable: "Articulos",
+                        principalColumn: "ArticuloId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ComprasDetalle_Compras_CompraId",
+                        column: x => x.CompraId,
+                        principalTable: "Compras",
+                        principalColumn: "CompraId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "Fecha", "Nombres", "Usuario" },
-                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 23, 2, 3, 21, 441, DateTimeKind.Local).AddTicks(2830), "Usuario Nombre", "admin" });
+                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 23, 3, 58, 43, 804, DateTimeKind.Local).AddTicks(4356), "Usuario Nombre", "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articulos_CategoriaId",
@@ -317,6 +325,11 @@ namespace ProyectoFinalServicioCliente.Migrations
                 name: "IX_Clientes_UsuarioId",
                 table: "Clientes",
                 column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Compras_SuplidorId",
+                table: "Compras",
+                column: "SuplidorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Compras_UsuarioId",
@@ -385,9 +398,6 @@ namespace ProyectoFinalServicioCliente.Migrations
                 name: "ComprasDetalle");
 
             migrationBuilder.DropTable(
-                name: "Suplidores");
-
-            migrationBuilder.DropTable(
                 name: "VentasDetalle");
 
             migrationBuilder.DropTable(
@@ -401,6 +411,9 @@ namespace ProyectoFinalServicioCliente.Migrations
 
             migrationBuilder.DropTable(
                 name: "Ventas");
+
+            migrationBuilder.DropTable(
+                name: "Suplidores");
 
             migrationBuilder.DropTable(
                 name: "Categorias");

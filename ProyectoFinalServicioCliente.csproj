@@ -35,6 +35,7 @@
     <None Remove="Resources\save.png" />
     <None Remove="Resources\search.png" />
     <None Remove="Resources\suplidor.png" />
+    <None Remove="Resources\vendedor.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -73,6 +74,7 @@
     <Resource Include="Resources\save.png" />
     <Resource Include="Resources\search.png" />
     <Resource Include="Resources\suplidor.png" />
+    <Resource Include="Resources\vendedor.png" />
   </ItemGroup>
 
   <ItemGroup>

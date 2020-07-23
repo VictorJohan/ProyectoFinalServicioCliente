@@ -120,10 +120,15 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<double>("Monto")
                         .HasColumnType("REAL");
 
+                    b.Property<int>("SuplidorId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("CompraId");
+
+                    b.HasIndex("SuplidorId");
 
                     b.HasIndex("UsuarioId");
 
@@ -233,9 +238,12 @@ namespace ProyectoFinalServicioCliente.Migrations
 
             modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.Suplidores", b =>
                 {
-                    b.Property<int>("SiplidorI")
+                    b.Property<int>("SuplidorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Nombres")
                         .HasColumnType("TEXT");
@@ -246,7 +254,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("SiplidorI");
+                    b.HasKey("SuplidorId");
 
                     b.HasIndex("UsuarioId");
 
@@ -284,7 +292,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                             UsuarioId = 1,
                             Apellidos = "Usuario Apellidos",
                             Contrasena = "MQAyADMA",
-                            Fecha = new DateTime(2020, 7, 23, 2, 3, 21, 441, DateTimeKind.Local).AddTicks(2830),
+                            Fecha = new DateTime(2020, 7, 23, 3, 58, 43, 804, DateTimeKind.Local).AddTicks(4356),
                             Nombres = "Usuario Nombre",
                             Usuario = "admin"
                         });
@@ -389,6 +397,12 @@ namespace ProyectoFinalServicioCliente.Migrations
 
             modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.Compras", b =>
                 {
+                    b.HasOne("ProyectoFinalServicioCliente.Entidades.Suplidores", "Suplidor")
+                        .WithMany()
+                        .HasForeignKey("SuplidorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ProyectoFinalServicioCliente.Entidades.Usuarios", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId")

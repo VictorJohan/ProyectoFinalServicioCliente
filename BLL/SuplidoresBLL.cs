@@ -12,7 +12,7 @@ namespace ProyectoFinalServicioCliente.BLL
     {
         public static bool Guardar(Suplidores suplidor)
         {
-            if (!Existe(suplidor.SiplidorId))
+            if (!Existe(suplidor.SuplidorId))
                 return Insertar(suplidor);
             else
                 return Modificar(suplidor);
@@ -25,7 +25,7 @@ namespace ProyectoFinalServicioCliente.BLL
 
             try
             {
-                ok = contexto.Suplidores.Any(s => s.SiplidorId == id);
+                ok = contexto.Suplidores.Any(s => s.SuplidorId == id);
             }
             catch (Exception)
             {

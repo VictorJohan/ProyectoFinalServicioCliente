@@ -10,11 +10,13 @@ namespace ProyectoFinalServicioCliente.Entidades
     public class Suplidores
     {
         [Key]
-        public int SiplidorId { get; set; }
+        public int SuplidorId { get; set; }
         public string Nombres { get; set; }
         public string Telefono { get; set; }
+        public string Email { get; set; }
         public int UsuarioId { get; set; }
         [ForeignKey("UsuarioId")]
         public Usuarios Usuario { get; set; } = new Usuarios();
+
     }
 }

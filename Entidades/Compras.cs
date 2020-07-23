@@ -15,6 +15,10 @@ namespace ProyectoFinalServicioCliente.Entidades
         public Usuarios Usuario { get; set; } = new Usuarios();
         public double Monto { get; set; }
         public DateTime Fecha { get; set; } = DateTime.Now;
+        public int SuplidorId { get; set; }
+        [ForeignKey("SuplidorId")]
+        public Suplidores Suplidor { get; set; }
+
         [ForeignKey("CompraId")]
         public virtual List<ComprasDetalle> ComprasDetalles { get; set; } = new List<ComprasDetalle>();
     }

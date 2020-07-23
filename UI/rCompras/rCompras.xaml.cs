@@ -21,7 +21,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
     /// </summary>
     public partial class rCompras : Window
     {
-        //todo: Resolver el problema con la Foreign key y hacer las validaciones
+        
         private Compras Compra = new Compras();
         private Articulos articulo;
         private double precio, total;
@@ -33,13 +33,17 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             ArticuloIdComboBox.ItemsSource = ArticulosBLL.GetListArticulos();
             ArticuloIdComboBox.SelectedValuePath = "ArticuloId";
             ArticuloIdComboBox.DisplayMemberPath = "ArticuloId";
+
+            SuplidorComboBox.ItemsSource = SuplidoresBLL.GetSuplidores();
+            SuplidorComboBox.SelectedValuePath = "SuplidorId";
+            SuplidorComboBox.DisplayMemberPath = "Nombres";
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Regex.IsMatch(CompraIdTextBox.Text, "^[1-9]+$"))//Valida que haya un valor valido en el campo CompraId.
             {
-                MessageBox.Show("La Compra Id solo puede ser de caracter numerico.", "Campo Compra Id.",
+                MessageBox.Show("El Id de la compra solo puede ser de caracter numerico.", "Campo CompraId.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -131,7 +135,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
         {
             if (!Regex.IsMatch(CompraIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El Articulo Id solo puede ser de caracter numerico.", "Campo Articulo Id.",
+                MessageBox.Show("El Id de la compra solo puede ser de caracter numerico.", "Campo CompraId.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -259,6 +263,8 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
                 return false;
             }
 
+           
+
             return true;
         }
 
@@ -267,6 +273,13 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             if (!Regex.IsMatch(CompraIdTextBox.Text, "^[1-9]+$"))
             {
                 MessageBox.Show("El Articulo Id solo puede ser de caracter numerico.", "Campo Articulo Id.",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            if (SuplidorComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe selecionar un suplidor para registrar la compra.", "No hay un suplidor asignado a la compra.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
