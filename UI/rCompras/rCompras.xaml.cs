@@ -37,6 +37,13 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!Regex.IsMatch(CompraIdTextBox.Text, "^[1-9]+$"))//Valida que haya un valor valido en el campo CompraId.
+            {
+                MessageBox.Show("La Compra Id solo puede ser de caracter numerico.", "Campo Compra Id.",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             var encontrado = ComprasBLL.Buscar(int.Parse(CompraIdTextBox.Text));
 
             if (encontrado != null)
@@ -53,6 +60,9 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!ValidarAgregar())
+                return;
+
             double costo = double.Parse(PrecioDetalleTextBox.Text) * int.Parse(CantidadDetalleTextBox.Text);
             Articulos Aux;
             Aux = ArticulosBLL.Buscar(int.Parse(ArticuloIdComboBox.SelectedValue.ToString()));
@@ -83,7 +93,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
         {
             Articulos articulos = new Articulos();
             var aux = (ComprasDetalle)DetalleDataGrid.SelectedItem;
-            articulos = ArticulosBLL.Buscar(aux.Articulo.ArticuloId);
+            articulos = ArticulosBLL.Buscar(aux.ArticuloId);
             articulos.Stock -= aux.Cantidad;
 
             Compra.Monto -= aux.Total;
@@ -102,6 +112,9 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!Validar())
+                return;
+
             if (ComprasBLL.Guardar(Compra))
             {
 
@@ -184,8 +197,9 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
         {
             if (ArticuloIdComboBox.SelectedIndex == -1)
                 return;
-
+            
             articulo = (Articulos)ArticuloIdComboBox.SelectedItem;
+            articulo.ArticuloId = 0;
             DescripcionDetalleTextBox.Text = articulo.Descripcion;
             StockDetalleTextBox.Text = articulo.Stock.ToString();
             CategoriaDetalleTextBox.Text = articulo.CategoriaId.ToString();
@@ -210,6 +224,54 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
         {
             Compra = new Compras();
             this.DataContext = Compra;
+        }
+
+        public bool ValidarAgregar()
+        {
+            if (!Regex.IsMatch(CompraIdTextBox.Text, "^[1-9]+$"))//Valida que haya un valor valido en el campo CompraId.
+            {
+                MessageBox.Show("La Compra Id solo puede ser de caracter numerico.", "Campo Compra Id.",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            if(DescripcionDetalleTextBox.Text.Length == 0 || StockDetalleTextBox.Text.Length == 0 ||
+                CategoriaDetalleTextBox.Text.Length == 0 || PrecioVentaTextBox.Text.Length == 0 ||
+                PrecioDetalleTextBox.Text.Length == 0 || CantidadDetalleTextBox.Text.Length == 0)
+            {
+                MessageBox.Show("Asegurese de que no haya campos vacios en el detalle antes de agregar.", "Campos vacios.", MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+
+                return false;
+            }
+
+            if (!Regex.IsMatch(PrecioDetalleTextBox.Text, @"^[0-9]{1,3}$|^[0-9]{1,3}\.[0-9]{1,3}$"))
+            {
+                MessageBox.Show("Solo puede introducir caracteres numericos.", "Costo de articulo no valido.",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            if (!Regex.IsMatch(CantidadDetalleTextBox.Text, "^[1-9]+$"))
+            {
+                MessageBox.Show("Solo puede introducir caracteres numericos.", "Cantidad de articulo no valido.",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool Validar()
+        {
+            if (!Regex.IsMatch(CompraIdTextBox.Text, "^[1-9]+$"))
+            {
+                MessageBox.Show("El Articulo Id solo puede ser de caracter numerico.", "Campo Articulo Id.",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            return true;
         }
     }
 }

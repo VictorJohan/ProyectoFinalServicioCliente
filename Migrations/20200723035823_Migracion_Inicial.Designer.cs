@@ -9,7 +9,7 @@ using ProyectoFinalServicioCliente.DAL;
 namespace ProyectoFinalServicioCliente.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200722095945_Migracion_Inicial")]
+    [Migration("20200723035823_Migracion_Inicial")]
     partial class Migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -264,7 +264,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                             UsuarioId = 1,
                             Apellidos = "Usuario Apellidos",
                             Contrasena = "MQAyADMA",
-                            Fecha = new DateTime(2020, 7, 22, 5, 59, 45, 317, DateTimeKind.Local).AddTicks(8392),
+                            Fecha = new DateTime(2020, 7, 22, 23, 58, 23, 46, DateTimeKind.Local).AddTicks(1333),
                             Nombres = "Usuario Nombre",
                             Usuario = "admin"
                         });

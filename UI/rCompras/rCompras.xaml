@@ -23,6 +23,10 @@
                 </Button>
             </StackPanel>
             
+            <!--Suplidores-->
+            <Label Content="Suplidor" FontSize="11"/>
+            <ComboBox Name="SuplidorComboBoxx" Width="884" Height="20" HorizontalAlignment="Left" Margin="5,0"/>
+
             <!--Monto-->
             <Label Content="Monto" FontSize="11"/>
             <TextBox Name="MontoTextBox" Width="884" Height="20" Text="{Binding Monto}" Margin="5,0" HorizontalAlignment="Left"/>
@@ -83,10 +87,10 @@
                     </StackPanel>
 
                     <!--DataGrid-->
-                    <DataGrid Name="DetalleDataGrid" Width="821" Height="100" AutoGenerateColumns="False" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left" ItemsSource="{Binding ComprasDetalles}" Margin="5,5,0,0">
+                    <DataGrid Name="DetalleDataGrid" Width="821" Height="100" AutoGenerateColumns="False" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                              ItemsSource="{Binding ComprasDetalles}" Margin="5,5,0,0">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Binding="{Binding ArticuloId}"/>
-                            <DataGridTextColumn Header="ArticuloId" Binding="{Binding Articulo.ArticuloId}" Visibility="Hidden"/>
                             <DataGridTextColumn Header="Descripción" Binding="{Binding Articulo.Descripcion}"/>
                             <DataGridTextColumn Header="Stock" Binding="{Binding Articulo.Stock}"/>
                             <DataGridTextColumn Header="Categoria" Binding="{Binding Articulo.CategoriaId}"/>

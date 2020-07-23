@@ -17,7 +17,7 @@ namespace ProyectoFinalServicioCliente.Entidades
         public int ArticuloId { get; set; }
 
         [ForeignKey("ArticuloId")]
-        public virtual Articulos Articulo { get; set; } = new Articulos();
+        public virtual Articulos Articulo { get; set; }
 
 
     }

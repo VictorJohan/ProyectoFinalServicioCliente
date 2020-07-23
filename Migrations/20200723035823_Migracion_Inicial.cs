@@ -275,7 +275,7 @@ namespace ProyectoFinalServicioCliente.Migrations
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "Fecha", "Nombres", "Usuario" },
-                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 22, 5, 59, 45, 317, DateTimeKind.Local).AddTicks(8392), "Usuario Nombre", "admin" });
+                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 22, 23, 58, 23, 46, DateTimeKind.Local).AddTicks(1333), "Usuario Nombre", "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articulos_CategoriaId",
