@@ -16,6 +16,7 @@ namespace ProyectoFinalServicioCliente.DAL
         public DbSet<Eventos> Eventos { get; set; }
         public DbSet<Fotografos> Fotografos { get; set; }
         public DbSet<Ventas> Ventas { get; set; }
+        public DbSet<Suplidores> Suplidores { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -145,6 +145,27 @@ namespace ProyectoFinalServicioCliente.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Suplidores",
+                columns: table => new
+                {
+                    SiplidorI = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nombres = table.Column<string>(nullable: true),
+                    Telefono = table.Column<string>(nullable: true),
+                    UsuarioId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Suplidores", x => x.SiplidorI);
+                    table.ForeignKey(
+                        name: "FK_Suplidores_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "UsuarioId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Articulos",
                 columns: table => new
                 {
@@ -275,7 +296,7 @@ namespace ProyectoFinalServicioCliente.Migrations
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "Fecha", "Nombres", "Usuario" },
-                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 22, 23, 58, 23, 46, DateTimeKind.Local).AddTicks(1333), "Usuario Nombre", "admin" });
+                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 23, 2, 3, 21, 441, DateTimeKind.Local).AddTicks(2830), "Usuario Nombre", "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articulos_CategoriaId",
@@ -323,6 +344,11 @@ namespace ProyectoFinalServicioCliente.Migrations
                 column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Suplidores_UsuarioId",
+                table: "Suplidores",
+                column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Ventas_ClienteId",
                 table: "Ventas",
                 column: "ClienteId");
@@ -357,6 +383,9 @@ namespace ProyectoFinalServicioCliente.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ComprasDetalle");
+
+            migrationBuilder.DropTable(
+                name: "Suplidores");
 
             migrationBuilder.DropTable(
                 name: "VentasDetalle");

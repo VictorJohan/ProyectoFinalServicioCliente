@@ -231,6 +231,28 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.ToTable("Fotografos");
                 });
 
+            modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.Suplidores", b =>
+                {
+                    b.Property<int>("SiplidorI")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Nombres")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Telefono")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("SiplidorI");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Suplidores");
+                });
+
             modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.Usuarios", b =>
                 {
                     b.Property<int>("UsuarioId")
@@ -262,7 +284,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                             UsuarioId = 1,
                             Apellidos = "Usuario Apellidos",
                             Contrasena = "MQAyADMA",
-                            Fecha = new DateTime(2020, 7, 22, 23, 58, 23, 46, DateTimeKind.Local).AddTicks(1333),
+                            Fecha = new DateTime(2020, 7, 23, 2, 3, 21, 441, DateTimeKind.Local).AddTicks(2830),
                             Nombres = "Usuario Nombre",
                             Usuario = "admin"
                         });
@@ -399,6 +421,15 @@ namespace ProyectoFinalServicioCliente.Migrations
                 });
 
             modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.Fotografos", b =>
+                {
+                    b.HasOne("ProyectoFinalServicioCliente.Entidades.Usuarios", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.Suplidores", b =>
                 {
                     b.HasOne("ProyectoFinalServicioCliente.Entidades.Usuarios", "Usuario")
                         .WithMany()

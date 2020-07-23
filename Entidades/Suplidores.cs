@@ -10,7 +10,7 @@ namespace ProyectoFinalServicioCliente.Entidades
     public class Suplidores
     {
         [Key]
-        public int SiplidorI { get; set; }
+        public int SiplidorId { get; set; }
         public string Nombres { get; set; }
         public string Telefono { get; set; }
         public int UsuarioId { get; set; }
