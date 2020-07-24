@@ -29,7 +29,7 @@
             <TextBox Name="NombresTextBox" Width="250" Height="20" Text="{Binding Nombres}" HorizontalAlignment="Left" Margin="5,0"/>
 
             <!--Telefono-->
-            <Label Content="Telefono" FontSize="11"/>
+            <Label Content="Teléfono" FontSize="11"/>
             <TextBox Name="TelefonoTextBox" Width="250" Height="20" Text="{Binding Telefono}" HorizontalAlignment="Left" Margin="5,0"/>
 
             <!--Email-->

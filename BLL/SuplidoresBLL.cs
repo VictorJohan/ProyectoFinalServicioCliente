@@ -157,5 +157,61 @@ namespace ProyectoFinalServicioCliente.BLL
 
             return lista;
         }
+
+        public static bool ExisteTelefono(string telefono)
+        {
+            Contexto contexto = new Contexto();
+            bool ok;
+
+            try
+            {
+                var existe = from Suplidor in contexto.Suplidores
+                             where Suplidor.Telefono == telefono
+                             select Suplidor;
+                if (existe.Count() > 0)
+                    ok = true;
+                else
+                    ok = false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
+
+        public static bool ExisteEmail(string email)
+        {
+            Contexto contexto = new Contexto();
+            bool ok;
+
+            try
+            {
+                var existe = from Suplidor in contexto.Suplidores
+                             where Suplidor.Email == email
+                             select Suplidor;
+                if (existe.Count() > 0)
+                    ok = true;
+                else
+                    ok = false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
     }
 }
