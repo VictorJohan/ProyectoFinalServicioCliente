@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rEventos"
         mc:Ignorable="d"
-        Title="rEventos" Height="450" Width="286">
+        Title="rEventos" Height="300" Width="560">
     <Grid>
-        <StackPanel Orientation="Vertical" Margin="10,10,10,10">
-            <Label Content="Evento Id" FontSize="11"/>
 
-            <!--FogratofoIdTextBox y Boton Buscar dentro del panel-->
+        <StackPanel Orientation="Vertical" Margin="10,10,10,10">
+
+            <Label Content="Evento Id" FontSize="11"/>
+            
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
-                <TextBox Name="EventoIdTextBox" Text="{Binding EventosId}" Height="20" Width="166" Margin="5,0" TextChanged="EventoIdTextBox_TextChanged"/>
+                <TextBox Name="EventoIdTextBox" Text="{Binding EventoId}" Height="20" Width="405" Margin="5,0"/>
 
                 <!--Boton-->
                 <Button Name="BuscarButton" Height="20" Width="60" Click="BuscarButton_Click">
@@ -22,39 +23,46 @@
                         <Label Content="Buscar" Padding="-1" Margin="4,0" FontSize="11"/>
                     </StackPanel>
                 </Button>
-
             </StackPanel>
 
-            <!--Fotografo-->
-            <Label Content="Fotografo Id" FontSize="11"/>
-            <TextBox Name="FografoIdTextBox" Height="20"  Width="230" Text="{Binding FotografoId}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--Label: Fotografo Id/Inicio-->
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Fotógrafo" FontSize="11"/>
+                <Label Content="Inicio" FontSize="11" Margin="169,0,0,0"/>
+            </StackPanel>
 
-            <!--Usuario-->
-            <Label Content="Usuario Id" FontSize="11"/>
-            <TextBox Name="UsuarioTextBox" Height="20"  Width="230" Text="{Binding Usiario}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--TextBox/DatePicker: Fotografo Id/Inicio-->
+            <StackPanel Orientation="Horizontal">
+                <ComboBox Name="FografoIdTextBox" Height="20"  Width="230" SelectedValue="{Binding FotografoId}" HorizontalAlignment="Left" Margin="5,0"/>
+                <DatePicker Name="FechaInicioDatePicker" Height="20" Width="230" SelectedDate="{Binding Fecha}" HorizontalAlignment="Left" Margin="5,0" Padding="4,-1,0,0"/>
+            </StackPanel>
 
+            <!--Label: Descripcion/Vence-->
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Descripción" FontSize="11"/>
+                <Label Content="Vence" FontSize="11" Margin="173,0,0,0"/>
+            </StackPanel>
 
-            <!--Descripcion-->
-            <Label Content="Descripcion" FontSize="11"/>
-            <TextBox Name="DescripcionTextBox" Height="20" Width="230" Text="{Binding Descripcion}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--TextBox/DatePicker: Descripcion/Vence-->
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="DescripcionTextBox" Height="20" Width="230" Text="{Binding Descripcion}" HorizontalAlignment="Left" Margin="5,0"/>
+                <DatePicker Name="FechaFinDatePicker" Height="20" Width="230" SelectedDate="{Binding FechaVencimiento}" HorizontalAlignment="Left" Margin="5,0" Padding="4,-1,0,0"/>
+            </StackPanel>
 
-            <!--Lugar-->
-            <Label Content="Lugar" FontSize="11"/>
-            <TextBox Name="LugarTextBox" Height="20" Width="230" Text="{Binding Lugar}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--Label: Lugar/Monto-->
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Lugar" FontSize="11"/>
+                <Label Content="Precio" FontSize="11" Margin="202,0,0,0"/>
+            </StackPanel>
 
-            <!--Fecha Inicio-->
-            <Label Content="Fecha Inicio" FontSize="11"/>
-            <DatePicker Name="FechaInicioDatePicker" Width="230" SelectedDate="{Binding FechaInic}" HorizontalAlignment="Left" Margin="5,0"/>
-
-            <!--Fecha Fin-->
-            <Label Content="Fecha Final" FontSize="11"/>
-            <DatePicker Name="FechaFinDatePicker" Width="230" SelectedDate="{Binding FechaFin}" HorizontalAlignment="Left" Margin="5,0"/>
-            <!--Precio-->
-            <Label Content="Precio" FontSize="11"/>
-            <TextBox Name="PrecioTextBox" Height="20" Width="230" Text="{Binding Precio}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--TextBox/DatePicker: Descripcion/Vence-->
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="LugarTextBox" Height="20" Width="230" Text="{Binding Lugar}" HorizontalAlignment="Left" Margin="5,0"/>
+                <TextBox Name="PrecioTextBox" Height="20" Width="230" Text="{Binding Precio}" HorizontalAlignment="Left" Margin="5,0"/>
+            </StackPanel>
 
             <!--Panel de Botones-->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="16,25,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="134,25,0,0">
 
                 <Button Name="NuevoButton" Width="60" Height="20"  HorizontalContentAlignment="Left" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
@@ -78,6 +86,9 @@
                 </Button>
 
             </StackPanel>
+            
         </StackPanel>
+        
+        
     </Grid>
 </Window>

@@ -65,6 +65,7 @@
             <!--Sueldo-->
             <Label Content="Celular" FontSize="11"/>
             <TextBox Name="SueldoTextBox" Height="20" Width="230" Text="{Binding Sueldo}" HorizontalAlignment="Left" Margin="5,0"/>
+            
             <!--Panel de Botones-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="16,25,0,0">
 

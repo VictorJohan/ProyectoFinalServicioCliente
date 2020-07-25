@@ -57,7 +57,7 @@ namespace ProyectoFinalServicioCliente.UI.rSuplidor
             Limpiar();
         }
 
-        //Evento que guardara un registro
+        //Evento que guardara un registro.
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Validar())
@@ -96,16 +96,17 @@ namespace ProyectoFinalServicioCliente.UI.rSuplidor
             }                                       
         }
 
-        //Limpia el WPF
+        //Limpia el WPF.
         public void Limpiar()
         {   
             Suplidor = new Suplidores();
             this.DataContext = Suplidor;
         }
 
+        //Este metodo valida los campos del WPF.
         public bool Validar()
         {
-            //Valida que haya un Id valido en el campo SuplidorId
+            //Valida que haya un Id valido en el campo SuplidorId.
             if(!Regex.IsMatch(SuplidorIdTextBox.Text, "^[1-9]+$"))
             {
                 MessageBox.Show("El SuplidorId solo puede ser de caracter numerico.", "Campo SuplidorId.", 
