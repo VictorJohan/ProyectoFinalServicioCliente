@@ -8,12 +8,12 @@
         Title="rClientes" Height="550" Width="280">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
-            <Label Content="Cliente Id" FontSize="11"/>
+            <Label Content="ClienteId" FontSize="11"/>
 
             <!--ClienteIdTextBox y Boton Buscar dentro del panel-->
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
-                <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}" Height="20" Width="166" Margin="5,0" TextChanged="EventoIdTextBox_TextChanged"/>
+                <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}" Height="20" Width="166" Margin="5,0"/>
 
                 <!--Boton-->
                 <Button Name="BuscarButton" Height="20" Width="60" Click="BuscarButton_Click">

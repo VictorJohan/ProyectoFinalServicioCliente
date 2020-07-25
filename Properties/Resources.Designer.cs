@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProyectoFinalServicioCliente.Properties {
+namespace ProyectoFinalServicioEventos.Properties {
     using System;
     
     

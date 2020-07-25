@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProyectoFinalServicioCliente.DAL;
 
-namespace ProyectoFinalServicioCliente.Migrations
+
+namespace ProyectoFinalServicioEventos.Migrations
 {
     [DbContext(typeof(Contexto))]
     partial class ContextoModelSnapshot : ModelSnapshot
