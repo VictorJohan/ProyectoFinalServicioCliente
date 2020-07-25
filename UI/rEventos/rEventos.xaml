@@ -25,7 +25,7 @@
                 </Button>
             </StackPanel>
 
-            <!--Label: Fotografo Id/Inicio-->
+            <!--Label: FotografoId/Inicio-->
             <StackPanel Orientation="Horizontal">
                 <Label Content="Fotógrafo" FontSize="11"/>
                 <Label Content="Inicio" FontSize="11" Margin="169,0,0,0"/>
