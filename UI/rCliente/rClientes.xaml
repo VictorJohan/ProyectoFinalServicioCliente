@@ -36,15 +36,15 @@
 
             <!--Apellido-->
             <Label Content="Apellidos" FontSize="11"/>
-            <TextBox Name="ApellidosTextBox" Height="20" Width="230" Text="{Binding Apellido}" HorizontalAlignment="Left" Margin="5,0"/>
+            <TextBox Name="ApellidoTextBox" Height="20" Width="230" Text="{Binding ApellidoTextBox}" HorizontalAlignment="Left" Margin="5,0"/>
 
             <!--Categoria-->
             <Label Content="Sexo" FontSize="11"/>
-            <ComboBox Name="CategoriaComboBox" Width="230" SelectedValue="{Binding Sexo}" HorizontalAlignment="Left" Margin="5,0"/>
+            <ComboBox Name="SexoComboBox" Width="230" SelectedValue="{Binding Sexo}" HorizontalAlignment="Left" Margin="5,0"/>
 
             <!--Fecha Nacimiento-->
             <Label Content="Fecha de Nacimiento" FontSize="11"/>
-            <DatePicker Name="FechaInicioDatePicker" Width="230" SelectedDate="{Binding Fecha}" HorizontalAlignment="Left" Margin="5,0"/>
+            <DatePicker Name="FechaNaciDatePicker" Width="230" SelectedDate="{Binding Fecha}" HorizontalAlignment="Left" Margin="5,0"/>
 
            
             <!--Cedula-->
