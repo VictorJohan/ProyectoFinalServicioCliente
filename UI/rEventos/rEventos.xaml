@@ -16,7 +16,7 @@
                 <TextBox Name="EventoIdTextBox" Text="{Binding EventosId}" Height="20" Width="166" Margin="5,0" TextChanged="EventoIdTextBox_TextChanged"/>
 
                 <!--Boton-->
-                <Button Name="BuscarButton" Height="20" Width="60" Click="BuscarButton_Click">
+                <Button Name="BuscarButton" Height="20" Width="69" Click="BuscarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/search.png" />
                         <Label Content="Buscar" Padding="-1" Margin="4,0" FontSize="11"/>
