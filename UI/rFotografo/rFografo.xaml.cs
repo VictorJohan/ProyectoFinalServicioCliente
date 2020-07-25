@@ -25,7 +25,6 @@ namespace ProyectoFinalServicioCliente.UI.rFotografo
             InitializeComponent();
             this.DataContext = fotografo;
             FotografoIdTextBox.Text = "0";
-            UsuarioIdTextBox.Text = "0";
             SueldoTextBox.Text = "0";
             SexoComboBox.Items.Add("Femenino");
             SexoComboBox.Items.Add("Masculino");
@@ -33,7 +32,6 @@ namespace ProyectoFinalServicioCliente.UI.rFotografo
         private void Limpiar()
         {
             FotografoIdTextBox.Text = "0";
-            UsuarioIdTextBox.Text = "0";
             NombreTextBox.Text = string.Empty;
             FechaNaciDatePicker.SelectedDate = DateTime.Now;
             SexoComboBox.SelectedItem = null;
