@@ -5,69 +5,80 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rCliente"
         mc:Ignorable="d"
-        Title="rClientes" Height="550" Width="280">
+        Title="Clientes" Height="400" Width="540">
     <Grid>
+
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
+
             <Label Content="ClienteId" FontSize="11"/>
 
-            <!--ClienteIdTextBox y Boton Buscar dentro del panel-->
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
-                <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}" Height="20" Width="166" Margin="5,0"/>
+                <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}" Height="20" Width="397" Margin="5,0"/>
 
                 <!--Boton-->
-                <Button Name="BuscarButton" Height="20" Width="60" Click="BuscarButton_Click">
+                <Button Name="BuscarButton" Height="20" Width="69" Click="BuscarButton_Click_1">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/search.png" />
                         <Label Content="Buscar" Padding="-1" Margin="4,0" FontSize="11"/>
                     </StackPanel>
                 </Button>
-
             </StackPanel>
 
-            <!--Usuario-->
-            <Label Content="Usuario Id" FontSize="11"/>
-            <TextBox Name="UsuarioIdTextBox" Height="20"  Width="230" Text="{Binding Usuario}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--Label: Nombre/Apellido-->
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Nombre" FontSize="11"/>
+                <Label Content="Apellido" FontSize="11" Margin="190,0,0,0"/>
+            </StackPanel>
 
-            <!--Nombres-->
-            <Label Content="Nombres" FontSize="11"/>
-            <TextBox Name="NombresTextBox" Height="20"  Width="230" Text="{Binding Nombre}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--TextBox: Nombre/Apellido-->
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="NombreTextBox" Height="20"  Width="230" Text="{Binding Nombre}" HorizontalAlignment="Left" Margin="5,0"/>
+                <TextBox Name="ApellidoTextBox" Height="20" Width="230" Text="{Binding Apellido}" HorizontalAlignment="Left" Margin="5,0"/>
+            </StackPanel>
 
+            <!--Label: Cedula/Fecha Nacimiento-->
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Cédula" FontSize="11"/>
+                <Label Content="Fecha Nacimiento" FontSize="11" Margin="196,0,0,0"/>
+            </StackPanel>
 
-            <!--Apellido-->
-            <Label Content="Apellidos" FontSize="11"/>
-            <TextBox Name="ApellidoTextBox" Height="20" Width="230" Text="{Binding ApellidoTextBox}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--TextBox/DatePicker: Cedula/Fecha Nacimiento-->
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="CedulaTextBox" Height="20" Width="230" Text="{Binding Cedula}" HorizontalAlignment="Left" Margin="5,0"/>
+                <DatePicker Name="FechaNacimientoDatePicker" Height="20" Width="230" SelectedDate="{Binding FechaNacimiento}" HorizontalAlignment="Left" Margin="5,0" Padding="4,-1,0,0"/>
+            </StackPanel>
 
-            <!--Sexo-->
-            <Label Content="Sexo" FontSize="11"/>
-            <ComboBox Name="SexoComboBox" Width="230" SelectedValue="{Binding Sexo}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--Label: Sexo/Direccion-->
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Sexo" FontSize="11"/>
+                <Label Content="Dirección" FontSize="11" Margin="207,0,0,0"/>
+            </StackPanel>
 
-            <!--Fecha Nacimiento-->
-            <Label Content="Fecha de Nacimiento" FontSize="11"/>
-            <DatePicker Name="FechaNaciDatePicker" Width="230" SelectedDate="{Binding Fecha}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--TextBox: Sexo/Direccion-->
+            <StackPanel Orientation="Horizontal">
+                <ComboBox Name="SexoComboBox" Height="20" Width="230" SelectedValue="{Binding Sexo}" HorizontalAlignment="Left" Margin="5,0"/>
+                <TextBox Name="DireccionTextBox" Height="20" Width="230" Text="{Binding Direccion}" HorizontalAlignment="Left" Margin="5,0"/>
+            </StackPanel>
 
-           
-            <!--Cedula-->
-            <Label Content="Cedula" FontSize="11"/>
-            <TextBox Name="CedulaTextBox" Height="20" Width="230" Text="{Binding Cedula}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--Label: Celular/Telefono-->
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Celular" FontSize="11"/>
+                <Label Content="Teléfono Local" FontSize="11" Margin="197,0,0,0"/>
+            </StackPanel>
 
-            <!--Direccion-->
-            <Label Content="Direccion" FontSize="11"/>
-            <TextBox Name="DireccionTextBox" Height="20" Width="230" Text="{Binding Direccion}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--TextBox: Celular/Telefono-->
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="CelularTextBox" Height="20" Width="230" Text="{Binding Celular}" HorizontalAlignment="Left" Margin="5,0"/>
+                <TextBox Name="TelefonoTextBox" Height="20" Width="230" Text="{Binding Telefono}" HorizontalAlignment="Left" Margin="5,0"/>
+            </StackPanel>
 
-            <!--Telefono-->
-            <Label Content="Telefono" FontSize="11"/>
-            <TextBox Name="TelefonoTextBox" Height="20" Width="230" Text="{Binding Telefono}" HorizontalAlignment="Left" Margin="5,0"/>
-
-            <!--Celular-->
-            <Label Content="Celular" FontSize="11"/>
-            <TextBox Name="CelularTextBox" Height="20" Width="230" Text="{Binding Celular}" HorizontalAlignment="Left" Margin="5,0"/>
             <!--Panel de Botones-->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="16,25,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="134,25,0,0">
 
                 <Button Name="NuevoButton" Width="60" Height="20"  HorizontalContentAlignment="Left" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/articulo.png" />
+                        <Image Source="/Resources/cliente.png" />
                         <Label Content="Nuevo" FontSize="11" Margin="4,0" Padding="-1"/>
                     </StackPanel>
                 </Button>
@@ -87,6 +98,8 @@
                 </Button>
 
             </StackPanel>
+
         </StackPanel>
+            
     </Grid>
 </Window>

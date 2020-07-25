@@ -28,7 +28,7 @@
             <!--Label: FotografoId/Inicio-->
             <StackPanel Orientation="Horizontal">
                 <Label Content="Fotógrafo" FontSize="11"/>
-                <Label Content="Inicio" FontSize="11" Margin="169,0,0,0"/>
+                <Label Content="Inicio" FontSize="11" Margin="181,0,0,0"/>
             </StackPanel>
 
             <!--TextBox/DatePicker: Fotografo Id/Inicio-->
@@ -49,13 +49,13 @@
                 <DatePicker Name="FechaFinDatePicker" Height="20" Width="230" SelectedDate="{Binding FechaVencimiento}" HorizontalAlignment="Left" Margin="5,0" Padding="4,-1,0,0"/>
             </StackPanel>
 
-            <!--Label: Lugar/Monto-->
+            <!--Label: Lugar/Precio-->
             <StackPanel Orientation="Horizontal">
                 <Label Content="Lugar" FontSize="11"/>
                 <Label Content="Precio" FontSize="11" Margin="202,0,0,0"/>
             </StackPanel>
 
-            <!--TextBox/DatePicker: Descripcion/Vence-->
+            <!--TextBox/DatePicker: Lugar/Precio-->
             <StackPanel Orientation="Horizontal">
                 <TextBox Name="LugarTextBox" Height="20" Width="230" Text="{Binding Lugar}" HorizontalAlignment="Left" Margin="5,0"/>
                 <TextBox Name="PrecioTextBox" Height="20" Width="230" Text="{Binding Precio}" HorizontalAlignment="Left" Margin="5,0"/>

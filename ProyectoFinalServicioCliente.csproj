@@ -21,6 +21,7 @@
     <None Remove="Resources\atras.png" />
     <None Remove="Resources\camara.png" />
     <None Remove="Resources\categoria.png" />
+    <None Remove="Resources\cliente.png" />
     <None Remove="Resources\compra.png" />
     <None Remove="Resources\delete.png" />
     <None Remove="Resources\inventario.png" />
@@ -58,6 +59,7 @@
     <Resource Include="Resources\atras.png" />
     <Resource Include="Resources\camara.png" />
     <Resource Include="Resources\categoria.png" />
+    <Resource Include="Resources\cliente.png" />
     <Resource Include="Resources\compra.png" />
     <Resource Include="Resources\delete.png" />
     <Resource Include="Resources\inventario.png" />

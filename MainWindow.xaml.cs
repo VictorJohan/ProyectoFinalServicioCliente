@@ -2,6 +2,7 @@
 using ProyectoFinalServicioCliente.UI.rArticulo;
 using ProyectoFinalServicioCliente.UI.rCategoria;
 using ProyectoFinalServicioCliente.UI.rCompras;
+using ProyectoFinalServicioCliente.UI.rEventos;
 using ProyectoFinalServicioCliente.UI.rSuplidor;
 using ProyectoFinalServicioCliente.UI.rUsuarios;
 using System;
@@ -65,6 +66,12 @@ namespace ProyectoFinalServicioCliente
         {
             rSuplidor rSuplidor = new rSuplidor();
             rSuplidor.Show();
+        }
+
+        private void MenuItem_Click_6(object sender, RoutedEventArgs e)
+        {
+            rEventos rEventos = new rEventos();
+            rEventos.Show();
         }
     }
 }
