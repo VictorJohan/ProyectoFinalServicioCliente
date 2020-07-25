@@ -1,19 +1,19 @@
-﻿<Window x:Class="ProyectoFinalServicioCliente.UI.rEventos.rEventos"
+﻿<Window x:Class="ProyectoFinalServicioCliente.UI.rCliente.rClientes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rEventos"
+        xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rCliente"
         mc:Ignorable="d"
-        Title="rEventos" Height="450" Width="286">
+        Title="rClientes" Height="550" Width="280">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
-            <Label Content="Evento Id" FontSize="11"/>
+            <Label Content="Cliente Id" FontSize="11"/>
 
-            <!--FogratofoIdTextBox y Boton Buscar dentro del panel-->
+            <!--ClienteIdTextBox y Boton Buscar dentro del panel-->
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
-                <TextBox Name="EventoIdTextBox" Text="{Binding EventosId}" Height="20" Width="166" Margin="5,0" TextChanged="EventoIdTextBox_TextChanged"/>
+                <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}" Height="20" Width="166" Margin="5,0" TextChanged="EventoIdTextBox_TextChanged"/>
 
                 <!--Boton-->
                 <Button Name="BuscarButton" Height="20" Width="60" Click="BuscarButton_Click">
@@ -25,34 +25,43 @@
 
             </StackPanel>
 
-            <!--Fotografo-->
-            <Label Content="Fotografo Id" FontSize="11"/>
-            <TextBox Name="FografoIdTextBox" Height="20"  Width="230" Text="{Binding FotografoId}" HorizontalAlignment="Left" Margin="5,0"/>
-
             <!--Usuario-->
             <Label Content="Usuario Id" FontSize="11"/>
-            <TextBox Name="UsuarioTextBox" Height="20"  Width="230" Text="{Binding Usiario}" HorizontalAlignment="Left" Margin="5,0"/>
+            <TextBox Name="UsuarioIdTextBox" Height="20"  Width="230" Text="{Binding Usuario}" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Nombres-->
+            <Label Content="Nombres" FontSize="11"/>
+            <TextBox Name="NombresTextBox" Height="20"  Width="230" Text="{Binding Nombre}" HorizontalAlignment="Left" Margin="5,0"/>
 
 
-            <!--Descripcion-->
-            <Label Content="Descripcion" FontSize="11"/>
-            <TextBox Name="DescripcionTextBox" Height="20" Width="230" Text="{Binding Descripcion}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--Apellido-->
+            <Label Content="Apellidos" FontSize="11"/>
+            <TextBox Name="ApellidosTextBox" Height="20" Width="230" Text="{Binding Apellido}" HorizontalAlignment="Left" Margin="5,0"/>
 
-            <!--Lugar-->
-            <Label Content="Lugar" FontSize="11"/>
-            <TextBox Name="LugarTextBox" Height="20" Width="230" Text="{Binding Lugar}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--Categoria-->
+            <Label Content="Sexo" FontSize="11"/>
+            <ComboBox Name="CategoriaComboBox" Width="230" SelectedValue="{Binding Sexo}" HorizontalAlignment="Left" Margin="5,0"/>
 
-            <!--Fecha Inicio-->
-            <Label Content="Fecha Inicio" FontSize="11"/>
-            <DatePicker Name="FechaInicioDatePicker" Width="230" SelectedDate="{Binding FechaInic}" HorizontalAlignment="Left" Margin="5,0"/>
+            <!--Fecha Nacimiento-->
+            <Label Content="Fecha de Nacimiento" FontSize="11"/>
+            <DatePicker Name="FechaInicioDatePicker" Width="230" SelectedDate="{Binding Fecha}" HorizontalAlignment="Left" Margin="5,0"/>
 
-            <!--Fecha Fin-->
-            <Label Content="Fecha Final" FontSize="11"/>
-            <DatePicker Name="FechaFinDatePicker" Width="230" SelectedDate="{Binding FechaFin}" HorizontalAlignment="Left" Margin="5,0"/>
-            <!--Precio-->
-            <Label Content="Precio" FontSize="11"/>
-            <TextBox Name="PrecioTextBox" Height="20" Width="230" Text="{Binding Precio}" HorizontalAlignment="Left" Margin="5,0"/>
+           
+            <!--Cedula-->
+            <Label Content="Cedula" FontSize="11"/>
+            <TextBox Name="CedulaTextBox" Height="20" Width="230" Text="{Binding Cedula}" HorizontalAlignment="Left" Margin="5,0"/>
 
+            <!--Direccion-->
+            <Label Content="Direccion" FontSize="11"/>
+            <TextBox Name="DireccionTextBox" Height="20" Width="230" Text="{Binding Direccion}" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Telefono-->
+            <Label Content="Telefono" FontSize="11"/>
+            <TextBox Name="TelefonoTextBox" Height="20" Width="230" Text="{Binding Telefono}" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Celular-->
+            <Label Content="Celular" FontSize="11"/>
+            <TextBox Name="CelularTextBox" Height="20" Width="230" Text="{Binding Celular}" HorizontalAlignment="Left" Margin="5,0"/>
             <!--Panel de Botones-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="16,25,0,0">
 
