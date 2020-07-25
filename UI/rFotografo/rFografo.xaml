@@ -25,10 +25,7 @@
 
             </StackPanel>
 
-            <!--Usuario-->
-            <Label Content="Usuario Id" FontSize="11"/>
-            <TextBox Name="UsuarioIdTextBox" Height="20"  Width="230" Text="{Binding Usuario}" HorizontalAlignment="Left" Margin="5,0"/>
-
+            
             <!--Nombres-->
             <Label Content="Nombres" FontSize="11"/>
             <TextBox Name="NombreTextBox" Height="20"  Width="230" Text="{Binding Nombre}" HorizontalAlignment="Left" Margin="5,0"/>
