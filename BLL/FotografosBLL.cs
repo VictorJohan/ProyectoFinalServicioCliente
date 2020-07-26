@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using ProyectoFinalServicioCliente.DAL;
 using ProyectoFinalServicioCliente.Entidades;
 using System;
@@ -7,40 +8,50 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace ProyectoFinalServicioCliente.BLL
+namespace ProyectoFinalServicioFotografo.BLL
 {
     public class FotografosBLL
     {
+
         public static bool Guardar(Fotografos fotografo)
         {
-            bool paso = false;
-            Contexto db = new Contexto();
-
-            try
-            {
-                if (db.Fotografos.Add(fotografo) != null)
-                    paso = (db.SaveChanges() > 0);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                db.Dispose();
-            }
-            return paso;
+            if (!Existe(fotografo.FotografoId))
+                return Insertar(fotografo);
+            else
+                return Modificar(fotografo);
         }
 
-        public static bool Modificar(Fotografos fotografo)
+        public static bool Existe(int id)
         {
-            bool paso = false;
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
+            bool ok = false;
 
             try
             {
-                db.Entry(fotografo).State = EntityState.Modified;
-                paso = (db.SaveChanges() > 0);
+                ok = contexto.Fotografos.Any(f => f.FotografoId == id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
+
+        private static bool Insertar(Fotografos fotografo)
+        {
+            Contexto contexto = new Contexto();
+            bool ok = false;
+
+            try
+            {
+                contexto.Fotografos.Add(fotografo);
+                ok = contexto.SaveChanges() > 0;
             }
             catch (Exception)
             {
@@ -48,21 +59,45 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
-            return paso;
+            return ok;
+        }
+
+        private static bool Modificar(Fotografos fotografo)
+        {
+            Contexto contexto = new Contexto();
+            bool ok = false;
+
+            try
+            {
+                contexto.Entry(fotografo).State = EntityState.Modified;
+                ok = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return ok;
         }
 
         public static bool Eliminar(int id)
         {
-            bool paso = false;
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
+            bool ok = false;
 
             try
             {
-                var eliminar = db.Fotografos.Find(id);
-                db.Entry(eliminar).State = EntityState.Deleted;
-                paso = (db.SaveChanges() > 0);
+                var eliminar = contexto.Fotografos.Find(id);
+                if (eliminar != null)
+                {
+                    contexto.Fotografos.Remove(eliminar);
+                    ok = (contexto.SaveChanges() > 0);
+                }
             }
             catch (Exception)
             {
@@ -70,19 +105,19 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
-            return paso;
+            return ok;
         }
 
         public static Fotografos Buscar(int id)
         {
-            Fotografos fotografo = new Fotografos();
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
+            Fotografos fotografo;
 
             try
             {
-                fotografo = db.Fotografos.Find(id);
+                fotografo = contexto.Fotografos.Find(id);
             }
             catch (Exception)
             {
@@ -90,19 +125,19 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
             return fotografo;
         }
 
-        public static List<Fotografos> GetList(Expression<Func<Fotografos, bool>> fotografo)
+        public static List<Fotografos> GetList(Expression<Func<Fotografos, bool>> criterio)
         {
+            Contexto contexto = new Contexto();
             List<Fotografos> Lista = new List<Fotografos>();
-            Contexto db = new Contexto();
 
             try
             {
-                Lista = db.Fotografos.Where(fotografo).ToList();
+                Lista = contexto.Fotografos.Where(criterio).ToList();
             }
             catch (Exception)
             {
@@ -110,9 +145,122 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
             return Lista;
         }
+
+        public static bool ExisteEmail(string email)
+        {
+            Contexto contexto = new Contexto();
+            bool ok;
+
+            try
+            {
+                var existe = from Fotografo in contexto.Fotografos
+                             where Fotografo.Email == email
+                             select Fotografo;
+                if (existe.Count() > 0)
+                    ok = true;
+                else
+                    ok = false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
+
+        public static bool ExisteCelular(string celular)
+        {
+            Contexto contexto = new Contexto();
+            bool ok;
+
+            try
+            {
+                var existe = from Fotografo in contexto.Fotografos
+                             where Fotografo.Celular == celular
+                             select Fotografo;
+                if (existe.Count() > 0)
+                    ok = true;
+                else
+                    ok = false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
+
+        public static bool ExisteTelefono(string telefono)
+        {
+            Contexto contexto = new Contexto();
+            bool ok;
+
+            try
+            {
+                var existe = from Fotografo in contexto.Fotografos
+                             where Fotografo.Telefono == telefono
+                             select Fotografo;
+                if (existe.Count() > 0)
+                    ok = true;
+                else
+                    ok = false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
+
+        public static bool ExisteCedula(string cedula)
+        {
+            Contexto contexto = new Contexto();
+            bool ok;
+
+            try
+            {
+                var existe = from Fotografo in contexto.Fotografos
+                             where Fotografo.Cedula == cedula
+                             select Fotografo;
+                if (existe.Count() > 0)
+                    ok = true;
+                else
+                    ok = false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
+
     }
 }
