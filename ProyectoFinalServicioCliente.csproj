@@ -24,6 +24,7 @@
     <None Remove="Resources\cliente.png" />
     <None Remove="Resources\compra.png" />
     <None Remove="Resources\delete.png" />
+    <None Remove="Resources\fotografo.png" />
     <None Remove="Resources\inventario.png" />
     <None Remove="Resources\login.png" />
     <None Remove="Resources\logout.png" />
@@ -62,6 +63,7 @@
     <Resource Include="Resources\cliente.png" />
     <Resource Include="Resources\compra.png" />
     <Resource Include="Resources\delete.png" />
+    <Resource Include="Resources\fotografo.png" />
     <Resource Include="Resources\inventario.png" />
     <Resource Include="Resources\login.png" />
     <Resource Include="Resources\logout.png" />

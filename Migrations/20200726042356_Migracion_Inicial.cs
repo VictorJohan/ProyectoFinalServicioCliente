@@ -111,6 +111,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                     Celular = table.Column<string>(nullable: true),
                     Sexo = table.Column<string>(nullable: true),
                     FechaNacimiento = table.Column<DateTime>(nullable: false),
+                    Email = table.Column<string>(nullable: true),
                     Sueldo = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
@@ -305,7 +306,7 @@ namespace ProyectoFinalServicioCliente.Migrations
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "Fecha", "Nombres", "Usuario" },
-                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 25, 23, 8, 57, 736, DateTimeKind.Local).AddTicks(7725), "Usuario Nombre", "admin" });
+                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 26, 0, 23, 55, 458, DateTimeKind.Local).AddTicks(1107), "Usuario Nombre", "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articulos_CategoriaId",

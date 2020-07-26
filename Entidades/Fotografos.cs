@@ -19,7 +19,8 @@ namespace ProyectoFinalServicioCliente.Entidades
         public string Telefono { get; set; }
         public string Celular { get; set; }
         public string Sexo { get; set; }
-        public DateTime FechaNacimiento { get; set; }
+        public DateTime FechaNacimiento { get; set; } = DateTime.Now;
+        public string Email { get; set; }
         public double Sueldo { get; set; }
     }
 }

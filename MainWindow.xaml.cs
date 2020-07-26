@@ -4,6 +4,7 @@ using ProyectoFinalServicioCliente.UI.rCategoria;
 using ProyectoFinalServicioCliente.UI.rCliente;
 using ProyectoFinalServicioCliente.UI.rCompras;
 using ProyectoFinalServicioCliente.UI.rEventos;
+using ProyectoFinalServicioCliente.UI.rFotografo;
 using ProyectoFinalServicioCliente.UI.rSuplidor;
 using ProyectoFinalServicioCliente.UI.rUsuarios;
 using System;
@@ -79,6 +80,13 @@ namespace ProyectoFinalServicioCliente
         {
             rClientes rClientes = new rClientes();
             rClientes.Show();
+        }
+
+        private void MenuItem_Click_8(object sender, RoutedEventArgs e)
+        {
+            rFotografo rFotografo = new rFotografo();
+            rFotografo.Show();
+
         }
     }
 }

@@ -9,7 +9,7 @@ using ProyectoFinalServicioCliente.DAL;
 namespace ProyectoFinalServicioCliente.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200726030858_Migracion_Inicial")]
+    [Migration("20200726042356_Migracion_Inicial")]
     partial class Migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -216,6 +216,9 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<string>("Direccion")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("TEXT");
 
@@ -297,7 +300,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                             UsuarioId = 1,
                             Apellidos = "Usuario Apellidos",
                             Contrasena = "MQAyADMA",
-                            Fecha = new DateTime(2020, 7, 25, 23, 8, 57, 736, DateTimeKind.Local).AddTicks(7725),
+                            Fecha = new DateTime(2020, 7, 26, 0, 23, 55, 458, DateTimeKind.Local).AddTicks(1107),
                             Nombres = "Usuario Nombre",
                             Usuario = "admin"
                         });
