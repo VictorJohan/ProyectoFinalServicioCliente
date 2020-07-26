@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:ProyectoFinalServicioCliente"
              DispatcherUnhandledException="Application_DispatcherUnhandledException"
              StartupUri="MainWindow.xaml">
+
     <Application.Resources>
          
     </Application.Resources>

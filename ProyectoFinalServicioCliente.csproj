@@ -26,11 +26,12 @@
     <None Remove="Resources\delete.png" />
     <None Remove="Resources\fotografo.png" />
     <None Remove="Resources\inventario.png" />
-    <None Remove="Resources\login.png" />
+    <None Remove="Resources\Login.png" />
     <None Remove="Resources\logout.png" />
     <None Remove="Resources\newFile.png" />
     <None Remove="Resources\pedido.png" />
     <None Remove="Resources\persona.png" />
+    <None Remove="Resources\Presentacion.jpg" />
     <None Remove="Resources\producto.png" />
     <None Remove="Resources\registro.png" />
     <None Remove="Resources\remover.png" />
@@ -38,11 +39,14 @@
     <None Remove="Resources\search.png" />
     <None Remove="Resources\suplidor.png" />
     <None Remove="Resources\vendedor.png" />
+    <None Remove="UI\Login\dariusz-sankowski-mj2NwYH3wBA-unsplash.jpg" />
+    <None Remove="UI\Login\Presentacion.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="DAL\" />
     <Folder Include="DATA\" />
+    <Folder Include="UI\Presentacion\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -65,13 +69,14 @@
     <Resource Include="Resources\delete.png" />
     <Resource Include="Resources\fotografo.png" />
     <Resource Include="Resources\inventario.png" />
-    <Resource Include="Resources\login.png" />
+    <Resource Include="Resources\Login.png" />
     <Resource Include="Resources\logout.png" />
     <Resource Include="Resources\newFile.png" />
     <Resource Include="Resources\pedido.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\persona.png" />
+    <Resource Include="Resources\Presentacion.jpg" />
     <Resource Include="Resources\producto.png" />
     <Resource Include="Resources\registro.png" />
     <Resource Include="Resources\remover.png" />
@@ -79,6 +84,8 @@
     <Resource Include="Resources\search.png" />
     <Resource Include="Resources\suplidor.png" />
     <Resource Include="Resources\vendedor.png" />
+    <Resource Include="UI\Login\dariusz-sankowski-mj2NwYH3wBA-unsplash.jpg" />
+    <Resource Include="UI\Login\Presentacion.jpg" />
   </ItemGroup>
 
   <ItemGroup>

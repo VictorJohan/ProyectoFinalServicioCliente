@@ -59,12 +59,14 @@ namespace ProyectoFinalServicioCliente.UI.rCliente
             }
         }
 
+        //Este evento limpia los campos para un nuevo registro.
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
 
         }
 
+        //Este evento guarda un registro en la base de datos.
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Validar())
@@ -81,6 +83,7 @@ namespace ProyectoFinalServicioCliente.UI.rCliente
             }
         }
 
+        //Este evento elimina un registro de la base de datos
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Regex.IsMatch(ClienteIdTextBox.Text, "^[1-9]+$"))
@@ -102,6 +105,7 @@ namespace ProyectoFinalServicioCliente.UI.rCliente
             }
         }
 
+        //Este metodo valida todos los campos.
         public bool Validar()
         {
             //Valida que haya un Id valido en el campo ClienteId.
@@ -258,14 +262,14 @@ namespace ProyectoFinalServicioCliente.UI.rCliente
                 if (ClientesBLL.ExisteCedula(CedulaTextBox.Text) && (cliente.Nombre != NombreTextBox.Text &&
                     cliente.Apellido != ApellidoTextBox.Text))
                 {
-                    MessageBox.Show("Asegurese que haya ingresado correctamente la cedula.", $"La cedula \"{EmailTextBox.Text}\" ya existe.",
+                    MessageBox.Show("Asegurese que haya ingresado correctamente la cedula.", $"La cedula \"{CedulaTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                     return false;
                 }
             }
             else if (ClientesBLL.ExisteCedula(CedulaTextBox.Text))
             {
-                MessageBox.Show("Asegurese que haya ingresado correctamente la cedula.", $"La cedula \"{EmailTextBox.Text}\" ya existe.",
+                MessageBox.Show("Asegurese que haya ingresado correctamente la cedula.", $"La cedula \"{CedulaTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
@@ -275,9 +279,8 @@ namespace ProyectoFinalServicioCliente.UI.rCliente
             {
                 MessageBox.Show("Seleccione el sexo del cliente.", "Sexo sin seleccionar.",
                        MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
             }
-
-           
 
             //Valida que la cedula tenga el formato adecuado
             if(CedulaTextBox.Text.Length != 0)
