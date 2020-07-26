@@ -147,5 +147,118 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             return Lista;
         }
+
+        public static bool ExisteEmail(string email)
+        {
+            Contexto contexto = new Contexto();
+            bool ok;
+
+            try
+            {
+                var existe = from Cliente in contexto.Clientes
+                             where Cliente.Email == email
+                             select Cliente;
+                if (existe.Count() > 0)
+                    ok = true;
+                else
+                    ok = false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
+
+        public static bool ExisteCelular(string celular)
+        {
+            Contexto contexto = new Contexto();
+            bool ok;
+
+            try
+            {
+                var existe = from Cliente in contexto.Clientes
+                             where Cliente.Celular == celular
+                             select Cliente;
+                if (existe.Count() > 0)
+                    ok = true;
+                else
+                    ok = false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
+
+        public static bool ExisteTelefono(string telefono)
+        {
+            Contexto contexto = new Contexto();
+            bool ok;
+
+            try
+            {
+                var existe = from Cliente in contexto.Clientes
+                             where Cliente.Telefono == telefono
+                             select Cliente;
+                if (existe.Count() > 0)
+                    ok = true;
+                else
+                    ok = false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
+
+        public static bool ExisteCedula(string cedula)
+        {
+            Contexto contexto = new Contexto();
+            bool ok;
+
+            try
+            {
+                var existe = from Cliente in contexto.Clientes
+                             where Cliente.Cedula == cedula
+                             select Cliente;
+                if (existe.Count() > 0)
+                    ok = true;
+                else
+                    ok = false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
+
     }
 }

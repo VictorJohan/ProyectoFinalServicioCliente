@@ -54,5 +54,12 @@ namespace ProyectoFinalServicioCliente.UI.rCliente
         {
 
         }
+
+        public bool Validar()
+        {
+
+
+            return true;
+        }
     }
 }
