@@ -13,34 +13,43 @@ namespace ProyectoFinalServicioCliente.BLL
     {
         public static bool Guardar(Clientes cliente)
         {
-            bool paso = false;
-            Contexto db = new Contexto();
-
-            try
-            {
-                if (db.Clientes.Add(cliente) != null)
-                    paso = (db.SaveChanges() > 0);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                db.Dispose();
-            }
-            return paso;
+            if (!Existe(cliente.ClienteId))
+                return Insertar(cliente);
+            else
+                return Modificar(cliente);
         }
 
-        public static bool Modificar(Clientes cliente)
+        public static bool Existe(int id)
         {
-            bool paso = false;
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
+            bool ok = false;
 
             try
             {
-                db.Entry(cliente).State = EntityState.Modified;
-                paso = (db.SaveChanges() > 0);
+                ok = contexto.Clientes.Any(c => c.ClienteId == id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
+
+        private static bool Insertar(Clientes cliente)
+        {
+            Contexto contexto = new Contexto();
+            bool ok = false;
+
+            try
+            {
+                contexto.Clientes.Add(cliente);
+                ok = contexto.SaveChanges() > 0;
             }
             catch (Exception)
             {
@@ -48,21 +57,45 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
-            return paso;
+            return ok;
+        }
+
+        private static bool Modificar(Clientes cliente)
+        {
+            Contexto contexto = new Contexto();
+            bool ok = false;
+
+            try
+            {
+                contexto.Entry(cliente).State = EntityState.Modified;
+                ok = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return ok;
         }
 
         public static bool Eliminar(int id)
         {
-            bool paso = false;
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
+            bool ok = false;
 
             try
             {
-                var eliminar = db.Clientes.Find(id);
-                db.Entry(eliminar).State = EntityState.Deleted;
-                paso = (db.SaveChanges() > 0);
+                var eliminar = contexto.Clientes.Find(id);
+                if (eliminar != null)
+                {
+                    contexto.Clientes.Remove(eliminar);
+                    ok = contexto.SaveChanges() > 0;
+                }
             }
             catch (Exception)
             {
@@ -70,19 +103,19 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
-            return paso;
+            return ok;
         }
 
         public static Clientes Buscar(int id)
         {
-            Clientes cliente = new Clientes();
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
+            Clientes cliente;
 
             try
             {
-                cliente = db.Clientes.Find(id);
+                cliente = contexto.Clientes.Find(id);
             }
             catch (Exception)
             {
@@ -90,19 +123,19 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
             return cliente;
         }
 
-        public static List<Clientes> GetList(Expression<Func<Clientes, bool>> cliente)
+        public static List<Clientes> GetList(Expression<Func<Clientes, bool>> criterio)
         {
             List<Clientes> Lista = new List<Clientes>();
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
 
             try
             {
-                Lista = db.Clientes.Where(cliente).ToList();
+                Lista = contexto.Clientes.Where(criterio).ToList();
             }
             catch (Exception)
             {
@@ -110,27 +143,9 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
             return Lista;
-        }
-
-        public static String ObtenerNombre(int id)
-        {
-            Clientes cliente = Buscar(id);
-            if (cliente == null)
-                return "No existe el cliente";
-            else
-                return cliente.Nombres;
-        }
-
-        public static String ObtenerApellido(int id)
-        {
-            Clientes cliente = Buscar(id);
-            if (cliente == null)
-                return "No existe el cliente";
-            else
-                return cliente.Apellidos; ;
         }
     }
 }

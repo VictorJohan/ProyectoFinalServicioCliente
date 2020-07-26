@@ -1,6 +1,7 @@
 ﻿using ProyectoFinalServicioCliente.UI.Login;
 using ProyectoFinalServicioCliente.UI.rArticulo;
 using ProyectoFinalServicioCliente.UI.rCategoria;
+using ProyectoFinalServicioCliente.UI.rCliente;
 using ProyectoFinalServicioCliente.UI.rCompras;
 using ProyectoFinalServicioCliente.UI.rEventos;
 using ProyectoFinalServicioCliente.UI.rSuplidor;
@@ -72,6 +73,12 @@ namespace ProyectoFinalServicioCliente
         {
             rEventos rEventos = new rEventos();
             rEventos.Show();
+        }
+
+        private void MenuItem_Click_7(object sender, RoutedEventArgs e)
+        {
+            rClientes rClientes = new rClientes();
+            rClientes.Show();
         }
     }
 }
