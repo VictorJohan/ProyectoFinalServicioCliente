@@ -11,15 +11,16 @@ namespace ProyectoFinalServicioCliente.BLL
 {
     public class VentasBLL
     {
+
         public static bool Guardar(Ventas venta)
         {
-            bool paso = false;
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
+            bool ok = false;
 
             try
             {
-                if (db.Ventas.Add(venta) != null)
-                    paso = (db.SaveChanges() > 0);
+                contexto.Ventas.Add(venta);
+                ok = contexto.SaveChanges() > 0;
             }
             catch (Exception)
             {
@@ -27,25 +28,25 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
-            return paso;
+            return ok;
         }
 
         public static bool Modificar(Ventas venta)
         {
-            bool paso = false;
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
+            bool ok = false;
 
             try
             {
-                db.Database.ExecuteSqlRaw($"Delete FROM VentasDetalle Where VentasId={venta.VentaId}");
+                contexto.Database.ExecuteSqlRaw($"Delete FROM VentasDetalle Where VentasId={venta.VentaId}");
                 foreach (var item in venta.VentasDetalles)
                 {
-                    db.Entry(item).State = EntityState.Added;
+                    contexto.Entry(item).State = EntityState.Added;
                 }
-                db.Entry(venta).State = EntityState.Modified;
-                paso = (db.SaveChanges() > 0);
+                contexto.Entry(venta).State = EntityState.Modified;
+                ok = contexto.SaveChanges() > 0;
             }
             catch (Exception)
             {
@@ -53,19 +54,20 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
-            return paso;
+            return ok;
         }
 
         public static Ventas Buscar(int id)
         {
-            Ventas venta = new Ventas();
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
+            Ventas venta;
 
             try
             {
-                venta = db.Ventas.Include(x => x.VentasDetalles).Where(x => x.VentaId == id).SingleOrDefault();
+                venta = contexto.Ventas.Where(v => v.VentaId == id).Include(v => v.VentasDetalles).
+                    ThenInclude(v => v.Articulo).SingleOrDefault();
             }
             catch (Exception)
             {
@@ -73,21 +75,24 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
             return venta;
         }
 
         public static bool Eliminar(int id)
         {
-            bool paso = false;
-            Contexto db = new Contexto();
+            bool ok = false;
+            Contexto contexto = new Contexto();
 
             try
             {
                 var eliminar = VentasBLL.Buscar(id);
-                db.Entry(eliminar).State = EntityState.Deleted;
-                paso = (db.SaveChanges() > 0);
+                if(eliminar != null)
+                {
+                    contexto.Entry(eliminar).State = EntityState.Deleted;
+                    ok = contexto.SaveChanges() > 0;
+                }
             }
             catch (Exception)
             {
@@ -95,19 +100,19 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
-            return paso;
+            return ok;
         }
 
-        public static List<Ventas> GetList(Expression<Func<Ventas, bool>> venta)
+        public static List<Ventas> GetList(Expression<Func<Ventas, bool>> criterio)
         {
             List<Ventas> Lista = new List<Ventas>();
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
 
             try
             {
-                Lista = db.Ventas.Where(venta).ToList();
+                Lista = contexto.Ventas.Where(criterio).ToList();
             }
             catch (Exception)
             {
@@ -115,7 +120,7 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
             return Lista;
         }

@@ -84,8 +84,6 @@
     <Resource Include="Resources\search.png" />
     <Resource Include="Resources\suplidor.png" />
     <Resource Include="Resources\vendedor.png" />
-    <Resource Include="UI\Login\dariusz-sankowski-mj2NwYH3wBA-unsplash.jpg" />
-    <Resource Include="UI\Login\Presentacion.jpg" />
   </ItemGroup>
 
   <ItemGroup>
