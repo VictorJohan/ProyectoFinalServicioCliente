@@ -39,8 +39,6 @@
     <None Remove="Resources\search.png" />
     <None Remove="Resources\suplidor.png" />
     <None Remove="Resources\vendedor.png" />
-    <None Remove="UI\Login\dariusz-sankowski-mj2NwYH3wBA-unsplash.jpg" />
-    <None Remove="UI\Login\Presentacion.jpg" />
   </ItemGroup>
 
   <ItemGroup>
