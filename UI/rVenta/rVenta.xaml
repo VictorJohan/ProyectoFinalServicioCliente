@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rVenta"
         mc:Ignorable="d"
-        Title="Venta" Height="700" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Venta" Height="600" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
             <!--VentaId-->
             <Label Content="VentaId" FontSize="11"/>
             <StackPanel Orientation="Horizontal">
                 <!--VentaIdTextBox-->
-                <TextBox Name="VentaIdTextBox" Width="300" Height="20" HorizontalAlignment="Left" Margin="5,0"/>
+                <TextBox Name="VentaIdTextBox" Width="789" Text="{Binding VentaId}" Height="20" HorizontalAlignment="Left" Margin="5,0"/>
                 <!--Boton-->
                 <Button Name="BuscarButton" Width="60" Height="20" Click="BuscarButton_Click">
                     <StackPanel Orientation="Horizontal">
@@ -23,48 +23,20 @@
             </StackPanel>
 
             <!--Cedula-->
-            <Label Content="Cédula" FontSize="11"/>
-            <TextBox Name="CedulaTextBox" Width="300" Height="20" HorizontalAlignment="Left" Margin="5,0"/>
-            <!--Nombre-->
-            <Label Content="Nombre Cliente" FontSize="11" />
-            <TextBox Name="NombreTextBox" Width="300" Height="20" HorizontalAlignment="Left" Margin="5,0"/>
+            <Label Content="ClienteId" FontSize="11"/>
+            <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}" Height="20" Margin="5,0"/>
 
             <!--Fotografo-->
             <Label Content="FotografoId" FontSize="11"/>
-            <ComboBox Name="FotografoComboBox" Width="300" Height="20" SelectedValue="{Binding FotografoId}" HorizontalAlignment="Left" Margin="5,0"/>
+            <ComboBox Name="FotografoComboBox" Height="20" SelectedValue="{Binding FotografoId}"  Margin="5,0"/>
 
             <!--Fecha-->
             <Label Content="Fecha" FontSize="11"/>
-            <DatePicker Name="FechaDatePicker" Width="300" Height="20" Margin="5,0" Padding="-1" HorizontalAlignment="Left"/>
+            <DatePicker Name="FechaDatePicker" SelectedDate="{Binding Fecha}" Height="20" Margin="5,0" Padding="-1"/>
 
             <!--Monto-->
             <Label Content="Total" FontSize="11"/>
-            <TextBox Name="TotalTextBox" Width="300" Height="20" Margin="5,0" HorizontalAlignment="Left"/>
-
-            <GroupBox Header="Evento" Margin="5,9,5,0">
-                <StackPanel Orientation="Vertical">
-                    <!--Labels-->
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Id" FontSize="11" Padding="5,5,0,5"/>
-                        <Label Content="Descripción" FontSize="11" Margin="23,0,0,0" Width="65" Padding="3,5,5,5"/>
-                        <Label Content="Lugar" FontSize="11" Margin="218,0,0,0"/>
-                        <Label Content="Inicia" FontSize="11" Margin="188,0,0,0"/>
-                        <Label Content="Vence" FontSize="11" Margin="110,0,0,0"/>
-                        <Label Content="Precio" FontSize="11" Margin="108,0,0,0"/>
-                    </StackPanel>
-
-                    <!--TextBoxs-->
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox Name="EventoIdTextBox" Width="31" Height="20" HorizontalAlignment="Left" Margin="5,0,0,0"/>
-                        <TextBox Name="DescripcionTextBox" Width="281" Height="20" Margin="5,0,5,0"/>
-                        <TextBox Name="LugarTextBox" Width="220" Height="20"/>
-                        <DatePicker Name="IniciaDatePicker" Height="20" Padding="-1" Margin="5,0,0,0"/>
-                        <DatePicker Name="VenceDatePicker" Height="20" Padding="-1" Margin="5,0"/>
-                        <TextBox Name="PrecioTextBox" Width="80" Height="20"/>
-                    </StackPanel>
-
-                </StackPanel>
-            </GroupBox>
+            <TextBox Name="TotalTextBox" Height="20" IsReadOnly="True" Text="{Binding Total}" Margin="5,0"/>
 
             <GroupBox Header="Venta Detalle" Margin="5,9,5,0">
                 <StackPanel Orientation="Vertical">
@@ -82,7 +54,7 @@
                     <!--Barra de TextBox-->
                     <StackPanel Orientation="Horizontal">
                         <!--ComboBox Articulo-->
-                        <ComboBox Name="ArticuloIdComboBox" Width="46" Height="20" Margin="5,0" />
+                        <ComboBox Name="ArticuloIdComboBox" Width="46" Height="20" Margin="5,0" SelectionChanged="ArticuloIdComboBox_SelectionChanged"/>
 
                         <!--TextBox Descripcion-->
                         <TextBox Name="DescripcionDetalleTextBox" IsReadOnly="True" Width="242" Height="20" Margin="6,0,5,0"/>
@@ -121,8 +93,7 @@
                             <DataGridTextColumn Header="Categoria" Binding="{Binding Articulo.CategoriaId}"/>
                             <DataGridTextColumn Header="Precio" Binding="{Binding Articulo.Precio}"/>
                             <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"/>
-                            <DataGridTextColumn Header="EventoId" Binding="{Binding Evento.EventoId}"/>
-                            <DataGridTextColumn Header="Total" Binding="{Binding Subtotal}"/>
+                            <DataGridTextColumn Header="Subtotal" Binding="{Binding Subtotal}"/>
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -138,6 +109,32 @@
                 </StackPanel>
             </GroupBox>
 
+            <!--Panel de Botones-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="212" Margin="0,22,0,0">
+                <!--Nuevo-->
+                <Button Name="NuevoButton"  Width="60" Height="20" Click="NuevoButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/compra.png" />
+                        <Label Content="Nuevo" FontSize="11" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+                <!--Guardar-->
+                <Button Name="GuardarButton" Width="65" Height="20" Margin="5,0,0,0" HorizontalAlignment="Left" Click="GuardarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/save.png" />
+                        <Label Content="Guardar" FontSize="11" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+                <!--Eliminar-->
+                <Button Name="EliminarButton"  Width="65" Height="20" Margin="5,0" HorizontalAlignment="Left" Click="EliminarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/delete.png" />
+                        <Label Content="Eliminar" FontSize="11" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+            
         </StackPanel>
     </Grid>
 </Window>
