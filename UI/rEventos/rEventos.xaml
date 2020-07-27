@@ -14,7 +14,7 @@
             
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
-                <TextBox Name="EventoIdTextBox" Text="{Binding ClienteId}" Height="20" Width="911" Margin="5,0"/>
+                <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}" Height="20" Width="911" Margin="5,0"/>
 
                 <!--Boton-->
                 <Button Name="BuscarButton" Height="20" Width="69" Click="BuscarButton_Click">
@@ -27,9 +27,7 @@
 
             <!--ClienteId-->
 
-            <!--FotografoId-->
-            <Label Content="FotografoId" FontSize="11"/>                                <!--Ir a categoria y articulo.xamel.cs-->
-            <ComboBox Name="FotografoComboBox" Height="20" SelectedValue="{Binding FotografoId}"  Margin="5,0"/>
+           
             
             <!--Total-->
             <Label Content="Total" FontSize="11"/>
@@ -44,7 +42,7 @@
                         <Label Content="Lugar" FontSize="11" Margin="218,0,0,0"/>
                         <Label Content="Inicia" FontSize="11" Margin="188,0,0,0"/>
                         <Label Content="Vence" FontSize="11" Margin="110,0,0,0"/>
-                        <Label Content="Subtotal" FontSize="11" Margin="108,0,0,0"/>
+                        <Label Content="Precio" FontSize="11" Margin="108,0,0,0"/>
                     </StackPanel>
 
                     <!--TextBoxs-->
@@ -54,7 +52,7 @@
                         <TextBox Name="LugarTextBox" Width="220" Height="20"/>
                         <DatePicker Name="IniciaDatePicker" Height="20" Padding="-1" Margin="5,0,0,0"/>
                         <DatePicker Name="VenceDatePicker" Height="20" Padding="-1" Margin="5,0"/>
-                        <TextBox Name="SubtotalPrecioTextBox" Width="80" Height="20"/>
+                        <TextBox Name="PrecioTextBox" Width="80" Height="20"/>
                         
                         <!--Boton Agregar-->
                         <Button Name="AgregarButton"  Width="70" Height="20" Margin="10,0" Click="AgregarButton_Click">
@@ -66,6 +64,10 @@
 
                     </StackPanel>
 
+                    <!--FotografoId-->
+                    <Label Content="Fotografo" FontSize="11"/>
+                    <!--Ir a categoria y articulo.xamel.cs-->
+                    <ComboBox Name="FotografoComboBox" Width="281" Height="20" HorizontalAlignment="Left" Margin="5,0"/>
 
                     <!--DataGrid-->
                     <DataGrid Name="DetalleDataGrid" Width="962" Height="153" AutoGenerateColumns="False" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
@@ -73,9 +75,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}"/>
                             <DataGridTextColumn Header="Lugar" Binding="{Binding Lugar}"/>
+                            <DataGridTextColumn Header="Fotografo" Binding="{Binding FotografoId}"/>
                             <DataGridTextColumn Header="Inicio" Binding="{Binding Fecha}"/>
                             <DataGridTextColumn Header="Vence" Binding="{Binding FechaVencimiento}"/>
-                            <DataGridTextColumn Header="Subtotal" Binding="{Binding Subtotal}"/>
+                            <DataGridTextColumn Header="Precio" Binding="{Binding Precio}"/>
                         </DataGrid.Columns>
                     </DataGrid>
 

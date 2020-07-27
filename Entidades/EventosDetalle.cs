@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace ProyectoFinalServicioCliente.Entidades
@@ -14,6 +15,9 @@ namespace ProyectoFinalServicioCliente.Entidades
         public string Lugar { get; set; }
         public DateTime Fecha { get; set; } = DateTime.Now;
         public DateTime FechaVencimiento { get; set; } = DateTime.Now;
-        public double Subtotal { get; set; }
+        public double Precio { get; set; }
+        public int FotografoId { get; set; }
+        [ForeignKey("FotografoId")]
+        public virtual Fotografos Fotografo { get; set; }
     }
 }

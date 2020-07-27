@@ -76,19 +76,14 @@ namespace ProyectoFinalServicioCliente.Migrations
                 name: "Eventos",
                 columns: table => new
                 {
-                    EnventoId = table.Column<int>(nullable: false)
+                    ClienteId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UsuarioId = table.Column<int>(nullable: false),
-                    Descripcion = table.Column<string>(nullable: true),
-                    Lugar = table.Column<string>(nullable: true),
-                    Fecha = table.Column<DateTime>(nullable: false),
-                    FechaVencimiento = table.Column<DateTime>(nullable: false),
-                    Precio = table.Column<decimal>(nullable: false),
-                    Disponible = table.Column<bool>(nullable: false)
+                    Total = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Eventos", x => x.EnventoId);
+                    table.PrimaryKey("PK_Eventos", x => x.ClienteId);
                     table.ForeignKey(
                         name: "FK_Eventos_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
@@ -178,6 +173,37 @@ namespace ProyectoFinalServicioCliente.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EventosDetalle",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ClienteId = table.Column<int>(nullable: false),
+                    Descripcion = table.Column<string>(nullable: true),
+                    Lugar = table.Column<string>(nullable: true),
+                    Fecha = table.Column<DateTime>(nullable: false),
+                    FechaVencimiento = table.Column<DateTime>(nullable: false),
+                    Precio = table.Column<double>(nullable: false),
+                    FotografoId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EventosDetalle", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EventosDetalle_Eventos_ClienteId",
+                        column: x => x.ClienteId,
+                        principalTable: "Eventos",
+                        principalColumn: "ClienteId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EventosDetalle_Fotografos_FotografoId",
+                        column: x => x.FotografoId,
+                        principalTable: "Fotografos",
+                        principalColumn: "FotografoId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Ventas",
                 columns: table => new
                 {
@@ -244,28 +270,21 @@ namespace ProyectoFinalServicioCliente.Migrations
                 name: "VentasDetalle",
                 columns: table => new
                 {
-                    VentaDetalleId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     VentaId = table.Column<int>(nullable: false),
                     ArticuloId = table.Column<int>(nullable: false),
                     Cantidad = table.Column<int>(nullable: false),
-                    Monto = table.Column<double>(nullable: false),
-                    EventoId = table.Column<int>(nullable: false)
+                    Subtotal = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VentasDetalle", x => x.VentaDetalleId);
+                    table.PrimaryKey("PK_VentasDetalle", x => x.Id);
                     table.ForeignKey(
                         name: "FK_VentasDetalle_Articulos_ArticuloId",
                         column: x => x.ArticuloId,
                         principalTable: "Articulos",
                         principalColumn: "ArticuloId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_VentasDetalle_Eventos_EventoId",
-                        column: x => x.EventoId,
-                        principalTable: "Eventos",
-                        principalColumn: "EnventoId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_VentasDetalle_Ventas_VentaId",
@@ -306,7 +325,7 @@ namespace ProyectoFinalServicioCliente.Migrations
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "Fecha", "Nombres", "Usuario" },
-                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 26, 0, 23, 55, 458, DateTimeKind.Local).AddTicks(1107), "Usuario Nombre", "admin" });
+                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 27, 15, 3, 46, 588, DateTimeKind.Local).AddTicks(8195), "Usuario Nombre", "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articulos_CategoriaId",
@@ -354,6 +373,16 @@ namespace ProyectoFinalServicioCliente.Migrations
                 column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_EventosDetalle_ClienteId",
+                table: "EventosDetalle",
+                column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EventosDetalle_FotografoId",
+                table: "EventosDetalle",
+                column: "FotografoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Fotografos_UsuarioId",
                 table: "Fotografos",
                 column: "UsuarioId");
@@ -384,11 +413,6 @@ namespace ProyectoFinalServicioCliente.Migrations
                 column: "ArticuloId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_VentasDetalle_EventoId",
-                table: "VentasDetalle",
-                column: "EventoId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_VentasDetalle_VentaId",
                 table: "VentasDetalle",
                 column: "VentaId");
@@ -400,16 +424,19 @@ namespace ProyectoFinalServicioCliente.Migrations
                 name: "ComprasDetalle");
 
             migrationBuilder.DropTable(
+                name: "EventosDetalle");
+
+            migrationBuilder.DropTable(
                 name: "VentasDetalle");
 
             migrationBuilder.DropTable(
                 name: "Compras");
 
             migrationBuilder.DropTable(
-                name: "Articulos");
+                name: "Eventos");
 
             migrationBuilder.DropTable(
-                name: "Eventos");
+                name: "Articulos");
 
             migrationBuilder.DropTable(
                 name: "Ventas");

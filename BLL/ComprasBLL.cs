@@ -126,8 +126,11 @@ namespace ProyectoFinalServicioCliente.BLL
             try
             {
                 var eliminar = contexto.Compras.Find(id);
-                contexto.Entry(eliminar).State = EntityState.Deleted;
-                ok = contexto.SaveChanges() > 0;
+                if (eliminar != null)
+                {
+                    contexto.Entry(eliminar).State = EntityState.Deleted;
+                    ok = contexto.SaveChanges() > 0;
+                }
             }
             catch (Exception)
             {

@@ -9,7 +9,7 @@ using ProyectoFinalServicioCliente.DAL;
 namespace ProyectoFinalServicioCliente.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200726042356_Migracion_Inicial")]
+    [Migration("20200727190347_Migracion_Inicial")]
     partial class Migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -169,15 +169,34 @@ namespace ProyectoFinalServicioCliente.Migrations
 
             modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.Eventos", b =>
                 {
-                    b.Property<int>("EnventoId")
+                    b.Property<int>("ClienteId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("Total")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ClienteId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Eventos");
+                });
+
+            modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.EventosDetalle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ClienteId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");
-
-                    b.Property<bool>("Disponible")
-                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
@@ -185,20 +204,22 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<DateTime>("FechaVencimiento")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("FotografoId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Lugar")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("TEXT");
+                    b.Property<double>("Precio")
+                        .HasColumnType("REAL");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("INTEGER");
+                    b.HasKey("Id");
 
-                    b.HasKey("EnventoId");
+                    b.HasIndex("ClienteId");
 
-                    b.HasIndex("UsuarioId");
+                    b.HasIndex("FotografoId");
 
-                    b.ToTable("Eventos");
+                    b.ToTable("EventosDetalle");
                 });
 
             modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.Fotografos", b =>
@@ -300,7 +321,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                             UsuarioId = 1,
                             Apellidos = "Usuario Apellidos",
                             Contrasena = "MQAyADMA",
-                            Fecha = new DateTime(2020, 7, 26, 0, 23, 55, 458, DateTimeKind.Local).AddTicks(1107),
+                            Fecha = new DateTime(2020, 7, 27, 15, 3, 46, 588, DateTimeKind.Local).AddTicks(8195),
                             Nombres = "Usuario Nombre",
                             Usuario = "admin"
                         });
@@ -340,7 +361,7 @@ namespace ProyectoFinalServicioCliente.Migrations
 
             modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.VentasDetalle", b =>
                 {
-                    b.Property<int>("VentaDetalleId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -350,20 +371,15 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.Property<int>("Cantidad")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("EventoId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<double>("Monto")
+                    b.Property<double>("Subtotal")
                         .HasColumnType("REAL");
 
                     b.Property<int>("VentaId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("VentaDetalleId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ArticuloId");
-
-                    b.HasIndex("EventoId");
 
                     b.HasIndex("VentaId");
 
@@ -442,6 +458,21 @@ namespace ProyectoFinalServicioCliente.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.EventosDetalle", b =>
+                {
+                    b.HasOne("ProyectoFinalServicioCliente.Entidades.Eventos", null)
+                        .WithMany("EventosDetalles")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProyectoFinalServicioCliente.Entidades.Fotografos", "Fotografo")
+                        .WithMany()
+                        .HasForeignKey("FotografoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ProyectoFinalServicioCliente.Entidades.Fotografos", b =>
                 {
                     b.HasOne("ProyectoFinalServicioCliente.Entidades.Usuarios", "Usuario")
@@ -486,12 +517,6 @@ namespace ProyectoFinalServicioCliente.Migrations
                     b.HasOne("ProyectoFinalServicioCliente.Entidades.Articulos", "Articulo")
                         .WithMany()
                         .HasForeignKey("ArticuloId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProyectoFinalServicioCliente.Entidades.Eventos", "Evento")
-                        .WithMany("VentasDetalles")
-                        .HasForeignKey("EventoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

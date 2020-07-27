@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Windows;
 
 namespace ProyectoFinalServicioCliente.BLL
 {
@@ -26,7 +27,7 @@ namespace ProyectoFinalServicioCliente.BLL
 
             try
             {
-                ok = contexto.Eventos.Any(c => c.ClienteId == id);
+                ok = contexto.Eventos.Any(e => e.ClienteId == id);
             }
             catch (Exception)
             {
@@ -37,7 +38,6 @@ namespace ProyectoFinalServicioCliente.BLL
             {
                 contexto.Dispose();
             }
-
             return ok;
         }
 
@@ -60,7 +60,6 @@ namespace ProyectoFinalServicioCliente.BLL
             {
                 contexto.Dispose();
             }
-
             return ok;
         }
 
@@ -71,12 +70,11 @@ namespace ProyectoFinalServicioCliente.BLL
 
             try
             {
-                contexto.Database.ExecuteSqlRaw($"Delete FROM EventosDetalle Where ClienteId={evento.ClienteId}");
+                contexto.Database.ExecuteSqlRaw($"Delete FROM EventosDetalle where ClienteId={evento.ClienteId}");
                 foreach (var item in evento.EventosDetalles)
                 {
                     contexto.Entry(item).State = EntityState.Added;
                 }
-
                 contexto.Entry(evento).State = EntityState.Modified;
                 ok = contexto.SaveChanges() > 0;
             }
@@ -89,7 +87,6 @@ namespace ProyectoFinalServicioCliente.BLL
             {
                 contexto.Dispose();
             }
-
             return ok;
         }
 
@@ -100,7 +97,8 @@ namespace ProyectoFinalServicioCliente.BLL
 
             try
             {
-                evento = contexto.Eventos.Where(c => c.ClienteId == id).Include(c => c.EventosDetalles).SingleOrDefault();
+                evento = contexto.Eventos.Where(e => e.ClienteId == id).Include(d => d.EventosDetalles).
+                    ThenInclude(f => f.Fotografo).SingleOrDefault();
             }
             catch (Exception)
             {
@@ -123,8 +121,11 @@ namespace ProyectoFinalServicioCliente.BLL
             try
             {
                 var eliminar = contexto.Eventos.Find(id);
-                contexto.Entry(eliminar).State = EntityState.Deleted;
-                ok = contexto.SaveChanges() > 0;
+                if(eliminar != null)
+                {
+                    contexto.Entry(eliminar).State = EntityState.Deleted;
+                    ok = contexto.SaveChanges() > 0;
+                }
             }
             catch (Exception)
             {
@@ -135,7 +136,6 @@ namespace ProyectoFinalServicioCliente.BLL
             {
                 contexto.Dispose();
             }
-
             return ok;
         }
 
@@ -157,8 +157,8 @@ namespace ProyectoFinalServicioCliente.BLL
             {
                 contexto.Dispose();
             }
-
             return lista;
         }
+
     }
 }

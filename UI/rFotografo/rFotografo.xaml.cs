@@ -107,7 +107,7 @@ namespace ProyectoFinalServicioCliente.UI.rFotografo
         }
 
         //Este evento valida todos los campos.
-        public bool Validar()//todo: corregir la validacion de sueldo para que tome numeros grandes. Y revisar la validacion de la existencia email
+        public bool Validar()
         {
             //Valida que haya un Id valido en el campo ClienteId.
             if (!Regex.IsMatch(FotografoIdTextBox.Text, "^[1-9]+$"))
@@ -240,7 +240,7 @@ namespace ProyectoFinalServicioCliente.UI.rFotografo
                     return false;
                 }
             }
-            else if (ClientesBLL.ExisteEmail(CelularTextBox.Text))
+            else if (ClientesBLL.ExisteEmail(EmailTextBox.Text))
             {
                 MessageBox.Show("Asegurese que haya ingresado correctamente el correo electrónico.", $"El Email \"{EmailTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
@@ -284,7 +284,7 @@ namespace ProyectoFinalServicioCliente.UI.rFotografo
             }
 
             //Valida que se ingrese un sueldo valido
-            if (!Regex.IsMatch(SueldoTextBox.Text, @"^[0-9]{1,3}$|^[0-9]{1,3}\.[0-9]{1,3}$"))
+            if (!Regex.IsMatch(SueldoTextBox.Text, @"^[0-9]{1,8}$|^[0-9]{1,8}\.[0-9]{1,8}$"))
             {
                 MessageBox.Show("En el campo sueldo solo pueden haber caracteres numericos.", "Campo Sueldo.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
