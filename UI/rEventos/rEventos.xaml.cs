@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProyectoFinalServicioCliente.Entidades;
+using ProyectoFinalServicioFotografo.BLL;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,17 +19,55 @@ namespace ProyectoFinalServicioCliente.UI.rEventos
     /// </summary>
     public partial class rEventos : Window
     {
+        private Eventos Evento = new Eventos();
         public rEventos()
         {
             InitializeComponent();
+            this.DataContext = Evento;
+            FotografoComboBox.ItemsSource = FotografosBLL.GetList();
+            FotografoComboBox.SelectedValuePath = "FotografoId";
+            FotografoComboBox.DisplayMemberPath = "Nombres";
         }
 
-        private void EventoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void BuscarButton_Click(object sender, RoutedEventArgs e)
+        private void AgregarButton_Click(object sender, RoutedEventArgs e)
+        {
+           
+            var detalle = new EventosDetalle {
+                Descripcion = DescripcionTextBox.Text,
+                Lugar = LugarTextBox.Text,
+                Fecha = (DateTime)IniciaDatePicker.SelectedDate,
+                FechaVencimiento = (DateTime)VenceDatePicker.SelectedDate,
+                Subtotal = double.Parse(SubtotalPrecioTextBox.Text)
+            };
+            
+            Evento.EventosDetalles.Add(detalle);
+
+            Cargar();
+            DescripcionTextBox.Clear();
+            LugarTextBox.Clear();
+            IniciaDatePicker.SelectedDate = DateTime.Now;
+            VenceDatePicker.SelectedDate = DateTime.Now;
+            SubtotalPrecioTextBox.Clear();
+        }
+
+        private void RemoverButton_Click(object sender, RoutedEventArgs e)
+        {
+            Evento.EventosDetalles.RemoveAt(DetalleDataGrid.SelectedIndex);
+            Cargar();
+        }
+
+        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -37,14 +77,10 @@ namespace ProyectoFinalServicioCliente.UI.rEventos
 
         }
 
-        private void GuardarButton_Click(object sender, RoutedEventArgs e)
+        public void Cargar()
         {
-
-        }
-
-        private void NuevoButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            this.DataContext = null;
+            this.DataContext = Evento;
         }
     }
 }

@@ -7,6 +7,7 @@ using ProyectoFinalServicioCliente.UI.rEventos;
 using ProyectoFinalServicioCliente.UI.rFotografo;
 using ProyectoFinalServicioCliente.UI.rSuplidor;
 using ProyectoFinalServicioCliente.UI.rUsuarios;
+using ProyectoFinalServicioCliente.UI.rVenta;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,6 +91,10 @@ namespace ProyectoFinalServicioCliente
 
         }
 
-        
+        private void MenuItem_Click_9(object sender, RoutedEventArgs e)
+        {
+            rVenta rVenta = new rVenta();
+            rVenta.Show();
+        }
     }
 }

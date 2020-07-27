@@ -107,7 +107,7 @@ namespace ProyectoFinalServicioCliente.UI.rFotografo
         }
 
         //Este evento valida todos los campos.
-        public bool Validar()
+        public bool Validar()//todo: corregir la validacion de sueldo para que tome numeros grandes. Y revisar la validacion de la existencia email
         {
             //Valida que haya un Id valido en el campo ClienteId.
             if (!Regex.IsMatch(FotografoIdTextBox.Text, "^[1-9]+$"))

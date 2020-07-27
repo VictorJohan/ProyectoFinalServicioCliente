@@ -46,7 +46,6 @@
   <ItemGroup>
     <Folder Include="DAL\" />
     <Folder Include="DATA\" />
-    <Folder Include="UI\Presentacion\" />
   </ItemGroup>
 
   <ItemGroup>

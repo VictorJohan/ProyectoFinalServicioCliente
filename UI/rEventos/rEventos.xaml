@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rEventos"
         mc:Ignorable="d"
-        Title="rEventos" Height="300" Width="560">
+        Title="rEventos" Height="500" Width="1031">
     <Grid>
 
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
 
-            <Label Content="Evento Id" FontSize="11"/>
+            <Label Content="ClienteId" FontSize="11"/>
             
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
-                <TextBox Name="EventoIdTextBox" Text="{Binding EventoId}" Height="20" Width="405" Margin="5,0"/>
+                <TextBox Name="EventoIdTextBox" Text="{Binding ClienteId}" Height="20" Width="911" Margin="5,0"/>
 
                 <!--Boton-->
                 <Button Name="BuscarButton" Height="20" Width="69" Click="BuscarButton_Click">
@@ -25,44 +25,74 @@
                 </Button>
             </StackPanel>
 
-            <!--Label: FotografoId/Inicio-->
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Fotógrafo" FontSize="11"/>
-                <Label Content="Inicio" FontSize="11" Margin="181,0,0,0"/>
-            </StackPanel>
+            <!--ClienteId-->
 
-            <!--TextBox/DatePicker: Fotografo Id/Inicio-->
-            <StackPanel Orientation="Horizontal">
-                <ComboBox Name="FografoIdTextBox" Height="20"  Width="230" SelectedValue="{Binding FotografoId}" HorizontalAlignment="Left" Margin="5,0"/>
-                <DatePicker Name="FechaInicioDatePicker" Height="20" Width="230" SelectedDate="{Binding Fecha}" HorizontalAlignment="Left" Margin="5,0" Padding="4,-1,0,0"/>
-            </StackPanel>
+            <!--FotografoId-->
+            <Label Content="FotografoId" FontSize="11"/>                                <!--Ir a categoria y articulo.xamel.cs-->
+            <ComboBox Name="FotografoComboBox" Height="20" SelectedValue="{Binding FotografoId}"  Margin="5,0"/>
+            
+            <!--Total-->
+            <Label Content="Total" FontSize="11"/>
+            <TextBox Name="TotalTextBox" Height="20" IsReadOnly="True" Text="{Binding Total}" Margin="5,0" />
 
-            <!--Label: Descripcion/Vence-->
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Descripción" FontSize="11"/>
-                <Label Content="Vence" FontSize="11" Margin="173,0,0,0"/>
-            </StackPanel>
+            <GroupBox Header="Evento Detalle" Margin="5,9,5,0">
+                <StackPanel Orientation="Vertical">
+                    <!--Labels-->
+                    <StackPanel Orientation="Horizontal">
 
-            <!--TextBox/DatePicker: Descripcion/Vence-->
-            <StackPanel Orientation="Horizontal">
-                <TextBox Name="DescripcionTextBox" Height="20" Width="230" Text="{Binding Descripcion}" HorizontalAlignment="Left" Margin="5,0"/>
-                <DatePicker Name="FechaFinDatePicker" Height="20" Width="230" SelectedDate="{Binding FechaVencimiento}" HorizontalAlignment="Left" Margin="5,0" Padding="4,-1,0,0"/>
-            </StackPanel>
+                        <Label Content="Descripción" FontSize="11" Width="66"/>
+                        <Label Content="Lugar" FontSize="11" Margin="218,0,0,0"/>
+                        <Label Content="Inicia" FontSize="11" Margin="188,0,0,0"/>
+                        <Label Content="Vence" FontSize="11" Margin="110,0,0,0"/>
+                        <Label Content="Subtotal" FontSize="11" Margin="108,0,0,0"/>
+                    </StackPanel>
 
-            <!--Label: Lugar/Precio-->
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Lugar" FontSize="11"/>
-                <Label Content="Precio" FontSize="11" Margin="202,0,0,0"/>
-            </StackPanel>
+                    <!--TextBoxs-->
+                    <StackPanel Orientation="Horizontal">
 
-            <!--TextBox/DatePicker: Lugar/Precio-->
-            <StackPanel Orientation="Horizontal">
-                <TextBox Name="LugarTextBox" Height="20" Width="230" Text="{Binding Lugar}" HorizontalAlignment="Left" Margin="5,0"/>
-                <TextBox Name="PrecioTextBox" Height="20" Width="230" Text="{Binding Precio}" HorizontalAlignment="Left" Margin="5,0"/>
-            </StackPanel>
+                        <TextBox Name="DescripcionTextBox" Width="281" Height="20" Margin="5,0,5,0"/>
+                        <TextBox Name="LugarTextBox" Width="220" Height="20"/>
+                        <DatePicker Name="IniciaDatePicker" Height="20" Padding="-1" Margin="5,0,0,0"/>
+                        <DatePicker Name="VenceDatePicker" Height="20" Padding="-1" Margin="5,0"/>
+                        <TextBox Name="SubtotalPrecioTextBox" Width="80" Height="20"/>
+                        
+                        <!--Boton Agregar-->
+                        <Button Name="AgregarButton"  Width="70" Height="20" Margin="10,0" Click="AgregarButton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Resources/agregar.png" />
+                                <Label Content="Agregar" FontSize="11" Margin="4,0" Padding="-1"/>
+                            </StackPanel>
+                        </Button>
+
+                    </StackPanel>
+
+
+                    <!--DataGrid-->
+                    <DataGrid Name="DetalleDataGrid" Width="962" Height="153" AutoGenerateColumns="False" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                              ItemsSource="{Binding EventosDetalles}" Margin="5,5,0,0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}"/>
+                            <DataGridTextColumn Header="Lugar" Binding="{Binding Lugar}"/>
+                            <DataGridTextColumn Header="Inicio" Binding="{Binding Fecha}"/>
+                            <DataGridTextColumn Header="Vence" Binding="{Binding FechaVencimiento}"/>
+                            <DataGridTextColumn Header="Subtotal" Binding="{Binding Subtotal}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!--Boton Remover-->
+                    <Button Name="RemoverButton"  Width="70" Height="20" Margin="5,5" HorizontalAlignment="Left" Click="RemoverButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/remover.png" />
+                            <Label Content="Remover" FontSize="11" Margin="4,0" Padding="-1"/>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+
+            </GroupBox>
 
             <!--Panel de Botones-->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="134,25,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="218" Height="23" Margin="0,16,0,0">
 
                 <Button Name="NuevoButton" Width="60" Height="20"  HorizontalContentAlignment="Left" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">

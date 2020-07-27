@@ -11,144 +11,154 @@ namespace ProyectoFinalServicioCliente.BLL
 {
     public class EventosBLL
     {
-        public static object Precio { get; private set; }
-
-        public static bool Guardar(Eventos eventos)
+        public static bool Guardar(Eventos evento)
         {
-            Contexto db = new Contexto();
-            bool paso = false;
+            if (!Existe(evento.ClienteId))
+                return Insertar(evento);
+            else
+                return Modificar(evento);
+        }
+
+        public static bool Existe(int id)
+        {
+            Contexto contexto = new Contexto();
+            bool ok = false;
 
             try
             {
-                if (db.Eventos.Add(eventos) != null)
+                ok = contexto.Eventos.Any(c => c.ClienteId == id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
+
+        private static bool Insertar(Eventos evento)
+        {
+            Contexto contexto = new Contexto();
+            bool ok = false;
+
+            try
+            {
+                contexto.Eventos.Add(evento);
+                ok = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return ok;
+        }
+
+        private static bool Modificar(Eventos evento)
+        {
+            Contexto contexto = new Contexto();
+            bool ok = false;
+
+            try
+            {
+                contexto.Database.ExecuteSqlRaw($"Delete FROM EventosDetalle Where ClienteId={evento.ClienteId}");
+                foreach (var item in evento.EventosDetalles)
                 {
-                    paso = (db.SaveChanges() > 0);
+                    contexto.Entry(item).State = EntityState.Added;
                 }
+
+                contexto.Entry(evento).State = EntityState.Modified;
+                ok = contexto.SaveChanges() > 0;
             }
-            catch
+            catch (Exception)
             {
+
                 throw;
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
-            return paso;
-        }
 
-        public static bool Modificar(Eventos eventos)
-        {
-            Contexto db = new Contexto();
-            bool paso = false;
-
-            try
-            {
-                db.Entry(eventos).State = EntityState.Modified;
-                paso = (db.SaveChanges() > 0);
-            }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
-                db.Dispose();
-            }
-            return paso;
-        }
-
-        public static bool Eliminar(int id)
-        {
-            Contexto db = new Contexto();
-            bool paso = false;
-
-            try
-            {
-                var eliminar = db.Eventos.Find(id);
-                db.Entry(eliminar).State = EntityState.Deleted;
-                paso = (db.SaveChanges() > 0);
-            }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
-                db.Dispose();
-            }
-            return paso;
+            return ok;
         }
 
         public static Eventos Buscar(int id)
         {
-            Contexto db = new Contexto();
-            Eventos eventos = new Eventos();
+            Contexto contexto = new Contexto();
+            Eventos evento;
 
             try
             {
-                eventos = db.Eventos.Find(id);
+                evento = contexto.Eventos.Where(c => c.ClienteId == id).Include(c => c.EventosDetalles).SingleOrDefault();
             }
-            catch
+            catch (Exception)
             {
+
                 throw;
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
-            return eventos;
+
+            return evento;
         }
 
-        public static List<Eventos> GetList(Expression<Func<Eventos, bool>> eventos)
+        public static bool Eliminar(int id)
         {
-            Contexto db = new Contexto();
-            List<Eventos> listado = new List<Eventos>();
+            Contexto contexto = new Contexto();
+            bool ok = false;
 
             try
             {
-                listado = db.Eventos.Where(eventos).ToList();
+                var eliminar = contexto.Eventos.Find(id);
+                contexto.Entry(eliminar).State = EntityState.Deleted;
+                ok = contexto.SaveChanges() > 0;
             }
-            catch
+            catch (Exception)
             {
+
                 throw;
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
-            return listado;
+
+            return ok;
         }
 
-        public static bool ObtenerDisponibilidad(int id)
+        public static List<Eventos> GetList(Expression<Func<Eventos, bool>> criterio)
         {
-            Eventos eventos = Buscar(id);
-            if (eventos == null)
-                return false;
-            else
+            Contexto contexto = new Contexto();
+            List<Eventos> lista = new List<Eventos>();
+
+            try
             {
-                if (eventos.Disponible == false)
-                    return false;
-                else
-                    return true;
+                lista = contexto.Eventos.Where(criterio).ToList();
             }
-        }
+            catch (Exception)
+            {
 
-        public static decimal ObtenerPrecio(int id)
-        {
-            Eventos eventos = Buscar(id);
-            if (eventos == null)
-                return 0.0m;
-            else
-                return eventos.Precio;
-        }
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
 
-        public static void CambiarDisponibilidad(int id, bool disponible)
-        {
-            Eventos evento = Buscar(id);
-            if (disponible == true)
-                evento.Disponible = false;
-            else
-                evento.Disponible = true;
+            return lista;
         }
     }
 }

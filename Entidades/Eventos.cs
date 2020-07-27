@@ -9,16 +9,20 @@ namespace ProyectoFinalServicioCliente.Entidades
     public class Eventos
     {
         [Key]
-        public int EnventoId { get; set; }
+        public int ClienteId { get; set; }
+        [ForeignKey("ClienteId")]
+        public virtual Clientes Cliente { get; set; } = new Clientes();
         public int UsuarioId { get; set; }
         [ForeignKey("UsuarioId")]
         public Usuarios Usuario { get; set; } = new Usuarios();
-        public string Descripcion { get; set; }
-        public string Lugar { get; set; }
-        public DateTime Fecha { get; set; } = DateTime.Now;
-        public DateTime FechaVencimiento { get; set; } = DateTime.Now;
-        public decimal Precio { get; set; }
-        public virtual List<VentasDetalle> VentasDetalles { get; set; } = new List<VentasDetalle>();
-        public bool Disponible { get; internal set; }
+        
+        public int FotografoId { get; set; }
+        [ForeignKey("FotografoId")]
+        public virtual Fotografos Fotografo { get; set; } = new Fotografos();
+        public double Total { get; set; }
+
+        [ForeignKey("ClienteId")]
+        public virtual List<EventosDetalle> EventosDetalles { get; set; } = new List<EventosDetalle>();
+        
     }
 }

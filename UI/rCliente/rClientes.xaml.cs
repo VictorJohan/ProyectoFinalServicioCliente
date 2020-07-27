@@ -118,7 +118,8 @@ namespace ProyectoFinalServicioCliente.UI.rCliente
 
             //Valida que no hayan campos vacios.
             if (ClienteIdTextBox.Text.Length == 0 || NombreTextBox.Text.Length == 0 || ApellidoTextBox.Text.Length == 0 || 
-                TelefonoTextBox.Text.Length == 0 || EmailTextBox.Text.Length == 0 || CelularTextBox.Text.Length == 0 || DireccionTextBox.Text.Length == 0)
+                TelefonoTextBox.Text.Length == 0 || EmailTextBox.Text.Length == 0 || CelularTextBox.Text.Length == 0 ||
+                DireccionTextBox.Text.Length == 0 || CedulaTextBox.Text.Length == 0)
             {
                 MessageBox.Show("Asegurese de haber llenado todos los campos.", "Campos vacios",
                     MessageBoxButton.OK, MessageBoxImage.Information);

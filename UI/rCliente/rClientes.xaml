@@ -39,8 +39,8 @@
 
             <!--Label: Cedula/Fecha Nacimiento-->
             <StackPanel Orientation="Horizontal">
-                <Label Content="Cédula (opcional)" FontSize="11"/>
-                <Label Content="Fecha Nacimiento" FontSize="11" Margin="144,0,0,0"/>
+                <Label Content="Cédula" FontSize="11"/>
+                <Label Content="Fecha Nacimiento" FontSize="11" Margin="195,0,0,0"/>
             </StackPanel>
 
             <!--TextBox/DatePicker: Cedula/Fecha Nacimiento-->

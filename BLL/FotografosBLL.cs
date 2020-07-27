@@ -150,6 +150,26 @@ namespace ProyectoFinalServicioFotografo.BLL
             return Lista;
         }
 
+        public static List<Fotografos> GetList()
+        {
+            Contexto contexto = new Contexto();
+            List<Fotografos> Lista = new List<Fotografos>();
+
+            try
+            {
+                Lista = contexto.Fotografos.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return Lista;
+        }
+
         public static bool ExisteEmail(string email)
         {
             Contexto contexto = new Contexto();
