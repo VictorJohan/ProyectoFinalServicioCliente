@@ -21,10 +21,10 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
     /// </summary>
     public partial class rCompras : Window
     {
-        
+
         private Compras Compra = new Compras();
         private Articulos articulo;
-        private double precio, total;
+        private double costo, total;
         private int cantidad;
         public rCompras()
         {
@@ -33,7 +33,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             //Se llena el ComboBox ArticulosId
             ArticuloIdComboBox.ItemsSource = ArticulosBLL.GetListArticulos();
             ArticuloIdComboBox.SelectedValuePath = "ArticuloId";
-            ArticuloIdComboBox.DisplayMemberPath = "ArticuloId";
+            ArticuloIdComboBox.DisplayMemberPath = "Descripcion";
             //Se llena el ComboBox Suplidores
             SuplidorComboBox.ItemsSource = SuplidoresBLL.GetSuplidores();
             SuplidorComboBox.SelectedValuePath = "SuplidorId";
@@ -67,10 +67,9 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
         //Evento que agregara el articulo al detalle.
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!ValidarAgregar())
+            if (!ValidarAgregar())//todo: hacer los cambios en el codigo para que afecte la tabla. *Revisar el xamel y ver que todo este bien
                 return;
 
-            double costo = double.Parse(PrecioDetalleTextBox.Text) * int.Parse(CantidadDetalleTextBox.Text);
             Articulos Aux;//Este auxiliar hara los cambios en la base de datos;
             Aux = ArticulosBLL.Buscar(int.Parse(ArticuloIdComboBox.SelectedValue.ToString()));
 
@@ -86,9 +85,8 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             Compra.ComprasDetalles.Add(detalle);
 
             Aux.Stock += int.Parse(CantidadDetalleTextBox.Text);
-            Aux.Costo = double.Parse(PrecioDetalleTextBox.Text);
-            Aux.Precio = double.Parse(PrecioVentaTextBox.Text);
-            Compra.Monto += costo;
+            Aux.Costo = double.Parse(CostoDetalleTextBox.Text);
+            Compra.Monto += total;
 
             ArticulosBLL.Guardar(Aux);
 
@@ -182,57 +180,53 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             this.DataContext = Compra;
         }
 
-        //Los 2 metodos de abajo son para los calculos del total.
-        private void PrecioDetalleTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            total = 0;
-
-            if (!Regex.IsMatch(PrecioDetalleTextBox.Text, @"^[0-9]{1,3}$|^[0-9]{1,3}\.[0-9]{1,3}$"))
-
-                precio = 0;
-            else
-                precio = double.Parse(PrecioDetalleTextBox.Text);
-
-            total = cantidad * precio;
-            TotalDetalleTextBox.Text = total.ToString();
-        }
-
+        //Calcula el total
         private void CantidadDetalleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!Regex.IsMatch(CantidadDetalleTextBox.Text, "^[1-9]+$"))
+            {
                 cantidad = 0;
+            }
             else
+            {
                 cantidad = int.Parse(CantidadDetalleTextBox.Text);
 
-            total = cantidad * precio;
-            TotalDetalleTextBox.Text = total.ToString();
+                total = cantidad * costo;
+                TotalDetalleTextBox.Text = total.ToString();
+
+            }
         }
-        //Los 2 metodos de arriba son para los calculos del total.
+        //Calcula el total
+        private void CostoDetalleTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!Regex.IsMatch(CostoDetalleTextBox.Text, "^[1-9]+$"))
+            {
+                costo = 0;
+            }
+            else
+            {
+                costo = double.Parse(CostoDetalleTextBox.Text);
+                total = cantidad * costo;
+                TotalDetalleTextBox.Text = total.ToString();
+            }
+        }
 
         //Este SelectionChanged es para selecionar el articulo que llenara los TextBox del detalle.
         private void ArticuloIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ArticuloIdComboBox.SelectedIndex == -1)
                 return;
-            
+
             articulo = (Articulos)ArticuloIdComboBox.SelectedItem;
             articulo.ArticuloId = 0;
-            DescripcionDetalleTextBox.Text = articulo.Descripcion;
-            StockDetalleTextBox.Text = articulo.Stock.ToString();
-            CategoriaDetalleTextBox.Text = articulo.CategoriaId.ToString();
-            PrecioVentaTextBox.Text = articulo.Precio.ToString();
-            PrecioDetalleTextBox.Text = articulo.Costo.ToString();
+            CostoDetalleTextBox.Text = articulo.Costo.ToString();
         }
 
         //Limpia los campos del detalle.
         public void LimpiarDetalle()
         {
             ArticuloIdComboBox.SelectedIndex = -1;
-            DescripcionDetalleTextBox.Clear();
-            StockDetalleTextBox.Clear();
-            CategoriaDetalleTextBox.Clear();
-            PrecioVentaTextBox.Clear();
-            PrecioDetalleTextBox.Clear();
+            CostoDetalleTextBox.Clear();
             CantidadDetalleTextBox.Clear();
             TotalDetalleTextBox.Clear();
             ArticuloIdComboBox.Focus();
@@ -257,9 +251,8 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             }
 
             //Valida que no haya campos vacios.
-            if(DescripcionDetalleTextBox.Text.Length == 0 || StockDetalleTextBox.Text.Length == 0 ||
-                CategoriaDetalleTextBox.Text.Length == 0 || PrecioVentaTextBox.Text.Length == 0 ||
-                PrecioDetalleTextBox.Text.Length == 0 || CantidadDetalleTextBox.Text.Length == 0)
+            if (ArticuloIdComboBox.SelectedIndex == -1 || CostoDetalleTextBox.Text.Length == 0 ||
+                CantidadDetalleTextBox.Text.Length == 0)
             {
                 MessageBox.Show("Asegurese de que no haya campos vacios en el detalle antes de agregar.", "Campos vacios.", MessageBoxButton.OK,
                     MessageBoxImage.Warning);
@@ -268,7 +261,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             }
 
             //Valida que haya un dato valido en el precio detalle.
-            if (!Regex.IsMatch(PrecioDetalleTextBox.Text, @"^[0-9]{1,3}$|^[0-9]{1,3}\.[0-9]{1,3}$"))
+            if (!Regex.IsMatch(CostoDetalleTextBox.Text, @"^[0-9]{1,3}$|^[0-9]{1,3}\.[0-9]{1,3}$"))
             {
                 MessageBox.Show("Solo puede introducir caracteres numericos.", "Costo de articulo no valido.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -307,5 +300,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
 
             return true;
         }
+
+
     }
 }

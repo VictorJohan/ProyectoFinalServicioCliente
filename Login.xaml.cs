@@ -1,5 +1,4 @@
-﻿
-using ProyectoFinalServicioCliente.BLL;
+﻿using ProyectoFinalServicioCliente.BLL;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ProyectoFinalServicioCliente.UI.Login
+
+namespace ProyectoFinalServicioCliente
 {
     /// <summary>
     /// Interaction logic for Login.xaml
@@ -35,7 +35,7 @@ namespace ProyectoFinalServicioCliente.UI.Login
 
         private void IngresarButton_Click1(object sender, RoutedEventArgs e)
         {
-            bool paso = UsuariosBLL.Validar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
+            bool paso = UsuariosBLL.Autenticar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
 
             if (paso)
             {
