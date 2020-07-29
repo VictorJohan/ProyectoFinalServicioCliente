@@ -38,7 +38,7 @@
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" >
                 <DataGrid Name="ConsultaDataGrid" Width="572" Height="100" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
-                              ItemsSource="{Binding ClientesDetalles}" Margin="5,5,0,0">
+                              ItemsSource="{Binding ClientesConsultas}" Margin="5,5,0,0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ClienteId" IsReadOnly="True" Binding="{Binding ClienteId}"/>
                         <DataGridTextColumn Header="Nombres" Binding="{Binding Clientes.Nombres}"/>

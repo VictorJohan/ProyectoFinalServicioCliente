@@ -1,18 +1,24 @@
-﻿<Window x:Class="ProyectoFinalServicioCliente.UI.Consultas.cCategorias"
+﻿<Window x:Class="ProyectoFinalServicioCliente.UI.Consultas.cCompras"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="cCategorias" Height="200" Width="600">
+        Title="cCompras" Height="200" Width="650">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
             <StackPanel Orientation="Horizontal" Height="58">
-                <StackPanel/>
+                <StackPanel>
+                    <Label Content="Desde:"/>
+                    <DatePicker x:Name="DesdeDataPicker"/>
+                </StackPanel>
 
-                <StackPanel Orientation="Vertical" Margin="5,0"/>
+                <StackPanel Orientation="Vertical" Margin="5,0">
+                    <Label Content="Hasta:" />
+                    <DatePicker x:Name="HastaDatePicker"/>
+                </StackPanel>
 
                 <StackPanel Margin="5,0">
                     <Label Content="Filtro:" />
@@ -38,10 +44,14 @@
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" >
                 <DataGrid Name="ConsultaDataGrid" Width="572" Height="100" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
-                              ItemsSource="{Binding ClientesConsulta}" Margin="5,5,0,0">
+                              ItemsSource="{Binding ComoprasConsulta}" Margin="5,5,0,0">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Categoria Id" IsReadOnly="True" Binding="{Binding CategoriaId}"/>
-                        <DataGridTextColumn Header="Categoria" Binding="{Binding Clientes.Categoria}"/>
+                        <DataGridTextColumn Header="Compra Id" IsReadOnly="True" Binding="{Binding ComprasId}"/>
+                        <DataGridTextColumn Header="Suplidor" Binding="{Binding Consulta.Suplidor}"/>
+                        <DataGridTextColumn Header="Descripción" Binding="{Binding Consulta.Descripcion}"/>
+                        <DataGridTextColumn Header="Costo" Binding="{Binding Cunsulta.Costo}"/>
+                        <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"/>
+                        <DataGridTextColumn Header="Total" Binding="{Binding Total}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
