@@ -113,7 +113,8 @@
                     </StackPanel>
 
                     <!--DataGrid-->
-                    <DataGrid Name="DetalleDataGrid" Width="567" BorderBrush="Black" Height="100" AutoGenerateColumns="False" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                    <DataGrid Name="DetalleDataGrid" Width="567" BorderBrush="Black" Height="100" AutoGenerateColumns="False" 
+                              AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
                               ItemsSource="{Binding ComprasDetalles}" Margin="5,5,0,0">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding ArticuloId}"/>
