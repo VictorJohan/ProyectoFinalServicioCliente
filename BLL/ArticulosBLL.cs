@@ -4,6 +4,7 @@ using ProyectoFinalServicioCliente.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace ProyectoFinalServicioCliente.BLL
@@ -86,7 +87,7 @@ namespace ProyectoFinalServicioCliente.BLL
             return ok;
         }
 
-        public static Articulos  Buscar(int id)
+        public static Articulos Buscar(int id)
         {
             Contexto contexto = new Contexto();
             Articulos articulos;
@@ -156,5 +157,43 @@ namespace ProyectoFinalServicioCliente.BLL
 
             return lista;
         }
+        public static List<Articulos> GetList(Expression<Func<Articulos, bool>> articulos)
+        {
+            Contexto db = new Contexto();
+            List<Articulos> listado = new List<Articulos>();
+
+            try
+            {
+                listado = db.Articulos.Where(articulos).ToList();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+            return listado;
+        }
+        public static double ObtenerPrecio(int id)
+        {
+            Articulos articulo = Buscar(id);
+            if (articulo == null)
+                return 0.0;
+            else
+                return articulo.Precio;
+        }
+
+        public static decimal ObtenerCantidad(int id)
+        {
+            Articulos articulo = Buscar(id);
+            if (articulo == null)
+                return 0.0m;
+            else
+                return articulo.Stock;
+
+        }
     }
 }
+ 
