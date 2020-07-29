@@ -44,7 +44,7 @@
 
                 <Label Content="Nombre Usuario" FontSize="15" Foreground="White" Margin="9,0,0,0"/>
 
-                <TextBox x:Name="NombreUsuarioTextBox" BorderBrush="Black" HorizontalAlignment="Center" Margin="5,0" Width="247" Height="25" Text="{Binding NombreUsuario}" Padding="0,5,0,0" >
+                <TextBox x:Name="NombreUsuarioTextBox" BorderBrush="Black" HorizontalAlignment="Center" Margin="5,0" Width="247" Height="25" Text="{Binding NombreUsuario}" Padding="0,5,0,0" KeyDown="NombreUsuarioTextBox_KeyDown" >
                     <TextBox.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
@@ -56,7 +56,7 @@
                 <Label Content="Contraseña" FontSize="15" Foreground="White" Margin="10,0,0,0"/>
                 <PasswordBox x:Name="ContrasenaPasswordBox" HorizontalAlignment="Center" Margin="5,0" BorderBrush="Black" Width="247" Height="25" 
                              PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="0,4,0,0">
+                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="0,4,0,0" KeyDown="ContrasenaPasswordBox_KeyDown">
                     <PasswordBox.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>

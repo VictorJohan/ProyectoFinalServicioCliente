@@ -17,6 +17,7 @@ namespace ProyectoFinalServicioCliente.Entidades
         public int Stock { get; set; }
         public double Precio { get; set; }
         public double Costo { get; set; }
+        public double Ganancia { get; set; }
         public int CategoriaId { get; set; }
 
         [ForeignKey("CategoriaId")]

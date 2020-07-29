@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 
+
 namespace ProyectoFinalServicioCliente
 {
     /// <summary>
@@ -50,6 +51,19 @@ namespace ProyectoFinalServicioCliente
                 ContrasenaPasswordBox.Clear();
                 NombreUsuarioTextBox.Focus();
             }
+        }
+
+        private void NombreUsuarioTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                ContrasenaPasswordBox.Focus();
+
+        }
+
+        private void ContrasenaPasswordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                IngresarButton.Focus();
         }
     }
 }

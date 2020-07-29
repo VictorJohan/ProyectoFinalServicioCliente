@@ -153,6 +153,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                     Stock = table.Column<int>(nullable: false),
                     Precio = table.Column<double>(nullable: false),
                     Costo = table.Column<double>(nullable: false),
+                    Ganancia = table.Column<double>(nullable: false),
                     CategoriaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -325,7 +326,7 @@ namespace ProyectoFinalServicioCliente.Migrations
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "Fecha", "Nombres", "Usuario" },
-                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 28, 16, 48, 31, 892, DateTimeKind.Local).AddTicks(7418), "Usuario Nombre", "admin" });
+                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 28, 18, 46, 34, 354, DateTimeKind.Local).AddTicks(4456), "Usuario Nombre", "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articulos_CategoriaId",

@@ -9,7 +9,7 @@ using ProyectoFinalServicioCliente.DAL;
 namespace ProyectoFinalServicioCliente.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200728204832_Migracion_Inicial")]
+    [Migration("20200728224635_Migracion_Inicial")]
     partial class Migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace ProyectoFinalServicioCliente.Migrations
 
                     b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");
+
+                    b.Property<double>("Ganancia")
+                        .HasColumnType("REAL");
 
                     b.Property<double>("Precio")
                         .HasColumnType("REAL");
@@ -321,7 +324,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                             UsuarioId = 1,
                             Apellidos = "Usuario Apellidos",
                             Contrasena = "MQAyADMA",
-                            Fecha = new DateTime(2020, 7, 28, 16, 48, 31, 892, DateTimeKind.Local).AddTicks(7418),
+                            Fecha = new DateTime(2020, 7, 28, 18, 46, 34, 354, DateTimeKind.Local).AddTicks(4456),
                             Nombres = "Usuario Nombre",
                             Usuario = "admin"
                         });

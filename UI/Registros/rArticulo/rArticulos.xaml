@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rArticulo"
         mc:Ignorable="d"
-        Title="Articulos" Height="379" Width="286" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/inventario.png">
+        Title="Articulos" Height="416" Width="286" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/inventario.png">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
             <Label Content="Articulo Id" FontSize="11"/>
@@ -35,18 +35,22 @@
 
             <!--Stock-->
             <Label Content="Stock" FontSize="11"/>
-            <TextBox Name="StockTextBox" Height="20" Width="230" Text="{Binding Stock}" HorizontalAlignment="Left" Margin="5,0"/>
-
-            <!--Precio-->
-            <Label Content="Precio" FontSize="11"/>
-            <TextBox Name="PrecioTextBox" Height="20" Width="230" Text="{Binding Precio}" HorizontalAlignment="Left" Margin="5,0"/>
+            <TextBox Name="StockTextBox" Height="20" Width="230" IsReadOnly="True" Text="{Binding Stock}" HorizontalAlignment="Left" Margin="5,0"/>
 
             <!--Costo-->
             <Label Content="Costo" FontSize="11"/>
-            <TextBox Name="CostoTextBox" Height="20" Width="230" Text="{Binding Costo}" HorizontalAlignment="Left" Margin="5,0"/>
+            <TextBox Name="CostoTextBox" Height="20" Width="230" IsReadOnly="True" Text="{Binding Costo}" HorizontalAlignment="Left" Margin="5,0"/>
+           
+            <!--Precio-->
+            <Label Content="Precio" FontSize="11"/>
+            <TextBox Name="PrecioTextBox" Height="20" Width="230" Text="{Binding Precio}" HorizontalAlignment="Left" Margin="5,0" TextChanged="PrecioTextBox_TextChanged"/>
 
+            <!--Ganancias-->
+            <Label Content="Ganancia" FontSize="11"/>
+            <TextBox Name="GananciasTextBox" Height="20" Width="230" IsReadOnly="True" Text="{Binding Ganancia}" HorizontalAlignment="Left" Margin="5,0" TextChanged="GananciasTextBox_TextChanged"/>
+           
             <!--Panel de Botones-->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="16,25,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="16,15,0,0">
 
                 <Button Name="NuevoButton" Width="60" Height="20"  HorizontalContentAlignment="Left" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">

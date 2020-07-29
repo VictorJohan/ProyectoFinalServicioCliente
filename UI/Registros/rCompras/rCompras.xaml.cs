@@ -199,7 +199,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
         //Calcula el total
         private void CostoDetalleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Regex.IsMatch(CostoDetalleTextBox.Text, "^[1-9]+$"))
+            if (!Regex.IsMatch(CostoDetalleTextBox.Text, @"^[0-9]{1,3}$|^[0-9]{1,3}\.[0-9]{1,3}$"))
             {
                 costo = 0;
             }
