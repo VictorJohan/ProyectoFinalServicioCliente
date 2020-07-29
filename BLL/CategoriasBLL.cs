@@ -4,6 +4,7 @@ using ProyectoFinalServicioCliente.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace ProyectoFinalServicioCliente.BLL
@@ -156,5 +157,24 @@ namespace ProyectoFinalServicioCliente.BLL
 
             return lista;
         }
+            public static List<Categorias> GetList(Expression<Func<Categorias, bool>> categorias)
+            {
+                Contexto db = new Contexto();
+                List<Categorias> listado = new List<Categorias>();
+
+                try
+                {
+                    listado = db.Categorias.Where(categorias).ToList();
+                }
+                catch
+                {
+                    throw;
+                }
+                finally
+                {
+                    db.Dispose();
+                }
+                return listado;
+            }
+        }
     }
-}
