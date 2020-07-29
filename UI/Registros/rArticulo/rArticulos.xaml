@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rArticulo"
         mc:Ignorable="d"
-        Title="Articulos" Height="416" Width="286" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/inventario.png">
+        Title="Registro Artículos" Height="416" Width="286" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/inventario.png">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
-            <Label Content="Articulo Id" FontSize="11"/>
+            <Label Content="Artículo Id" FontSize="11"/>
 
             <!--ArticuloIdTextBox y Boton Buscar dentro del panel-->
             <StackPanel Orientation="Horizontal">
@@ -30,7 +30,7 @@
             <TextBox Name="DescripcionTextBox" Height="20"  Width="230" Text="{Binding Descripcion}" HorizontalAlignment="Left" Margin="5,0"/>
 
             <!--Categoria-->
-            <Label Content="Categoria" FontSize="11"/>
+            <Label Content="Categoría" FontSize="11"/>
             <ComboBox Name="CategoriaComboBox" Width="230" SelectedValue="{Binding CategoriaId}" HorizontalAlignment="Left" Margin="5,0"/>
 
             <!--Stock-->

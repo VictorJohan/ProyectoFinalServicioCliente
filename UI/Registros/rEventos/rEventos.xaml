@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rEventos"
         mc:Ignorable="d"
-        Title="rEventos" Height="500" Width="1031">
+        Title="Registro Eventos" Height="500" Width="1031">
     <Grid>
 
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
 
-            <Label Content="ClienteId" FontSize="11"/>
+            <Label Content="Cliente Id" FontSize="11"/>
             
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
@@ -65,7 +65,7 @@
                     </StackPanel>
 
                     <!--FotografoId-->
-                    <Label Content="Fotografo" FontSize="11"/>
+                    <Label Content="Fotógrafo" FontSize="11"/>
                     <!--Ir a categoria y articulo.xamel.cs-->
                     <ComboBox Name="FotografoComboBox" Width="281" Height="20" HorizontalAlignment="Left" Margin="5,0"/>
 
@@ -75,7 +75,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}"/>
                             <DataGridTextColumn Header="Lugar" Binding="{Binding Lugar}"/>
-                            <DataGridTextColumn Header="Fotografo" Binding="{Binding FotografoId}"/>
+                            <DataGridTextColumn Header="Fotógrafo" Binding="{Binding FotografoId}"/>
                             <DataGridTextColumn Header="Inicio" Binding="{Binding Fecha}"/>
                             <DataGridTextColumn Header="Vence" Binding="{Binding FechaVencimiento}"/>
                             <DataGridTextColumn Header="Precio" Binding="{Binding Precio}"/>
@@ -99,7 +99,7 @@
 
                 <Button Name="NuevoButton" Width="60" Height="20"  HorizontalContentAlignment="Left" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/articulo.png" />
+                        <Image Source="/Resources/evento.png" />
                         <Label Content="Nuevo" FontSize="11" Margin="4,0" Padding="-1"/>
                     </StackPanel>
                 </Button>

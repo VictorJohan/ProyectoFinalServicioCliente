@@ -39,10 +39,10 @@ namespace ProyectoFinalServicioCliente.UI.rFotografo
         //Este evento busca un registro en la base de datos.
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            //Valida que haya un Id valido en el campo ClienteId.
+            //válida que haya un Id válido en el campo ClienteId.
             if (!Regex.IsMatch(FotografoIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El ClienteId solo puede ser de caracter numerico.", "Campo ClienteId.",
+                MessageBox.Show("El Cliente Id solo puede ser de carácter numérico.", "Campo Cliente Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -56,7 +56,7 @@ namespace ProyectoFinalServicioCliente.UI.rFotografo
             }
             else
             {
-                MessageBox.Show("Puede ser que el Fotografo no este registrado en la base de datos.", "No se encontro el Fotografo.", MessageBoxButton.OK,
+                MessageBox.Show("Puede ser que el Fotógrafo no este registrado en la base de datos.", "No se encontro el Fotógrafo.", MessageBoxButton.OK,
                    MessageBoxImage.Information);
             }
         }
@@ -70,17 +70,17 @@ namespace ProyectoFinalServicioCliente.UI.rFotografo
         //Este evento guarda un registro en la base de datos.
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Validar())
+            if (!válidar())
                 return;
 
             if (FotografosBLL.Guardar(Fotografo))
             {
                 Limpiar();
-                MessageBox.Show("El Fotografo fue registrado de forma exitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("El Fotógrafo fué registrado de forma Éxitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se logro registrar el Fotografo.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se logró registrar el Fotógrafo.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -89,7 +89,7 @@ namespace ProyectoFinalServicioCliente.UI.rFotografo
         {
             if (!Regex.IsMatch(FotografoIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El ClienteId solo puede ser de caracter numerico.", "Campo ClienteId.",
+                MessageBox.Show("El Cliente Id solo puede ser de carácter numérico.", "Campo Cliente Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -98,51 +98,51 @@ namespace ProyectoFinalServicioCliente.UI.rFotografo
             if (FotografosBLL.Eliminar(int.Parse(FotografoIdTextBox.Text)))
             {
                 Limpiar();
-                MessageBox.Show("Fotografo eliminado.", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Fotógrafo eliminado.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se logro eliminar el Fotografo.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se logró eliminar el Fotografo.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        //Este evento valida todos los campos.
-        public bool Validar()
+        //Este evento válida todos los campos.
+        public bool válidar()
         {
-            //Valida que haya un Id valido en el campo ClienteId.
+            //válida que haya un Id válido en el campo ClienteId.
             if (!Regex.IsMatch(FotografoIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El ClienteId solo puede ser de caracter numerico.", "Campo ClienteId.",
+                MessageBox.Show("El Cliente Id solo puede ser de carácter numérico.", "Campo Cliente Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
-            //Valida que no hayan campos vacios.
+            //válida que no hayan campos vacíos.
             if (FotografoIdTextBox.Text.Length == 0 || NombresTextBox.Text.Length == 0 || CedulaTextBox.Text.Length == 0 ||
-                TelefonoTextBox.Text.Length == 0 || EmailTextBox.Text.Length == 0 || CelularTextBox.Text.Length == 0 ||
-                DireccionTextBox.Text.Length == 0 || SueldoTextBox.Text.Length == 0)
+                EmailTextBox.Text.Length == 0 || CelularTextBox.Text.Length == 0 || DireccionTextBox.Text.Length == 0 || 
+                SueldoTextBox.Text.Length == 0)
             {
-                MessageBox.Show("Asegurese de haber llenado todos los campos.", "Campos vacios",
+                MessageBox.Show("Asegúrese de haber llenado todos los campos.", "Campos vacíos",
                     MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
-            //Valida que se haya introducido un nombre valido
+            //válida que se haya introducido un nombre válido
             if (!Regex.IsMatch(NombresTextBox.Text, "^[a-zA-Z'.\\s]{1,40}$"))
             {
-                MessageBox.Show("Solo se admiten caracteres alfabeticos.\nAsegúrese de no haber introducido espacios innecesarios.", "Nombre no valido.",
+                MessageBox.Show("Solo se admiten carácteres alfabeticos.\nAsegúrese de no haber introducido espacios innecesarios.", "Nombre no válido.",
                    MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
-            //Valida la edad del cliente
+            //válida la edad del cliente
             DateTime fechaActual = DateTime.Now;
             DateTime fechaNacimiento = FechaNacimientoDatePicker.SelectedDate.Value;
             TimeSpan ts = fechaActual - fechaNacimiento;
             int edad = (int)ts.TotalDays;
             if (edad < 4015/*edad en dias*/ || edad == 0)
             {
-                MessageBox.Show("La persona a la que intentas registrar es muy joven.", $"Esta persona tine {edad / 365} años.",
+                MessageBox.Show("La persona a la que intentas registrar es muy jóven.", $"Esta persona tine {edad / 365} años.",
                       MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
@@ -153,118 +153,118 @@ namespace ProyectoFinalServicioCliente.UI.rFotografo
                 return false;
             }
 
-            //Valida la dirreccion de correo electronico.
+            //válida la dirreccion de correo electrónico.
             if (!Regex.IsMatch(EmailTextBox.Text, "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*"))
             {
-                MessageBox.Show("La direccón de correo electrónico que ha introducido no es valida.", "Campo Email.",
+                MessageBox.Show("La direccón de correo electrónico que ha introducido no es válida.", "Campo Email.",
                    MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
-            //Valida que se le haya colocado el prefijo al telefono (ejemplo: +1).
-            if (!Regex.IsMatch(TelefonoTextBox.Text, @"^(\+[0-9]{1,12})$"))
+            //válida que se le haya colocado el prefijo al telefono (ejemplo: +1).
+            if (TelefonoTextBox.Text.Length != 0 && !Regex.IsMatch(TelefonoTextBox.Text, @"^(\+[0-9]{1,12})$"))
             {
-                MessageBox.Show("Asegurese de haber colocado el prefijo telefonico correspondiente.", "Número de teléfono no valido.",
+                MessageBox.Show("Asegúrese de haber colocado el prefijo telefonico correspondiente.", "Número de teléfono no válido.",
                   MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
-            //Valida que se le haya colocado el prefijo al celular no (ejemplo: +1).
+            //válida que se le haya colocado el prefijo al celular no (ejemplo: +1).
             if (!Regex.IsMatch(CelularTextBox.Text, @"^(\+[0-9]{1,12})$"))
             {
-                MessageBox.Show("Asegurese de haber colocado el prefijo telefonico correspondiente.", "Número celular no valido.",
+                MessageBox.Show("Asegúrese de haber colocado el prefijo telefonico correspondiente.", "Número celular no válido.",
                   MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
-            //Validando la longitud del telefono.
-            if (TelefonoTextBox.Text.Length < 8)
+            //válidando la longitud del telefono.
+            if (TelefonoTextBox.Text.Length != 0 && TelefonoTextBox.Text.Length < 8)
             {
-                MessageBox.Show("El número de teléfono no cumple con una longitud valida.", "Longitud no valida.",
+                MessageBox.Show("El número de teléfono no cumple con una longitud válida.", "Longitud no válida.",
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 
-            //Validando la longitud del celular.
+            //válidando la longitud del celular.
             if (CelularTextBox.Text.Length < 8)
             {
-                MessageBox.Show("El número celular no cumple con una longitud valida.", "Longitud no valida.",
+                MessageBox.Show("El número celular no cumple con una longitud válida.", "Longitud no válida.",
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 
-            //Ayudara con la validacion del campo cedula, telefono, email, celular.
+            //Ayudara con la válidacion del campo cedula, telefono, email, celular.
             var fotografo = ClientesBLL.Buscar(int.Parse(FotografoIdTextBox.Text));
 
-            //Validando que no se repita el mismo telefono en diferentes registros.
+            //válidando que no se repita el mismo telefono en diferentes registros.
             if (fotografo != null)
             {
                 if (FotografosBLL.ExisteTelefono(TelefonoTextBox.Text) && fotografo.Nombre != NombresTextBox.Text)
                 {
-                    MessageBox.Show("Asegurese que haya ingresado correctamente el número de teléfono.", $"El teléfono \"{TelefonoTextBox.Text}\" ya existe.",
+                    MessageBox.Show("Asegúrese que haya ingresado correctamente el número de teléfono.", $"El teléfono \"{TelefonoTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                     return false;
                 }
             }
             else if (FotografosBLL.ExisteTelefono(TelefonoTextBox.Text))
             {
-                MessageBox.Show("Asegurese que haya ingresado correctamente el número de teléfono.", $"El teléfono \"{TelefonoTextBox.Text}\" ya existe.",
+                MessageBox.Show("Asegúrese que haya ingresado correctamente el número de teléfono.", $"El teléfono \"{TelefonoTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
-            //Validando que no se repita el mismo celular en diferentes registros.
+            //válidando que no se repita el mismo celular en diferentes registros.
             if (fotografo != null)
             {
                 if (FotografosBLL.ExisteCelular(CelularTextBox.Text) && fotografo.Nombre != NombresTextBox.Text)
                 {
-                    MessageBox.Show("Asegurese que haya ingresado correctamente el número celular.", $"El celular \"{CelularTextBox.Text}\" ya existe.",
+                    MessageBox.Show("Asegúrese que haya ingresado correctamente el número celular.", $"El celular \"{CelularTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                     return false;
                 }
             }
             else if (FotografosBLL.ExisteCelular(CelularTextBox.Text))
             {
-                MessageBox.Show("Asegurese que haya ingresado correctamente el número celular.", $"El celular \"{CelularTextBox.Text}\" ya existe.",
+                MessageBox.Show("Asegúrese que haya ingresado correctamente el número celular.", $"El celular \"{CelularTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
-            //Validando que no se repita el mismo Email en diferentes registros.
+            //válidando que no se repita el mismo Email en diferentes registros.
             if (fotografo != null)
             {
                 if (FotografosBLL.ExisteEmail(EmailTextBox.Text) && fotografo.Nombre != NombresTextBox.Text)
                 {
-                    MessageBox.Show("Asegurese que haya ingresado correctamente el correo electrónico.", $"El Email \"{EmailTextBox.Text}\" ya existe.",
+                    MessageBox.Show("Asegúrese que haya ingresado correctamente el correo electrónico.", $"El Email \"{EmailTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                     return false;
                 }
             }
             else if (ClientesBLL.ExisteEmail(EmailTextBox.Text))
             {
-                MessageBox.Show("Asegurese que haya ingresado correctamente el correo electrónico.", $"El Email \"{EmailTextBox.Text}\" ya existe.",
+                MessageBox.Show("Asegúrese que haya ingresado correctamente el correo electrónico.", $"El Email \"{EmailTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
-            //Validando que no se repita la misma cedula en diferentes registros.
+            //válidando que no se repita la misma cedula en diferentes registros.
             if (fotografo != null)
             {
                 if (FotografosBLL.ExisteCedula(CedulaTextBox.Text) && fotografo.Nombre != NombresTextBox.Text)
                 {
-                    MessageBox.Show("Asegurese que haya ingresado correctamente la cedula.", $"La cedula \"{CedulaTextBox.Text}\" ya existe.",
+                    MessageBox.Show("Asegúrese que haya ingresado correctamente la cedula.", $"La cedula \"{CedulaTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                     return false;
                 }
             }
             else if (FotografosBLL.ExisteCedula(CedulaTextBox.Text))
             {
-                MessageBox.Show("Asegurese que haya ingresado correctamente la cedula.", $"La cedula \"{CedulaTextBox.Text}\" ya existe.",
+                MessageBox.Show("Asegúrese que haya ingresado correctamente la cédula.", $"La cédula \"{CedulaTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
-            //Valida que se haya seleccionado un sexo
+            //válida que se haya seleccionado un sexo
             if (SexoComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccione el sexo del fotografo.", "Sexo sin seleccionar.",
@@ -272,21 +272,21 @@ namespace ProyectoFinalServicioCliente.UI.rFotografo
                 return false;
             }
 
-            //Valida que la cedula tenga el formato adecuado
+            //válida que la cedula tenga el formato adecuado
             if (CedulaTextBox.Text.Length != 0)
             {
                 if (!Regex.IsMatch(CedulaTextBox.Text, @"\d{3}-\d{7}-\d{1}"))
                 {
-                    MessageBox.Show("Asegurece de cumplir con el siguiente formato: 111-1111111-1.", "Verifique que haya ingresado una cedula valida",
+                    MessageBox.Show("Asegúrese de cumplir con el siguiente formato: 111-1111111-1.", "Verifique que haya ingresado una cédula válida",
                       MessageBoxButton.OK, MessageBoxImage.Information);
                     return false;
                 }
             }
 
-            //Valida que se ingrese un sueldo valido
+            //válida que se ingrese un sueldo válido
             if (!Regex.IsMatch(SueldoTextBox.Text, @"^[0-9]{1,8}$|^[0-9]{1,8}\.[0-9]{1,8}$"))
             {
-                MessageBox.Show("En el campo sueldo solo pueden haber caracteres numericos.", "Campo Sueldo.",
+                MessageBox.Show("En el campo sueldo solo pueden haber carácteres numéricos.", "Campo Sueldo.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }

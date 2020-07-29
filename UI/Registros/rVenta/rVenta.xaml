@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rVenta"
         mc:Ignorable="d"
-        Title="Venta" Height="600" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Venta" Height="545" Width="640" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
             <!--VentaId-->
-            <Label Content="VentaId" FontSize="11"/>
+            <Label Content="Venta Id" FontSize="11"/>
             <StackPanel Orientation="Horizontal">
                 <!--VentaIdTextBox-->
-                <TextBox Name="VentaIdTextBox" Width="789" Text="{Binding VentaId}" Height="20" HorizontalAlignment="Left" Margin="5,0"/>
+                <TextBox Name="VentaIdTextBox" Width="530" Text="{Binding VentaId}" Height="20" HorizontalAlignment="Left" Margin="5,0"/>
                 <!--Boton-->
                 <Button Name="BuscarButton" Width="60" Height="20" Click="BuscarButton_Click">
                     <StackPanel Orientation="Horizontal">
@@ -23,11 +23,11 @@
             </StackPanel>
 
             <!--Cedula-->
-            <Label Content="ClienteId" FontSize="11"/>
+            <Label Content="Cliente Id" FontSize="11"/>
             <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}" Height="20" Margin="5,0"/>
 
             <!--Fotografo-->
-            <Label Content="FotografoId" FontSize="11"/>
+            <Label Content="Fotografo Id" FontSize="11"/>
             <ComboBox Name="FotografoComboBox" Height="20" SelectedValue="{Binding FotografoId}"  Margin="5,0"/>
 
             <!--Fecha-->
@@ -42,11 +42,8 @@
                 <StackPanel Orientation="Vertical">
                     <!--Labels-->
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="ArticuloId" FontSize="11" Padding="5,5,0,5"/>
                         <Label Content="Descripción" FontSize="11" Margin="6,0,0,0" Width="65" Padding="3,5,5,5"/>
-                        <Label Content="Stock" FontSize="11" Margin="185,0,0,0"/>
-                        <Label Content="Categoría" FontSize="11" Margin="23,0,0,0"/>
-                        <Label Content="Precio" FontSize="11" Margin="1,0,0,0"/>
+                        <Label Content="Precio" FontSize="11" Margin="186,0,0,0"/>
                         <Label Content="Cantidad" FontFamily="11" Margin="39,0,0,0"/>
                         <Label Content="Subtotal" FontFamily="11" Margin="23,0,0,0"/>
                     </StackPanel>
@@ -54,16 +51,11 @@
                     <!--Barra de TextBox-->
                     <StackPanel Orientation="Horizontal">
                         <!--ComboBox Articulo-->
-                        <ComboBox Name="ArticuloIdComboBox" Width="46" Height="20" Margin="5,0" SelectionChanged="ArticuloIdComboBox_SelectionChanged"/>
-
-                        <!--TextBox Descripcion-->
-                        <TextBox Name="DescripcionDetalleTextBox" IsReadOnly="True" Width="242" Height="20" Margin="6,0,5,0"/>
+                        <ComboBox Name="ArticuloIdComboBox" Width="247" Height="20" Margin="5,0" SelectionChanged="ArticuloIdComboBox_SelectionChanged"/>
 
                         <!--TextBox Stock-->
-                        <TextBox Name="StockDetalleTextBox" Width="50" IsReadOnly="True" Height="20" Margin="5,0"/>
 
                         <!--Categoria-->
-                        <TextBox Name="CategoriaDetalleTextBox" IsReadOnly="True" Width="47" Height="20" Margin="5,0"/>
 
                         <!--TextBox Precio Venta-->
                         <TextBox Name="PrecioVentaTextBox" IsReadOnly="True" Width="70" Height="20" Margin="5,0"/>
@@ -84,13 +76,11 @@
                     </StackPanel>
 
                     <!--DataGrid-->
-                    <DataGrid Name="DetalleDataGrid" Width="821" Height="100" AutoGenerateColumns="False" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                    <DataGrid Name="DetalleDataGrid" Width="572" Height="100" AutoGenerateColumns="False" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
                               ItemsSource="{Binding VentasDetalles}" Margin="5,5,0,0">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id" Binding="{Binding ArticuloId}"/>
+                            <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding ArticuloId}"/>
                             <DataGridTextColumn Header="Descripción" Binding="{Binding Articulo.Descripcion}"/>
-                            <DataGridTextColumn Header="Stock" Binding="{Binding Articulo.Stock}"/>
-                            <DataGridTextColumn Header="Categoria" Binding="{Binding Articulo.CategoriaId}"/>
                             <DataGridTextColumn Header="Precio" Binding="{Binding Articulo.Precio}"/>
                             <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"/>
                             <DataGridTextColumn Header="Subtotal" Binding="{Binding Subtotal}"/>
@@ -110,7 +100,7 @@
             </GroupBox>
 
             <!--Panel de Botones-->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="212" Margin="0,22,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,22,0,0">
                 <!--Nuevo-->
                 <Button Name="NuevoButton"  Width="60" Height="20" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
@@ -134,7 +124,7 @@
                 </Button>
 
             </StackPanel>
-            
+
         </StackPanel>
     </Grid>
 </Window>

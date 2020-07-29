@@ -32,7 +32,7 @@ namespace ProyectoFinalServicioCliente.UI.rSuplidor
         {
             if (!Regex.IsMatch(SuplidorIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El SuplidorId solo puede ser de caracter numerico.", "Campo SuplidorId.",
+                MessageBox.Show("El Suplidor Id solo puede ser de carácter numérico.", "Campo Suplidor Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -60,17 +60,17 @@ namespace ProyectoFinalServicioCliente.UI.rSuplidor
         //Evento que guardara un registro.
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Validar())
+            if (!válidar())
                 return;
 
             if (SuplidoresBLL.Guardar(Suplidor))
             {
                 Limpiar();
-                MessageBox.Show("El Suplidor fue registrado de forma exitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("El Suplidor fué registrado de forma Éxitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se logro registrar el Suplidor.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se logró registrar el Suplidor.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -79,7 +79,7 @@ namespace ProyectoFinalServicioCliente.UI.rSuplidor
         {
             if (!Regex.IsMatch(SuplidorIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El SuplidorId solo puede ser de caracter numerico.", "Campo SuplidorId.",
+                MessageBox.Show("El Suplidor Id solo puede ser de carácter numérico.", "Campo Suplidor Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -88,11 +88,11 @@ namespace ProyectoFinalServicioCliente.UI.rSuplidor
             if (SuplidoresBLL.Eliminar(int.Parse(SuplidorIdTextBox.Text)))
             {
                 Limpiar();
-                MessageBox.Show("Suplidor eliminado.", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Suplidor eliminado.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
             }                                     
             else
             {
-                MessageBox.Show("Algo salio mal, no se logro eliminar el Suplidor.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se logró eliminar el Suplidor.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }                                       
         }
 
@@ -103,83 +103,83 @@ namespace ProyectoFinalServicioCliente.UI.rSuplidor
             this.DataContext = Suplidor;
         }
 
-        //Este metodo valida los campos del WPF.
-        public bool Validar()
+        //Este metodo válida los campos del WPF.
+        public bool válidar()
         {
-            //Valida que haya un Id valido en el campo SuplidorId.
+            //válida que haya un Id válido en el campo SuplidorId.
             if(!Regex.IsMatch(SuplidorIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El SuplidorId solo puede ser de caracter numerico.", "Campo SuplidorId.", 
+                MessageBox.Show("El Suplidor Id solo puede ser de carácter numérico.", "Campo Suplidor Id.", 
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
-            //Ayudara con la validacion de la linea 147 y 164.
+            //Ayudara con la válidacion de la linea 147 y 164.
             var suplidor = SuplidoresBLL.Buscar(int.Parse(SuplidorIdTextBox.Text));
 
-            //Valida que no hayan campos vacios.
+            //válida que no hayan campos vacíos.
             if(SuplidorIdTextBox.Text.Length == 0 || NombresTextBox.Text.Length == 0 || TelefonoTextBox.Text.Length == 0 ||
                 EmailTextBox.Text.Length == 0)
             {
-                MessageBox.Show("Asegurese de haber llenado todos los campos.", "Campos vacios", 
+                MessageBox.Show("Asegúrese de haber llenado todos los campos.", "Campos vacíos", 
                     MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
             
-            //Valida la dirreccion de correo electronico.
+            //válida la dirreccion de correo electrónico.
             if(!Regex.IsMatch(EmailTextBox.Text, "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*"))
             {
-                MessageBox.Show("La direccón de correo electrónico que ha introducido no es valida.", "Campo Email.",
+                MessageBox.Show("La direccón de correo electrónico que ha introducido no es válida.", "Campo Email.",
                    MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
-            //Valida que se le haya colocado el prefijo al telefo no (ejemplo: +1).
+            //válida que se le haya colocado el prefijo al telefo no (ejemplo: +1).
             if(!Regex.IsMatch(TelefonoTextBox.Text, @"^(\+[0-9]{1,12})$"))
             {
-                MessageBox.Show("Asegurese de haber colocado el prefijo telefonico correspondiente.", "Número de teléfono no valido.",
+                MessageBox.Show("Asegúrese de haber colocado el prefijo telefonico correspondiente.", "Número de teléfono no válido.",
                   MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
-            //Validando la longitud del telefono.
+            //válidando la longitud del telefono.
             if (TelefonoTextBox.Text.Length < 8)
             {
-                MessageBox.Show("El número de teléfono no cumple con una longitud valida.", "Longitud no valida.",
+                MessageBox.Show("El número de teléfono no cumple con una longitud válida.", "Longitud no válida.",
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 
-            //Validando que no se repita el mismo telefono en diferentes registros.
+            //válidando que no se repita el mismo telefono en diferentes registros.
             if (suplidor != null)
             {
                 if (SuplidoresBLL.ExisteTelefono(TelefonoTextBox.Text) && suplidor.Nombres != NombresTextBox.Text)
                 {
-                    MessageBox.Show("Asegurese que haya ingresado correctamente el número de teléfono.", $"El teléfono \"{TelefonoTextBox.Text}\" ya existe.",
+                    MessageBox.Show("Asegúrese que haya ingresado correctamente el número de teléfono.", $"El teléfono \"{TelefonoTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                     return false;
                 }
             }
             else if (SuplidoresBLL.ExisteTelefono(TelefonoTextBox.Text))
             {
-                MessageBox.Show("Asegurese que haya ingresado correctamente el número de teléfono.", $"El teléfono \"{TelefonoTextBox.Text}\" ya existe.",
+                MessageBox.Show("Asegúrese que haya ingresado correctamente el número de teléfono.", $"El teléfono \"{TelefonoTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
-            //Validando que no se repita el mismo correo en diferentes registros.
+            //válidando que no se repita el mismo correo en diferentes registros.
             if (suplidor != null)
             {
                 if (SuplidoresBLL.ExisteEmail(EmailTextBox.Text) && suplidor.Nombres != NombresTextBox.Text)
                 {
-                    MessageBox.Show("Asegurese de haber ingresado correctamente la dirección de correo electrónico.", $"El Email \"{EmailTextBox.Text}\" ya existe.",
+                    MessageBox.Show("Asegúrese de haber ingresado correctamente la dirección de correo electrónico.", $"El Email \"{EmailTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                     return false;
                 }
             }
             else if (SuplidoresBLL.ExisteEmail(EmailTextBox.Text))
             {
-                MessageBox.Show("Asegurese de haber ingresado correctamente el número de teléfono.", $"El teléfono \"{EmailTextBox.Text}\" ya existe.",
+                MessageBox.Show("Asegúrese de haber ingresado correctamente el número de teléfono.", $"El teléfono \"{EmailTextBox.Text}\" ya existe.",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }

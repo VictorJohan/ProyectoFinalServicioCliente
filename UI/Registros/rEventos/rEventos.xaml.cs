@@ -35,7 +35,7 @@ namespace ProyectoFinalServicioCliente.UI.rEventos
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            //Valida que exista el cliente.
+            //válida que exista el cliente.
             if (!ClientesBLL.Existe(int.Parse(ClienteIdTextBox.Text)))
             {
                 MessageBox.Show("Este cliente no esta registrado.", "El Cliente no existe en la base de datos.",
@@ -43,9 +43,9 @@ namespace ProyectoFinalServicioCliente.UI.rEventos
                 return;
             }
 
-            if (!Regex.IsMatch(ClienteIdTextBox.Text, "^[1-9]+$"))//Valida que haya un valor valido en el campo ClienteId.
+            if (!Regex.IsMatch(ClienteIdTextBox.Text, "^[1-9]+$"))//válida que haya un valor válido en el campo ClienteId.
             {
-                MessageBox.Show("El Cliente Id solo puede ser de caracter numerico.", "Campo Clinete Id.",
+                MessageBox.Show("El Cliente Id solo puede ser de carácter numérico.", "Campo Clinete Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -66,7 +66,7 @@ namespace ProyectoFinalServicioCliente.UI.rEventos
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Validar())
+            if (!válidar())
                 return;
 
             var detalle = new EventosDetalle {
@@ -109,14 +109,14 @@ namespace ProyectoFinalServicioCliente.UI.rEventos
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Regex.IsMatch(ClienteIdTextBox.Text, "^[1-9]+$"))//Valida que haya un valor valido en el campo ClienteId.
+            if (!Regex.IsMatch(ClienteIdTextBox.Text, "^[1-9]+$"))//válida que haya un valor válido en el campo ClienteId.
             {
-                MessageBox.Show("El Cliente Id solo puede ser de caracter numerico.", "Campo Clinete Id.",
+                MessageBox.Show("El Cliente Id solo puede ser de carácter numérico.", "Campo Clinete Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            //Valida que exista el cliente.
+            //válida que exista el cliente.
             if (!ClientesBLL.Existe(int.Parse(ClienteIdTextBox.Text)))
             {
                 MessageBox.Show("El cliente debe estar registrado para poder agendar un evento.", "El Cliente no existe en la base de datos.",
@@ -127,19 +127,19 @@ namespace ProyectoFinalServicioCliente.UI.rEventos
             if (EventosBLL.Guardar(Evento))
             {
                 Limpiar();
-                MessageBox.Show("Los eventos fueron registrado de forma exitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Los eventos fuéron registrado de forma Éxitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se lograron registrar los eventos.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se lograron registrar los eventos.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Regex.IsMatch(ClienteIdTextBox.Text, "^[1-9]+$"))//Valida que haya un valor valido en el campo ArticuloId.
+            if (!Regex.IsMatch(ClienteIdTextBox.Text, "^[1-9]+$"))//válida que haya un valor válido en el campo ArticuloId.
             {
-                MessageBox.Show("El Cliente Id solo puede ser de caracter numerico.", "Campo Clinete Id.",
+                MessageBox.Show("El Cliente Id solo puede ser de carácter numérico.", "Campo Clinete Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -147,11 +147,11 @@ namespace ProyectoFinalServicioCliente.UI.rEventos
             if (EventosBLL.Eliminar(int.Parse(ClienteIdTextBox.Text)))
             {
                 Limpiar();
-                MessageBox.Show("Se han eliminado todos los eventos de este clinete.", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Se han eliminado todos los eventos de este clinete.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se lograron eliminar los eventos.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se lograron eliminar los eventos.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -167,17 +167,17 @@ namespace ProyectoFinalServicioCliente.UI.rEventos
             this.DataContext = Evento;
         }
 
-        public bool Validar()
+        public bool válidar()
         {
-            //Valida que haya un valor valido en el campo ClienteId.
+            //válida que haya un valor válido en el campo ClienteId.
             if (!Regex.IsMatch(ClienteIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El Cliente Id solo puede ser de caracter numerico.", "Campo Clinete Id.",
+                MessageBox.Show("El Cliente Id solo puede ser de carácter numérico.", "Campo Clinete Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
-            //Valida que exista el cliente.
+            //válida que exista el cliente.
             if (!ClientesBLL.Existe(int.Parse(ClienteIdTextBox.Text)))
             {
                 MessageBox.Show("El cliente debe estar registrado para poder agendar un evento.", "El Cliente no existe en la base de datos.",
@@ -185,49 +185,49 @@ namespace ProyectoFinalServicioCliente.UI.rEventos
                 return false;
             }
 
-            //Valida que no haya campos vacios.
+            //válida que no haya campos vacíos.
             if (DescripcionTextBox.Text.Length == 0 || LugarTextBox.Text.Length == 0 ||
                 PrecioTextBox.Text.Length == 0)
             {
-                MessageBox.Show("Asegurese de que no haya campos vacios en el detalle antes de agregar.", "Campos vacios.", MessageBoxButton.OK,
+                MessageBox.Show("Asegúrese de que no haya campos vacíos en el detalle antes de agregar.", "Campos vacíos.", MessageBoxButton.OK,
                     MessageBoxImage.Warning);
 
                 return false;
             }
 
-            //Valida que se haya selecionado las fechas.
+            //válida que se haya selecionado las fechas.
             if (IniciaDatePicker.SelectedDate == null || VenceDatePicker.SelectedDate == null)
             {
-                MessageBox.Show("Asegurese de haber selcionado la fecha de inicio y fin del evento antes de agregar.", 
-                    "Campos vacios.", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Asegúrese de haber selcionado la fecha de inicio y fin del evento antes de agregar.", 
+                    "Campos vacíos.", MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 return false;
             }
 
-            //Valida que la fecha de vencimineto sea mayor que la fecha de inicio
+            //válida que la fecha de vencimineto sea mayor que la fecha de inicio
             DateTime inicio = IniciaDatePicker.SelectedDate.Value;
             DateTime vence = VenceDatePicker.SelectedDate.Value;
             if(IniciaDatePicker.SelectedDate.Value > VenceDatePicker.SelectedDate.Value)
             {
-                MessageBox.Show("Asegurese de haber selcionado correctamente las fechas.",
+                MessageBox.Show("Asegúrese de haber selcionado correctamente las fechas.",
                     "La fecha de vencimiento es menor que la de inicio.", MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 return false;
             }
             
-            //Valida que se haya selccionado un fotografo
+            //válida que se haya selccionado un fotografo
             if(FotografoComboBox.SelectedIndex == -1)
             {
-                MessageBox.Show("Selecione un fotografo para poder agregar el evento.",
-                    "No ha selecionado fotografo.", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Selecione un fotógrafo para poder agregar el evento.",
+                    "No ha selecionado fotógrafo.", MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 return false;
             }
 
-            //Valida que se haya introducido un precio valido
+            //válida que se haya introducido un precio válido
             if (!Regex.IsMatch(PrecioTextBox.Text, @"^[0-9]{1,8}$|^[0-9]{1,8}\.[0-9]{1,8}$"))
             {
-                MessageBox.Show("En el campo precio solo pueden haber caracteres numericos.", "Campo Precio.",
+                MessageBox.Show("En el campo precio solo pueden haber carácteres numéricos.", "Campo Precio.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }

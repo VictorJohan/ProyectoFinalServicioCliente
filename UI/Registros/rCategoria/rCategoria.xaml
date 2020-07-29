@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rCategoria"
         mc:Ignorable="d"
-        Title="Categoria" Height="190" Width="259" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/categoria.png">
+        Title="Registro Categoría" Height="190" Width="259" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/categoria.png">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
             
-            <Label Content="CategoriaId" FontSize="11"/>
+            <Label Content="Categoría Id" FontSize="11"/>
 
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
@@ -25,7 +25,7 @@
                 
             </StackPanel>
 
-            <Label Content="Nombre Categoria" FontSize="11"/>
+            <Label Content="Categoría" FontSize="11"/>
             <TextBox Name="NombreTextBox" Text="{Binding Nombre}" HorizontalAlignment="Left" Height="20" Width="213" Margin="5,0"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="5,20,0,0">

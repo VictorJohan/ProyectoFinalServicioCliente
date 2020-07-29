@@ -31,7 +31,7 @@ namespace ProyectoFinalServicioCliente.UI.rCategoria
         {
             if (!Regex.IsMatch(CategoriaIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("La Categoria Id solo puede ser de caracter numerico.", "Campo Categoria Id.",
+                MessageBox.Show("La Categoria Id solo puede ser de carácter numérico.", "Campo Categoria Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -57,7 +57,7 @@ namespace ProyectoFinalServicioCliente.UI.rCategoria
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Validar())
+            if (!válidar())
             {
                 return;
             }
@@ -65,11 +65,11 @@ namespace ProyectoFinalServicioCliente.UI.rCategoria
             if (CategoriasBLL.Guardar(Categoria))
             {
                 Limpiar();
-                MessageBox.Show("Categoria guardada de forma exitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Categoria guardada de forma Éxitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se logro guardar la categoria.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se logró guardar la categoria.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -77,7 +77,7 @@ namespace ProyectoFinalServicioCliente.UI.rCategoria
         {
             if (!Regex.IsMatch(CategoriaIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("La Categoria Id solo puede ser de caracter numerico.", "Campo Categoria Id.",
+                MessageBox.Show("La Categoria Id solo puede ser de carácter numérico.", "Campo Categoria Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -85,11 +85,11 @@ namespace ProyectoFinalServicioCliente.UI.rCategoria
             if (CategoriasBLL.Eliminar(int.Parse(CategoriaIdTextBox.Text)))
             {
                 Limpiar();
-                MessageBox.Show("Categoria eliminada.", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Categoria eliminada.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se logro eliminar la categoria.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se logró eliminar la categoria.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -100,11 +100,11 @@ namespace ProyectoFinalServicioCliente.UI.rCategoria
             
         }
 
-        public bool Validar()
+        public bool válidar()
         {
             if(!Regex.IsMatch(CategoriaIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("La Categoria Id solo puede ser de caracter numerico.", "Campo Categoria Id.",
+                MessageBox.Show("La Categoria Id solo puede ser de carácter numérico.", "Campo Categoria Id.",
                      MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }

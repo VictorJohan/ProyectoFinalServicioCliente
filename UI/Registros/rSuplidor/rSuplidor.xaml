@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rSuplidor"
         mc:Ignorable="d"
-        Title="Suplidor" Height="290" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/vendedor.png">
+        Title="Registro Suplidor" Height="290" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/vendedor.png">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
-            <Label Content="SuplidorId" FontSize="11"/>
+            <Label Content="Suplidor Id" FontSize="11"/>
             <!--SuplidorIdTextBox y Boton Buscar dentro del panel-->
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->

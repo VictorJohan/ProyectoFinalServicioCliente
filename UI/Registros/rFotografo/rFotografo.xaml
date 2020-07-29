@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rFotografo"
         mc:Ignorable="d"
-        Title="Fotografo" Height="390" Width="540" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/camara.png">
+        Title="Registro Fotógrafo" Height="390" Width="540" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/camara.png">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
 
-            <Label Content="FotografoId" FontSize="11"/>
+            <Label Content="Fotógrafo Id" FontSize="11"/>
 
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
@@ -27,7 +27,7 @@
             <!--Label: Nombres/Cedula-->
             <StackPanel Orientation="Horizontal">
                 <Label Content="Nombre" FontSize="11"/>
-                <Label Content="Cedula" FontSize="11" Margin="190,0,0,0"/>
+                <Label Content="Cédula" FontSize="11" Margin="190,0,0,0"/>
             </StackPanel>
 
             <!--TextBox: Nombre/Cedula-->
@@ -63,7 +63,7 @@
             <!--Label: Celular/Telefono-->
             <StackPanel Orientation="Horizontal">
                 <Label Content="Celular" FontSize="11"/>
-                <Label Content="Teléfono Local" FontSize="11" Margin="197,0,0,0"/>
+                <Label Content="Teléfono Local (opcional)" FontSize="11" Margin="197,0,0,0"/>
             </StackPanel>
 
             <!--TextBox: Celular/Telefono-->

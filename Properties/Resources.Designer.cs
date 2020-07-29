@@ -123,6 +123,16 @@ namespace ProyectoFinalServicioCliente.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] evento {
+            get {
+                object obj = ResourceManager.GetObject("evento", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] inventario {
             get {
                 object obj = ResourceManager.GetObject("inventario", resourceCulture);

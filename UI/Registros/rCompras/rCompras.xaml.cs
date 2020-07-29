@@ -43,9 +43,9 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
         //Evento que buscara un registro.
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Regex.IsMatch(CompraIdTextBox.Text, "^[1-9]+$"))//Valida que haya un valor valido en el campo CompraId.
+            if (!Regex.IsMatch(CompraIdTextBox.Text, "^[1-9]+$"))//válida que haya un valor válido en el campo CompraId.
             {
-                MessageBox.Show("El Id de la compra solo puede ser de caracter numerico.", "Campo CompraId.",
+                MessageBox.Show("El Id de la compra solo puede ser de carácter numérico.", "Campo CompraId.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -67,7 +67,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
         //Evento que agregara el articulo al detalle.
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!ValidarAgregar())//todo: hacer los cambios en el codigo para que afecte la tabla. *Revisar el xamel y ver que todo este bien
+            if (!válidarAgregar())//todo: hacer los cambios en el codigo para que afecte la tabla. *Revisar el xamel y ver que todo este bien
                 return;
 
             Articulos Aux;//Este auxiliar hara los cambios en la base de datos;
@@ -121,18 +121,18 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
         //Evento que guardara un registro
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Validar())
+            if (!válidar())
                 return;
 
             if (ComprasBLL.Guardar(Compra))
             {
 
                 Limpiar();
-                MessageBox.Show("La Compra fue registrada de forma exitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("La Compra fué registrada de forma Éxitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se logro guardar el registro de compra.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se logró guardar el registro de compra.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -141,7 +141,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
         {
             if (!Regex.IsMatch(CompraIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El Id de la compra solo puede ser de caracter numerico.", "Campo CompraId.",
+                MessageBox.Show("El Id de la compra solo puede ser de carácter numérico.", "Campo CompraId.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -149,11 +149,11 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             if (ComprasBLL.Eliminar(int.Parse(CompraIdTextBox.Text)))
             {
                 Limpiar();
-                MessageBox.Show("Compra eliminada.", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Compra eliminada.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se logro eliminar la compra.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se logró eliminar la compra.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -239,39 +239,39 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             this.DataContext = Compra;
         }
 
-        //Este metodo validara los campos antes de agregar los datos.
-        public bool ValidarAgregar()
+        //Este metodo válidara los campos antes de agregar los datos.
+        public bool válidarAgregar()
         {
-            //Valida que haya un valor valido en el campo CompraId.
+            //válida que haya un valor válido en el campo CompraId.
             if (!Regex.IsMatch(CompraIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("La Compra Id solo puede ser de caracter numerico.", "Campo Compra Id.",
+                MessageBox.Show("La Compra Id solo puede ser de carácter numérico.", "Campo Compra Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
-            //Valida que no haya campos vacios.
+            //válida que no haya campos vacíos.
             if (ArticuloIdComboBox.SelectedIndex == -1 || CostoDetalleTextBox.Text.Length == 0 ||
                 CantidadDetalleTextBox.Text.Length == 0)
             {
-                MessageBox.Show("Asegurese de que no haya campos vacios en el detalle antes de agregar.", "Campos vacios.", MessageBoxButton.OK,
+                MessageBox.Show("Asegúrese de que no haya campos vacíos en el detalle antes de agregar.", "Campos vacíos.", MessageBoxButton.OK,
                     MessageBoxImage.Warning);
 
                 return false;
             }
 
-            //Valida que haya un dato valido en el precio detalle.
+            //válida que haya un dato válido en el precio detalle.
             if (!Regex.IsMatch(CostoDetalleTextBox.Text, @"^[0-9]{1,3}$|^[0-9]{1,3}\.[0-9]{1,3}$"))
             {
-                MessageBox.Show("Solo puede introducir caracteres numericos.", "Costo de articulo no valido.",
+                MessageBox.Show("Solo puede introducir carácteres numéricos.", "Costo de articulo no válido.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
-            //Valida que haya una cantidad valida en el TextBox.
+            //válida que haya una cantidad válida en el TextBox.
             if (!Regex.IsMatch(CantidadDetalleTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("Solo puede introducir caracteres numericos.", "Cantidad de articulo no valido.",
+                MessageBox.Show("Solo puede introducir carácteres numéricos.", "Cantidad de articulo no válido.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
@@ -279,18 +279,18 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             return true;
         }
 
-        //Este metodo valida los datos antes de guardar.
-        public bool Validar()
+        //Este metodo válida los datos antes de guardar.
+        public bool válidar()
         {
-            //Valida el campo CompraId
+            //válida el campo CompraId
             if (!Regex.IsMatch(CompraIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El Articulo Id solo puede ser de caracter numerico.", "Campo Articulo Id.",
+                MessageBox.Show("El Articulo Id solo puede ser de carácter numérico.", "Campo Articulo Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
-            //Valida el ComboBox
+            //válida el ComboBox
             if (SuplidorComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Debe selecionar un suplidor para registrar la compra.", "No hay un suplidor asignado a la compra.",

@@ -31,9 +31,9 @@ namespace ProyectoFinalServicioCliente.UI.rUsuarios
         //Boton que desencadenara el evento buscar para obtener un registro de la base de datos.
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Regex.IsMatch(UsuarioIdTextBox.Text, "^[1-9]+$"))//Valida que haya un valor valido en el campo UsuarioId
+            if (!Regex.IsMatch(UsuarioIdTextBox.Text, "^[1-9]+$"))//válida que haya un valor válido en el campo UsuarioId
             {
-                MessageBox.Show("El Usuario Id solo puede ser de caracter numerico.", "Campo Usuario Id.",
+                MessageBox.Show("El Usuario Id solo puede ser de carácter numérico.", "Campo Usuario Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -62,7 +62,7 @@ namespace ProyectoFinalServicioCliente.UI.rUsuarios
         //Boton que desencadenara el evento guardar en la base de datos.
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!ValidarGuardar())
+            if (!válidarGuardar())
                 return;
 
             Usuario.Contrasena = contra;//Se le asigna la contraseña encriptada a la propiedad.
@@ -70,11 +70,11 @@ namespace ProyectoFinalServicioCliente.UI.rUsuarios
             if (UsuariosBLL.Guardar(Usuario))
             {
                 Limpiar();
-                MessageBox.Show("El usuario fue guardado de forma exitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("El usuario fué guardado de forma Éxitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se logro guardar el usuario.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se logró guardar el usuario.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -83,7 +83,7 @@ namespace ProyectoFinalServicioCliente.UI.rUsuarios
         {
             if (!Regex.IsMatch(UsuarioIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El Usuario Id solo puede ser de caracter numerico.", "Campo Usuario Id.",
+                MessageBox.Show("El Usuario Id solo puede ser de carácter numérico.", "Campo Usuario Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -91,11 +91,11 @@ namespace ProyectoFinalServicioCliente.UI.rUsuarios
             if (UsuariosBLL.Eliminar(int.Parse(UsuarioIdTextBox.Text)))
             {
                 Limpiar();
-                MessageBox.Show("Usuario eliminado.", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Usuario eliminado.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se logro eliminar el usuario.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se logró eliminar el usuario.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         
@@ -119,34 +119,34 @@ namespace ProyectoFinalServicioCliente.UI.rUsuarios
             ConfirmarContraseñaPasswordBox.Clear();
         }
 
-        //Esta funcion valida los campos del Registro de usuarios y que no se cree dos usuarios con el mismo nombre de usuarios
-        public bool ValidarGuardar()
+        //Esta funcion válida los campos del Registro de usuarios y que no se cree dos usuarios con el mismo nombre de usuarios
+        public bool válidarGuardar()
         {
-            //Valida campo Usario Id
+            //válida campo Usario Id
             if (!Regex.IsMatch(UsuarioIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El Usuario Id solo puede ser de caracter numerico.", "Campo Usuario Id.",
+                MessageBox.Show("El Usuario Id solo puede ser de carácter numérico.", "Campo Usuario Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            //Se busca el Usuario del Id para ayudar con la validacion de los nombres de usuario repetido
+            //Se busca el Usuario del Id para ayudar con la válidacion de los nombres de usuario repetido
             var user = UsuariosBLL.Buscar(int.Parse(UsuarioIdTextBox.Text));
 
-            //Valida que las contraseñas se han iguales
+            //válida que las contraseñas se han iguales
             if (contra != confirmacion)
             {
                 MessageBox.Show("Debe confirmar la contraseña para guardar cambios o crear un usuario.", "Las contraseñas no coinciden.", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
-            //Valida que todos los campos esten llenos
+            //válida que todos los campos esten llenos
             if(UsuarioIdTextBox.Text.Length == 0 || NombresTextBox.Text.Length == 0 || ApellidosTextBox.Text.Length == 0 || NombreUsuarioTextBox.Text.Length == 0 || ContraseñaPasswordBox.Password.Length == 0)
             {
-                MessageBox.Show("No pueden haber campos vacios.", "Campos vacios.", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("No pueden haber campos vacíos.", "Campos vacíos.", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
-            //Valida si el Nombre de Usuario se repite en la base de datos
+            //válida si el Nombre de Usuario se repite en la base de datos
             if(user != null)
             {
                 if (UsuariosBLL.ExisteUsuario(NombreUsuarioTextBox.Text) && user.Usuario != NombreUsuarioTextBox.Text)

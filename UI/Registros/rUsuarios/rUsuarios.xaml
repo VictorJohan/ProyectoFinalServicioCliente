@@ -35,7 +35,7 @@
             <TextBox Name="ApellidosTextBox" Height="20" Width="230" Text="{Binding Apellidos}" HorizontalAlignment="Left" Margin="5,0"/>
 
             <!--Nombre Usuario-->
-            <Label Content="Nombre Usuario" FontSize="11"/>
+            <Label Content="Usuario" FontSize="11"/>
             <TextBox Name="NombreUsuarioTextBox" Height="20" Width="230" Text="{Binding Usuario}" HorizontalAlignment="Left" Margin="5,0"/>
 
             <!--Contraseña-->

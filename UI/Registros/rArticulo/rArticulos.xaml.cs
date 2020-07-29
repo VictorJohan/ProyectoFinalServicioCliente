@@ -36,9 +36,9 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
         //Boton que desencadenara el evento buscar para obtener un registro de la base de datos.
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Regex.IsMatch(ArticuloIdTextBox.Text, "^[1-9]+$"))//Valida que haya un valor valido en el campo ArticuloId.
+            if (!Regex.IsMatch(ArticuloIdTextBox.Text, "^[1-9]+$"))//válida que haya un valor válido en el campo ArticuloId.
             {
-                MessageBox.Show("El Articulo Id solo puede ser de caracter numerico.", "Campo Articulo Id.",
+                MessageBox.Show("El Articulo Id solo puede ser de carácter numérico.", "Campo Articulo Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -66,18 +66,18 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
         //Boton que desencadenara el evento guardar en la base de datos.
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!ValidarGuardar())
+            if (!válidarGuardar())
                 return;
 
             if (ArticulosBLL.Guardar(Articulo))
             {
                 
                 Limpiar();
-                MessageBox.Show("El Articulo fue guardado de forma exitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("El Articulo fué guardado de forma Éxitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se logro guardar el Articulo.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se logró guardar el Articulo.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -86,7 +86,7 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
 
             if (!Regex.IsMatch(ArticuloIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El Articulo Id solo puede ser de caracter numerico.", "Campo Articulo Id.",
+                MessageBox.Show("El Articulo Id solo puede ser de carácter numérico.", "Campo Articulo Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -94,11 +94,11 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
             if (ArticulosBLL.Eliminar(int.Parse(ArticuloIdTextBox.Text)))
             {
                 Limpiar();
-                MessageBox.Show("Articulo eliminado.", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Articulo eliminado.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se logro eliminar el Articulo.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se logró eliminar el Articulo.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -110,24 +110,24 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
         }
 
        
-        public bool ValidarGuardar()
+        public bool válidarGuardar()
         {
-            //Valida que haya un valor valido en el campo ArticuloId.
+            //válida que haya un valor válido en el campo ArticuloId.
             if (!Regex.IsMatch(ArticuloIdTextBox.Text, "^[0-9]+$"))
             {
-                MessageBox.Show("El Articulo Id solo puede ser de caracter numerico.", "Campo Articulo Id.",
+                MessageBox.Show("El Articulo Id solo puede ser de carácter numérico.", "Campo Articulo Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
-            //Valida que todos los campos esten llenos
+            //válida que todos los campos esten llenos
             if (ArticuloIdTextBox.Text.Length == 0 || DescripcionTextBox.Text.Length == 0 || PrecioTextBox.Text.Length == 0)
             {
-                MessageBox.Show("No pueden haber campos vacios.", "Campos vacios.", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("No pueden haber campos vacíos.", "Campos vacíos.", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
-            //Valida que se seleccione una categoria.
+            //válida que se seleccione una categoria.
             if (CategoriaComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Debe seleccionar una categoria.", "Campos categoria.", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -140,26 +140,26 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
                 return false;
             }
 
-            ////Valida que se ingrese una cantidad valida.
+            ////válida que se ingrese una cantidad válida.
             //if (!Regex.IsMatch(StockTextBox.Text, "^[1-9]+$"))
             //{
-            //    MessageBox.Show("En el campo Stock solo pueden haber caracteres numericos.", "Campo Stock.",
+            //    MessageBox.Show("En el campo Stock solo pueden haber carácteres numéricos.", "Campo Stock.",
             //        MessageBoxButton.OK, MessageBoxImage.Warning);
             //    return false;
             //}
 
-            //Valida que se ingrese un precio valido
+            //válida que se ingrese un precio válido
             if (!Regex.IsMatch(PrecioTextBox.Text, @"^[0-9]{1,8}$|^[0-9]{1,8}\.[0-9]{1,8}$"))
             {
-                MessageBox.Show("En el campo precio solo pueden haber caracteres numericos.", "Campo Precio.",
+                MessageBox.Show("En el campo precio solo pueden haber carácteres numéricos.", "Campo Precio.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
-            ////Valida que se ingrese un costo valido
+            ////válida que se ingrese un costo válido
             //if (!Regex.IsMatch(CostoTextBox.Text, @"^[0-9]{1,3}$|^[0-9]{1,3}\.[0-9]{1,3}$"))
             //{
-            //    MessageBox.Show("En el campo costo solo pueden haber caracteres numericos.", "Campo Costo.",
+            //    MessageBox.Show("En el campo costo solo pueden haber carácteres numéricos.", "Campo Costo.",
             //        MessageBoxButton.OK, MessageBoxImage.Warning);
             //    return false;
             //}

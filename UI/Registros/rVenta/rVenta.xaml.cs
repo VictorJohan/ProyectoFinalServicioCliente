@@ -30,7 +30,7 @@ namespace ProyectoFinalServicioCliente.UI.rVenta
             //Se llena el ComboBox ArticulosId
             ArticuloIdComboBox.ItemsSource = ArticulosBLL.GetListArticulos();
             ArticuloIdComboBox.SelectedValuePath = "ArticuloId";
-            ArticuloIdComboBox.DisplayMemberPath = "ArticuloId";
+            ArticuloIdComboBox.DisplayMemberPath = "Descripcion";
             //Se llena el ComboBox Fotografos
             FotografoComboBox.ItemsSource = FotografosBLL.GetList();
             FotografoComboBox.SelectedValuePath = "FotografoId";
@@ -40,9 +40,9 @@ namespace ProyectoFinalServicioCliente.UI.rVenta
         //Busca un registro en la base de datos.
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Regex.IsMatch(VentaIdTextBox.Text, "^[1-9]+$"))//Valida que haya un valor valido en el campo CompraId.
+            if (!Regex.IsMatch(VentaIdTextBox.Text, "^[1-9]+$"))//válida que haya un valor válido en el campo CompraId.
             {
-                MessageBox.Show("El Id de la venta solo puede ser de caracter numerico.", "Campo VentaId.",
+                MessageBox.Show("El Id de la venta solo puede ser de carácter numérico.", "Campo Venta Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -64,7 +64,7 @@ namespace ProyectoFinalServicioCliente.UI.rVenta
         //Agrega un articculo al detalle.
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!ValidarAgregar())
+            if (!válidarAgregar())
                 return;
 
             Articulos Aux;//Este auxiliar hara los cambios en la base de datos;
@@ -113,18 +113,18 @@ namespace ProyectoFinalServicioCliente.UI.rVenta
         //Guarda un registro en la base de datos .
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Validar())
+            if (!válidar())
                 return;
 
             if (VentasBLL.Guardar(Venta))
             {
 
                 Limpiar();
-                MessageBox.Show("La venta fue registrada de forma exitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("La venta fué registrada de forma Éxitosa.", "Guardado", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se logro guardar el registro de venta.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se logró guardar el registro de venta.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -134,7 +134,7 @@ namespace ProyectoFinalServicioCliente.UI.rVenta
 
             if (!Regex.IsMatch(VentaIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El Id de la venta solo puede ser de caracter numerico.", "Campo VentaId.",
+                MessageBox.Show("El Id de la venta solo puede ser de carácter numérico.", "Campo VentaId.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -142,11 +142,11 @@ namespace ProyectoFinalServicioCliente.UI.rVenta
             if (VentasBLL.Eliminar(int.Parse(VentaIdTextBox.Text)))
             {
                 Limpiar();
-                MessageBox.Show("Venta eliminada.", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Venta eliminada.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Algo salio mal, no se logro eliminar la venta.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Algo salió mal, no se logró eliminar la venta.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -179,9 +179,6 @@ namespace ProyectoFinalServicioCliente.UI.rVenta
 
             articulo = (Articulos)ArticuloIdComboBox.SelectedItem;
             articulo.ArticuloId = 0;
-            DescripcionDetalleTextBox.Text = articulo.Descripcion;
-            StockDetalleTextBox.Text = articulo.Stock.ToString();
-            CategoriaDetalleTextBox.Text = articulo.CategoriaId.ToString();
             PrecioVentaTextBox.Text = articulo.Precio.ToString();
 
         }
@@ -198,48 +195,44 @@ namespace ProyectoFinalServicioCliente.UI.rVenta
         public void LimpiarDetalle()
         {
             ArticuloIdComboBox.SelectedIndex = -1;
-            DescripcionDetalleTextBox.Clear();
-            StockDetalleTextBox.Clear();
-            CategoriaDetalleTextBox.Clear();
             PrecioVentaTextBox.Clear();
             CantidadDetalleTextBox.Clear();
             SubtotalDetalleTextBox.Clear();
             ArticuloIdComboBox.Focus();
         }
 
-        //Valida antes de agregar.
-        public bool ValidarAgregar()
+        //válida antes de agregar.
+        public bool válidarAgregar()
         {
-            //Valida que haya un valor valido en el campo CompraId.
+            //válida que haya un valor válido en el campo CompraId.
             if (!Regex.IsMatch(VentaIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("La Venta Id solo puede ser de caracter numerico.", "Campo Venta Id.",
+                MessageBox.Show("La Venta Id solo puede ser de carácter numérico.", "Campo Venta Id.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
-            //Valida que no haya campos vacios.
-            if (DescripcionDetalleTextBox.Text.Length == 0 || StockDetalleTextBox.Text.Length == 0 ||
-                CategoriaDetalleTextBox.Text.Length == 0 || PrecioVentaTextBox.Text.Length == 0 || CantidadDetalleTextBox.Text.Length == 0)
+            //válida que no haya campos vacíos.
+            if (PrecioVentaTextBox.Text.Length == 0 || CantidadDetalleTextBox.Text.Length == 0)
             {
-                MessageBox.Show("Asegurese de que no haya campos vacios en el detalle antes de agregar.", "Campos vacios.", MessageBoxButton.OK,
+                MessageBox.Show("Asegúrese de que no haya campos vacíos en el detalle antes de agregar.", "Campos vacíos.", MessageBoxButton.OK,
                     MessageBoxImage.Warning);
 
                 return false;
             }
 
-            //Valida que haya una cantidad valida en el TextBox.
+            //válida que haya una cantidad válida en el TextBox.
             if (!Regex.IsMatch(CantidadDetalleTextBox.Text, "^[0-9]+$"))
             {
-                MessageBox.Show("Solo puede introducir caracteres numericos.", "Cantidad de articulo no valido.",
+                MessageBox.Show("Solo puede introducir carácteres numéricos.", "Cantidad de artículo no válido.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
             //Vaalida que haya suficientes articulos en el Stock
-            if (int.Parse(StockDetalleTextBox.Text) < int.Parse(CantidadDetalleTextBox.Text))
+            if (articulo.Stock < int.Parse(CantidadDetalleTextBox.Text))
             {
-                MessageBox.Show($"No hay suficiente {DescripcionDetalleTextBox.Text} en el Stock.", "Cantidad de articulo no valido.",
+                MessageBox.Show($"No hay suficiente {articulo.Descripcion} en el Stock({articulo.Stock}).", "Cantidad de artículo insuficiente.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
@@ -254,18 +247,18 @@ namespace ProyectoFinalServicioCliente.UI.rVenta
             this.DataContext = Venta;
         }
 
-        //Este metodo valida los datos antes de guardar.
-        public bool Validar()
+        //Este metodo válida los datos antes de guardar.
+        public bool válidar()
         {
-            //Valida el campo CompraId
+            //válida el campo CompraId
             if (!Regex.IsMatch(VentaIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("El venta Id solo puede ser de caracter numerico.", "Campo VentaId.",
+                MessageBox.Show("El venta Id solo puede ser de carácter numérico.", "Campo VentaId.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
-            //Valida que exista el cliente.
+            //válida que exista el cliente.
             if (!ClientesBLL.Existe(int.Parse(ClienteIdTextBox.Text)))
             {
                 MessageBox.Show("El cliente debe estar registrado para poder registrar la venta.", "El Cliente no existe en la base de datos.",
