@@ -155,13 +155,7 @@ namespace ProyectoFinalServicioCliente.BLL
 
             try
             {
-                var existe = from Cliente in contexto.Clientes
-                             where Cliente.Email == email
-                             select Cliente;
-                if (existe.Count() > 0)
-                    ok = true;
-                else
-                    ok = false;
+                ok = contexto.Clientes.Any(c => c.Email.Equals(email));
             }
             catch (Exception)
             {
@@ -183,13 +177,7 @@ namespace ProyectoFinalServicioCliente.BLL
 
             try
             {
-                var existe = from Cliente in contexto.Clientes
-                             where Cliente.Celular == celular
-                             select Cliente;
-                if (existe.Count() > 0)
-                    ok = true;
-                else
-                    ok = false;
+                ok = contexto.Clientes.Any(c => c.Celular.Equals(celular));
             }
             catch (Exception)
             {
@@ -211,13 +199,7 @@ namespace ProyectoFinalServicioCliente.BLL
 
             try
             {
-                var existe = from Cliente in contexto.Clientes
-                             where Cliente.Telefono == telefono
-                             select Cliente;
-                if (existe.Count() > 0)
-                    ok = true;
-                else
-                    ok = false;
+                ok = contexto.Clientes.Any(c => c.Telefono.Equals(telefono));
             }
             catch (Exception)
             {
@@ -239,13 +221,7 @@ namespace ProyectoFinalServicioCliente.BLL
 
             try
             {
-                var existe = from Cliente in contexto.Clientes
-                             where Cliente.Cedula == cedula
-                             select Cliente;
-                if (existe.Count() > 0)
-                    ok = true;
-                else
-                    ok = false;
+                ok = contexto.Clientes.Any(c => c.Cedula.Equals(cedula));
             }
             catch (Exception)
             {

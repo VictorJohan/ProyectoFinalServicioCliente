@@ -1,0 +1,79 @@
+﻿<Window x:Class="ProyectoFinalServicioCliente.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinalServicioCliente"
+        xmlns:PasswordHelper="clr-namespace:ProyectoFinalServicioCliente.Resources.PasswordHelper"
+        mc:Ignorable="d"
+        Title="Iniciar Sesión" Height="345" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/camara.png">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF6FB1DE" Offset="0.032"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10" >
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,21,0,-34">
+                <Border BorderBrush="White" BorderThickness="3" Height="2" Width="81"  RenderTransformOrigin="0.5,0.5"/>
+
+                <Label Content="Foto Estudio" FontStyle="Italic" Foreground="White" FontSize="25" HorizontalAlignment="Center" FontFamily="Century Gothic">
+                    <Label.Effect>
+                        <DropShadowEffect/>
+                    </Label.Effect>
+                </Label>
+                <Border BorderBrush="White" BorderThickness="3" Height="2" Width="81"  RenderTransformOrigin="0.5,0.5"/>
+            </StackPanel>
+
+            <Label Content="Núñez" FontStyle="Italic" Foreground="White" FontSize="25" HorizontalAlignment="Center" FontFamily="Century Gothic" Margin="0,19,0,0">
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+
+
+            <Label Content="Nombre Usuario" FontSize="15" Foreground="Black" Margin="111,0,0,0"/>
+
+            <TextBox x:Name="NombreUsuarioTextBox" BorderBrush="Black" HorizontalAlignment="Center" Margin="5,0" Width="247" Height="25" Text="{Binding NombreUsuario}" Padding="0,5,0,0" KeyDown="NombreUsuarioTextBox_KeyDown" >
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+
+            <Label Content="Contraseña" FontSize="15" Foreground="Black" Margin="111,0,0,0"/>
+            <PasswordBox x:Name="ContrasenaPasswordBox" HorizontalAlignment="Center" Margin="5,0" BorderBrush="Black" Width="247" Height="25" 
+                             PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, 
+                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="0,4,0,0" KeyDown="ContrasenaPasswordBox_KeyDown">
+                <PasswordBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                    </LinearGradientBrush>
+                </PasswordBox.Background>
+            </PasswordBox>
+
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" Margin="0,29,0,0">
+                <Button Name="IngresarButton" BorderBrush="Black" HorizontalAlignment="Left" Width="79" Height="24" Click="IngresarButton_Click1">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/login.png" />
+                        <Label Content="Entrar" FontSize="13" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="CancelarButton" BorderBrush="Black" Width="79" Height="24" Click="CancelarButton_Click" Margin="42,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/remover.png" />
+                        <Label Content="Cancelar" FontSize="13" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+
+
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

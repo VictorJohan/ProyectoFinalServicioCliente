@@ -5,6 +5,7 @@ using ProyectoFinalServicioCliente.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace ProyectoFinalServicioCliente.BLL
@@ -136,21 +137,14 @@ namespace ProyectoFinalServicioCliente.BLL
             return ok;
         }
 
-        public static bool Validar(string nombreusuario, string contrasena)
+        public static bool Autenticar(string user, string contrasena)
         {
             bool ok = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                var validar = from usuario in contexto.Usuarios
-                              where usuario.Usuario == nombreusuario
-                              && usuario.Contrasena == Seguridad.Encriptar(contrasena)
-                              select usuario;
-                if (validar.Count() > 0)
-                    ok = true;
-                else
-                    ok = false;
+                ok = contexto.Usuarios.Any(u => u.Usuario.Equals(user) && u.Contrasena.Equals(Seguridad.Encriptar(contrasena)));
             }
             catch (Exception)
             {
@@ -172,12 +166,7 @@ namespace ProyectoFinalServicioCliente.BLL
 
             try
             {
-                var existe = from usuario in contexto.Usuarios
-                     where usuario.Usuario == user select usuario;
-                if (existe.Count() > 0)
-                    ok = true;
-                else
-                    ok = false;
+                ok = contexto.Usuarios.Any(u => u.Usuario.Equals(user));
             }
             catch (Exception)
             {
@@ -191,5 +180,6 @@ namespace ProyectoFinalServicioCliente.BLL
 
             return ok;
         }
+
     }
 }

@@ -24,6 +24,7 @@
     <None Remove="Resources\cliente.png" />
     <None Remove="Resources\compra.png" />
     <None Remove="Resources\delete.png" />
+    <None Remove="Resources\evento.png" />
     <None Remove="Resources\fotografo.png" />
     <None Remove="Resources\inventario.png" />
     <None Remove="Resources\Login.png" />
@@ -39,13 +40,12 @@
     <None Remove="Resources\search.png" />
     <None Remove="Resources\suplidor.png" />
     <None Remove="Resources\vendedor.png" />
-    <None Remove="UI\Login\dariusz-sankowski-mj2NwYH3wBA-unsplash.jpg" />
-    <None Remove="UI\Login\Presentacion.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="DAL\" />
     <Folder Include="DATA\" />
+    <Folder Include="UI\Consultas\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -66,6 +66,7 @@
     <Resource Include="Resources\cliente.png" />
     <Resource Include="Resources\compra.png" />
     <Resource Include="Resources\delete.png" />
+    <Resource Include="Resources\evento.png" />
     <Resource Include="Resources\fotografo.png" />
     <Resource Include="Resources\inventario.png" />
     <Resource Include="Resources\Login.png" />

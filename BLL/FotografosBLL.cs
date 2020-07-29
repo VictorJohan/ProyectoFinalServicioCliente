@@ -177,13 +177,7 @@ namespace ProyectoFinalServicioFotografo.BLL
 
             try
             {
-                var existe = from Fotografo in contexto.Fotografos
-                             where Fotografo.Email == email
-                             select Fotografo;
-                if (existe.Count() > 0)
-                    ok = true;
-                else
-                    ok = false;
+                ok = contexto.Fotografos.Any(f => f.Email.Equals(email));
             }
             catch (Exception)
             {
@@ -205,13 +199,7 @@ namespace ProyectoFinalServicioFotografo.BLL
 
             try
             {
-                var existe = from Fotografo in contexto.Fotografos
-                             where Fotografo.Celular == celular
-                             select Fotografo;
-                if (existe.Count() > 0)
-                    ok = true;
-                else
-                    ok = false;
+                ok = contexto.Fotografos.Any(f => f.Celular.Equals(celular));
             }
             catch (Exception)
             {
@@ -233,13 +221,7 @@ namespace ProyectoFinalServicioFotografo.BLL
 
             try
             {
-                var existe = from Fotografo in contexto.Fotografos
-                             where Fotografo.Telefono == telefono
-                             select Fotografo;
-                if (existe.Count() > 0)
-                    ok = true;
-                else
-                    ok = false;
+                ok = contexto.Fotografos.Any(f => f.Telefono.Equals(telefono));
             }
             catch (Exception)
             {
@@ -261,13 +243,7 @@ namespace ProyectoFinalServicioFotografo.BLL
 
             try
             {
-                var existe = from Fotografo in contexto.Fotografos
-                             where Fotografo.Cedula == cedula
-                             select Fotografo;
-                if (existe.Count() > 0)
-                    ok = true;
-                else
-                    ok = false;
+                ok = contexto.Fotografos.Any(f => f.Cedula.Equals(cedula));
             }
             catch (Exception)
             {

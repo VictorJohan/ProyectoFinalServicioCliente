@@ -18,7 +18,7 @@ namespace ProyectoFinalServicioCliente.Entidades
         public Clientes Cliente { get; set; } = new Clientes();
         public int FotografoId { get; set; }
         [ForeignKey("FotografoId")]
-        public Fotografos Fotografo { get; set; } = new Fotografos();
+        public Fotografos Fotografo { get; set; }
         public DateTime Fecha { get; set; } = DateTime.Now;
         public double Total { get; set; }
         [ForeignKey("VentaId")]

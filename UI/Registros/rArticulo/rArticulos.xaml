@@ -1,0 +1,128 @@
+﻿<Window x:Class="ProyectoFinalServicioCliente.UI.rArticulo.rArticulos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rArticulo"
+        mc:Ignorable="d"
+        Title="Registro Artículos" Height="416" Width="286" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/inventario.png">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF6FB1DE" Offset="0.032"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10,10,10,10">
+            <Label Content="Artículo Id" FontSize="11" />
+
+            <!--ArticuloIdTextBox y Boton Buscar dentro del panel-->
+            <StackPanel Orientation="Horizontal">
+                <!--TextBox-->
+                <TextBox Name="ArticuloIdTextBox" BorderBrush="Black" Text="{Binding ArticuloId}" Height="20" Width="166" Margin="5,0">
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                </TextBox>
+
+                <!--Boton-->
+                <Button Name="BuscarButton" Height="20" BorderBrush="Black" Width="60" Click="BuscarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/search.png" />
+                        <Label Content="Buscar" Padding="-1" Margin="4,0" FontSize="11"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+
+            <!--Descripcion-->
+            <Label Content="Descripción"   FontSize="11"/>
+            <TextBox Name="DescripcionTextBox" BorderBrush="Black" Height="20"  Width="230" Text="{Binding Descripcion}" HorizontalAlignment="Left" Margin="5,0">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+
+            <!--Categoria-->
+            <Label Content="Categoría" FontSize="11"/>
+            <ComboBox Name="CategoriaComboBox" BorderBrush="Black" Width="230" SelectedValue="{Binding CategoriaId}" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Stock-->
+            <Label Content="Stock"  FontSize="11"/>
+            <TextBox Name="StockTextBox" Height="20" BorderBrush="Black" Width="230" IsReadOnly="True" Text="{Binding Stock}" HorizontalAlignment="Left" Margin="5,0">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+
+            <!--Costo-->
+            <Label Content="Costo"   FontSize="11"/>
+            <TextBox Name="CostoTextBox" Height="20" Width="230" BorderBrush="Black" IsReadOnly="True" Text="{Binding Costo}" HorizontalAlignment="Left" Margin="5,0">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+
+            <!--Precio-->
+            <Label Content="Precio"  FontSize="11"/>
+            <TextBox Name="PrecioTextBox" Height="20" Width="230" BorderBrush="Black" Text="{Binding Precio}" HorizontalAlignment="Left" Margin="5,0" TextChanged="PrecioTextBox_TextChanged">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+
+            <!--Ganancias-->
+            <Label Content="Ganancia" FontSize="11"/>
+            <TextBox Name="GananciasTextBox" Height="20" Width="230" BorderBrush="Black" IsReadOnly="True" Text="{Binding Ganancia}" HorizontalAlignment="Left" Margin="5,0" TextChanged="GananciasTextBox_TextChanged">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+
+            <!--Panel de Botones-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="16,15,0,0">
+
+                <Button Name="NuevoButton" BorderBrush="Black" Width="60" Height="20"  HorizontalContentAlignment="Left" Click="NuevoButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/articulo.png" />
+                        <Label Content="Nuevo" FontSize="11" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="GuardarButton" BorderBrush="Black" Width="66" Height="20" HorizontalContentAlignment="Left" Margin="10,0,0,0" Click="GuardarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/save.png" />
+                        <Label Content="Guardar" FontSize="11" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="EliminarButton" Width="66" Height="20" BorderBrush="Black" HorizontalContentAlignment="Left" Margin="10,0,0,0" Click="EliminarButton_Click">
+                    <StackPanel Orientation="Horizontal" Width="70">
+                        <Image Source="/Resources/delete.png" />
+                        <Label Content="Eliminar" FontSize="11" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
