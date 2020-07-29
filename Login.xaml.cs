@@ -1,7 +1,9 @@
 ﻿using ProyectoFinalServicioCliente.BLL;
+using ProyectoFinalServicioCliente.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,6 +20,7 @@ namespace ProyectoFinalServicioCliente
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
+
     public partial class Login : Window
     {
         public Login()
@@ -26,12 +29,12 @@ namespace ProyectoFinalServicioCliente
         }
 
         //Este metodo cierra el programa en caso de cerrar la ventana de Login
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
+        //protected override void OnClosed(EventArgs e)
+        //{
+        //    base.OnClosed(e);
 
-            Application.Current.Shutdown();
-        }
+        //    Application.Current.Shutdown();
+        //}
 
 
         private void IngresarButton_Click1(object sender, RoutedEventArgs e)
@@ -40,10 +43,12 @@ namespace ProyectoFinalServicioCliente
 
             if (paso)
             {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
                 this.Close();
-                MessageBox.Show("Entraste");
-                //Hay que hacer la ventana principal
-                //Principal.Show();
+
+               
+
             }
             else
             {
@@ -64,6 +69,11 @@ namespace ProyectoFinalServicioCliente
         {
             if (e.Key == Key.Enter)
                 IngresarButton.Focus();
+        }
+
+        private void CancelarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

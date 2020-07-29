@@ -6,6 +6,13 @@
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rCompras"
         mc:Ignorable="d"
         Title="Registro Compras" Height="499" Width="642" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/producto.png">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF6FB1DE" Offset="0.032"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
             <Label Content="Compra Id" FontSize="11"/>
@@ -13,9 +20,16 @@
 
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
-                <TextBox Name="CompraIdTextBox" Width="532" Height="20" Text="{Binding CompraId}" Margin="5,0" HorizontalAlignment="Left"/>
+                <TextBox Name="CompraIdTextBox" Width="532" Height="20" Text="{Binding CompraId}" BorderBrush="Black" Margin="5,0" HorizontalAlignment="Left">
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                </TextBox>
                 <!--Boton-->
-                <Button Name="BuscarButton" Width="60" Height="20" Click="BuscarButton_Click">
+                <Button Name="BuscarButton" Width="60" Height="20" BorderBrush="Black" Click="BuscarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/search.png"/>
                         <Label Content="Buscar" FontSize="11" Padding="-1" Margin="4,0"/>
@@ -29,11 +43,18 @@
 
             <!--Monto-->
             <Label Content="Monto" FontSize="11"/>
-            <TextBox Name="MontoTextBox" Height="20" IsReadOnly="True" Text="{Binding Monto}" Margin="5,0" />
+            <TextBox Name="MontoTextBox" Height="20" BorderBrush="Black" IsReadOnly="True" Text="{Binding Monto}" Margin="5,0">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
 
             <!--Fecha-->
             <Label Content="Fecha" FontSize="11"/>
-            <DatePicker Name="FechaDatePicker"  SelectedDate="{Binding Fecha}"  Margin="5,0"/>
+            <DatePicker Name="FechaDatePicker" BorderBrush="Black" SelectedDate="{Binding Fecha}"  Margin="5,0"/>
 
             <!--GroupBox donde esta el DataGrid-->
             <GroupBox Header="Compras Detalle" BorderBrush="Black" Margin="5,8,0,0">
@@ -53,15 +74,36 @@
                         <ComboBox Name="ArticuloIdComboBox" Width="242" Height="20" Margin="5,0" SelectionChanged="ArticuloIdComboBox_SelectionChanged"/>
 
                         <!--TextBox Precio-->
-                        <TextBox Name="CostoDetalleTextBox" Width="70" Height="20" Margin="5,0" TextChanged="CostoDetalleTextBox_TextChanged"/>
+                        <TextBox Name="CostoDetalleTextBox" Width="70" Height="20" Margin="5,0" BorderBrush="Black" TextChanged="CostoDetalleTextBox_TextChanged">
+                            <TextBox.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                                </LinearGradientBrush>
+                            </TextBox.Background>
+                        </TextBox>
 
                         <!--TextBox Costo-->
-                        <TextBox Name="CantidadDetalleTextBox" Width="70" Height="20" Margin="5,0" TextChanged="CantidadDetalleTextBox_TextChanged"/>
+                        <TextBox Name="CantidadDetalleTextBox" Width="70" Height="20" Margin="5,0" BorderBrush="Black" TextChanged="CantidadDetalleTextBox_TextChanged">
+                            <TextBox.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                                </LinearGradientBrush>
+                            </TextBox.Background>
+                        </TextBox>
 
                         <!--TextBox Cantidad de articulos-->
-                        <TextBox Name="TotalDetalleTextBox" IsReadOnly="True" Width="70" Height="20" Margin="5,0"/>
+                        <TextBox Name="TotalDetalleTextBox" IsReadOnly="True" BorderBrush="Black" Width="70" Height="20" Margin="5,0">
+                            <TextBox.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                                </LinearGradientBrush>
+                            </TextBox.Background>
+                        </TextBox>
 
-                        <Button Name="AgregarButton"  Width="70" Height="20" Margin="10,0" Click="AgregarButton_Click">
+                        <Button Name="AgregarButton"  Width="70" Height="20" BorderBrush="Black" Margin="10,0" Click="AgregarButton_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Resources/agregar.png" />
                                 <Label Content="Agregar" FontSize="11" Margin="4,0" Padding="-1"/>
@@ -71,7 +113,7 @@
                     </StackPanel>
 
                     <!--DataGrid-->
-                    <DataGrid Name="DetalleDataGrid" Width="567" Height="100" AutoGenerateColumns="False" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                    <DataGrid Name="DetalleDataGrid" Width="567" BorderBrush="Black" Height="100" AutoGenerateColumns="False" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
                               ItemsSource="{Binding ComprasDetalles}" Margin="5,5,0,0">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding ArticuloId}"/>
@@ -86,7 +128,7 @@
 
                     <StackPanel Orientation="Horizontal">
                         <!--Boton Remover-->
-                        <Button Name="RemoverButton"  Width="70" Height="20" Margin="5,5" HorizontalAlignment="Left" Click="RemoverButton_Click">
+                        <Button Name="RemoverButton"  Width="70" Height="20" Margin="5,5" BorderBrush="Black" HorizontalAlignment="Left" Click="RemoverButton_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Resources/remover.png" />
                                 <Label Content="Remover" FontSize="11" Margin="4,0" Padding="-1"/>
@@ -94,7 +136,7 @@
                         </Button>
 
                         <!--Boton actualizar-->
-                        <Button Name="ActualizarButton"  Width="74" Height="20"  Click="ActualizarButton_Click" Margin="300,0,0,0">
+                        <Button Name="ActualizarButton"  Width="74" Height="20" BorderBrush="Black" Click="ActualizarButton_Click" Margin="300,0,0,0">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Resources/actualizar.png" />
                                 <Label Content="Actualizar" FontSize="11" Margin="4,0" Padding="-1"/>
@@ -102,7 +144,7 @@
                         </Button>
 
                         <!--Registrar otro Articulo-->
-                        <Button Name="RegistrarArticuloButton"  Width="113" Height="20" Margin="5,5,5,5" Click="RegistrarArticuloButton_Click">
+                        <Button Name="RegistrarArticuloButton"  Width="113" BorderBrush="Black" Height="20" Margin="5,5,5,5" Click="RegistrarArticuloButton_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Resources/articulo.png" />
                                 <Label Content="Registrar Artículo" FontSize="11" Margin="4,0" Padding="-1"/>
@@ -117,21 +159,21 @@
             <!--Panel de Botones-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,16,0,0" Width="212">
                 <!--Nuevo-->
-                <Button Name="NuevoButton"  Width="60" Height="20" Click="NuevoButton_Click">
+                <Button Name="NuevoButton"  Width="60" Height="20" BorderBrush="Black" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/pedido.png" />
                         <Label Content="Nuevo" FontSize="11" Margin="4,0" Padding="-1"/>
                     </StackPanel>
                 </Button>
                 <!--Guardar-->
-                <Button Name="GuardarButton" Width="65" Height="20" Margin="5,0,0,0" HorizontalAlignment="Left" Click="GuardarButton_Click">
+                <Button Name="GuardarButton" Width="65" Height="20" Margin="5,0,0,0" BorderBrush="Black" HorizontalAlignment="Left" Click="GuardarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/save.png" />
                         <Label Content="Guardar" FontSize="11" Margin="4,0" Padding="-1"/>
                     </StackPanel>
                 </Button>
                 <!--Eliminar-->
-                <Button Name="EliminarButton"  Width="65" Height="20" Margin="5,0" HorizontalAlignment="Left" Click="EliminarButton_Click">
+                <Button Name="EliminarButton"  Width="65" Height="20" BorderBrush="Black" Margin="5,0" HorizontalAlignment="Left" Click="EliminarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/delete.png" />
                         <Label Content="Eliminar" FontSize="11" Margin="4,0" Padding="-1"/>

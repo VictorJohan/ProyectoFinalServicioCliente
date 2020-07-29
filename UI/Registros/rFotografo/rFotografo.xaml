@@ -6,6 +6,13 @@
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rFotografo"
         mc:Ignorable="d"
         Title="Registro Fotógrafo" Height="390" Width="540" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/camara.png">
+
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF6FB1DE" Offset="0.032"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
 
@@ -13,10 +20,17 @@
 
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
-                <TextBox Name="FotografoIdTextBox" Text="{Binding FotografoId}" Height="20" Width="397" Margin="5,0"/>
+                <TextBox Name="FotografoIdTextBox" Text="{Binding FotografoId}" Height="20" Width="397" Margin="5,0" BorderBrush="Black">
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                </TextBox>
 
                 <!--Boton-->
-                <Button Name="BuscarButton" Height="20" Width="69" Click="BuscarButton_Click">
+                <Button Name="BuscarButton" Height="20" Width="69" BorderBrush="Black" Click="BuscarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/search.png" />
                         <Label Content="Buscar" Padding="-1" Margin="4,0" FontSize="11"/>
@@ -32,8 +46,22 @@
 
             <!--TextBox: Nombre/Cedula-->
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="NombresTextBox" Height="20"  Width="230" Text="{Binding Nombres}" HorizontalAlignment="Left" Margin="5,0"/>
-                <TextBox Name="CedulaTextBox" Height="20" Width="230" Text="{Binding Cedula}" HorizontalAlignment="Left" Margin="5,0"/>
+                <TextBox Name="NombresTextBox" Height="20"  Width="230" Text="{Binding Nombres}" HorizontalAlignment="Left" Margin="5,0" BorderBrush="Black">
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBox Name="CedulaTextBox" Height="20" Width="230" Text="{Binding Cedula}" HorizontalAlignment="Left" Margin="5,0" BorderBrush="Black">
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                </TextBox>
             </StackPanel>
 
             <!--Label: Cedula/Fecha Nacimiento-->
@@ -45,7 +73,7 @@
             <!--TextBox/DatePicker: Sexo/Fecha Nacimiento-->
             <StackPanel Orientation="Horizontal">
                 <ComboBox Name="SexoComboBox" Height="20" Width="230" SelectedValue="{Binding Sexo}" HorizontalAlignment="Left" Margin="5,0"/>
-                <DatePicker Name="FechaNacimientoDatePicker" Height="20" Width="230" SelectedDate="{Binding FechaNacimiento}" HorizontalAlignment="Left" Margin="5,0" Padding="4,-1,0,0"/>
+                <DatePicker Name="FechaNacimientoDatePicker" Height="20" Width="230" BorderBrush="Black" SelectedDate="{Binding FechaNacimiento}" HorizontalAlignment="Left" Margin="5,0" Padding="4,-1,0,0"/>
             </StackPanel>
 
             <!--Label: Sexo/Direccion-->
@@ -56,8 +84,23 @@
 
             <!--TextBox: Email/Direccion-->
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="EmailTextBox" Height="20" Width="230" Text="{Binding Email}" HorizontalAlignment="Left" Margin="5,0"/>
-                <TextBox Name="DireccionTextBox" Height="20" Width="230" Text="{Binding Direccion}" HorizontalAlignment="Left" Margin="5,0"/>
+                <TextBox Name="EmailTextBox" Height="20" Width="230" Text="{Binding Email}" HorizontalAlignment="Left" Margin="5,0" BorderBrush="Black">
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                    
+                </TextBox>
+                <TextBox Name="DireccionTextBox" Height="20" Width="230" Text="{Binding Direccion}" HorizontalAlignment="Left" Margin="5,0" BorderBrush="Black">
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                </TextBox>
             </StackPanel>
 
             <!--Label: Celular/Telefono-->
@@ -68,32 +111,53 @@
 
             <!--TextBox: Celular/Telefono-->
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="CelularTextBox" Height="20" Width="230" Text="{Binding Celular}" HorizontalAlignment="Left" Margin="5,0"/>
-                <TextBox Name="TelefonoTextBox" Height="20" Width="230" Text="{Binding Telefono}" HorizontalAlignment="Left" Margin="5,0"/>
+                <TextBox Name="CelularTextBox" Height="20" Width="230" Text="{Binding Celular}" HorizontalAlignment="Left" Margin="5,0" BorderBrush="Black">
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBox Name="TelefonoTextBox" Height="20" Width="230" Text="{Binding Telefono}" HorizontalAlignment="Left" Margin="5,0" BorderBrush="Black">
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                </TextBox>
             </StackPanel>
 
             <!--Sueldo-->
             <Label Content="Sueldo" FontSize="11"/>
-            <TextBox Name="SueldoTextBox" Height="20" Width="470" Text="{Binding Sueldo}" HorizontalAlignment="Left" Margin="5,0"/>
+            <TextBox Name="SueldoTextBox" Height="20" Width="470" Text="{Binding Sueldo}" HorizontalAlignment="Left" Margin="5,0" BorderBrush="Black">
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
 
             <!--Panel de Botones-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="134,34,0,0">
 
-                <Button Name="NuevoButton" Width="60" Height="20"  HorizontalContentAlignment="Left" Click="NuevoButton_Click">
+                <Button Name="NuevoButton" Width="60" Height="20" BorderBrush="Black" HorizontalContentAlignment="Left" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/fotografo.png" />
                         <Label Content="Nuevo" FontSize="11" Margin="4,0" Padding="-1"/>
                     </StackPanel>
                 </Button>
 
-                <Button Name="GuardarButton" Width="66" Height="20" HorizontalContentAlignment="Left" Margin="10,0,0,0" Click="GuardarButton_Click">
+                <Button Name="GuardarButton" Width="66" Height="20" HorizontalContentAlignment="Left" BorderBrush="Black" Margin="10,0,0,0" Click="GuardarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/save.png" />
                         <Label Content="Guardar" FontSize="11" Margin="4,0" Padding="-1"/>
                     </StackPanel>
                 </Button>
 
-                <Button Name="EliminarButton" Width="66" Height="20" HorizontalContentAlignment="Left" Margin="10,0,0,0" Click="EliminarButton_Click">
+                <Button Name="EliminarButton" Width="66" Height="20" HorizontalContentAlignment="Left" BorderBrush="Black" Margin="10,0,0,0" Click="EliminarButton_Click">
                     <StackPanel Orientation="Horizontal" Width="70">
                         <Image Source="/Resources/delete.png" />
                         <Label Content="Eliminar" FontSize="11" Margin="4,0" Padding="-1"/>
