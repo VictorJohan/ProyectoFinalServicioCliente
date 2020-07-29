@@ -43,8 +43,6 @@ namespace ProyectoFinalServicioCliente
 
             if (paso)
             {
-                Usuario = UsuariosBLL.GetUser(NombreUsuarioTextBox.Text);
-                MessageBox.Show(Usuario.Usuario);
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 this.Close();
