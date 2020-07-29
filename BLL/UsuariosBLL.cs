@@ -10,7 +10,7 @@ using System.Text;
 
 namespace ProyectoFinalServicioCliente.BLL
 {
-    public class UsuariosBLL
+    public class UsuariosBLL 
     {
         public static bool Guardar(Usuarios usuario)
         {

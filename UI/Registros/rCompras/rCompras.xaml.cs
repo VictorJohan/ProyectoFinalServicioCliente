@@ -21,6 +21,8 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
     /// </summary>
     public partial class rCompras : Window
     {
+ 
+
 
         private Compras Compra = new Compras();
         private Articulos articulo;
