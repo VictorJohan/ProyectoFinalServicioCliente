@@ -21,6 +21,7 @@ namespace ProyectoFinalServicioCliente.UI.rCategoria
     public partial class rCategoria : Window
     {
         private Categorias Categoria = new Categorias();
+        
         public rCategoria()
         {
             InitializeComponent();

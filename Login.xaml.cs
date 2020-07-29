@@ -23,6 +23,7 @@ namespace ProyectoFinalServicioCliente
 
     public partial class Login : Window
     {
+        Usuarios Usuario = new Usuarios();
         public Login()
         {
             InitializeComponent();
@@ -36,19 +37,17 @@ namespace ProyectoFinalServicioCliente
         //    Application.Current.Shutdown();
         //}
 
-
         private void IngresarButton_Click1(object sender, RoutedEventArgs e)
         {
             bool paso = UsuariosBLL.Autenticar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
 
             if (paso)
             {
+                Usuario = UsuariosBLL.GetUser(NombreUsuarioTextBox.Text);
+                MessageBox.Show(Usuario.Usuario);
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 this.Close();
-
-               
-
             }
             else
             {
