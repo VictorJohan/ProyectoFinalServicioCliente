@@ -11,9 +11,11 @@ namespace ProyectoFinalServicioCliente.Entidades
         [Key]
         public int Id { get; set; }
         public int VentaId { get; set; }
-        public int ArticuloId { get; set; }
-        public Articulos Articulo { get; set; } = new Articulos();
         public int Cantidad { get; set; }
         public double Subtotal { get; set; }
+        public int ArticuloId { get; set; }
+
+        [ForeignKey("ArticuloId")]
+        public Articulos Articulo { get; set; }
     }
 }

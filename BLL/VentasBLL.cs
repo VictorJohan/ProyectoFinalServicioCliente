@@ -14,6 +14,35 @@ namespace ProyectoFinalServicioCliente.BLL
 
         public static bool Guardar(Ventas venta)
         {
+            if (!Existe(venta.VentaId))
+                return Insertar(venta);
+            else
+                return Modificar(venta);
+        }
+
+        public static bool Existe(int id)
+        {
+            Contexto contexto = new Contexto();
+            bool ok = false;
+
+            try
+            {
+                ok = contexto.Ventas.Any(v => v.VentaId == id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return ok;
+        }
+
+        private static bool Insertar(Ventas venta)
+        {
             Contexto contexto = new Contexto();
             bool ok = false;
 
@@ -33,7 +62,7 @@ namespace ProyectoFinalServicioCliente.BLL
             return ok;
         }
 
-        public static bool Modificar(Ventas venta)
+        private static bool Modificar(Ventas venta)
         {
             Contexto contexto = new Contexto();
             bool ok = false;
