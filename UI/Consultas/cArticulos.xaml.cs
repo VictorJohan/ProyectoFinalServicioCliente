@@ -42,7 +42,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         try
                         {
                             int id = Convert.ToInt32(CriterioTexBox.Text);
-                            Listado = ArticulosBLL.GetList(c => c.ArticuloId == id);
+                            Listado = ArticulosBLL.GetList(a => a.Descripcion == CriterioTexBox.Text);
                         }
                         catch (FormatException)
                         {
