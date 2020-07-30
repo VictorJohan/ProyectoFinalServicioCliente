@@ -5,48 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="cArticulos" Height="200" Width="600">
+        Title="Consulta Artículos" Height="207" Width="564" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
-            <StackPanel Orientation="Horizontal" Height="58">
-                <StackPanel/>
+            <!--Panel Labels-->
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Filtro" FontSize="11"/>
+                <Label Content="Criterio" FontSize="11" Margin="200,0,0,0"/>
+            </StackPanel>
 
-                <StackPanel Orientation="Vertical" Margin="5,0"/>
+            <!--Panel Controles-->
+            <StackPanel Orientation="Horizontal">
+                <ComboBox Name="FiltroComBox" Height="20" Width="200" HorizontalAlignment="Left" Margin="5,0" Padding="-1"/>
+                <TextBox x:Name="CriterioTexBox"  Height="20" Width="200" Margin="27,0,0,0" />
 
-                <StackPanel Margin="5,0">
-                    <Label Content="Filtro:" />
-                    <ComboBox x:Name="FiltroComboBox" Width="100">
-                        <ComboBoxItem Content="EstudianteId"/>
-                        <ComboBoxItem Content="Nombres"/>
-                    </ComboBox>
-                </StackPanel>
-
-                <StackPanel Margin="5,0">
-                    <Label Content="Critero:"/>
-                    <TextBox x:Name="CriterioTextBox" Width="100"/>
-
-                </StackPanel>
-
-                <Button x:Name="BuscarButton" Height="34" Width="93" Click="ConsultarButton_Click" >
-                    <StackPanel Orientation="Horizontal" >
-                        <Image Source="/Resources/search.png"  />
-                        <Label Content="Buscar" />
+                <Button x:Name="Buscar" Height="20" Width="60"  Click="Buscar_Click" Margin="10,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/search.png"/>
+                        <Label Content="Buscar" Margin="4,0" Padding="-1"/>
                     </StackPanel>
                 </Button>
 
             </StackPanel>
+            
             <StackPanel HorizontalAlignment="Left" >
-                <DataGrid Name="ConsultaDataGrid" Width="572" Height="100" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
-                              ItemsSource="{Binding ArticulosConsultas}" Margin="5,5,0,0">
+                <DataGrid Name="ConsultaDataGrid" Width="502" Height="100" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                              ItemsSource="{Binding Articulos}" Margin="5,5,0,0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Articulo Id" IsReadOnly="True" Binding="{Binding ArticuloId}"/>
-                        <DataGridTextColumn Header="Descripción" Binding="{Binding Articulo.Descripcion}"/>
-                        <DataGridTextColumn Header="Precio" Binding="{Binding Articulo.Precio}"/>
-                        <DataGridTextColumn Header="Categoria" Binding="{Binding Articulo.Categoria}"/>
-                        <DataGridTextColumn Header="Stock" Binding="{Binding Stock}"/>
-                        <DataGridTextColumn Header="Costo" Binding="{Binding Costo}"/>
-                        <DataGridTextColumn Header="Ganancia" Binding="{Binding Ganacia}"/>
+                        <DataGridTextColumn Header="Descripción" IsReadOnly="True" Binding="{Binding Descripcion}"/>
+                        <DataGridTextColumn Header="Precio" IsReadOnly="True" Binding="{Binding Precio}"/>
+                        <DataGridTextColumn Header="Categoria" IsReadOnly="True" Binding="{Binding CategoriaId}"/>
+                        <DataGridTextColumn Header="Stock" IsReadOnly="True" Binding="{Binding Stock}"/>
+                        <DataGridTextColumn Header="Costo" IsReadOnly="True" Binding="{Binding Costo}"/>
+                        <DataGridTextColumn Header="Ganancia" IsReadOnly="True" Binding="{Binding Ganacia}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

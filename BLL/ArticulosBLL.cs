@@ -159,12 +159,12 @@ namespace ProyectoFinalServicioCliente.BLL
         }
         public static List<Articulos> GetList(Expression<Func<Articulos, bool>> articulos)
         {
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
             List<Articulos> listado = new List<Articulos>();
 
             try
             {
-                listado = db.Articulos.Where(articulos).ToList();
+                listado = contexto.Articulos.Where(articulos).ToList();
             }
             catch
             {
@@ -172,28 +172,11 @@ namespace ProyectoFinalServicioCliente.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
             return listado;
         }
-        public static double ObtenerPrecio(int id)
-        {
-            Articulos articulo = Buscar(id);
-            if (articulo == null)
-                return 0.0;
-            else
-                return articulo.Precio;
-        }
-
-        public static decimal ObtenerCantidad(int id)
-        {
-            Articulos articulo = Buscar(id);
-            if (articulo == null)
-                return 0.0m;
-            else
-                return articulo.Stock;
-
-        }
+      
     }
 }
  

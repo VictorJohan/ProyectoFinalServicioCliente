@@ -21,5 +21,10 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
         {
             InitializeComponent();
         }
+
+        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
