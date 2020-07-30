@@ -41,7 +41,6 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 1:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTexBox.Text);
                             Listado = ArticulosBLL.GetList(a => a.Descripcion == CriterioTexBox.Text);
                         }
                         catch (FormatException)
