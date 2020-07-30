@@ -89,7 +89,7 @@
 
             <!--Ganancias-->
             <Label Content="Ganancia" FontSize="11"/>
-            <TextBox Name="GananciasTextBox" Height="20" Width="230" BorderBrush="Black" IsReadOnly="True" Text="{Binding Ganancia}" HorizontalAlignment="Left" Margin="5,0" TextChanged="GananciasTextBox_TextChanged">
+            <TextBox Name="GananciasTextBox" Height="20" Width="230" IsReadOnly="True" BorderBrush="Black"  Text="{Binding Ganancia}" HorizontalAlignment="Left" Margin="5,0" >
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>

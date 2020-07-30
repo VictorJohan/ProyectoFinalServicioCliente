@@ -22,7 +22,7 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
     public partial class rArticulos : Window
     {
         private Articulos Articulo = new Articulos();
-        double precio, ganancia, costo;
+        
         public rArticulos()
         {
             InitializeComponent();
@@ -44,7 +44,7 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
             }
             
             var encontrado = ArticulosBLL.Buscar(int.Parse(ArticuloIdTextBox.Text));
-
+            
             if (encontrado != null)
             {
                 Articulo = encontrado;
@@ -68,7 +68,7 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
         {
             if (!validarGuardar())
                 return;
-
+            
             if (ArticulosBLL.Guardar(Articulo))
             {
                 
@@ -140,14 +140,6 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
                 return false;
             }
 
-            ////válida que se ingrese una cantidad válida.
-            //if (!Regex.IsMatch(StockTextBox.Text, "^[1-9]+$"))
-            //{
-            //    MessageBox.Show("En el campo Stock solo pueden haber carácteres numéricos.", "Campo Stock.",
-            //        MessageBoxButton.OK, MessageBoxImage.Warning);
-            //    return false;
-            //}
-
             //válida que se ingrese un precio válido
             if (!Regex.IsMatch(PrecioTextBox.Text, @"^[0-9]{1,8}$|^[0-9]{1,8}\.[0-9]{1,8}$"))
             {
@@ -156,19 +148,12 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
                 return false;
             }
 
-            ////válida que se ingrese un costo válido
-            //if (!Regex.IsMatch(CostoTextBox.Text, @"^[0-9]{1,3}$|^[0-9]{1,3}\.[0-9]{1,3}$"))
-            //{
-            //    MessageBox.Show("En el campo costo solo pueden haber carácteres numéricos.", "Campo Costo.",
-            //        MessageBoxButton.OK, MessageBoxImage.Warning);
-            //    return false;
-            //}
-
             return true;
         }
 
         private void PrecioTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            double precio, costo;
             if (!Regex.IsMatch(PrecioTextBox.Text, @"^[0-9]{1,8}$|^[0-9]{1,8}\.[0-9]{1,8}$"))
             {
                 precio = 0;
@@ -177,15 +162,10 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
             {
                 precio = double.Parse(PrecioTextBox.Text);
                 costo = double.Parse(CostoTextBox.Text);
-
-                ganancia = precio - costo;
-                GananciasTextBox.Text = ganancia.ToString();
+                GananciasTextBox.Text = (precio - costo).ToString();
+                Articulo.Ganancia = double.Parse(GananciasTextBox.Text);
             }
         }
 
-        private void GananciasTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            GananciasTextBox.Text = ganancia.ToString();
-        }
     }
 }

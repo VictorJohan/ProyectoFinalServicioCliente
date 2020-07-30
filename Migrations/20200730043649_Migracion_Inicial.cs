@@ -274,9 +274,9 @@ namespace ProyectoFinalServicioCliente.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     VentaId = table.Column<int>(nullable: false),
-                    ArticuloId = table.Column<int>(nullable: false),
                     Cantidad = table.Column<int>(nullable: false),
-                    Subtotal = table.Column<double>(nullable: false)
+                    Subtotal = table.Column<double>(nullable: false),
+                    ArticuloId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -326,7 +326,7 @@ namespace ProyectoFinalServicioCliente.Migrations
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "Fecha", "Nombres", "Usuario" },
-                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 29, 17, 32, 15, 145, DateTimeKind.Local).AddTicks(750), "Usuario Nombre", "admin" });
+                values: new object[] { 1, "Usuario Apellidos", "MQAyADMA", new DateTime(2020, 7, 30, 0, 36, 48, 202, DateTimeKind.Local).AddTicks(1762), "Usuario Nombre", "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articulos_CategoriaId",

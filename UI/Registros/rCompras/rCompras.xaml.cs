@@ -21,9 +21,6 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
     /// </summary>
     public partial class rCompras : Window
     {
- 
-
-
         private Compras Compra = new Compras();
         private Articulos articulo;
         private double costo, total;
@@ -201,7 +198,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
         //Calcula el total
         private void CostoDetalleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Regex.IsMatch(CostoDetalleTextBox.Text, @"^[0-9]{1,3}$|^[0-9]{1,3}\.[0-9]{1,3}$"))
+            if (!Regex.IsMatch(CostoDetalleTextBox.Text, @"^[0-9]{1,8}$|^[0-9]{1,8}\.[0-9]{1,8}$"))
             {
                 costo = 0;
             }
@@ -263,7 +260,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             }
 
             //válida que haya un dato válido en el precio detalle.
-            if (!Regex.IsMatch(CostoDetalleTextBox.Text, @"^[0-9]{1,3}$|^[0-9]{1,3}\.[0-9]{1,3}$"))
+            if (!Regex.IsMatch(CostoDetalleTextBox.Text, @"^[0-9]{1,8}$|^[0-9]{1,8}\.[0-9]{1,8}$"))
             {
                 MessageBox.Show("Solo puede introducir carácteres numéricos.", "Costo de articulo no válido.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -273,7 +270,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             //válida que haya una cantidad válida en el TextBox.
             if (!Regex.IsMatch(CantidadDetalleTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("Solo puede introducir carácteres numéricos.", "Cantidad de articulo no válido.",
+                MessageBox.Show("Verifique la cantidad que ha ingrsado.", "Cantidad de articulo no válido.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
