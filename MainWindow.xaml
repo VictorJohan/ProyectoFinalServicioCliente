@@ -19,8 +19,13 @@
                 <MenuItem Header="Registro Fotógrafo" Click="MenuItem_Click_8"/>
                 <MenuItem Header="Registro Ventas" Click="MenuItem_Click_9"/>
             </MenuItem>
-            
-            
+
+            <MenuItem Header="Consultas">
+                <MenuItem Header="Consultar Artículos" Click="MenuItem_Click_10"/>
+                <MenuItem Header="Consultar Categorías" Click="MenuItem_Click_11"/>
+                <MenuItem Header="Consultar Clientes" Click="MenuItem_Click_12"/>
+                <MenuItem Header="Consultar Compras" Click="MenuItem_Click_13"/>
+            </MenuItem>
         
         </Menu>
     </Grid>

@@ -1,4 +1,5 @@
 ﻿using ProyectoFinalServicioCliente;
+using ProyectoFinalServicioCliente.UI.Consultas;
 using ProyectoFinalServicioCliente.UI.rArticulo;
 using ProyectoFinalServicioCliente.UI.rCategoria;
 using ProyectoFinalServicioCliente.UI.rCliente;
@@ -95,6 +96,30 @@ namespace ProyectoFinalServicioCliente
         {
             rVenta rVenta = new rVenta();
             rVenta.Show();
+        }
+
+        private void MenuItem_Click_10(object sender, RoutedEventArgs e)
+        {
+            cArticulos cArticulos = new cArticulos();
+            cArticulos.Show();
+        }
+
+        private void MenuItem_Click_11(object sender, RoutedEventArgs e)
+        {
+            cCategorias cCategorias = new cCategorias();
+            cCategorias.Show();
+        }
+
+        private void MenuItem_Click_12(object sender, RoutedEventArgs e)
+        {
+            cClientes cClientes = new cClientes();
+            cClientes.Show();
+        }
+
+        private void MenuItem_Click_13(object sender, RoutedEventArgs e)
+        {
+            cCompras cCompras = new cCompras();
+            cCompras.Show();
         }
     }
 }

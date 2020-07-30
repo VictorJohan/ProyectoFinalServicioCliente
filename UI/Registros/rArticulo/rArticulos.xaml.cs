@@ -66,7 +66,7 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
         //Boton que desencadenara el evento guardar en la base de datos.
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!válidarGuardar())
+            if (!validarGuardar())
                 return;
 
             if (ArticulosBLL.Guardar(Articulo))
@@ -110,7 +110,7 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
         }
 
        
-        public bool válidarGuardar()
+        public bool validarGuardar()
         {
             //válida que haya un valor válido en el campo ArticuloId.
             if (!Regex.IsMatch(ArticuloIdTextBox.Text, "^[0-9]+$"))
@@ -134,9 +134,9 @@ namespace ProyectoFinalServicioCliente.UI.rArticulo
                 return false;
             }
 
-            if(CostoTextBox.Text == PrecioTextBox.Text)
+            if(CostoTextBox.Text == PrecioTextBox.Text || double.Parse(CostoTextBox.Text) > double.Parse(PrecioTextBox.Text))
             {
-                MessageBox.Show("El costo y el precio no pueden ser iguales.", "No esta obteniendo ninguna ganancia.", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("El precio no puede ser igual o menor que el costo.", "No esta obteniendo ninguna ganancia.", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
