@@ -139,26 +139,26 @@ namespace ProyectoFinalServicioCliente.BLL
             return ok;
         }
 
-        public static List<Eventos> GetList(Expression<Func<Eventos, bool>> criterio)
+        public static List<Eventos> GetList(Expression<Func<Eventos, bool>> eventos)
         {
-            Contexto contexto = new Contexto();
-            List<Eventos> lista = new List<Eventos>();
+            Contexto db = new Contexto();
+            List<Eventos> listado = new List<Eventos>();
 
             try
             {
-                lista = contexto.Eventos.Where(criterio).ToList();
+                listado = db.Eventos.Where(eventos).ToList();
             }
-            catch (Exception)
+            catch
             {
-
                 throw;
             }
             finally
             {
-                contexto.Dispose();
+                db.Dispose();
             }
-            return lista;
+            return listado;
         }
 
+      
     }
 }

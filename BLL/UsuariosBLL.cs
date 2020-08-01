@@ -180,6 +180,24 @@ namespace ProyectoFinalServicioCliente.BLL
 
             return ok;
         }
+        public static List<Usuarios> GetList(Expression<Func<Usuarios, bool>> usuario)
+        {
+            List<Usuarios> Lista = new List<Usuarios>();
+            Contexto db = new Contexto();
 
+            try
+            {
+                Lista = db.Usuarios.Where(usuario).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+            return Lista;
+        }
     }
 }

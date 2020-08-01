@@ -25,6 +25,10 @@
                 <MenuItem Header="Consultar Categorías" Click="MenuItem_Click_11"/>
                 <MenuItem Header="Consultar Clientes" Click="MenuItem_Click_12"/>
                 <MenuItem Header="Consultar Compras" Click="MenuItem_Click_13"/>
+                <MenuItem Header="Consultar Eventos" Click="MenuItem_Click_14"/>
+                <MenuItem Header="Consultar Fotografos" Click="MenuItem_Click_15"/>
+                <MenuItem Header="Consultar Usuario" Click="MenuItem_Click_16"/>
+                <MenuItem Header="Consultar Ventas" Click="MenuItem_Click_17"/>
             </MenuItem>
         
         </Menu>

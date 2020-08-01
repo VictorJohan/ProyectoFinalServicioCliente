@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta Clientes" Height="300" Width="600">
+        Title="Consulta Clientes" Height="300" Width="600" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
@@ -31,7 +31,7 @@
 
             <StackPanel HorizontalAlignment="Left" >
                 <DataGrid Name="ConsultaDataGrid" Width="502" Height="200" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
-                              ItemsSource="{Binding Articulos}" Margin="5,5,0,0">
+                              ItemsSource="{Binding Cliente}" Margin="5,5,0,0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Cliente Id" IsReadOnly="True" Binding="{Binding ClienteId}"/>
                         <DataGridTextColumn Header="Nombres" IsReadOnly="True" Binding="{Binding Nombres}"/>

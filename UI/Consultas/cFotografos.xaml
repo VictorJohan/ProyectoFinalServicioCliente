@@ -1,11 +1,11 @@
-﻿<Window x:Class="ProyectoFinalServicioCliente.UI.Consultas.cCategorias"
+﻿<Window x:Class="ProyectoFinalServicioCliente.UI.Consultas.cFotografos"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta Categorias" Height="250" Width="600" WindowStartupLocation="CenterScreen">
+        Title="Consulta Fotografos" Height="450" Width="670" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
@@ -30,11 +30,19 @@
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Left" >
-                <DataGrid Name="ConsultaDataGrid" Width="502" Height="150" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
-                              ItemsSource="{Binding Articulos}" Margin="5,5,0,0">
+                <DataGrid Name="ConsultaDataGrid" Width="628" Height="200" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                              ItemsSource="{Binding Fotografos}" Margin="5,5,0,0">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Categoria Id" IsReadOnly="True" Binding="{Binding CategoriaId}"/>
-                        <DataGridTextColumn Header="Categoria" IsReadOnly="True" Binding="{Binding Categoria}"/>
+                        <DataGridTextColumn Header="Fotografo Id" IsReadOnly="True" Binding="{Binding FotografoId}"/>
+                        <DataGridTextColumn Header="Usuario Id" IsReadOnly="True" Binding="{Binding UsuarioId}"/>
+                        <DataGridTextColumn Header="Nombre" IsReadOnly="True" Binding="{Binding Nombre}"/>
+                        <DataGridTextColumn Header="Cedula" IsReadOnly="True" Binding="{Binding Cedula}"/>
+                        <DataGridTextColumn Header="Dirección" IsReadOnly="True" Binding="{Binding Dirección}"/>
+                        <DataGridTextColumn Header="Telfono" IsReadOnly="True" Binding="{Binding Telefono}"/>
+                        <DataGridTextColumn Header="Celular" IsReadOnly="True" Binding="{Binding Celular}"/>
+                        <DataGridTextColumn Header="Sexo" IsReadOnly="True" Binding="{Binding Cedula}"/>
+                        <DataGridTextColumn Header="Fecha de Nacimieto" IsReadOnly="True" Binding="{Binding FechadeNacimieto}"/>
+                        <DataGridTextColumn Header="Sueldo" IsReadOnly="True" Binding="{Binding Sueldo}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

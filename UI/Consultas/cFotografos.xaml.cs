@@ -1,8 +1,7 @@
-﻿using ProyectoFinalServicioCliente.BLL;
-using ProyectoFinalServicioCliente.Entidades;
+﻿using ProyectoFinalServicioCliente.Entidades;
+using ProyectoFinalServicioFotografo.BLL;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,41 +12,35 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-
 namespace ProyectoFinalServicioCliente.UI.Consultas
 {
     /// <summary>
-    /// Interaction logic for cEventos.xaml
+    /// Interaction logic for cFotografos.xaml
     /// </summary>
-    public partial class cEventos : Window
+    public partial class cFotografos : Window
     {
-        public cEventos()
+        public cFotografos()
         {
             InitializeComponent();
-            string[] filtro = { "Id", "Descipcion", "Lugar" };
+            string[] filtro = { "FotografoId", "Nombres", "Cedula", "Sexo" };
             FiltroComBox.ItemsSource = filtro;
-        }
-
-        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
         private void Buscar_Click(object sender, RoutedEventArgs e)
         {
-            var Listado = new List<Eventos>();
+            var listado = new List<Fotografos>();
 
             if (CriterioTexBox.Text.Trim().Length > 0)
             {
                 switch (FiltroComBox.SelectedIndex)
                 {
                     case 0://Todo
-                        Listado = EventosBLL.GetList(s => true);
+                        listado = FotografosBLL.GetList(u => true);
                         break;
                     case 1:
                         try
                         {
                             int id = Convert.ToInt32(CriterioTexBox.Text);
-                          //  Listado = EventosBLL.GetList(c => c.EventoId == id);
+                            listado = FotografosBLL.GetList(c => c.FotografoId == id);
                         }
                         catch (FormatException)
                         {
@@ -57,70 +50,46 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 2:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTexBox.Text);
-                            Listado = EventosBLL.GetList(c => c.UsuarioId == id);
+
+                            listado = FotografosBLL.GetList(c => c.Nombres.Contains(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {
-                            MessageBox.Show("Por favor, ingrese un ID valido");
+                            MessageBox.Show("Por favor, ingrese un Critero valido");
                         }
                         break;
                     case 3:
                         try
                         {
 
-                         //  Listado = EventosBLL.GetList(c => c.Descripcion.Contains(CriterioTexBox.Text));
+                            listado = FotografosBLL.GetList(c => c.Cedula.Contains(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {
                             MessageBox.Show("Por favor, ingrese un Critero valido");
                         }
                         break;
-
                     case 4:
                         try
                         {
 
-                          //  Listado = EventosBLL.GetList(c => c.Lugar.Contains(CriterioTexBox.Text));
+                            listado = FotografosBLL.GetList(c => c.Sexo.Contains(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {
                             MessageBox.Show("Por favor, ingrese un Critero valido");
                         }
                         break;
-
-                    case 5:
-                        try
-                        {
-                            decimal precio = Convert.ToDecimal(CriterioTexBox.Text);
-                           // Listado = EventosBLL.GetList(c => c.Precio == precio);
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Por favor, ingrese un Critero valido");
-                        }
-                        break;
-
-
-
                 }
-
-                if (DesdeDataPicker.SelectedDate != null && HastaDatePicker.SelectedDate != null) ;
-                  //  Listado = Listado.Where(c => c.FechaInicio.Date >= DesdeDataPicker.SelectedDate.Value && c.FechaFin.Date <= HastaDatePicker.SelectedDate.Value).ToList();
 
             }
             else
             {
-                Listado = EventosBLL.GetList(c => true);
+                listado = FotografosBLL.GetList(c => true);
             }
 
             ConsultaDataGrid.ItemsSource = null;
-            ConsultaDataGrid.ItemsSource = Listado;
-        }
-
-        private void ConsultaDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            ConsultaDataGrid.ItemsSource = listado;
         }
     }
 }

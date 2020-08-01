@@ -121,5 +121,25 @@ namespace ProyectoFinalServicioCliente
             cCompras cCompras = new cCompras();
             cCompras.Show();
         }
+        private void MenuItem_Click_14(object sender, RoutedEventArgs e)
+        {
+            cEventos cEventos = new cEventos();
+            cEventos.Show();
+        }
+        private void MenuItem_Click_15(object sender, RoutedEventArgs e)
+        {
+            cFotografos cFotografos = new cFotografos();
+            cFotografos.Show();
+        }
+        private void MenuItem_Click_16(object sender, RoutedEventArgs e)
+        {
+            cUsuarios cUsuarios = new cUsuarios();
+            cUsuarios.Show();
+        }
+        private void MenuItem_Click_17(object sender, RoutedEventArgs e)
+        {
+            cVentas cVentas = new cVentas();
+            cVentas.Show();
+        }
     }
 }

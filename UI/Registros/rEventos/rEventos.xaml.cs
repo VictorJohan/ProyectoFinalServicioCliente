@@ -244,5 +244,9 @@ namespace ProyectoFinalServicioCliente.UI.rEventos
             return true;
         }
 
+        private void DescripcionTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
