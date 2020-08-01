@@ -22,14 +22,16 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
         public cClientes()
         {
             InitializeComponent();
+            string[] filtro = { "ClienteId", "Nombre", "Apellido", "Cedula", "Sexo", "Celular" };
+            FiltroComBox.ItemsSource = filtro;
         }
-        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
+        private void Buscar_Click(object sender, RoutedEventArgs e)
         {
             var listado = new List<Clientes>();
 
-            if (CriterioTextBox.Text.Trim().Length > 0)
+            if (CriterioTexBox.Text.Trim().Length > 0)
             {
-                switch (FiltroComboBox.SelectedIndex)
+                switch (FiltroComBox.SelectedIndex)
                 {
                     case 0://Todo
                         listado = ClientesBLL.GetList(u => true);
@@ -37,7 +39,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 1:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            int id = Convert.ToInt32(CriterioTexBox.Text);
                             listado = ClientesBLL.GetList(c => c.ClienteId == id);
                         }
                         catch (FormatException)
@@ -49,7 +51,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         try
                         {
 
-                            listado = ClientesBLL.GetList(c => c.Nombre.Contains(CriterioTextBox.Text));
+                            listado = ClientesBLL.GetList(c => c.Nombre.Contains(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {
@@ -60,7 +62,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         try
                         {
 
-                            listado = ClientesBLL.GetList(c => c.Apellido.Contains(CriterioTextBox.Text));
+                            listado = ClientesBLL.GetList(c => c.Apellido.Contains(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {
@@ -71,7 +73,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         try
                         {
 
-                            listado = ClientesBLL.GetList(c => c.Cedula.Contains(CriterioTextBox.Text));
+                            listado = ClientesBLL.GetList(c => c.Cedula.Contains(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {
@@ -82,7 +84,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         try
                         {
 
-                            listado = ClientesBLL.GetList(c => c.Sexo.Contains(CriterioTextBox.Text));
+                            listado = ClientesBLL.GetList(c => c.Sexo.Contains(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {

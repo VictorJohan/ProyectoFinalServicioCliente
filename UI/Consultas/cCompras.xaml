@@ -5,53 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="cCompras" Height="200" Width="650">
-    <Grid>
+        Title="cCompras" Height="200" Width="850">
+     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
-            <StackPanel Orientation="Horizontal" Height="58">
-                <StackPanel>
-                    <Label Content="Desde:"/>
-                    <DatePicker x:Name="DesdeDataPicker"/>
-                </StackPanel>
+            <!--Panel Labels-->
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Desde:" FontSize="11"/>
+                <Label Content="Hasta:" FontSize="11"/>
+                <Label Content="Filtro" FontSize="11"/>
+                <Label Content="Criterio" FontSize="11" Margin="200,0,0,0"/>
+              
+            </StackPanel>
 
-                <StackPanel Orientation="Vertical" Margin="5,0">
-                    <Label Content="Hasta:" />
-                    <DatePicker x:Name="HastaDatePicker"/>
-                </StackPanel>
+            <!--Panel Controles-->
+            <StackPanel Orientation="Horizontal">
+                <DatePicker x:Name="DesdeDataPicker"/>
+                <DatePicker x:Name="HastaDatePicker"/>
+                <ComboBox Name="FiltroComBox" Height="20" Width="200" HorizontalAlignment="Left" Margin="5,0" Padding="-1"/>
+                <TextBox x:Name="CriterioTexBox"  Height="20" Width="200" Margin="27,0,0,0" />
 
-                <StackPanel Margin="5,0">
-                    <Label Content="Filtro:" />
-                    <ComboBox x:Name="FiltroComboBox" Width="100">
-                        <ComboBoxItem Content="EstudianteId"/>
-                        <ComboBoxItem Content="Nombres"/>
-                    </ComboBox>
-                </StackPanel>
-
-                <StackPanel Margin="5,0">
-                    <Label Content="Critero:"/>
-                    <TextBox x:Name="CriterioTextBox" Width="100"/>
-
-                </StackPanel>
-
-                <Button x:Name="BuscarButton" Height="34" Width="93" Click="ConsultarButton_Click" >
-                    <StackPanel Orientation="Horizontal" >
-                        <Image Source="/Resources/search.png"  />
-                        <Label Content="Buscar" />
+                <Button x:Name="Buscar" Height="20" Width="60"  Click="Buscar_Click" Margin="10,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/search.png"/>
+                        <Label Content="Buscar" Margin="4,0" Padding="-1"/>
                     </StackPanel>
                 </Button>
 
             </StackPanel>
+            
             <StackPanel HorizontalAlignment="Left" >
-                <DataGrid Name="ConsultaDataGrid" Width="572" Height="100" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
-                              ItemsSource="{Binding ComoprasConsulta}" Margin="5,5,0,0">
+                <DataGrid Name="ConsultaDataGrid" Width="500" Height="100" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                              ItemsSource="{Binding Articulos}" Margin="5,5,0,0">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Compra Id" IsReadOnly="True" Binding="{Binding ComprasId}"/>
-                        <DataGridTextColumn Header="Suplidor" Binding="{Binding Consulta.Suplidor}"/>
-                        <DataGridTextColumn Header="Descripción" Binding="{Binding Consulta.Descripcion}"/>
-                        <DataGridTextColumn Header="Costo" Binding="{Binding Cunsulta.Costo}"/>
-                        <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"/>
-                        <DataGridTextColumn Header="Total" Binding="{Binding Total}"/>
+                        <DataGridTextColumn Header="Compra Id" IsReadOnly="True" Binding="{Binding CompraId}"/>
+                        <DataGridTextColumn Header="Suplidor" IsReadOnly="True" Binding="{Binding Suplidor}"/>
+                        <DataGridTextColumn Header="Descripcion" IsReadOnly="True" Binding="{Binding Precio}"/>
+                        <DataGridTextColumn Header="Categoria" IsReadOnly="True" Binding="{Binding Descripcion}"/>
+                        <DataGridTextColumn Header="Costo" IsReadOnly="True" Binding="{Binding Costo}"/>
+                        <DataGridTextColumn Header="Cantidad" IsReadOnly="True" Binding="{Binding Cantidad}"/>
+                        <DataGridTextColumn Header="Total" IsReadOnly="True" Binding="{Binding Total}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

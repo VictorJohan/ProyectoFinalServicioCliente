@@ -22,14 +22,16 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
         public cCategorias()
         {
             InitializeComponent();
+            string[] filtro = { "Categoria Id", "Categoria" };
+            FiltroComBox.ItemsSource = filtro;
         }
-        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
+        private void Buscar_Click(object sender, RoutedEventArgs e)
         {
             var Listado = new List<Categorias>();
 
-            if (CriterioTextBox.Text.Trim().Length > 0)
+            if (CriterioTexBox.Text.Trim().Length > 0)
             {
-                switch (FiltroComboBox.SelectedIndex)
+                switch (FiltroComBox.SelectedIndex)
                 {
                     case 0://Todo
                         Listado = CategoriasBLL.GetList(s => true);
@@ -37,7 +39,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 1:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            int id = Convert.ToInt32(CriterioTexBox.Text);
                             Listado = CategoriasBLL.GetList(c => c.CategoriaId == id);
                         }
                         catch (FormatException)
@@ -48,7 +50,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 2:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            int id = Convert.ToInt32(CriterioTexBox.Text);
                             Listado = CategoriasBLL.GetList(c => c.UsuarioId == id);
                         }
                         catch (FormatException)
@@ -60,7 +62,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         try
                         {
 
-                            Listado = CategoriasBLL.GetList(c => c.Nombre.Contains(CriterioTextBox.Text));
+                            Listado = CategoriasBLL.GetList(c => c.Nombre.Contains(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {

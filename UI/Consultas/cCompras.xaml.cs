@@ -23,14 +23,16 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
         public cCompras()
         {
             InitializeComponent();
+            string[] filtro = { "Id", "Categoria", "Descipcion", "Cantidad" };
+            FiltroComBox.ItemsSource = filtro;
         }
-        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
+        private void Buscar_Click(object sender, RoutedEventArgs e)
         {
             var Listado = new List<Compras>();
 
-            if (CriterioTextBox.Text.Trim().Length > 0)
+            if (CriterioTexBox.Text.Trim().Length > 0)
             {
-                switch (FiltroComboBox.SelectedIndex)
+                switch (FiltroComBox.SelectedIndex)
                 {
                     case 0://Todo
                         Listado = ComprasBLL.GetList(s => true);
@@ -38,7 +40,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 1:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            int id = Convert.ToInt32(CriterioTexBox.Text);
                             Listado = ComprasBLL.GetList(c => c.CompraId == id);
                         }
                         catch (FormatException)
@@ -49,7 +51,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 2:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            int id = Convert.ToInt32(CriterioTexBox.Text);
                             Listado = ComprasBLL.GetList(c => c.UsuarioId == id);
                         }
                         catch (FormatException)
@@ -60,7 +62,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 3:
                         try
                         {
-                            double monto = Convert.ToDouble(CriterioTextBox.Text);
+                            double monto = Convert.ToDouble(CriterioTexBox.Text);
                             Listado = ComprasBLL.GetList(c => c.Monto == monto);
                         }
                         catch (FormatException)
@@ -85,5 +87,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
             ConsultaDataGrid.ItemsSource = null;
             ConsultaDataGrid.ItemsSource = Listado;
         }
+
+      
     }
 }

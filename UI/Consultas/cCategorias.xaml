@@ -5,43 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="cCategorias" Height="200" Width="600">
+        Title="Consulta Categorias" Height="250" Width="600">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
-            <StackPanel Orientation="Horizontal" Height="58">
-                <StackPanel/>
+            <!--Panel Labels-->
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Filtro" FontSize="11"/>
+                <Label Content="Criterio" FontSize="11" Margin="200,0,0,0"/>
+            </StackPanel>
 
-                <StackPanel Orientation="Vertical" Margin="5,0"/>
+            <!--Panel Controles-->
+            <StackPanel Orientation="Horizontal">
+                <ComboBox Name="FiltroComBox" Height="20" Width="200" HorizontalAlignment="Left" Margin="5,0" Padding="-1"/>
+                <TextBox x:Name="CriterioTexBox"  Height="20" Width="200" Margin="27,0,0,0" />
 
-                <StackPanel Margin="5,0">
-                    <Label Content="Filtro:" />
-                    <ComboBox x:Name="FiltroComboBox" Width="100">
-                        <ComboBoxItem Content="EstudianteId"/>
-                        <ComboBoxItem Content="Nombres"/>
-                    </ComboBox>
-                </StackPanel>
-
-                <StackPanel Margin="5,0">
-                    <Label Content="Critero:"/>
-                    <TextBox x:Name="CriterioTextBox" Width="100"/>
-
-                </StackPanel>
-
-                <Button x:Name="BuscarButton" Height="34" Width="93" Click="ConsultarButton_Click" >
-                    <StackPanel Orientation="Horizontal" >
-                        <Image Source="/Resources/search.png"  />
-                        <Label Content="Buscar" />
+                <Button x:Name="Buscar" Height="20" Width="60"  Click="Buscar_Click" Margin="10,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/search.png"/>
+                        <Label Content="Buscar" Margin="4,0" Padding="-1"/>
                     </StackPanel>
                 </Button>
 
             </StackPanel>
+
             <StackPanel HorizontalAlignment="Left" >
-                <DataGrid Name="ConsultaDataGrid" Width="572" Height="100" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
-                              ItemsSource="{Binding ClientesConsulta}" Margin="5,5,0,0">
+                <DataGrid Name="ConsultaDataGrid" Width="502" Height="150" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                              ItemsSource="{Binding Articulos}" Margin="5,5,0,0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Categoria Id" IsReadOnly="True" Binding="{Binding CategoriaId}"/>
-                        <DataGridTextColumn Header="Categoria" Binding="{Binding Clientes.Categoria}"/>
+                        <DataGridTextColumn Header="Categoria" IsReadOnly="True" Binding="{Binding Categoria}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
