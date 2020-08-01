@@ -118,8 +118,8 @@
                             <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}"/>
                             <DataGridTextColumn Header="Lugar" Binding="{Binding Lugar}"/>
                             <DataGridTextColumn Header="Fotógrafo" Binding="{Binding FotografoId}"/>
-                            <DataGridTextColumn Header="Inicio" Binding="{Binding Fecha}"/>
-                            <DataGridTextColumn Header="Vence" Binding="{Binding FechaVencimiento}"/>
+                            <DataGridTextColumn Header="Inicio" Binding="{Binding Fecha, StringFormat=dd/MM/yyyy}"/>
+                            <DataGridTextColumn Header="Vence" Binding="{Binding FechaVencimiento, StringFormat=dd/MM/yyyy}"/>
                             <DataGridTextColumn Header="Precio" Binding="{Binding Precio}"/>
                         </DataGrid.Columns>
                     </DataGrid>
