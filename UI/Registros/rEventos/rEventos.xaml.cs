@@ -214,9 +214,18 @@ namespace ProyectoFinalServicioCliente.UI.rEventos
 
                 return false;
             }
-            
+
+            //Válida que la fecha de inicio no sea menor que la fecha actual
+            if(inicio < DateTime.Now)
+            {
+                MessageBox.Show("Asegúrese de haber selcionado correctamente las fechas.",
+                    "La fecha de inicio ya pasó.", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                return false;
+            }
+
             //válida que se haya selccionado un fotografo
-            if(FotografoComboBox.SelectedIndex == -1)
+            if (FotografoComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Selecione un fotógrafo para poder agregar el evento.",
                     "No ha selecionado fotógrafo.", MessageBoxButton.OK, MessageBoxImage.Warning);
