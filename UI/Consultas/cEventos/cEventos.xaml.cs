@@ -116,12 +116,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         }
                         break;
 
-
-
                 }
-
-                if (InicioDesdeDataPicker.SelectedDate != null && InicioDesdeDataPicker.SelectedDate != null) ;
-                  //  Listado = Listado.Where(c => c.FechaInicio.Date >= DesdeDataPicker.SelectedDate.Value && c.FechaFin.Date <= HastaDatePicker.SelectedDate.Value).ToList();
 
             }
             else
