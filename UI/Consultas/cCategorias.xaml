@@ -31,10 +31,10 @@
 
             <StackPanel HorizontalAlignment="Left" >
                 <DataGrid Name="ConsultaDataGrid" Width="502" Height="150" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
-                              ItemsSource="{Binding Articulos}" Margin="5,5,0,0">
+                              ItemsSource="{Binding Categorias}" Margin="5,5,0,0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Categoria Id" IsReadOnly="True" Binding="{Binding CategoriaId}"/>
-                        <DataGridTextColumn Header="Categoria" IsReadOnly="True" Binding="{Binding Categoria}"/>
+                        <DataGridTextColumn Header="Categoria" IsReadOnly="True" Binding="{Binding Nombre}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

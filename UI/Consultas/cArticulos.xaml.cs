@@ -51,8 +51,8 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 2:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTexBox.Text);
-                            Listado = ArticulosBLL.GetList(c => c.UsuarioId == id);
+                            
+                            Listado = ArticulosBLL.GetList(c => c.Precio == double.Parse(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {
@@ -63,7 +63,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         try
                         {
 
-                            Listado = ArticulosBLL.GetList(c => c.Descripcion.Contains(CriterioTexBox.Text));
+                            Listado = ArticulosBLL.GetList(c => c.Ganancia == double.Parse(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {
@@ -71,14 +71,12 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         }
                         break;
                     case 4:
-                        int a = Convert.ToInt32(CriterioTexBox.Text);
-                        Listado = ArticulosBLL.GetList(s => s.CategoriaId == a);
+                        Listado = ArticulosBLL.GetList(c => c.Stock == int.Parse(CriterioTexBox.Text));
                         break;
                     case 5:
                         try
                         {
-                            int stock = Convert.ToInt32(CriterioTexBox.Text);
-                            Listado = ArticulosBLL.GetList(c => c.Stock == stock);
+                            Listado = ArticulosBLL.GetList(c => c.Costo == double.Parse(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {
@@ -86,29 +84,6 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         }
                         break;
 
-                    case 6:
-                        try
-                        {
-                            int precio = Convert.ToInt32(CriterioTexBox.Text);
-                            Listado = ArticulosBLL.GetList(c => c.Precio == precio);
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Por favor, ingrese una cantidad valida");
-                        }
-                        break;
-
-                    case 7:
-                        try
-                        {
-                            double costo = Convert.ToInt32(CriterioTexBox.Text);
-                           Listado = ArticulosBLL.GetList(c => c.Costo == costo);
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Por favor, ingrese una cantidad valida");
-                        }
-                        break;
                 }
 
             }

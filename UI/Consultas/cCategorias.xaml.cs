@@ -33,42 +33,21 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
             {
                 switch (FiltroComBox.SelectedIndex)
                 {
-                    case 0://Todo
-                        Listado = CategoriasBLL.GetList(s => true);
+                    case 0:
+                        Listado = CategoriasBLL.GetList(c => c.CategoriaId == int.Parse(CriterioTexBox.Text));
                         break;
                     case 1:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTexBox.Text);
-                            Listado = CategoriasBLL.GetList(c => c.CategoriaId == id);
+                            
+                            Listado = CategoriasBLL.GetList(c => c.Nombre == CriterioTexBox.Text);
                         }
                         catch (FormatException)
                         {
                             MessageBox.Show("Por favor, ingrese un ID valido");
                         }
                         break;
-                    case 2:
-                        try
-                        {
-                            int id = Convert.ToInt32(CriterioTexBox.Text);
-                            Listado = CategoriasBLL.GetList(c => c.UsuarioId == id);
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Por favor, ingrese un ID valido");
-                        }
-                        break;
-                    case 3:
-                        try
-                        {
-
-                            Listado = CategoriasBLL.GetList(c => c.Nombre.Contains(CriterioTexBox.Text));
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Por favor, ingrese un Critero valido");
-                        }
-                        break;
+                   
                 }
 
             }
