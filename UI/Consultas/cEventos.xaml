@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta Eventos" Height="410" Width="850" WindowStartupLocation="CenterScreen">
+        Title="Consulta Eventos" Height="410" Width="877" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
@@ -14,10 +14,7 @@
                 <Label Content="Inicio(Desde):" FontSize="11"/>
                 <Label Content="Vence(Hasta):" FontSize="11" Margin="71,0,0,0"/>
                 <Label Content="Filtro" FontSize="11" Margin="133,0,0,0"/>
-                <Label Content="Criterio" FontSize="11" Margin="198,0,0,0" RenderTransformOrigin="0.485,0.603">
-
-
-                </Label>
+                <Label Content="Criterio" FontSize="11" Margin="198,0,0,0" RenderTransformOrigin="0.485,0.603"/>
 
             </StackPanel>
 

@@ -118,11 +118,15 @@ namespace ProyectoFinalServicioCliente
 
         private void MenuItem_Click_13(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Esta venta no cumple con los requerimientos debido a que no se puede incluir el detalle en la consulta", 
+                "Aviso.", MessageBoxButton.OK, MessageBoxImage.Warning);  
             cCompras cCompras = new cCompras();
             cCompras.Show();
         }
         private void MenuItem_Click_14(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Esta venta no cumple con los requerimientos debido a que no se puede incluir el detalle en la consulta",
+               "Aviso.", MessageBoxButton.OK, MessageBoxImage.Warning);
             cEventos cEventos = new cEventos();
             cEventos.Show();
         }
@@ -138,6 +142,8 @@ namespace ProyectoFinalServicioCliente
         }
         private void MenuItem_Click_17(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Esta venta no cumple con los requerimientos debido a que no se puede incluir el detalle en la consulta",
+               "Aviso.", MessageBoxButton.OK, MessageBoxImage.Warning);
             cVentas cVentas = new cVentas();
             cVentas.Show();
         }
