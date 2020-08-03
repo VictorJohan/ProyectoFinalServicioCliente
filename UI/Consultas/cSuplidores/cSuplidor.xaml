@@ -5,23 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta Suplidor" Height="410" Width="560" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/search.png">
+        Title="Consulta Suplidor" Height="410" Width="536" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/search.png">
+
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF6FB1DE" Offset="0.032"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
             <!--Panel Labels-->
             <StackPanel Orientation="Horizontal">
                 <Label Content="Filtro" FontSize="11"/>
-                <Label Content="Criterio" FontSize="11" Margin="24,0,0,0"/>
+                <Label Content="Criterio" FontSize="11" Margin="179,0,0,0"/>
             </StackPanel>
 
             <!--Panel Controles-->
             <StackPanel Orientation="Horizontal">
                 <ComboBox Name="FiltroComBox" Height="20" Width="200" HorizontalAlignment="Left" Margin="5,0" Padding="-1"/>
-                <TextBox x:Name="CriterioTexBox"  Width="200" Height="20" Margin="10,0,0,0" />
+                <TextBox x:Name="CriterioTexBox"  Width="200" Height="20" Margin="10,0,0,0" BorderBrush="Black">
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                </TextBox>
 
 
-                <Button x:Name="Buscar" Height="20" Width="60"  Click="Buscar_Click" Margin="10,0,0,0">
+                <Button x:Name="Buscar" Height="20" Width="60"  Click="Buscar_Click" Margin="10,0,0,0" BorderBrush="Black">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/search.png"/>
                         <Label Content="Buscar" Margin="4,0" Padding="-1"/>

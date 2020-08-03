@@ -5,30 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="cCompras" Height="410" Width="850" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/search.png">
-     <Grid>
+        Title="Consulta Compras" Height="410" Width="870" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/search.png">
+
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF6FB1DE" Offset="0.032"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
             <!--Panel Labels-->
             <StackPanel Orientation="Horizontal">
                 <Label Content="Desde:" FontSize="11"/>
                 <Label Content="Hasta:" FontSize="11" Margin="103,0,0,0"/>
-                <Label Content="Filtro" FontSize="11" Margin="133,0,0,0"/>
+                <Label Content="Filtro" FontSize="11" Margin="127,0,0,0"/>
                 <Label Content="Criterio" FontSize="11" Margin="198,0,0,0" RenderTransformOrigin="0.485,0.603">
-                   
-                      
+
+
                 </Label>
 
             </StackPanel>
 
             <!--Panel Controles-->
             <StackPanel Orientation="Horizontal">
-                <DatePicker x:Name="DesdeDataPicker"/>
-                <DatePicker x:Name="HastaDatePicker" Margin="7,0,0,0"/>
+                <DatePicker x:Name="DesdeDataPicker" BorderBrush="Black"/>
+                <DatePicker x:Name="HastaDatePicker" Margin="7,0,0,0" BorderBrush="Black"/>
                 <ComboBox Name="FiltroComBox" Height="20" Width="200" HorizontalAlignment="Left" Margin="21,0,5,0" Padding="-1"/>
-                <TextBox x:Name="CriterioTexBox"  Height="20" Width="200" Margin="27,0,0,0" />
+                <TextBox x:Name="CriterioTexBox"  Height="20" Width="200" Margin="27,0,0,0" BorderBrush="Black">
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                </TextBox>
 
-                <Button x:Name="Buscar" Height="20" Width="60"  Click="Buscar_Click" Margin="10,0,0,0">
+                <Button x:Name="Buscar" Height="20" Width="60"  Click="Buscar_Click" Margin="10,0,0,0" BorderBrush="Black">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/search.png"/>
                         <Label Content="Buscar" Margin="4,0" Padding="-1"/>
@@ -36,19 +51,17 @@
                 </Button>
 
             </StackPanel>
-            
-            <StackPanel HorizontalAlignment="Left" >
-                <DataGrid Name="ConsultaDataGrid" Width="814" Height="300" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
-                              ItemsSource="{Binding Compras}" Margin="5,5,0,0">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Compra Id" IsReadOnly="True" Binding="{Binding CompraId}"/>
-                        <DataGridTextColumn Header="Monto" IsReadOnly="True" Binding="{Binding Monto}"/>
-                        <DataGridTextColumn Header="Fecha" IsReadOnly="True" Binding="{Binding Fecha}"/>
-                        <DataGridTextColumn Header="SuplidorId" IsReadOnly="True" Binding="{Binding SuplidorId}"/>
-                       
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
+
+            <DataGrid Name="ConsultaDataGrid" Width="819" Height="300" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                              ItemsSource="{Binding Compras}" Margin="0,5,0,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Compra Id" IsReadOnly="True" Binding="{Binding CompraId}"/>
+                    <DataGridTextColumn Header="Monto" IsReadOnly="True" Binding="{Binding Monto}"/>
+                    <DataGridTextColumn Header="Fecha" IsReadOnly="True" Binding="{Binding Fecha}"/>
+                    <DataGridTextColumn Header="SuplidorId" IsReadOnly="True" Binding="{Binding SuplidorId}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
         </StackPanel>
     </Grid>
 </Window>

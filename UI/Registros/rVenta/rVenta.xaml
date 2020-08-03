@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rVenta"
         mc:Ignorable="d"
-        Title="Venta" Height="545" Width="640" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Venta" Height="545" Width="640" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/sales.png">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF6FB1DE" Offset="0.032"/>

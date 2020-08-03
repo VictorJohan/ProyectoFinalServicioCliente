@@ -1,11 +1,11 @@
-﻿<Window x:Class="ProyectoFinalServicioCliente.MainWindow"
+﻿<Window x:Class="ProyectoFinalServicioCliente.UI.Consultas.mConsultas.mConsultas"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProyectoFinalServicioCliente"
+        xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas.mConsultas"
         mc:Ignorable="d"
-        Title="Principal" Height="450" Width="1208" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/main.png">
+         Title="Consultas" Height="380" Width="1200" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/search.png">
 
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -16,45 +16,30 @@
 
     <Grid>
         <Menu Height="20" VerticalAlignment="Top" Background="White">
-            <MenuItem Header="Registro">
-                <MenuItem Header="Registro Usuario" Click="MenuItem_Click_1"/>
-                <MenuItem Header="Registro Artículo" Click="MenuItem_Click_2"/>
-                <MenuItem Header="Registro Categoría" Click="MenuItem_Click_3"/>
-                <MenuItem Header="Registro Compras" Click="MenuItem_Click_4"/>
-                <MenuItem Header="Registro Suplidor" Click="MenuItem_Click_5"/>
-                <MenuItem Header="Registro Evento" Click="MenuItem_Click_6"/>
-                <MenuItem Header="Registro Cliente" Click="MenuItem_Click_7"/>
-                <MenuItem Header="Registro Fotógrafo" Click="MenuItem_Click_8"/>
-                <MenuItem Header="Registro Ventas" Click="MenuItem_Click_9"/>
-            </MenuItem>
-
-            <MenuItem Header="Consultas">
-                <MenuItem Header="Consultar Artículos" Click="MenuItem_Click_10"/>
-                <MenuItem Header="Consultar Categorías" Click="MenuItem_Click_11"/>
-                <MenuItem Header="Consultar Clientes" Click="MenuItem_Click_12"/>
-                <MenuItem Header="Consultar Compras" Click="MenuItem_Click_13"/>
-                <MenuItem Header="Consultar Eventos" Click="MenuItem_Click_14"/>
-                <MenuItem Header="Consultar Fotografos" Click="MenuItem_Click_15"/>
-                <MenuItem Header="Consultar Usuario" Click="MenuItem_Click_16"/>
-                <MenuItem Header="Consultar Ventas" Click="MenuItem_Click_17"/>
-            </MenuItem>
-
-            <MenuItem Header="Usuarios" Margin="909,0,0,0">
-                <MenuItem Header="Nuevo" Click="MenuItem_Click"/>
-                <MenuItem Header="Cerrar Sesión" Click="MenuItem_Click_18"/>
-            </MenuItem>
             
+            <MenuItem Header="Consultas">
+                <MenuItem Header="Consultar Artículos" Click="MenuItem_Click"/>
+                <MenuItem Header="Consultar Categorías" Click="MenuItem_Click_1"/>
+                <MenuItem Header="Consultar Clientes" Click="MenuItem_Click_2"/>
+                <MenuItem Header="Consultar Compras" Click="MenuItem_Click_3"/>
+                <MenuItem Header="Consultar Eventos" Click="MenuItem_Click_4"/>
+                <MenuItem Header="Consultar Fotografos" Click="MenuItem_Click_5"/>
+                <MenuItem Header="Consultar Usuario" Click="MenuItem_Click_6"/>
+                <MenuItem Header="Consultar Ventas" Click="MenuItem_Click_7"/>
+            </MenuItem>
+            <MenuItem Header="Ver Usuarios" Click="MenuItem_Click_8"/>
+
         </Menu>
 
         <StackPanel Orientation="Vertical" Margin="10,22,10,10">
             <!--Panel de botones superior-->
             <StackPanel Orientation="Horizontal" Margin="5,35,0,0" Width="1000">
 
-                <!--Registrar Articulos-->
-                <Button Name="RegistrarArticulosButton" Width="228" Height="63" BorderBrush="Black" Click="RegistrarArticulosButton_Click">
+                <!--Consulta Articulos-->
+                <Button Name="ConsultaArticulosButton" Width="228" Height="63" BorderBrush="Black" Click="ConsultaArticulosButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/articulo.png"/>
-                        <Label Content="Registrar Artículos" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
+                        <Label Content="Consultar Artículos" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
                     </StackPanel>
 
                     <Button.Background>
@@ -65,12 +50,12 @@
                     </Button.Background>
 
                 </Button>
-                
-                <!--Registrar Categorias-->
-                <Button Name="RegistrarCategoriaButton" Width="230" Height="63" Margin="20,0,0,0" BorderBrush="Black" Click="RegistrarCategoriaButton_Click">
+
+                <!--Consulta Categorias-->
+                <Button Name="ConsultaCategoriaButton" Width="230" Height="63" Margin="20,0,0,0" BorderBrush="Black" Click="ConsultaCategoriaButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/categoria.png"/>
-                        <Label Content="Registrar Categoría" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
+                        <Label Content="Consultar Categoría" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
                     </StackPanel>
 
                     <Button.Background>
@@ -82,11 +67,11 @@
 
                 </Button>
 
-                <!--Registrar Compras-->
-                <Button Name="RegistrarCompraButton" Width="230" Height="63" Margin="20,0,0,0" BorderBrush="Black" Click="RegistrarCompraButton_Click">
+                <!--Consulta Compras-->
+                <Button Name="ConsultaCompraButton" Width="230" Height="63" Margin="20,0,0,0" BorderBrush="Black" Click="ConsultaCompraButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/producto.png"/>
-                        <Label Content="Registrar Compra" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
+                        <Label Content="Consultar Compra" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
                     </StackPanel>
 
                     <Button.Background>
@@ -98,11 +83,11 @@
 
                 </Button>
 
-                <!--Registrar Suplidor-->
-                <Button Name="RegistrarSuplidorButton" Width="230" Height="63" Margin="20,0,0,0" BorderBrush="Black" Click="RegistrarSuplidorButton_Click">
+                <!--Consulta Suplidor-->
+                <Button Name="ConsultaSuplidorButton" Width="230" Height="63" Margin="20,0,0,0" BorderBrush="Black" Click="ConsultaSuplidorButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/suplidor.png"/>
-                        <Label Content="Registrar Suplidor" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
+                        <Label Content="Consultar Suplidor" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
                     </StackPanel>
 
                     <Button.Background>
@@ -119,11 +104,11 @@
             <!--Panel de botones inferior-->
             <StackPanel Orientation="Horizontal" Margin="5,68,0,0" Width="1000">
 
-                <!--Registrar Eventos-->
-                <Button Name="RegistrarEventoButton" Width="228" Height="63" BorderBrush="Black" Click="RegistrarEventoButton_Click">
+                <!--Consulta Eventos-->
+                <Button Name="ConsultaEventoButton" Width="228" Height="63" BorderBrush="Black" Click="ConsultaEventoButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/evento.png"/>
-                        <Label Content="Registrar Eventos" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
+                        <Label Content="Consultar Eventos" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
                     </StackPanel>
 
                     <Button.Background>
@@ -135,11 +120,11 @@
 
                 </Button>
 
-                <!--Registrar Cliente-->
-                <Button Name="RegistrarClienteButton" Width="230" Height="63" Margin="20,0,0,0" BorderBrush="Black" Click="RegistrarClienteButton_Click">
+                <!--Consulta Cliente-->
+                <Button Name="ConsultaClienteButton" Width="230" Height="63" Margin="20,0,0,0" BorderBrush="Black" Click="ConsultaClienteButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/cliente.png"/>
-                        <Label Content="Registrar Clientes" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
+                        <Label Content="Consultar Clientes" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
                     </StackPanel>
 
                     <Button.Background>
@@ -151,11 +136,11 @@
 
                 </Button>
 
-                <!--Registrar Fotografos-->
-                <Button Name="RegistrarFotografoButton" Width="230" Height="63" Margin="20,0,0,0" BorderBrush="Black" Click="RegistrarFotografoButton_Click">
+                <!--Consulta Fotografos-->
+                <Button Name="ConsultaFotografoButton" Width="230" Height="63" Margin="20,0,0,0" BorderBrush="Black" Click="ConsultaFotografoButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/fotografo.png"/>
-                        <Label Content="Registrar Fotógrafo" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
+                        <Label Content="Consultar Fotógrafo" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
                     </StackPanel>
 
                     <Button.Background>
@@ -167,11 +152,11 @@
 
                 </Button>
 
-                <!--Registrar Ventas-->
-                <Button Name="RegistrarVentaButton" Width="230" Height="63" Margin="20,0,0,0" BorderBrush="Black" Click="RegistrarVentaButton_Click">
+                <!--Consulta Ventas-->
+                <Button Name="ConsultaVentaButton" Width="230" Height="63" Margin="20,0,0,0" BorderBrush="Black" Click="ConsultaVentaButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/compra.png"/>
-                        <Label Content="Registrar Ventas" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
+                        <Label Content="Consultar Ventas" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
                     </StackPanel>
 
                     <Button.Background>
@@ -185,21 +170,6 @@
 
             </StackPanel>
 
-            <!--Main Consultas-->
-            <Button Name="ConsultasButton" Width="180" Height="63" Margin="781,70,0,0" BorderBrush="Black" Click="ConsultasButton_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Resources/search.png"/>
-                    <Label Content="Consultar" FontStyle="Italic" FontSize="19" Margin="0,13,0,11"/>
-                </StackPanel>
-
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="White"/>
-                        <GradientStop Color="#FFD4C8C8" Offset="0.807"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-
-            </Button>
 
         </StackPanel>
 

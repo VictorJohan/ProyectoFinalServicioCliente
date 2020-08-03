@@ -25,7 +25,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
         public cEventos()
         {
             InitializeComponent();
-            string[] filtro = { "Cliente Id", "Descripción", "Lugar","Fecha Inicio", "Fecha de Vencimiento",  "Precio", "Total" };
+            string[] filtro = { "Cliente Id", "Total" };
             FiltroComBox.ItemsSource = filtro;
         }
 
@@ -52,67 +52,11 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 1:
                         try
                         {
-                           Listado = EventosBLL.GetList(c => c.EventosDetalles.Any(d => d.Descripcion.Equals(CriterioTexBox.Text)));
+                            Listado = EventosBLL.GetList(e => e.Total == double.Parse(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {
                             MessageBox.Show("Por favor, ingrese un ID valido");
-                        }
-                        break;
-                    case 2:
-                        try
-                        {
-                            Listado = EventosBLL.GetList(c => c.EventosDetalles.Any(d => d.Lugar.Equals(CriterioTexBox.Text)));
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Por favor, ingrese un ID valido");
-                        }
-                        break;
-                    case 3:
-                        try
-                        {
-
-                            Listado = EventosBLL.GetList(c => c.EventosDetalles.Any(d => d.Fecha.Equals(InicioDesdeDataPicker.SelectedDate.Value)));
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Por favor, ingrese un Critero valido");
-                        }
-                        break;
-
-                    case 4:
-                        try
-                        {
-
-                            Listado = EventosBLL.GetList(c => c.EventosDetalles.Any(d => d.Fecha.Equals(VenceHastaDatePicker.SelectedDate.Value)));
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Por favor, ingrese un Critero valido");
-                        }
-                        break;
-
-                    case 5:
-                        try
-                        {
-
-                            Listado = EventosBLL.GetList(c => c.EventosDetalles.Any(d => d.Precio.Equals(double.Parse( CriterioTexBox.Text))));
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Por favor, ingrese un Critero valido");
-                        }
-                        break;
-                    case 6:
-                        try
-                        {
-
-                            Listado = EventosBLL.GetList(c => c.Total == double.Parse(CriterioTexBox.Text));
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Por favor, ingrese un Critero valido");
                         }
                         break;
 

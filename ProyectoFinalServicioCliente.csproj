@@ -22,6 +22,7 @@
     <None Remove="Resources\camara.png" />
     <None Remove="Resources\categoria.png" />
     <None Remove="Resources\cliente.png" />
+    <None Remove="Resources\clientes.png" />
     <None Remove="Resources\compra.png" />
     <None Remove="Resources\delete.png" />
     <None Remove="Resources\evento.png" />
@@ -29,13 +30,16 @@
     <None Remove="Resources\inventario.png" />
     <None Remove="Resources\Login.png" />
     <None Remove="Resources\logout.png" />
+    <None Remove="Resources\main.png" />
     <None Remove="Resources\newFile.png" />
+    <None Remove="Resources\pastel.png" />
     <None Remove="Resources\pedido.png" />
     <None Remove="Resources\persona.png" />
     <None Remove="Resources\Presentacion.jpg" />
     <None Remove="Resources\producto.png" />
     <None Remove="Resources\registro.png" />
     <None Remove="Resources\remover.png" />
+    <None Remove="Resources\sales.png" />
     <None Remove="Resources\save.png" />
     <None Remove="Resources\search.png" />
     <None Remove="Resources\suplidor.png" />
@@ -63,6 +67,7 @@
     <Resource Include="Resources\camara.png" />
     <Resource Include="Resources\categoria.png" />
     <Resource Include="Resources\cliente.png" />
+    <Resource Include="Resources\clientes.png" />
     <Resource Include="Resources\compra.png" />
     <Resource Include="Resources\delete.png" />
     <Resource Include="Resources\evento.png" />
@@ -70,7 +75,9 @@
     <Resource Include="Resources\inventario.png" />
     <Resource Include="Resources\Login.png" />
     <Resource Include="Resources\logout.png" />
+    <Resource Include="Resources\main.png" />
     <Resource Include="Resources\newFile.png" />
+    <Resource Include="Resources\pastel.png" />
     <Resource Include="Resources\pedido.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -79,6 +86,7 @@
     <Resource Include="Resources\producto.png" />
     <Resource Include="Resources\registro.png" />
     <Resource Include="Resources\remover.png" />
+    <Resource Include="Resources\sales.png" />
     <Resource Include="Resources\save.png" />
     <Resource Include="Resources\search.png" />
     <Resource Include="Resources\suplidor.png" />

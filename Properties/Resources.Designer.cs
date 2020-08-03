@@ -103,6 +103,16 @@ namespace ProyectoFinalServicioCliente.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] clientes {
+            get {
+                object obj = ResourceManager.GetObject("clientes", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] compra {
             get {
                 object obj = ResourceManager.GetObject("compra", resourceCulture);
@@ -163,9 +173,29 @@ namespace ProyectoFinalServicioCliente.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] main {
+            get {
+                object obj = ResourceManager.GetObject("main", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] newFile {
             get {
                 object obj = ResourceManager.GetObject("newFile", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] pastel {
+            get {
+                object obj = ResourceManager.GetObject("pastel", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -216,6 +246,16 @@ namespace ProyectoFinalServicioCliente.Properties {
         internal static byte[] remover {
             get {
                 object obj = ResourceManager.GetObject("remover", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sales {
+            get {
+                object obj = ResourceManager.GetObject("sales", resourceCulture);
                 return ((byte[])(obj));
             }
         }

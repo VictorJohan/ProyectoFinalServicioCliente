@@ -1,5 +1,6 @@
 ﻿using ProyectoFinalServicioCliente;
 using ProyectoFinalServicioCliente.UI.Consultas;
+using ProyectoFinalServicioCliente.UI.Consultas.mConsultas;
 using ProyectoFinalServicioCliente.UI.rArticulo;
 using ProyectoFinalServicioCliente.UI.rCategoria;
 using ProyectoFinalServicioCliente.UI.rCliente;
@@ -32,17 +33,14 @@ namespace ProyectoFinalServicioCliente
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
-        }
-
+        //Registrar Menu---------------------------------------------------------------
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             rUsuarios rUsuarios = new rUsuarios();
@@ -97,7 +95,9 @@ namespace ProyectoFinalServicioCliente
             rVenta rVenta = new rVenta();
             rVenta.Show();
         }
+        //Registrar Menu---------------------------------------------------------------
 
+        //Consultas Menu---------------------------------------------------------------
         private void MenuItem_Click_10(object sender, RoutedEventArgs e)
         {
             cArticulos cArticulos = new cArticulos();
@@ -117,16 +117,12 @@ namespace ProyectoFinalServicioCliente
         }
 
         private void MenuItem_Click_13(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Esta venta no cumple con los requerimientos debido a que no se puede incluir el detalle en la consulta", 
-                "Aviso.", MessageBoxButton.OK, MessageBoxImage.Warning);  
+        { 
             cCompras cCompras = new cCompras();
             cCompras.Show();
         }
         private void MenuItem_Click_14(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Esta venta no cumple con los requerimientos debido a que no se puede incluir el detalle en la consulta",
-               "Aviso.", MessageBoxButton.OK, MessageBoxImage.Warning);
             cEventos cEventos = new cEventos();
             cEventos.Show();
         }
@@ -142,10 +138,85 @@ namespace ProyectoFinalServicioCliente
         }
         private void MenuItem_Click_17(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Esta venta no cumple con los requerimientos debido a que no se puede incluir el detalle en la consulta",
-               "Aviso.", MessageBoxButton.OK, MessageBoxImage.Warning);
             cVentas cVentas = new cVentas();
             cVentas.Show();
         }
+        //Consultas Menu---------------------------------------------------------------
+
+        //Registrar Button---------------------------------------------------------------
+        private void RegistrarArticulosButton_Click(object sender, RoutedEventArgs e)
+        {
+            rArticulos rArticulos = new rArticulos();
+            rArticulos.Show();
+        }
+
+        private void RegistrarCategoriaButton_Click(object sender, RoutedEventArgs e)
+        {
+            rCategoria rCategoria = new rCategoria();
+            rCategoria.Show();
+        }
+
+        private void RegistrarCompraButton_Click(object sender, RoutedEventArgs e)
+        {
+            rCompras rCompras = new rCompras();
+            rCompras.Show();
+        }
+
+        private void RegistrarSuplidorButton_Click(object sender, RoutedEventArgs e)
+        {
+            rSuplidor rSuplidor = new rSuplidor();
+            rSuplidor.Show();
+        }
+
+        private void RegistrarEventoButton_Click(object sender, RoutedEventArgs e)
+        {
+            rEventos rEventos = new rEventos();
+            rEventos.Show();
+        }
+
+        private void RegistrarClienteButton_Click(object sender, RoutedEventArgs e)
+        {
+            rClientes rClientes = new rClientes();
+            rClientes.Show();
+        }
+
+        private void RegistrarFotografoButton_Click(object sender, RoutedEventArgs e)
+        {
+            rFotografo rFotografo = new rFotografo();
+            rFotografo.Show();
+        }
+
+        private void RegistrarVentaButton_Click(object sender, RoutedEventArgs e)
+        {
+            rVenta rVenta = new rVenta();
+            rVenta.Show();
+        }
+        //Registrars Button---------------------------------------------------------------
+
+        //Consulta Button---------------------------------------------------------------
+        private void ConsultasButton_Click(object sender, RoutedEventArgs e)
+        {
+            mConsultas mConsultas = new mConsultas();
+            mConsultas.Show();
+        }
+        //Consulta Button---------------------------------------------------------------
+
+        //Usuarios Menu---------------------------------------------------------------
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rUsuarios rUsuarios = new rUsuarios();
+            rUsuarios.Show();
+        }
+
+        private void MenuItem_Click_18(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Close();
+        }
+        //Usuarios Menu---------------------------------------------------------------
+
+
+
     }
 }

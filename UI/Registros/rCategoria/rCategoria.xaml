@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.rCategoria"
         mc:Ignorable="d"
-        Title="Registro Categoría" Height="190" Width="259" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/categoria.png">
+        Title="Registro Categoría" Height="190" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/categoria.png">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF6FB1DE" Offset="0.032"/>
@@ -20,7 +20,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
-                <TextBox Name="CategoriaIdTextBox" BorderBrush="Black" Text="{Binding CategoriaId}" Height="20" Width="149" Margin="5,0">
+                <TextBox Name="CategoriaIdTextBox" BorderBrush="Black" Text="{Binding CategoriaId}" Height="20" Width="189" Margin="5,0">
                     <TextBox.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="White"/>
@@ -40,7 +40,7 @@
             </StackPanel>
 
             <Label Content="Categoría" FontSize="11"/>
-            <TextBox Name="NombreTextBox" Text="{Binding Nombre}" BorderBrush="Black" HorizontalAlignment="Left" Height="20" Width="213" Margin="5,0">
+            <TextBox Name="NombreTextBox" Text="{Binding Nombre}" BorderBrush="Black" HorizontalAlignment="Left" Height="20" Width="254" Margin="5,0">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>
@@ -49,7 +49,7 @@
                 </TextBox.Background>
             </TextBox>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="218" Height="23" Margin="5,20,0,0">
+            <StackPanel Orientation="Horizontal"  Width="218" Height="23" Margin="5,20,0,0">
 
                 <Button Name="NuevoButton" Width="60" Height="20" BorderBrush="Black" HorizontalContentAlignment="Left" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">

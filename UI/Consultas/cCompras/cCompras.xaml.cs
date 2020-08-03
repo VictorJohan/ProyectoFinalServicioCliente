@@ -74,8 +74,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         break;
                     case 3:
                         try
-                        {
-                            
+                        {                           
                             Listado = ComprasBLL.GetList(c => c.SuplidorId == int.Parse(CriterioTexBox.Text));
                         }
                         catch (FormatException)
