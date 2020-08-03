@@ -5,20 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta Clientes" Height="300" Width="600" WindowStartupLocation="CenterScreen">
+        Title="Consulta Clientes" Height="410" Width="870" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
             <!--Panel Labels-->
             <StackPanel Orientation="Horizontal">
                 <Label Content="Filtro" FontSize="11"/>
-                <Label Content="Criterio" FontSize="11" Margin="200,0,0,0"/>
+                <Label Content="Fecha de Nacimiento (Desde)" FontSize="11" Margin="179,0,0,0"/>
+                <Label Content="Fecha de Nacimieto (Hasta)" FontSize="11" Margin="12,0,0,0"/>
+
+                <Label Content="Criterio" FontSize="11" Margin="24,0,0,0"/>
             </StackPanel>
 
             <!--Panel Controles-->
             <StackPanel Orientation="Horizontal">
-                <ComboBox Name="FiltroComBox" Height="20" Width="200" HorizontalAlignment="Left" Margin="5,0" Padding="-1"/>
-                <TextBox x:Name="CriterioTexBox"  Height="20" Width="200" Margin="27,0,0,0" />
+                <ComboBox Name="FiltroComBox" Height="20" Width="200" HorizontalAlignment="Left" Margin="5,0" Padding="-1" SelectionChanged="FiltroComBox_SelectionChanged"/>
+                <DatePicker Name="FechaNacimientoDesdeDatePicker" Height="20" Padding="-1" Margin="10"/>
+                <DatePicker Name="FechaNacimientoHastaDatePicker" Height="20" Padding="-1" Margin="10" IsEnabled="False"/>
+                <TextBox x:Name="CriterioTexBox"  Width="200" Height="20" Margin="10,0,0,0" />
+                
 
                 <Button x:Name="Buscar" Height="20" Width="60"  Click="Buscar_Click" Margin="10,0,0,0">
                     <StackPanel Orientation="Horizontal">
@@ -30,14 +36,19 @@
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Left" >
-                <DataGrid Name="ConsultaDataGrid" Width="502" Height="200" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
-                              ItemsSource="{Binding Cliente}" Margin="5,5,0,0">
+                <DataGrid Name="ConsultaDataGrid" Width="815" Height="300" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                              ItemsSource="{Binding Clientes}" Margin="5,5,0,0">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Cliente Id" IsReadOnly="True" Binding="{Binding ClienteId}"/>
-                        <DataGridTextColumn Header="Nombres" IsReadOnly="True" Binding="{Binding Nombres}"/>
-                        <DataGridTextColumn Header="Apellidos" IsReadOnly="True" Binding="{Binding Apellidos}"/>
-                        <DataGridTextColumn Header="Cedula" IsReadOnly="True" Binding="{Binding Cedula}"/>
+                        <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding ClienteId}"/>
+                        <DataGridTextColumn Header="Nombres" IsReadOnly="True" Binding="{Binding Nombre}"/>
+                        <DataGridTextColumn Header="Apellidos" IsReadOnly="True" Binding="{Binding Apellido}"/>
+                        <DataGridTextColumn Header="Cédula" IsReadOnly="True" Binding="{Binding Cedula}"/>
+                        <DataGridTextColumn Header="Dirección" IsReadOnly="True" Binding="{Binding Direccion}"/>
+                        <DataGridTextColumn Header="Teléfono" IsReadOnly="True" Binding="{Binding Telefono}"/>
+                        <DataGridTextColumn Header="Celular" IsReadOnly="True" Binding="{Binding Celular}"/>
+                        <DataGridTextColumn Header="E-mail" IsReadOnly="True" Binding="{Binding Email}"/>
                         <DataGridTextColumn Header="Sexo" IsReadOnly="True" Binding="{Binding Sexo}"/>
+                        <DataGridTextColumn Header="Fecha de Nacimiento" IsReadOnly="False" Binding="{Binding FechaNacimiento, StringFormat=dd/MM/yyy}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

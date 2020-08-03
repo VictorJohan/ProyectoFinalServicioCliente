@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -24,14 +25,11 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
         public cEventos()
         {
             InitializeComponent();
-            string[] filtro = { "Id", "Descipcion", "Lugar" };
+            string[] filtro = { "Cliente Id", "Descripción", "Lugar","Fecha Inicio", "Fecha de Vencimiento",  "Precio", "Total" };
             FiltroComBox.ItemsSource = filtro;
         }
 
-        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
         private void Buscar_Click(object sender, RoutedEventArgs e)
         {
             var Listado = new List<Eventos>();
@@ -40,14 +38,21 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
             {
                 switch (FiltroComBox.SelectedIndex)
                 {
-                    case 0://Todo
-                        Listado = EventosBLL.GetList(s => true);
+                    case 0:
+
+                        if (!Regex.IsMatch(CriterioTexBox.Text, "^[0-9]+$"))
+                        {
+                            MessageBox.Show("Se esperaba un Id no una cadena de texto", "Campo Criterio",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                            return;
+                        }
+                       Listado = EventosBLL.GetList(c => c.ClienteId == int.Parse(CriterioTexBox.Text));
+
                         break;
                     case 1:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTexBox.Text);
-                          //  Listado = EventosBLL.GetList(c => c.EventoId == id);
+                           Listado = EventosBLL.GetList(c => c.EventosDetalles.Any(d => d.Descripcion.Equals(CriterioTexBox.Text)));
                         }
                         catch (FormatException)
                         {
@@ -57,8 +62,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 2:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTexBox.Text);
-                            Listado = EventosBLL.GetList(c => c.UsuarioId == id);
+                            Listado = EventosBLL.GetList(c => c.EventosDetalles.Any(d => d.Lugar.Equals(CriterioTexBox.Text)));
                         }
                         catch (FormatException)
                         {
@@ -69,7 +73,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         try
                         {
 
-                         //  Listado = EventosBLL.GetList(c => c.Descripcion.Contains(CriterioTexBox.Text));
+                            Listado = EventosBLL.GetList(c => c.EventosDetalles.Any(d => d.Fecha.Equals(InicioDesdeDataPicker.SelectedDate.Value)));
                         }
                         catch (FormatException)
                         {
@@ -81,7 +85,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         try
                         {
 
-                          //  Listado = EventosBLL.GetList(c => c.Lugar.Contains(CriterioTexBox.Text));
+                            Listado = EventosBLL.GetList(c => c.EventosDetalles.Any(d => d.Fecha.Equals(VenceHastaDatePicker.SelectedDate.Value)));
                         }
                         catch (FormatException)
                         {
@@ -92,8 +96,19 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 5:
                         try
                         {
-                            decimal precio = Convert.ToDecimal(CriterioTexBox.Text);
-                           // Listado = EventosBLL.GetList(c => c.Precio == precio);
+
+                            Listado = EventosBLL.GetList(c => c.EventosDetalles.Any(d => d.Precio.Equals(double.Parse( CriterioTexBox.Text))));
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un Critero valido");
+                        }
+                        break;
+                    case 6:
+                        try
+                        {
+
+                            Listado = EventosBLL.GetList(c => c.Total == double.Parse(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {
@@ -105,7 +120,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
 
                 }
 
-                if (DesdeDataPicker.SelectedDate != null && HastaDatePicker.SelectedDate != null) ;
+                if (InicioDesdeDataPicker.SelectedDate != null && InicioDesdeDataPicker.SelectedDate != null) ;
                   //  Listado = Listado.Where(c => c.FechaInicio.Date >= DesdeDataPicker.SelectedDate.Value && c.FechaFin.Date <= HastaDatePicker.SelectedDate.Value).ToList();
 
             }
@@ -118,9 +133,6 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
             ConsultaDataGrid.ItemsSource = Listado;
         }
 
-        private void ConsultaDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+       
     }
 }

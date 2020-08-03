@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -23,7 +24,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
         public cCompras()
         {
             InitializeComponent();
-            string[] filtro = { "Id", "Categoria", "Descipcion", "Cantidad" };
+            string[] filtro = { "Id", "Monto", "Fecha", "SuplidorId" };
             FiltroComBox.ItemsSource = filtro;
         }
         private void Buscar_Click(object sender, RoutedEventArgs e)
@@ -34,14 +35,20 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
             {
                 switch (FiltroComBox.SelectedIndex)
                 {
-                    case 0://Todo
-                        Listado = ComprasBLL.GetList(s => true);
+                    case 0:
+                        //todo: poner esto en los Id de las consulatas
+                        if (!Regex.IsMatch(CriterioTexBox.Text, "^[0-9]+$"))
+                        {
+                            MessageBox.Show("Se esperaba un Id no una cadena de texto", "Campo Criterio",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                            return;
+                        }
+                        Listado = ComprasBLL.GetList(c => c.CompraId == int.Parse(CriterioTexBox.Text));
                         break;
                     case 1:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTexBox.Text);
-                            Listado = ComprasBLL.GetList(c => c.CompraId == id);
+                            Listado = ComprasBLL.GetList(c => c.Monto == double.Parse(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {
@@ -51,8 +58,14 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 2:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTexBox.Text);
-                            Listado = ComprasBLL.GetList(c => c.UsuarioId == id);
+
+                            if (DesdeDataPicker.SelectedDate != null)
+                                Listado = ComprasBLL.GetList(c => c.Fecha.Date >= DesdeDataPicker.SelectedDate);
+
+                            if (HastaDatePicker.SelectedDate != null)
+                                Listado = ComprasBLL.GetList(c => c.Fecha.Date <= HastaDatePicker.SelectedDate);
+
+                            Listado = ComprasBLL.GetList(C => C.Fecha == DesdeDataPicker.SelectedDate.Value);
                         }
                         catch (FormatException)
                         {
@@ -62,8 +75,8 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 3:
                         try
                         {
-                            double monto = Convert.ToDouble(CriterioTexBox.Text);
-                            Listado = ComprasBLL.GetList(c => c.Monto == monto);
+                            
+                            Listado = ComprasBLL.GetList(c => c.SuplidorId == int.Parse(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {

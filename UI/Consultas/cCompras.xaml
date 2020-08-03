@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="cCompras" Height="200" Width="850" WindowStartupLocation="CenterScreen">
+        Title="cCompras" Height="410" Width="850" WindowStartupLocation="CenterScreen">
      <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
@@ -38,16 +38,14 @@
             </StackPanel>
             
             <StackPanel HorizontalAlignment="Left" >
-                <DataGrid Name="ConsultaDataGrid" Width="500" Height="100" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                <DataGrid Name="ConsultaDataGrid" Width="814" Height="300" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
                               ItemsSource="{Binding Compras}" Margin="5,5,0,0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Compra Id" IsReadOnly="True" Binding="{Binding CompraId}"/>
-                        <DataGridTextColumn Header="Suplidor" IsReadOnly="True" Binding="{Binding Suplidor}"/>
-                        <DataGridTextColumn Header="Descripcion" IsReadOnly="True" Binding="{Binding Precio}"/>
-                        <DataGridTextColumn Header="Categoria" IsReadOnly="True" Binding="{Binding Descripcion}"/>
-                        <DataGridTextColumn Header="Costo" IsReadOnly="True" Binding="{Binding Costo}"/>
-                        <DataGridTextColumn Header="Cantidad" IsReadOnly="True" Binding="{Binding Cantidad}"/>
-                        <DataGridTextColumn Header="Total" IsReadOnly="True" Binding="{Binding Total}"/>
+                        <DataGridTextColumn Header="Monto" IsReadOnly="True" Binding="{Binding Monto}"/>
+                        <DataGridTextColumn Header="Fecha" IsReadOnly="True" Binding="{Binding Fecha}"/>
+                        <DataGridTextColumn Header="SuplidorId" IsReadOnly="True" Binding="{Binding SuplidorId}"/>
+                       
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
