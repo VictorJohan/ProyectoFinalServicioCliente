@@ -5,19 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta de Usuarios" Height="300" Width="530" WindowStartupLocation="CenterScreen">
+        Title="Consulta de Usuarios" Height="410" Width="850" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
             <!--Panel Labels-->
             <StackPanel Orientation="Horizontal">
                 <Label Content="Filtro" FontSize="11"/>
-                <Label Content="Criterio" FontSize="11" Margin="200,0,0,0"/>
+                <Label Content="Fecha de Creación (Desde)" FontSize="11" Margin="181,0,0,0"/>
+                <Label Content="Fecha de Creación (Hasta)" FontSize="11" Margin="24,0,0,0"/>
+                <Label Content="Criterio" FontSize="11" Margin="41,0,0,0"/>
             </StackPanel>
 
             <!--Panel Controles-->
             <StackPanel Orientation="Horizontal">
                 <ComboBox Name="FiltroComBox" Height="20" Width="200" HorizontalAlignment="Left" Margin="5,0" Padding="-1"/>
+                <DatePicker Name="FechaCreacionDesdeDatePicker" Height="20" Padding="-1" Margin="10"/>
+                <DatePicker Name="FechaCreacionHastaDatePicker" Height="20" Padding="-1" Margin="10"/>
                 <TextBox x:Name="CriterioTexBox"  Height="20" Width="200" Margin="27,0,0,0" />
 
                 <Button x:Name="Buscar" Height="20" Width="60"  Click="Buscar_Click" Margin="10,0,0,0">
@@ -30,13 +34,13 @@
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Left" >
-                <DataGrid Name="ConsultaDataGrid" Width="330" Height="200" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                <DataGrid Name="ConsultaDataGrid" Width="822" Height="300" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
                               ItemsSource="{Binding Usuario}" Margin="5,5,0,0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Usuario Id" IsReadOnly="True" Binding="{Binding UsuarioId}"/>
                         <DataGridTextColumn Header="Nombre" IsReadOnly="True" Binding="{Binding Nombre}"/>
-                        <DataGridTextColumn Header="Nombre usuario" IsReadOnly="True" Binding="{Binding Nombreusuario}"/>
-                        <DataGridTextColumn Header="Contraseña" IsReadOnly="True" Binding="{Binding Contrasena}"/>
+                        <DataGridTextColumn Header="Apellido" IsReadOnly="True" Binding="{Binding Apellido}"/>
+                        <DataGridTextColumn Header="Usuario" IsReadOnly="True" Binding="{Binding Usuario}"/>
                     
                         
                     </DataGrid.Columns>

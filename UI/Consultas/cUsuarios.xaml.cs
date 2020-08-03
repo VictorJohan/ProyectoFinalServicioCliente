@@ -22,7 +22,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
         public cUsuarios()
         {
             InitializeComponent();
-            string[] filtro = { "UsuarioId", "Nombres", "NombreUsuario" };
+            string[] filtro = { "UsuarioId", "Nombre", "Apellido","Usuario", "Fecha" };
             FiltroComBox.ItemsSource = filtro;
         }
         private void Buscar_Click(object sender, RoutedEventArgs e)
@@ -33,14 +33,14 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
             {
                 switch (FiltroComBox.SelectedIndex)
                 {
-                    case 0://Todo
-                        listado = UsuariosBLL.GetList(u => true);
+                    case 0:
+                        listado = UsuariosBLL.GetList(c => c.UsuarioId == int.Parse(CriterioTexBox.Text));
                         break;
                     case 1:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTexBox.Text);
-                            listado = UsuariosBLL.GetList(c => c.UsuarioId == id);
+
+                            listado = UsuariosBLL.GetList(c => c.Nombres == CriterioTexBox.Text);
                         }
                         catch (FormatException)
                         {
@@ -51,7 +51,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         try
                         {
 
-                            listado = UsuariosBLL.GetList(c => c.Nombres.Contains(CriterioTexBox.Text));
+                            listado = UsuariosBLL.GetList(c => c.Apellidos == CriterioTexBox.Text);
                         }
                         catch (FormatException)
                         {
@@ -62,14 +62,38 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         try
                         {
 
-                            listado = UsuariosBLL.GetList(c => c.Nombres.Contains(CriterioTexBox.Text));
+                            listado = UsuariosBLL.GetList(c => c.Usuario ==CriterioTexBox.Text);
                         }
                         catch (FormatException)
                         {
                             MessageBox.Show("Por favor, ingrese un Critero valido");
                         }
                         break;
+                    case 4:
+                        try
+                        {
+                            listado = UsuariosBLL.GetList(C => C.Fecha == FechaCreacionDesdeDatePicker.SelectedDate.Value);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Por favor, ingrese un Critero valido");
+                        }
+                        break;
+                    case 5:
+                        try
+                        {
+                            if (FechaCreacionDesdeDatePicker.SelectedDate != null)
+                                listado = UsuariosBLL.GetList(c => c.Fecha.Date >= FechaCreacionDesdeDatePicker.SelectedDate);
 
+                            if (FechaCreacionHastaDatePicker.SelectedDate != null)
+                                listado = UsuariosBLL.GetList(c => c.Fecha.Date <= FechaCreacionHastaDatePicker.SelectedDate);
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Por favor, ingrese un Critero valido");
+                        }
+                        break;
 
                 }
             }

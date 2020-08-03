@@ -5,18 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta Fotografos" Height="450" Width="670" WindowStartupLocation="CenterScreen">
+        Title="Consulta Fotografos" Height="410" Width="870" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
             <!--Panel Labels-->
             <StackPanel Orientation="Horizontal">
-                <Label Content="Filtro" FontSize="11"/>
+                <Label Content="Nacimeinte(Desde):" FontSize="11"/>
+                <Label Content="Fecha de Nacimieto (Hasta)" FontSize="11" Margin="61,0,0,0"/>
+                <Label Content="Filtro" FontSize="11" Margin="13,0,0,0"/>
                 <Label Content="Criterio" FontSize="11" Margin="200,0,0,0"/>
             </StackPanel>
 
             <!--Panel Controles-->
             <StackPanel Orientation="Horizontal">
+                <DatePicker Name="FechaNacimientoDesdeDatePicker" Height="20" Padding="-1" Margin="10"/>
+                <DatePicker Name="FechaNacimientoHastaDatePicker" Height="20" Padding="-1" Margin="10" />
                 <ComboBox Name="FiltroComBox" Height="20" Width="200" HorizontalAlignment="Left" Margin="5,0" Padding="-1"/>
                 <TextBox x:Name="CriterioTexBox"  Height="20" Width="200" Margin="27,0,0,0" />
 
@@ -30,7 +34,7 @@
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Left" >
-                <DataGrid Name="ConsultaDataGrid" Width="628" Height="200" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                <DataGrid Name="ConsultaDataGrid" Width="821" Height="300" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
                               ItemsSource="{Binding Fotografos}" Margin="5,5,0,0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Fotografo Id" IsReadOnly="True" Binding="{Binding FotografoId}"/>

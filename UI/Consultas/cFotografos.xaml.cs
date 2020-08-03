@@ -3,6 +3,7 @@ using ProyectoFinalServicioFotografo.BLL;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,7 +23,8 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
         public cFotografos()
         {
             InitializeComponent();
-            string[] filtro = { "FotografoId", "Nombres", "Cedula", "Sexo" };
+            string[] filtro = { "Id", "Nombres","Apellido", "Cédula", "Dirección", "Teléfono", "Celular",
+                "E-Mail","Sexo", "Fecha de Nacimiento" };
             FiltroComBox.ItemsSource = filtro;
         }
         private void Buscar_Click(object sender, RoutedEventArgs e)
@@ -33,14 +35,13 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
             {
                 switch (FiltroComBox.SelectedIndex)
                 {
-                    case 0://Todo
-                        listado = FotografosBLL.GetList(u => true);
+                    case 0:
+                        listado = FotografosBLL.GetList(c => c.FotografoId == int.Parse(CriterioTexBox.Text));
                         break;
                     case 1:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTexBox.Text);
-                            listado = FotografosBLL.GetList(c => c.FotografoId == id);
+                            listado = FotografosBLL.GetList(c => c.Nombres == CriterioTexBox.Text);
                         }
                         catch (FormatException)
                         {
@@ -61,8 +62,14 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 3:
                         try
                         {
+                            if (!Regex.IsMatch(CriterioTexBox.Text, @"\d{3}-\d{7}-\d{1}"))
+                            {
+                                MessageBox.Show("Asegúrese de cumplir con el siguiente formato: 111-1111111-1.", "Verifique que haya ingresado una cédula válida",
+                                  MessageBoxButton.OK, MessageBoxImage.Information);
+                                return;
+                            }
 
-                            listado = FotografosBLL.GetList(c => c.Cedula.Contains(CriterioTexBox.Text));
+                            listado = FotografosBLL.GetList(c => c.Cedula == CriterioTexBox.Text);
                         }
                         catch (FormatException)
                         {
@@ -73,9 +80,118 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                         try
                         {
 
-                            listado = FotografosBLL.GetList(c => c.Sexo.Contains(CriterioTexBox.Text));
+                            listado = FotografosBLL.GetList(c => c.Direccion == CriterioTexBox.Text);
                         }
                         catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un Critero valido");
+                        }
+                        break;
+                    case 5:
+                        try
+                        {
+                            //válida que se le haya colocado el prefijo al celular no (ejemplo: +1).
+                            if (!Regex.IsMatch(CriterioTexBox.Text, @"^(\+[0-9]{1,12})$"))
+                            {
+                                MessageBox.Show("Asegúrese de haber colocado el prefijo telefonico correspondiente.", "Número celular no válido.",
+                                  MessageBoxButton.OK, MessageBoxImage.Information);
+                                return;
+                            }
+
+                            //válidando la longitud del telefono.
+                            if (CriterioTexBox.Text.Length != 0 && CriterioTexBox.Text.Length < 8)
+                            {
+                                MessageBox.Show("El número de teléfono no cumple con una longitud válida.", "Longitud no válida.",
+                                    MessageBoxButton.OK, MessageBoxImage.Error);
+                                return;
+                            }
+
+                            listado = FotografosBLL.GetList(c => c.Telefono == CriterioTexBox.Text);
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un Critero valido");
+                        }
+                        break;
+                    case 6:
+                        try
+                        {
+
+                            //válida que se le haya colocado el prefijo al celular no (ejemplo: +1).
+                            if (!Regex.IsMatch(CriterioTexBox.Text, @"^(\+[0-9]{1,12})$"))
+                            {
+                                MessageBox.Show("Asegúrese de haber colocado el prefijo telefonico correspondiente.", "Número celular no válido.",
+                                  MessageBoxButton.OK, MessageBoxImage.Information);
+                                return;
+                            }
+
+                            //válidando la longitud del celular.
+                            if (CriterioTexBox.Text.Length < 8)
+                            {
+                                MessageBox.Show("El número celular no cumple con una longitud válida.", "Longitud no válida.",
+                                    MessageBoxButton.OK, MessageBoxImage.Error);
+                                return;
+                            }
+
+
+                            listado = FotografosBLL.GetList(C => C.Celular == CriterioTexBox.Text);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Por favor, ingrese un Critero valido");
+                        }
+                        break;
+                    case 7:
+                        try
+                        {
+
+                            //válida la dirreccion de correo electrónico.
+                            if (!Regex.IsMatch(CriterioTexBox.Text, "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*"))
+                            {
+                                MessageBox.Show("La direccón de correo electrónico que ha introducido no es válida.", "Campo Email.",
+                                   MessageBoxButton.OK, MessageBoxImage.Information);
+                                return;
+                            }
+                            listado = FotografosBLL.GetList(C => C.Email == CriterioTexBox.Text);
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Por favor, ingrese un Critero valido");
+                        }
+                        break;
+                    case 8:
+                        try
+                        {
+                            listado = FotografosBLL.GetList(C => C.Sexo == CriterioTexBox.Text);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Por favor, ingrese un Critero valido");
+                        }
+                        break;
+
+                    case 9:
+                        try
+                        {
+                            listado = FotografosBLL.GetList(C => C.FechaNacimiento == FechaNacimientoDesdeDatePicker.SelectedDate.Value);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Por favor, ingrese un Critero valido");
+                        }
+                        break;
+                    case 10:
+                        try
+                        {
+                            if (FechaNacimientoDesdeDatePicker.SelectedDate != null)
+                                listado = FotografosBLL.GetList(c => c.FechaNacimiento.Date >= FechaNacimientoDesdeDatePicker.SelectedDate);
+
+                            if (FechaNacimientoHastaDatePicker.SelectedDate != null)
+                                listado = FotografosBLL.GetList(c => c.FechaNacimiento.Date <= FechaNacimientoHastaDatePicker.SelectedDate);
+
+                        }
+                        catch
                         {
                             MessageBox.Show("Por favor, ingrese un Critero valido");
                         }
