@@ -22,7 +22,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
         public cVentas()
         {
             InitializeComponent();
-            string[] filtro = { "VentaId", "ClienteId" };
+            string[] filtro = { "Venta Id", "Cliente Id", "Fotografo Id", "Fecha", "Total" };
             FiltroComBox.ItemsSource = filtro;
         }
         private void Buscar_Click(object sender, RoutedEventArgs e)
@@ -33,14 +33,21 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
             {
                 switch (FiltroComBox.SelectedIndex)
                 {
-                    case 0://Todo
-                        listado = VentasBLL.GetList(u => true);
+
+                    case 0:
+                        try
+                        {
+                            listado = VentasBLL.GetList(c => c.VentaId == int.Parse(CriterioTexBox.Text));
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un ID valido");
+                        }
                         break;
                     case 1:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTexBox.Text);
-                            listado = VentasBLL.GetList(c => c.VentaId == id);
+                            listado = VentasBLL.GetList(c => c.ClienteId == int.Parse(CriterioTexBox.Text));
                         }
                         catch (FormatException)
                         {
@@ -50,20 +57,26 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                     case 2:
                         try
                         {
-                            int id = Convert.ToInt32(CriterioTexBox.Text);
-                            listado = VentasBLL.GetList(c => c.ClienteId == id);
+                            listado = VentasBLL.GetList(c => c.FotografoId == int.Parse(CriterioTexBox.Text));
                         }
-                        catch (FormatException)
+                        catch
                         {
                             MessageBox.Show("Por favor, ingrese un ID valido");
                         }
                         break;
+                    
 
                 }
-
             }
             else
             {
+                if (DesdeDataPicker.SelectedDate != null)
+                    listado = VentasBLL.GetList(c => c.Fecha.Date >= DesdeDataPicker.SelectedDate);
+
+                if (HastaDatePicker.SelectedDate != null)
+                    listado = VentasBLL.GetList(c => c.Fecha.Date <= HastaDatePicker.SelectedDate);
+
+
                 listado = VentasBLL.GetList(c => true);
             }
 
@@ -71,9 +84,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
             ConsultaDataGrid.ItemsSource = listado;
         }
 
-        private void ConsultaDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
     }
 }
+

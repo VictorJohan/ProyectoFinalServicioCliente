@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta Fotografos" Height="410" Width="870" WindowStartupLocation="CenterScreen">
+        Title="Consulta Fotografos" Height="410" Width="870" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/search.png">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
@@ -35,17 +35,16 @@
 
             <StackPanel HorizontalAlignment="Left" >
                 <DataGrid Name="ConsultaDataGrid" Width="821" Height="300" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
-                              ItemsSource="{Binding Fotografos}" Margin="5,5,0,0">
+                              ItemsSource="{Binding Fotografos}" Margin="5,5,0,0" SelectionChanged="ConsultaDataGrid_SelectionChanged">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Fotografo Id" IsReadOnly="True" Binding="{Binding FotografoId}"/>
-                        <DataGridTextColumn Header="Usuario Id" IsReadOnly="True" Binding="{Binding UsuarioId}"/>
-                        <DataGridTextColumn Header="Nombre" IsReadOnly="True" Binding="{Binding Nombre}"/>
+                        <DataGridTextColumn Header="Nombre" IsReadOnly="True" Binding="{Binding Nombres}"/>
                         <DataGridTextColumn Header="Cedula" IsReadOnly="True" Binding="{Binding Cedula}"/>
-                        <DataGridTextColumn Header="Dirección" IsReadOnly="True" Binding="{Binding Dirección}"/>
+                        <DataGridTextColumn Header="Dirección" IsReadOnly="True" Binding="{Binding Direccion}"/>
                         <DataGridTextColumn Header="Telfono" IsReadOnly="True" Binding="{Binding Telefono}"/>
                         <DataGridTextColumn Header="Celular" IsReadOnly="True" Binding="{Binding Celular}"/>
                         <DataGridTextColumn Header="Sexo" IsReadOnly="True" Binding="{Binding Cedula}"/>
-                        <DataGridTextColumn Header="Fecha de Nacimieto" IsReadOnly="True" Binding="{Binding FechadeNacimieto}"/>
+                        <DataGridTextColumn Header="Fecha de Nacimieto" IsReadOnly="True" Binding="{Binding FechaNacimiento}"/>
                         <DataGridTextColumn Header="Sueldo" IsReadOnly="True" Binding="{Binding Sueldo}"/>
                     </DataGrid.Columns>
                 </DataGrid>

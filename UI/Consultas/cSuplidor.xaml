@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta Suplidor" Height="410" Width="800">
+        Title="Consulta Suplidor" Height="410" Width="560" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/search.png">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
@@ -17,7 +17,7 @@
 
             <!--Panel Controles-->
             <StackPanel Orientation="Horizontal">
-                <ComboBox Name="FiltroComBox" Height="20" Width="200" HorizontalAlignment="Left" Margin="5,0" Padding="-1" SelectionChanged="FiltroComBox_SelectionChanged"/>
+                <ComboBox Name="FiltroComBox" Height="20" Width="200" HorizontalAlignment="Left" Margin="5,0" Padding="-1"/>
                 <TextBox x:Name="CriterioTexBox"  Width="200" Height="20" Margin="10,0,0,0" />
 
 

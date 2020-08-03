@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta Clientes" Height="410" Width="870" WindowStartupLocation="CenterScreen">
+        Title="Consulta Clientes" Height="410" Width="870" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/search.png">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 

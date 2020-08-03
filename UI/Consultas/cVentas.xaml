@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta de ventas" Height="250" Width="850" WindowStartupLocation="CenterScreen">
+        Title="Consulta de ventas" Height="410" Width="870" WindowStartupLocation="CenterScreen" Icon="/Resources/search.png">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
@@ -38,13 +38,14 @@
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Left" >
-                <DataGrid Name="ConsultaDataGrid" Width="500" Height="150" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
-                              ItemsSource="{Binding Ventas}" Margin="5,5,0,0" SelectionChanged="ConsultaDataGrid_SelectionChanged">
+                <DataGrid Name="ConsultaDataGrid" Width="814" Height="300" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                              ItemsSource="{Binding Ventas}" Margin="5,5,0,0" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Venta Id" IsReadOnly="True" Binding="{Binding VentaId}"/>
                         <DataGridTextColumn Header="Cliente Id" IsReadOnly="True" Binding="{Binding ClienteId}"/>
-                        <DataGridTextColumn Header="Nombres" IsReadOnly="True" Binding="{Binding Nombres}"/>
-                        <DataGridTextColumn Header="Apellidos" IsReadOnly="True" Binding="{Binding Apellidos}"/>
+                        <DataGridTextColumn Header="Fotografo Id" IsReadOnly="True" Binding="{Binding FotografoId}"/>
+                        <DataGridTextColumn Header="Fecha" IsReadOnly="True" Binding="{Binding Fecha, StringFormat=dd/MM/yyy}"/>
+                        <DataGridTextColumn Header="Total" IsReadOnly="True" Binding="{Binding Total}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

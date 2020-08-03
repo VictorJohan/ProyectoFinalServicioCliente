@@ -214,5 +214,10 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
             ConsultaDataGrid.ItemsSource = null;
             ConsultaDataGrid.ItemsSource = listado;
         }
+
+        private void ConsultaDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

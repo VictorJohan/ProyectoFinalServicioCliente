@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
         mc:Ignorable="d"
-        Title="Consulta de Usuarios" Height="410" Width="850" WindowStartupLocation="CenterScreen">
+        Title="Consulta de Usuarios" Height="430" Width="865" WindowStartupLocation="CenterScreen" Icon="/Resources/search.png">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
@@ -35,11 +35,11 @@
 
             <StackPanel HorizontalAlignment="Left" >
                 <DataGrid Name="ConsultaDataGrid" Width="822" Height="300" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
-                              ItemsSource="{Binding Usuario}" Margin="5,5,0,0">
+                              ItemsSource="{Binding Usuarios}" Margin="5,5,0,0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Usuario Id" IsReadOnly="True" Binding="{Binding UsuarioId}"/>
-                        <DataGridTextColumn Header="Nombre" IsReadOnly="True" Binding="{Binding Nombre}"/>
-                        <DataGridTextColumn Header="Apellido" IsReadOnly="True" Binding="{Binding Apellido}"/>
+                        <DataGridTextColumn Header="Nombre" IsReadOnly="True" Binding="{Binding Nombres}"/>
+                        <DataGridTextColumn Header="Apellido" IsReadOnly="True" Binding="{Binding Apellidos}"/>
                         <DataGridTextColumn Header="Usuario" IsReadOnly="True" Binding="{Binding Usuario}"/>
                     
                         
