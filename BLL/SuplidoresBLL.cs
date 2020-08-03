@@ -4,6 +4,7 @@ using ProyectoFinalServicioCliente.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace ProyectoFinalServicioCliente.BLL
@@ -212,6 +213,28 @@ namespace ProyectoFinalServicioCliente.BLL
             }
 
             return ok;
+        }
+
+        public static List<Suplidores> GetList(Expression<Func<Suplidores, bool>> criterio)
+        {
+            Contexto contexto = new Contexto();
+            List<Suplidores> lista = new List<Suplidores>();
+
+            try
+            {
+                lista = contexto.Suplidores.Where(criterio).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return lista;
         }
     }
 }

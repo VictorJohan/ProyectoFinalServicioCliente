@@ -36,6 +36,13 @@ namespace ProyectoFinalServicioCliente.UI.Consultas
                 switch (FiltroComBox.SelectedIndex)
                 {
                     case 0:
+
+                        if (!Regex.IsMatch(CriterioTexBox.Text, "^[0-9]+$"))
+                        {
+                            MessageBox.Show("Se esperaba un Id no una cadena de texto", "Campo Criterio",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                            return;
+                        }
                         listado = FotografosBLL.GetList(c => c.FotografoId == int.Parse(CriterioTexBox.Text));
                         break;
                     case 1:

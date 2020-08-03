@@ -1,0 +1,46 @@
+﻿<Window x:Class="ProyectoFinalServicioCliente.UI.Consultas.cSuplidor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinalServicioCliente.UI.Consultas"
+        mc:Ignorable="d"
+        Title="Consulta Suplidor" Height="410" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10,5,10,0">
+
+            <!--Panel Labels-->
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Filtro" FontSize="11"/>
+                <Label Content="Criterio" FontSize="11" Margin="24,0,0,0"/>
+            </StackPanel>
+
+            <!--Panel Controles-->
+            <StackPanel Orientation="Horizontal">
+                <ComboBox Name="FiltroComBox" Height="20" Width="200" HorizontalAlignment="Left" Margin="5,0" Padding="-1" SelectionChanged="FiltroComBox_SelectionChanged"/>
+                <TextBox x:Name="CriterioTexBox"  Width="200" Height="20" Margin="10,0,0,0" />
+
+
+                <Button x:Name="Buscar" Height="20" Width="60"  Click="Buscar_Click" Margin="10,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/search.png"/>
+                        <Label Content="Buscar" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Left" >
+                <DataGrid Name="ConsultaDataGrid" Width="485" Height="300" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                              ItemsSource="{Binding Suplidores}" Margin="5,5,0,0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding SuplidorId}"/>
+                        <DataGridTextColumn Header="Nombres" IsReadOnly="True" Binding="{Binding Nombres}"/>
+                        <DataGridTextColumn Header="Teléfono" IsReadOnly="True" Binding="{Binding Telefono}"/>
+                        <DataGridTextColumn Header="E-mail" IsReadOnly="True" Binding="{Binding Email}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
