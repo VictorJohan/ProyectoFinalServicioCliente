@@ -26,7 +26,7 @@ namespace ProyectoFinalServicioCliente.UI.rCliente
             InitializeComponent();
             this.DataContext = Cliente;
             SexoComboBox.Items.Add("Femenino");
-            SexoComboBox.Items.Add("Masculino"); 
+            SexoComboBox.Items.Add("Masculino");
         }
 
         private void Limpiar()
