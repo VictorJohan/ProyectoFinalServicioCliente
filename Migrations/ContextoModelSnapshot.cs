@@ -322,7 +322,7 @@ namespace ProyectoFinalServicioCliente.Migrations
                             UsuarioId = 1,
                             Apellidos = "Usuario Apellidos",
                             Contrasena = "MQAyADMA",
-                            Fecha = new DateTime(2020, 7, 30, 0, 36, 48, 202, DateTimeKind.Local).AddTicks(1762),
+                            Fecha = new DateTime(2020, 8, 3, 18, 40, 22, 513, DateTimeKind.Local).AddTicks(3462),
                             Nombres = "Usuario Nombre",
                             Usuario = "admin"
                         });
