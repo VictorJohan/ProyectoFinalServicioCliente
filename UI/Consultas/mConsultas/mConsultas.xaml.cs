@@ -22,7 +22,7 @@ namespace ProyectoFinalServicioCliente.UI.Consultas.mConsultas
             InitializeComponent();
         }
 
-        //Consulta Menu--------------------------------------------------------------------------
+        //Consulta Menu-------------------------------------------------------------------------
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             cArticulos cArticulos = new cArticulos();
