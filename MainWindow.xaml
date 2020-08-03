@@ -6,6 +6,12 @@
         xmlns:local="clr-namespace:ProyectoFinalServicioCliente"
         mc:Ignorable="d"
         Title="Principal" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF6FB1DE" Offset="0.032"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
         <Menu Height="20" VerticalAlignment="Top">
             <MenuItem Header="Registros">
@@ -32,5 +38,15 @@
             </MenuItem>
         
         </Menu>
+        <Label Content="Foto Estudio" FontStyle="Italic" Foreground="White" FontSize="72" HorizontalAlignment="Center" FontFamily="Century Gothic" Margin="0,169,0,0">
+            <Label.Effect>
+                <DropShadowEffect/>
+            </Label.Effect>
+        </Label>
+        <Label Content="Núñez" FontStyle="Italic" Foreground="White" FontSize="72" HorizontalAlignment="Center" FontFamily="Century Gothic" Margin="0,240,0,0">
+            <Label.Effect>
+                <DropShadowEffect/>
+            </Label.Effect>
+        </Label>
     </Grid>
 </Window>
