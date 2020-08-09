@@ -182,7 +182,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
         //Calcula el total
         private void CantidadDetalleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Regex.IsMatch(CantidadDetalleTextBox.Text, "^[1-9]+$"))
+            if (!Regex.IsMatch(CantidadDetalleTextBox.Text, "^[1-9]{1,8}"))
             {
                 cantidad = 0;
             }
@@ -268,7 +268,7 @@ namespace ProyectoFinalServicioCliente.UI.rCompras
             }
 
             //válida que haya una cantidad válida en el TextBox.
-            if (!Regex.IsMatch(CantidadDetalleTextBox.Text, "^[1-9]+$"))
+            if (!Regex.IsMatch(CantidadDetalleTextBox.Text, "^[1-9]{1,8}"))
             {
                 MessageBox.Show("Verifique la cantidad que ha ingrsado.", "Cantidad de articulo no válido.",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
